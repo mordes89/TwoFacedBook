@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
   componentDidMount() {
     console.log(this.props)
@@ -29,8 +30,7 @@ class SessionForm extends React.Component {
     this.props.login({username: 'demouser', password: '123456'})
   }
 
-  renderErrors() {    
-    debugger
+  renderErrors() {       
     return(
       <ul>
         {this.props.errors.map((error, i) => (
@@ -44,12 +44,14 @@ class SessionForm extends React.Component {
 
   render() {    
     return (
-      <div>
+      <div className="login-page">
         {/* <img src={Icon}/> */}
-        <h3>Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
-        <form onSubmit={this.handleSubmit}>          
-            {this.renderErrors()}
-            <label>Username:
+        <h2 className="tfb">twofacedbook</h2>
+        <br />
+        <h3 className="under-tfb">Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
+        <form onSubmit={this.handleSubmit} className="main-form">          
+            <h1>{this.renderErrors()}</h1>
+            <label>
               <input 
                 type="text"
                 value={this.state.username}
@@ -58,7 +60,7 @@ class SessionForm extends React.Component {
               />
             </label>
             <br />
-            <label>Password:
+            <label>
               <input 
                 type="password"
                 value={this.state.password}

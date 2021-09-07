@@ -27,7 +27,7 @@ class SignupModal extends React.Component {
         <h1></h1>
         <h3>Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
         <form onSubmit={this.handleSubmit}>          
-            <label>Username:
+            <label>
               <input 
                 type="text"
                 value={this.state.username}
@@ -36,7 +36,7 @@ class SignupModal extends React.Component {
               />
             </label>
             <br />
-            <label>Password:
+            <label>
               <input 
                 type="password"
                 value={this.state.password}
@@ -45,7 +45,7 @@ class SignupModal extends React.Component {
               />
             </label>
             <br />
-            <label>email:
+            <label>
               <input 
                 type="email"
                 value={this.state.email}
@@ -54,7 +54,7 @@ class SignupModal extends React.Component {
               />
             </label>
             <br />
-            <label>First Name:
+            <label>
               <input 
                 type="text"
                 value={this.state.first_name}
@@ -63,7 +63,7 @@ class SignupModal extends React.Component {
               />
             </label>
             <br />
-            <label>Last Name:
+            <label>
               <input 
                 type="text"
                 value={this.state.last_name}
@@ -72,7 +72,7 @@ class SignupModal extends React.Component {
               />
             </label>
             <br />
-            <label>Birthday:
+            <label>
               <input 
                 type="date"
                 value={this.state.birthday}
