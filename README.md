@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+- Facebook icon is by artist: https://www.freepik.com 
+  www.flaticon.com
+  https://www.flaticon.com/free-icon/facebook_145802?term=facebook&page=1&position=1&page=1&position=1&related_id=145802&origin=search
