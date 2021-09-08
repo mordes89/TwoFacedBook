@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoImage from'../../../app/pics/facebookround.png';
-import search from'../../../app/pics/search.png';
-import home from'../../../app/pics/home.png';
-import video from'../../../app/pics/video.png';
-import market from'../../../app/pics/market.png';
-import friends from'../../../app/pics/friends.png';
-import news from'../../../app/pics/news.png';
-import apps from'../../../app/pics/apps.png';
-import messages from'../../../app/pics/messages.png';
-import bell from'../../../app/pics/bell.png';
-import arrowIcon from'../../../app/pics/down-arrow.png';
+import logoImage from'../../../app/assets/images/facebookround.png';
+import search from'../../../app/assets/images/search.png';
+import home from'../../../app/assets/images/home.png';
+import video from'../../../app/assets/images/video.png';
+import market from'../../../app/assets/images/market.png';
+import friends from'../../../app/assets/images/friends.png';
+import news from'../../../app/assets/images/news.png';
+import apps from'../../../app/assets/images/apps.png';
+import messages from'../../../app/assets/images/messages.png';
+import bell from'../../../app/assets/images/bell.png';
+import arrowIcon from'../../../app/assets/images/down-arrow.png';
 
 // import Modal from './modal/modal';
 
@@ -21,6 +21,7 @@ const Homepage = ({ currentUser, logout}) => {
       <header className="header">
         <div className="header1">
           <img src={logoImage} className="logo"/>
+          <img src="<%= image_url('facebookround.png') %>" />
           <img src={search} className="logo"/>
         </div>
         <div className="header2">
