@@ -7,10 +7,15 @@
     "lib": "lib",
     "test": "test"
   },
+  "engines": {
+    "node": "{10.13.0}",
+    "npm": "{6.4.1}"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "webpack",
-    "start": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development",
+    "build": "webpack —mode=production"
   },
   "repository": {
     "type": "git",

@@ -11,5 +11,4 @@ const rootReducer = combineReducers({
   entities,  
   ui,
 });
-console.log(errors)
 export default rootReducer;

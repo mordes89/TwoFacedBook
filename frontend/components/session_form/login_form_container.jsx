@@ -8,7 +8,6 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mSTP = state => {
-  debugger
   return {    
     errors: state.errors.session,
     navLink: <Link to="/signup">Create New Account</Link>,
