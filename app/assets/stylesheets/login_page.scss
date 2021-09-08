@@ -12,12 +12,8 @@
    font-family: Snell Roundhand, cursive;
 
 }
-// .under-tfb{
-//   color: red;
-//   background-color:yellow;
-// }
 
-.login-page{
+.login-page{   
    display: flex;
    // justify-content: center;
    justify-content: space-between;
@@ -28,6 +24,8 @@
 }
 
 .main-form{
+   // width: 500px;
+   // height: 350px;
    display: flex;
    flex-direction: column;
    // background-color:rgb(245, 240, 240);
@@ -45,10 +43,21 @@
 
 
 .login-field{
+   align-self: stretch;
    margin: 4px;
    padding: 6px;
    // box-sizing: border-box;
-   border: 0.1px solid grey;    
+   border: 0.1px solid grey;
+   border-radius: 3px; 
+    
+}
+
+.errors{
+   margin: 4px;
+   padding: 6px;
+   border: 0.1px red; 
+   color: red;
+   font-size: 10px;
 }
 
 .login-button{

@@ -59,6 +59,7 @@
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    // display:flex;
+   border-radius: 3px; 
 }
 .last_name{
    margin: 4px;
@@ -67,16 +68,35 @@
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    display:flex;
+   border-radius: 3px; 
 }
 
 .upe{
-   margin: 4px;
-   padding: 6px;
+   margin: 2px;
+   padding: 4px;
    width: 100%;
-   align-self: stretch;
+   align-self: left;
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    // display:flex;
+   background-color:rgb(233, 223, 223);
+   border-radius: 3px; 
+}
+
+.bday{
+   font-size: 12px;
+}
+
+.date{
+   margin: 4px;
+   padding: 6px;
+   width: 100%;
+   align-self: left;
+   // box-sizing: border-box;
+   border: 0.1px solid grey;  
+   // display:flex;
+   background-color:rgb(233, 223, 223);
+   border-radius: 3px; 
 }
 
 .signup-button{

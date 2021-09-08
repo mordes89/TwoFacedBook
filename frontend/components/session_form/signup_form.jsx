@@ -42,7 +42,7 @@ class SignupModal extends React.Component {
         <h3 className="quick-and-easy">It's quick and easy.</h3>
         <hr className="hline-signup"/>
         <form onSubmit={this.handleSubmit}> 
-          {/* <h1>{this.renderErrors()}</h1> */}
+          <h1 className="errors">{this.renderErrors()}</h1>
           <div className="centered-signup-form">
             <div className="name">
               <label>
@@ -95,12 +95,13 @@ class SignupModal extends React.Component {
                 />
               </label>
               <br />
-              <label>
+              <label> <p className="bday">Birthday</p>
                 <input 
                   type="date"
                   value={this.state.birthday}
                   onChange={this.update('birthday')}
                   placeholder="Birthday"
+                  className="date"
                 />
               </label>
               <br />            

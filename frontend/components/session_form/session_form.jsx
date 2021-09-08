@@ -52,8 +52,8 @@ class SessionForm extends React.Component {
           <br />
           <h3 className="under-tfb">Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
         </div>
-        <form onSubmit={this.handleSubmit} className="main-form">          
-            <h1>{this.renderErrors()}</h1>
+        <div className="main-form">        
+        <form onSubmit={this.handleSubmit}>
             <label>
               <input 
                 type="text"
@@ -63,7 +63,6 @@ class SessionForm extends React.Component {
                 className="login-field"
               />
             </label>
-            <br />
             <label>
               <input 
                 type="password"
@@ -73,12 +72,14 @@ class SessionForm extends React.Component {
                 className="login-field"
               />
             </label>
-            <br />
             <button type="submit" className="login-button">Log In</button>
-            <button onClick={(e) => this.handleDemoLogin(e)} className="demo-login">Demo User Login</button>
             <hr className="hline-login"/>
-            <button onClick={() => this.props.openModal('signup')} className="create_user-button">Create New Account</button>    
         </form>
+            <h1 className="errors">{this.renderErrors()}</h1>
+            <button onClick={(e) => this.handleDemoLogin(e)} className="demo-login">Demo User Login</button>
+            <button onClick={() => this.props.openModal('signup')} className="create_user-button">Create New Account</button>    
+        </div>
+
       </div>
     );
   }
