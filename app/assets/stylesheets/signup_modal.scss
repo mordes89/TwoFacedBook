@@ -11,21 +11,19 @@
  
  .signup-form {
    display: flex;
-   width: 40%;
-   height: 50%;
+   width: 400px;
+   height: 450px;
    position: absolute;
    top: 25%;
    left: 50%;
-   align-self: center;
-   justify-content: center;
    border-radius: 5px;
    box-shadow: 0 0 10px;
    flex-direction: column;
-   align-items: center;
-   align-content: space-around
- }
+   align-content: space-around;
+   transform: translate(-50%, 0%);
+}
 
- .signup{
+.signup{
    font-size: 200%; 
    font-weight: bold;
    margin-top: 5px;
@@ -33,9 +31,15 @@
    align-self: left;
 }
 
-.qae{
+.quick-and-easy{
    font-size: 80%; 
    margin-left: 5px;  
+}
+
+.centered-signup-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .hline-signup{
@@ -44,9 +48,14 @@
    color: rgb(187, 183, 183);
 }
 
+.name{
+   display:flex;
+}
+
 .first_name{
    margin: 4px;
    padding: 6px;
+   width: 95%;
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    // display:flex;
@@ -54,7 +63,30 @@
 .last_name{
    margin: 4px;
    padding: 6px;
+   width: 95%;
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    display:flex;
+}
+
+.upe{
+   margin: 4px;
+   padding: 6px;
+   width: 100%;
+   align-self: stretch;
+   // box-sizing: border-box;
+   border: 0.1px solid grey;  
+   // display:flex;
+}
+
+.signup-button{
+   background-color:rgb(21, 119, 21);
+   padding: 10px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: white;
+   border-radius: 10px; 
+   width: 60%;   
+   align-self: center;
 }
