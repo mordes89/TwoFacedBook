@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoImage from'../../../app/assets/images/facebookround.png';
 import search from'../../../app/assets/images/search.png';
 import home from'../../../app/assets/images/home.png';
 import video from'../../../app/assets/images/video.png';
@@ -20,22 +19,21 @@ const Homepage = ({ currentUser, logout}) => {
     <div>
       <header className="header">
         <div className="header1">
-          <img src={logoImage} className="logo"/>
-          <img src="<%= image_url('facebookround.png') %>" />
-          <img src={search} className="logo"/>
+          <img src={window.facebookroundURL} className="logo"/>
+          <img src={window.searchURL} className="logo"/>
         </div>
         <div className="header2">
-          <img src={home} className="logo"/>
-          <img src={video} className="logo"/>
-          <img src={market} className="logo"/>
-          <img src={friends} className="logo"/>
-          <img src={news} className="logo"/>
+          <img src={window.homeURL} className="logo"/>
+          <img src={window.videoURL} className="logo"/>
+          <img src={window.marketURL} className="logo"/>
+          <img src={window.friendsURL} className="logo"/>
+          <img src={window.newsURL} className="logo"/>
         </div>
         <div className="header3">
-          <img src={apps} className="logo"/>
-          <img src={messages} className="logo"/>
-          <img src={bell} className="logo"/>
-          <img src={arrowIcon} className="logo"/> 
+          <img src={window.appsURL} className="logo"/>
+          <img src={window.messagesURL} className="logo"/>
+          <img src={window.bellURL} className="logo"/>
+          <img src={window.downarrowURL} className="logo"/>
         </div>       
       </header>
         <button onClick={logout}>Log Out</button>
