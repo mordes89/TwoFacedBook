@@ -1,0 +1,103 @@
+
+
+
+.tfb{
+   font-family: Luminari, fantasy;
+   color:blue;
+   // background-color:yellow;
+   font-size: 280%;
+}
+.under-tfb{
+   width: 65%;
+   font-family: Snell Roundhand, cursive;
+
+}
+// .under-tfb{
+//   color: red;
+//   background-color:yellow;
+// }
+
+.login-page{
+   display: flex;
+   // justify-content: center;
+   justify-content: space-between;
+   margin-right: 16%;
+   margin-left: 16%;
+   margin-top: 10%;
+   // background-color:rgb(231, 210, 210);
+}
+
+.main-form{
+   display: flex;
+   flex-direction: column;
+   // background-color:rgb(245, 240, 240);
+   border: 2px solid;  
+   border-radius: 7px; 
+   box-shadow: 0px 0px 4px;
+   justify-content: center;
+
+}
+
+.login-left-text{
+   display: flex;
+   flex-direction: column;
+}
+
+
+.login-field{
+   margin: 4px;
+   padding: 6px;
+   // box-sizing: border-box;
+   border: 0.1px solid grey;    
+}
+
+.login-button{
+   background-color:rgb(78, 78, 250);
+   padding: 6px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: white;
+   border-radius: 10px; 
+}
+
+.login-button:hover{
+   background-color:rgb(71, 38, 218);
+}
+
+.demo-login{
+   background-color:rgb(128, 0, 0);
+   padding: 6px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: white;
+   border-radius: 10px; 
+   width: 60%;   
+   align-self: center;
+}
+
+.hline-login{
+   height: 0.01px;
+   width: 90%;
+   color: rgb(187, 183, 183);
+}
+
+.create_user-button{
+   background-color:rgb(8, 192, 8);
+   padding: 10px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: white;
+   border-radius: 10px; 
+   width: 80%;   
+   align-self: center;
+}
+
+
+.footer{
+   bottom:10px;
+}
+
+

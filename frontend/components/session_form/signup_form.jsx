@@ -9,6 +9,8 @@ class SignupModal extends React.Component {
       email: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+
   }
 
   update(field) {
@@ -21,12 +23,48 @@ class SignupModal extends React.Component {
     this.props.processForm(user);
   }
 
+  renderErrors() {       
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
-      <div>
-        <h1></h1>
-        <h3>Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
-        <form onSubmit={this.handleSubmit}>          
+      <div className="signup-form">
+        <h1 className="signup">Sign Up</h1>
+        <h3 className="qae">It's quick and easy.</h3>
+        <hr className="hline-signup"/>
+        <form onSubmit={this.handleSubmit}> 
+          <h1>{this.renderErrors()}</h1>
+          <div className="name">
+            <label>
+              <input 
+                type="text"
+                value={this.state.first_name}
+                onChange={this.update('first_name')}
+                placeholder="First Name"
+                className="first_name"
+              />
+            </label>
+            <br />
+            <label>
+              <input 
+                type="text"
+                value={this.state.last_name}
+                onChange={this.update('last_name')}
+                placeholder="Last Name"
+                className="last_name"
+              />
+            </label>
+          </div>
+            <br />         
             <label>
               <input 
                 type="text"
@@ -51,24 +89,6 @@ class SignupModal extends React.Component {
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="email"
-              />
-            </label>
-            <br />
-            <label>
-              <input 
-                type="text"
-                value={this.state.first_name}
-                onChange={this.update('first_name')}
-                placeholder="First Name"
-              />
-            </label>
-            <br />
-            <label>
-              <input 
-                type="text"
-                value={this.state.last_name}
-                onChange={this.update('last_name')}
-                placeholder="Last Name"
               />
             </label>
             <br />

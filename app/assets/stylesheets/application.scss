@@ -11,10 +11,11 @@
  * It is generally better to create a new file per style scope.
  * 
  *= require_self
- *= require_tree .
  */
 
-@import "./reset.scss";
-@import "./users2.scss";
-@import "./users1.scss";
+@import "reset";
+@import "login_page";
+@import "signup_modal";
+@import "header";
+
 

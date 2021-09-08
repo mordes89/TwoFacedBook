@@ -5,15 +5,15 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import TopNavBar from './top_nav_bar/top_nav_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import Modal from './modal/modal';
 import HomepageContainer from './homepage/homepage_container';
+import Modal from './modal/signup_modal';
 
 
 
 const App = () => (
-  <div>
-    {/* <Modal /> */}
+  <div>    
     <header>
+    <Modal />
       {/* <Link to="/login"><h1>TwoFacedBook</h1></Link>  */}
       {/* <TopNavBar/> */}
       <HomepageContainer/>
@@ -21,8 +21,11 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      {/* <ProtectedRoute exact path="/" component={HomepageContainer} /> */}
+      <ProtectedRoute exact path="/" component={HomepageContainer} />
     </Switch>
+    <footer className="footer">
+      {/* Created by Mike Schnall */}
+    </footer>
   </div>
 );
 

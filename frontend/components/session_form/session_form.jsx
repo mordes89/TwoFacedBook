@@ -1,5 +1,4 @@
 import React from 'react';
-// import Icon from "../../app/pics/facebook";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,6 +9,7 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleNewUser = this.handleNewUser.bind(this);
   }
   componentDidMount() {
     console.log(this.props)
@@ -30,6 +30,11 @@ class SessionForm extends React.Component {
     this.props.login({username: 'demouser', password: '123456'})
   }
 
+  handleNewUser(e) {    
+    e.preventDefault();
+    const user = Object.assign({}, this.state);
+    this.props.processForm(user).then(this.props.closeModal);  }
+
   renderErrors() {       
     return(
       <ul>
@@ -45,10 +50,11 @@ class SessionForm extends React.Component {
   render() {    
     return (
       <div className="login-page">
-        {/* <img src={Icon}/> */}
-        <h2 className="tfb">twofacedbook</h2>
-        <br />
-        <h3 className="under-tfb">Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
+        <div className="login-left-text">
+          <h2 className="tfb">twofacedbook</h2>
+          <br />
+          <h3 className="under-tfb">Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
+        </div>
         <form onSubmit={this.handleSubmit} className="main-form">          
             <h1>{this.renderErrors()}</h1>
             <label>
@@ -57,6 +63,7 @@ class SessionForm extends React.Component {
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
+                className="login-field"
               />
             </label>
             <br />
@@ -66,14 +73,15 @@ class SessionForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
+                className="login-field"
               />
             </label>
             <br />
-            <button type="submit">Log In</button>
+            <button type="submit" className="login-button">Log In</button>
+            <button onClick={(e) => this.handleDemoLogin(e)} className="demo-login">Demo User Login</button>
+            <hr className="hline-login"/>
+            <button onClick={() => this.props.openModal('signup')} className="create_user-button">Create New Account</button>    
         </form>
-        <button type="submit" value={this.props.otherForm}>Creat New User</button>
-        <br />
-        <button onClick={(e) => this.handleDemoLogin(e)}>Demo User Login</button>
       </div>
     );
   }

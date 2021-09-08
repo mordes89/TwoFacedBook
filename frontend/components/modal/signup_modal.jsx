@@ -1,18 +1,16 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import LoginFormContainer from '../session_form/login_form_container';
+// import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+// import SignupModal from "./signup_modal"
 
-function Modal({modal, closeModal}) {
+function SignupModal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
-    case 'login':
-      component = <LoginFormContainer />;
-      break;
     case 'signup':
       component = <SignupFormContainer />;
       break;
@@ -40,4 +38,4 @@ const mDTP = dispatch => {
   };
 };
 
-export default connect(mSTP, mDTP)(Modal);
+export default connect(mSTP, mDTP)(SignupModal);
