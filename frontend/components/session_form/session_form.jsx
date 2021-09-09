@@ -22,9 +22,9 @@ class SessionForm extends React.Component {
       .then( () => this.props.history.push('/signup'))
   }
 
-  handleDemoLogin(e) {    
+  handleDemoLogin(e) {        
     e.preventDefault();
-    this.props.login({email: 'demouser', password: '123456'})
+    this.props.login({email: 'demouser@user.com', password: '123456'})
   }
 
   handleNewUser(e) {    
