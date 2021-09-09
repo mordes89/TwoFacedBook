@@ -5,18 +5,6 @@ import MenuDropdown from './menu_dropdown_container';
 
 
 class Homepage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { show: false };
-    this.handleMenuClick = this.handleMenuClick.bind(this);
-  }
-
-  handleMenuClick(e) {
-    console.log(this.state.show );
-    this.setState({show: !this.state.show})
-  }
-
-
   loggedIn () {
     return(
       <div>
@@ -33,20 +21,14 @@ class Homepage extends React.Component {
             <img src={window.newsURL} className="logo"/>
           </div>
           <div className="header3">
-            <img src={window.appsURL} className="logo"/>
+            {/* <img src={window.appsURL} className="logo"/>
             <img src={window.messagesURL} className="logo"/>
-            <img src={window.bellURL} className="logo"/>
-            <img src={window.downarrowURL} className="logo" onClick={e => this.handleMenuClick(e)}/> 
-
+            <img src={window.bellURL} className="logo"/> */}
+            <MenuDropdown className="show-menu-dropdown"/>
           </div>       
         </header> 
           <h2 className="header-name">(profile pic) {this.props.currentUser.email}</h2>
-          {this.state.show ?  
-            <MenuDropdown 
-              onBlur={() => this.handleMenuClick()}
-              // onClick={e => e.stopPropagation()} 
-              className="show-menu-dropdown"/> : null
-          }
+
       </div>
     )
   };

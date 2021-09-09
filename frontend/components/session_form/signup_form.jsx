@@ -44,7 +44,7 @@ class SignupModal extends React.Component {
         <h3 className="quick-and-easy">It's quick and easy.</h3>
         
         <hr className="hline-signup"/>        
-        <form onSubmit={this.handleSubmit}> 
+        <form onSubmit={this.handleSubmit}>
           <h1 className="errors">{this.renderErrors()}</h1>
             <div className="centered-signup-form">
               <div className="name">
