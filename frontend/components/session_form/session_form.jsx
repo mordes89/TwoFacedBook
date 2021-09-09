@@ -74,8 +74,14 @@ class SessionForm extends React.Component {
             <hr className="hline-login"/>
         </form>
             <h1 className="errors">{this.renderErrors()}</h1>
-            <button onClick={(e) => this.handleDemoLogin(e)} className="demo-login">Demo User Login</button>
-            <button onClick={() => this.props.openModal('signup')} className="create_user-button">Create New Account</button>    
+            <button 
+              onClick={(e) => this.handleDemoLogin(e)} 
+              className="demo-login">Demo User Login
+            </button>
+            <button 
+              onClick={() => this.props.openModal('signup')} 
+              className="create_user-button">Create New Account
+            </button>    
         </div>
 
       </div>
