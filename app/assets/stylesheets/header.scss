@@ -5,6 +5,8 @@
 }
 .logo:hover{
    background-color:rgb(103, 86, 253);
+   transition: 0.8s;
+
 }
 
 .logo {
@@ -32,3 +34,21 @@
    align-self: right;
    justify-content: space-between;
 }
+
+.show-menu-dropdown{
+   float: right;
+   z-index: 1;
+   color: red;
+
+   display: flex;
+   width: 360px;
+   height: 360px;
+   border-radius: 5px;
+   box-shadow: 0 0 10px;
+   flex-direction: column;
+   align-content: space-around;
+   font-size: 14px;
+}
+// .hide-menu-dropdown{
+//    display: none;
+// }

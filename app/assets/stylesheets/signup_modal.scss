@@ -68,7 +68,6 @@
    margin: 4px;
    padding: 6px;
    width: 95%;
-   // box-sizing: border-box;
    border: 0.1px solid grey;  
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
@@ -77,7 +76,6 @@
    margin: 4px;
    padding: 6px;
    width: 95%;
-   // box-sizing: border-box;
    border: 0.1px solid grey;  
    display:flex;
    background-color:rgb(233, 223, 223);
@@ -87,11 +85,8 @@
 .login-email, .login-password{
    margin: 2px;
    padding: 4px;
-   // width: 100%;
    align-self: left;
-   // box-sizing: border-box;
    border: 0.1px solid grey;  
-   // display:flex;
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
    width: 98%;
@@ -99,16 +94,16 @@
 
 .bday{
    font-size: 12px;
+   align-self: flex-start;
+   margin-top: 10px;
+   margin-left: 10px;
 }
 
 .date{
    margin: 4px;
    padding: 6px;
    width: 100%;
-   align-self: left;
-   // box-sizing: border-box;
    border: 0.1px solid grey;  
-   // display:flex;
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
    width: 99%;
