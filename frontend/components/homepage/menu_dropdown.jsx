@@ -5,7 +5,7 @@ import { closeModal } from '../../actions/modal_actions';
 class MenuDropdown extends React.Component {
    constructor(props) {
     super(props);
-    this.state = { show: true };
+    this.state = { show: false };
     this.handleMenuClick = this.handleMenuClick.bind(this);
    }
 
@@ -21,11 +21,17 @@ class MenuDropdown extends React.Component {
             >
                <ul 
                   onClick={e => e.stopPropagation()} 
-                  className="menu-dropdown">
+                  className="menu-dropdown"
+               >
                   <div className="logout-row">
-                     
+                     <img src={window.userURL} className="logo"/>
+                     <h2 className="header-name">{this.props.currentUser.email}</h2>
+                  </div>
+                  <hr className="hline-login"/>
+                  <div className="logout-row">
+                     <img src={window.logoutURL} className="logo"/>
                      <button 
-                        className="logout"
+                        className="menu-text"
                         onClick={this.props.logout}
                      >Log Out
                      </button>

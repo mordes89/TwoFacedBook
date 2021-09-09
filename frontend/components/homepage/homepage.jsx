@@ -27,8 +27,10 @@ class Homepage extends React.Component {
             <MenuDropdown className="show-menu-dropdown"/>
           </div>       
         </header> 
-          <h2 className="header-name">(profile pic) {this.props.currentUser.email}</h2>
-
+        <div className="logout-row">
+          <img src={window.userURL} className="logo"/>
+          <h2 className="header-name">{this.props.currentUser.email}</h2>
+        </div>
       </div>
     )
   };
