@@ -12,7 +12,7 @@ const mSTP = ({ session, entities: { users } }) => {
 
 const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: modal => dispatch(openModal(modal)),
 });
 
 export default connect(mSTP, mDTP)(Homepage);

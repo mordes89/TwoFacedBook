@@ -10,9 +10,8 @@ User.delete_all
 
 
 u1 = User.create!(
-   username: 'demouser',
-   password: '123456',
    email: 'demouser@user.com',   
+   password: '123456',
    first_name: 'Demo',   
    last_name: 'nstration',   
    work: 'Self employed',   
@@ -23,9 +22,8 @@ u1 = User.create!(
 )
  
 u2 = User.create!(
-   username: 'user2',
-   password: '111111',
    email: 'user2@user.com',   
+   password: '111111',
    first_name: '2Demo',   
    last_name: '2nstration',  
    work: 'Self employed',   

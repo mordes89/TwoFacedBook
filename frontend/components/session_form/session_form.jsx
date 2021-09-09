@@ -4,7 +4,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +24,7 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {    
     e.preventDefault();
-    this.props.login({username: 'demouser', password: '123456'})
+    this.props.login({email: 'demouser', password: '123456'})
   }
 
   handleNewUser(e) {    
@@ -53,17 +53,14 @@ class SessionForm extends React.Component {
           <h3 className="under-tfb">Connect with friends, enemies, cats, and predators on TwoFacedBook.</h3>
         </div>
         <div className="main-form">        
-        <form onSubmit={this.handleSubmit}>
-            <label>
+        <form onSubmit={this.handleSubmit} className="actual-form">
               <input 
-                type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                placeholder="Username"
+                type="email"
+                value={this.state.email}
+                onChange={this.update('email')}
+                placeholder="Email"
                 className="login-field"
               />
-            </label>
-            <label>
               <input 
                 type="password"
                 value={this.state.password}
@@ -71,7 +68,7 @@ class SessionForm extends React.Component {
                 placeholder="Password"
                 className="login-field"
               />
-            </label>
+              <br />
             <button type="submit" className="login-button">Log In</button>
             <hr className="hline-login"/>
         </form>

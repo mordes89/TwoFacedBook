@@ -6,13 +6,25 @@
    left: 0;
    background:rgb(243, 241, 241);
    z-index: 10;
-   opacity: 0.9;
+   opacity: 0.95;
  }
- 
- .signup-form {
+
+.title-and-x{
    display: flex;
-   width: 400px;
-   height: 450px;
+   justify-content: space-between;
+}
+
+.signup-x{
+   // align-self: right;
+   font-size:20px;
+   margin: 5px;
+   cursor: pointer;
+}
+ 
+.signup-form {
+   display: flex;
+   width: 360px;
+   height: 360px;
    position: absolute;
    top: 25%;
    left: 50%;
@@ -20,7 +32,7 @@
    box-shadow: 0 0 10px;
    flex-direction: column;
    align-content: space-around;
-   transform: translate(-50%, 0%);
+   transform: translate(-50%, 0%);   
 }
 
 .signup{
@@ -58,7 +70,7 @@
    width: 95%;
    // box-sizing: border-box;
    border: 0.1px solid grey;  
-   // display:flex;
+   background-color:rgb(233, 223, 223);
    border-radius: 3px; 
 }
 .last_name{
@@ -68,19 +80,21 @@
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    display:flex;
+   background-color:rgb(233, 223, 223);
    border-radius: 3px; 
 }
 
-.upe{
+.login-email, .login-password{
    margin: 2px;
    padding: 4px;
-   width: 100%;
+   // width: 100%;
    align-self: left;
    // box-sizing: border-box;
    border: 0.1px solid grey;  
    // display:flex;
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
+   width: 98%;
 }
 
 .bday{
@@ -97,6 +111,7 @@
    // display:flex;
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
+   width: 99%;
 }
 
 .signup-button{
@@ -109,4 +124,5 @@
    border-radius: 10px; 
    width: 60%;   
    align-self: center;
+   cursor: pointer;
 }
