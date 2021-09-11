@@ -9,25 +9,23 @@ class Homepage extends React.Component {
     return(
       <div>
         <header className="header">
-          <div className="header-icons">
-            <div className="header1">
-              <img src={window.facebookroundURL} className="logo"/>
-              <img src={window.searchURL} className="logo"/>
-            </div>
-            <div className="header2">
-              <img src={window.homeURL} className="logo"/>
-              <img src={window.videoURL} className="logo"/>
-              <img src={window.marketURL} className="logo"/>
-              <img src={window.friendsURL} className="logo"/>
-              <img src={window.newsURL} className="logo"/>
-            </div>
-            <div className="header3">
-              {/* <img src={window.appsURL} className="logo"/>
-              <img src={window.messagesURL} className="logo"/>
-              <img src={window.bellURL} className="logo"/> */}
-              <MenuDropdown className="show-menu-dropdown"/>
-            </div>    
-          </div>   
+          <div className="header1">
+            <img src={window.facebookroundURL} className="logo"/>
+            <img src={window.searchURL} className="logo"/>
+          </div>
+          <div className="header2">
+            <img src={window.homeURL} className="logo"/>
+            <img src={window.videoURL} className="logo"/>
+            <img src={window.marketURL} className="logo"/>
+            <img src={window.friendsURL} className="logo"/>
+            <img src={window.newsURL} className="logo"/>
+          </div>
+          <div className="header3">
+            {/* <img src={window.appsURL} className="logo"/>
+            <img src={window.messagesURL} className="logo"/>
+            <img src={window.bellURL} className="logo"/> */}
+            <MenuDropdown className="show-menu-dropdown"/>
+          </div>    
         </header> 
         <div className="homepage-body">
           <div className="left-nav">
