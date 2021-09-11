@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from '../session_form/signup_form_container';
+import PostFormContainer from '../posts/post_form_container';
 
 function SignupModalf({modal, closeModal}) {
   if (!modal) {
@@ -11,6 +12,9 @@ function SignupModalf({modal, closeModal}) {
   switch (modal) {
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'post':
+      component = <PostFormContainer />;
       break;
     default:
       return null;

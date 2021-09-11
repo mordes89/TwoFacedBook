@@ -1,10 +1,14 @@
+@import "variables";
+@import "mixins";
 
 .login-page{   
    display: flex;
+   flex-wrap: wrap;
    justify-content: center;
+   align-items: center;
    // justify-content: space-between;
    // margin-right: 25%;
-   // margin-left: 25%;
+   margin: 1%;
    margin-top: 10%;
    // background-color:rgb(231, 210, 210);
 }
@@ -12,11 +16,14 @@
 .tfb{
    font-family: Luminari, fantasy;
    color:blue;
-   // background-color:yellow;
    font-size: 280%;
+   // align-items: center;
+   // justify-content: center;
+   // align-self: center;
+
 }
 .under-tfb{
-   width: 65%;
+   width: 50%;
    font-family: Snell Roundhand, cursive;
 }
 
@@ -25,12 +32,12 @@
    height: 280px;
    display: flex;
    flex-direction: column;
+   align-items: center;
    border: 2px solid;  
    border-radius: 7px; 
    box-shadow: 0px 0px 4px;
-   // justify-content: center;
    flex-shrink: 0;
-   align-items: center;
+   margin: 10px;
 }
 
 .actual-form{
@@ -67,10 +74,9 @@
    color: white;
    border-radius: 10px; 
    width: 99%;
+   @include hoverColor(rgb(71, 38, 218));  
 }
-.login-button:hover{
-   background-color:rgb(71, 38, 218);
-}
+
 
 .demo-login{
    background-color:rgb(128, 0, 0);

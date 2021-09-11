@@ -1,7 +1,9 @@
+import * as APIUtil from '../util/post_util';
+
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
-import { getPosts, getPost, createPost, updatePost, deletePost} from '../utils/post_util';
+export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
 
 const receivePosts = posts => ({
@@ -14,32 +16,47 @@ const receivePost = post => ({
   post
 });
 
-const removePost = post => ({
-   type: REMOVE_POST,
-   post
- });
+const removePost = postId => ({
+  type: REMOVE_POST,
+  postId
+});
 
-export const fetchPosts = () => dispatch => {
-  return getPosts()
-    .then(posts => dispatch(receivePosts(posts)));
-}
+// export const receiveErrors = errors => ({
+//   type: RECEIVE_POST_ERRORS,
+//   errors
+// });
 
-export const fetchPost = (postId) => dispatch => {
-   return getPost(postId)
-     .then(post => dispatch(receivePosts(post)));
-}
+export const fetchPosts = () => dispatch => (
+  APIUtil.fetchPosts()
+  .then(posts => (dispatch(receivePosts(posts))), 
+  // err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+);
 
-export const createPost = (post) => dispatch => {
-   return createPost(post)
-     .then(post => dispatch(receivePost(post)));
-}
+export const fetchPost = postId => dispatch => (
+  APIUtil.fetchPost(postId)
+  .then(postId => (dispatch(receivePost(postId))), 
+  // err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+);
 
-export const updatePost = (post) => dispatch => {
-   return updatePost(post)
-     .then(post => dispatch(receivePost(post)));
-}
+export const createPost = post => dispatch => (
+  APIUtil.createPost(post)
+  .then(post => (dispatch(receivePost(post))), 
+  // err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+);
 
-export const deletePost = (postId) => dispatch => {
-   return deletePost(postId)
-     .then(() => dispatch(removePost(postId)));
-}
+export const updatePost = post => dispatch => (
+  APIUtil.updatePost(post)
+  .then(post => (dispatch(receivePost(post))), 
+  // err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+);
+
+export const deletePost = postId => dispatch => (
+  APIUtil.deletePost(postId)
+  .then(() => (dispatch(removePost(postId))), 
+  // err => (dispatch(receiveErrors(err.responseJSON)))
+  )
+);

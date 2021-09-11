@@ -1,16 +1,18 @@
-class PostsController < ApplicationController
+class Api::PostsController < ApplicationController
    before_action :ensure_logged_in
 
    def index
-      @posts = params[:author_id] ? Post.where(author_id: params[:author_id]) : Post.all
+      @posts = Post.all #params[:author_id] == {currentUser????} ? Post.where(author_id: params[:author_id]) : Post.all
       render :index
-    end
+   end
+
+   def show
+      @post = Post.find_by(id: params[:id])
+      render :show
+   end
 
    def create
-      @post = Post.new(post_params)
-      @post.author_id = params[:author_id]
-      @post.num_likes = params[:num_likes]
-      @post.num_comments = params[:num_comments]
+      @post = Post.new(post_params)      
       if @post.save
          render :show
       else         

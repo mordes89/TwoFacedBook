@@ -1,0 +1,124 @@
+@import "variables";
+@import "mixins";
+
+.modal-background {
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background:rgb(243, 241, 241);
+   z-index: 10;
+   opacity: 0.95;
+ }
+
+// .title-and-x{
+//    // display: flex;
+//    // justify-content: space-between;
+// }
+
+ 
+.post-form {
+   background-color:white;
+   display: flex;
+   width: 420px;
+   height: 360px;
+   position: absolute;
+   top: 25%;
+   left: 50%;
+   border-radius: 5px;
+   box-shadow: 0 0 10px;
+   flex-direction: column;
+   align-content: space-around;
+   transform: translate(-50%, 0%);   
+}
+
+
+.post-x{
+   font-size:150%;
+   margin: 5px;
+   padding: 10px;
+   background-color: rgb(227, 233, 228);
+   cursor: pointer;
+   border-radius: 50%;
+   @include hoverColor(rgb(209, 209, 209));
+}
+
+.hidden-x{
+   color: white;
+   font-size:150%;
+   margin: 10px;
+   padding: 7px;
+   cursor: pointer;
+   border-radius: 25px;
+}
+
+
+.create-post{
+   font-size: 140%; 
+   font-weight: bold;
+   margin: 5px;   
+   // align-self: center;
+}
+
+.user-row{
+   display: flex;
+}
+
+.post-body{
+   align-self: flex-start;
+   margin: 10px;
+}
+
+.centered-post-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.hline-post{
+   height: 0.01px;
+   width: 100%;
+   color: rgb(187, 183, 183);
+}
+
+.post-body{
+   width: 400px;
+   height: 160px;
+   align-self: flex-start;
+   border: 1px solid #cdcdcd;
+}
+
+.post-body .placeholder{
+   align-self: flex-start;
+}
+
+
+
+
+.enabled-post-button{
+   background-color: $blueBox;
+   padding: 10px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: white;
+   border-radius: 10px; 
+   width: 95%;   
+   align-self: center;
+   cursor: pointer;
+   @include hoverColor(rgb(103, 103, 238));    
+}
+
+.disabled-post-button{
+   background-color:rgb(239, 245, 239);
+   padding: 10px;
+   box-sizing: border-box;
+   border: 2px solid; 
+   text-align: center;
+   color: rgb(2, 1, 1);
+   border-radius: 10px; 
+   width: 95%;   
+   align-self: center;
+   cursor: not-allowed;
+}
+
