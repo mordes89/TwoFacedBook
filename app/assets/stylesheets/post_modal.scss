@@ -34,22 +34,21 @@
 
 
 .post-x{
-   font-size:150%;
+   font-weight: bold;
    margin: 5px;
-   padding: 10px;
+   padding: 5px;
    background-color: rgb(227, 233, 228);
    cursor: pointer;
    border-radius: 50%;
    @include hoverColor(rgb(209, 209, 209));
+   font-family: $fontKnewave;
 }
 
 .hidden-x{
+   margin: 5px;
+   padding: 5px;
+   cursor: none;
    color: white;
-   font-size:150%;
-   margin: 10px;
-   padding: 7px;
-   cursor: pointer;
-   border-radius: 25px;
 }
 
 
@@ -64,10 +63,11 @@
    display: flex;
 }
 
-.post-body{
-   align-self: flex-start;
-   margin: 10px;
+.header-name{
+   margin: 5px;
+   font-weight: bold;
 }
+
 
 .centered-post-form{
    display: flex;
@@ -82,6 +82,9 @@
 }
 
 .post-body{
+   align-self: flex-start;
+   margin: 10px;
+   font-family: $fontKnewave;
    width: 400px;
    height: 160px;
    align-self: flex-start;

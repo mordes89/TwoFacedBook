@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/post_util';
+import { closeModal } from "./modal_actions"
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -14,7 +15,7 @@ const receivePosts = posts => ({
 const receivePost = post => ({
   type: RECEIVE_POST,
   post
-});
+})
 
 const removePost = postId => ({
   type: REMOVE_POST,
@@ -42,7 +43,7 @@ export const fetchPost = postId => dispatch => (
 
 export const createPost = post => dispatch => (
   APIUtil.createPost(post)
-  .then(post => (dispatch(receivePost(post))), 
+  .then(post => (dispatch(receivePost(post))),   
   // err => (dispatch(receiveErrors(err.responseJSON)))
   )
 );

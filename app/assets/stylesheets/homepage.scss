@@ -3,7 +3,9 @@
 
 .homepage-body{
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
+   background-color: rgb(236, 219, 219);
+
 }
 
 .left-nav, .right-nav{
@@ -15,9 +17,13 @@
    // height: 100%;
    display: flex;
    flex-direction: column;
-   background-color: rgb(236, 219, 219);
    // position: fixed;
    // overflow: visible;
+   // @media (max-width: 1100px) {
+   //    visibility: hidden;
+   // }
+   @include phoneView();
+
 }
 
 .middle-nav-newsfeed{
@@ -29,6 +35,28 @@
    flex-direction: column;
    flex-wrap: wrap;
    // overflow-x: hidden;
+}
+
+.posting-query{
+   background-color: white;
+   display: flex;
+   width: 420px;
+   height: 50px;
+   position: absolute;
+   top: 7%;
+   left: 50%;
+   border: 2px solid; 
+   // border-radius: 5px;
+   box-sizing: border-box;
+   // border-radius: 40%;
+   box-shadow: 0 0 10px;
+   transform: translate(-50%, 0%); 
+   @include phoneView(visible);
+ 
+}
+
+.create_post-input{
+   box-sizing: border-box;
 }
 
 // .right-nav{

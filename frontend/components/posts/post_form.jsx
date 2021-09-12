@@ -24,7 +24,7 @@ class PostModal extends React.Component {
     return (
       <div className="post-form">
       <div className="title-and-x">
-         <div className="hidden-x" onClick={this.props.closeModal}>x</div>
+         <div className="hidden-x" onClick={this.props.closeModal}> </div>
          <h1 className="create-post">Create Post</h1>
          <button className="post-x" onClick={this.props.closeModal}>x</button>
       </div>       
@@ -34,8 +34,7 @@ class PostModal extends React.Component {
                <img src={window.userURL} className="logo"/>
                <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
             </div>
-               <input 
-               type="text"
+               <textarea
                value={this.state.body}
                onChange={this.update('body')}
                placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}

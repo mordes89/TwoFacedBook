@@ -30,14 +30,14 @@ class Api::PostsController < ApplicationController
    end
    
    def destroy
-   @post = current_user.posts.find_by(id: params[:id])
-   if @post
-      @post.destroy
-      render :show
-   else
-      render json: @user.errors.full_messages, status: 405         
+      @post = current_user.posts.find_by(id: params[:id])
+      if @post
+         @post.destroy
+         # render :show
+      else
+         render json: @user.errors.full_messages, status: 405         
+      end
    end
-end
   
 
    private

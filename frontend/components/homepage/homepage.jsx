@@ -5,7 +5,27 @@ import MenuDropdown from './menu_dropdown_container';
 
 
 class Homepage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderPosts = this.renderPosts.bind(this)
+  }
+  renderPosts() { 
+    // debugger
+    return(
+      <ul>
+        {Object.values(this.props.posts).map((post, i) => (
+          <li key={`post-${i}`}>
+            <li>{post.body}</li>
+            <li>{post.author_id}</li>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  
+  
   loggedIn () {
+    window.posts = this.props.posts
     return(
       <div>
         <header className="header">
@@ -26,70 +46,14 @@ class Homepage extends React.Component {
             <img src={window.bellURL} className="logo"/> */}
             <MenuDropdown className="show-menu-dropdown"/>
           </div>    
-        </header> 
+        </header>
+
         <div className="homepage-body">
           <div className="left-nav">
             <img src={window.userURL} className="logo"/>
             <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
           </div>
-          <div className="middle-nav-newsfeed">
-            <button onClick={() => this.props.openModal('post')} className="create_user-button">{`What's on your mind ${this.props.currentUser.first_name}?`}</button>    
-            <ul>ihasdkla</ul>
-            <ul>ihasdkla</ul>
-            <ul>ihasdkla</ul>
-            <ul>ihasdkla</ul>
-            <ul>ihasdkla</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahsdadadsadjdgajdadgajbkdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-            <ul>ihsdoahdkl6</ul>
-          </div>
+         
           <div className="right-nav">
             <button onClick={() => this.props.openModal('post')} className="create_user-button">{`What's on your mind ${this.props.currentUser.first_name}?`}</button>    
             <ul>ihasdio</ul>
@@ -99,6 +63,18 @@ class Homepage extends React.Component {
             <ul>ihasdio</ul>
           </div>
         </div>
+
+        <div className="middle-nav-newsfeed">
+            
+            <div className="posting-query">
+              <img src={window.userURL} className="logo"/>
+              <input onClick={() => this.props.openModal('post')} className="create_post-input" placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}/>    
+            </div>
+
+            <h1 className="posts">{this.renderPosts()}</h1>
+
+
+          </div>
       </div>
     )
   };
