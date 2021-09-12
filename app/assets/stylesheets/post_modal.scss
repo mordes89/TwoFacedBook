@@ -76,9 +76,7 @@
 }
 
 .hline-post{
-   height: 0.01px;
-   width: 100%;
-   color: rgb(187, 183, 183);
+   @include hline();
 }
 
 .post-body{

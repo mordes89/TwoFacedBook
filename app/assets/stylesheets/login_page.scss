@@ -1,34 +1,41 @@
 @import "variables";
 @import "mixins";
 
-.login-page{   
+.login-page{ 
+   overflow-y: auto; 
    display: flex;
-   // flex-wrap: wrap;
-   justify-content: center;
+   justify-content: space-evenly;
    align-items: center;
-   // justify-content: space-between;
-   // margin-right: 25%;
    margin: 1%;
    margin-top: 10%;
-   // background-color:rgb(231, 210, 210);
+   @media (max-width: 900px) {
+      flex-direction: column;
+      position: center;
+
+   }
+}
+
+.login-left-text{
+   align-self: center;
+   @media (max-width: 900px) {
+      justify-content: center; 
+      text-align: center;    
+   }
 }
 
 .tfb{
    font-family: Luminari, fantasy;
    color:blue;
    font-size: 280%;
-   // align-items: center;
-   // justify-content: center;
-   // align-self: center;
-
 }
 .under-tfb{
-   width: 50%;
+   width: 300px;
    font-family: Snell Roundhand, cursive;
 }
 
 .main-form{
-   width: 240px;
+   background-color: $inputBackground; 
+   width: 350px;
    height: 280px;
    display: flex;
    flex-direction: column;
@@ -40,70 +47,67 @@
    margin: 10px;
 }
 
-.actual-form{
+.actual-form{   
    display: flex;
    flex-direction: column;
-   // justify-content: center;
    align-items: center;
+   @include roundCorners();
 }
 
 
 .login-field{
-   width: 99%;
-   margin: 4px;
+   width: 145%;
+   margin: 10px;
    padding: 6px;
-   // box-sizing: border-box;
-   border: 0.1px solid grey;
+   border: 0.1px solid rgb(221, 221, 221);
    border-radius: 3px;     
-}
-
-.errors{
-   margin: 4px;
-   padding: 6px;
-   border: 0.1px red; 
-   color: red;
-   font-size: 10px;
 }
 
 .login-button{
    background-color:rgb(78, 78, 250);
    padding: 6px;
-   // box-sizing: border-box;
    border: 2px solid; 
    text-align: center;
    color: white;
    border-radius: 10px; 
-   width: 99%;
+   width: 145%;
+   height: 45px;
    @include hoverColor(rgb(71, 38, 218));  
 }
 
+.hline-login{
+   @include hline();
+}
 
-.demo-login{
-   background-color:rgb(128, 0, 0);
+.errors{
+   margin: 4px;
+   padding: 6px;
+   border: 0.1px rgb(241, 196, 97); 
+   color: red;
+   font-size: 10px;
+}
+
+.demo-login{   
+   background-color:rgb(223, 107, 247);
    padding: 6px;
    // box-sizing: border-box;
-   border: 2px solid; 
+   // border: 0.1px solid; 
    text-align: center;
-   color: white;
+   color: black;
    border-radius: 10px; 
-   width: 60%;   
+   width: 40%;   
 }
 
-.hline-login{
-   height: 0.01px;
-   width: 90%;
-   color: rgb(187, 183, 183);
-}
+
 
 .create_user-button{
    background-color:rgb(8, 192, 8);
    padding: 10px;
-   // box-sizing: border-box;
    border: 2px solid; 
    text-align: center;
    color: white;
    border-radius: 10px; 
-   width: 80%;   
+   width: 55%;   
    align-self: center;
 }
 

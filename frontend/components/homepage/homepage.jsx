@@ -9,16 +9,45 @@ class Homepage extends React.Component {
     super(props);
     this.renderPosts = this.renderPosts.bind(this)
     this.posts = this.props.fetchPosts();
+    // this.users = this.props.entities.users[-1]
   }
   
   renderPosts() { 
+    debugger
     return(
       <ul>
         {Object.values(this.props.posts).reverse().map((post, i) => (
-          <li key={`post-${i}`} className="posts">
-            <li className="author">{post.author_id}</li>
-            <li className="body">{post.body}</li>
-          </li>
+          <ul key={`post-${i}`} className="posts">
+            <div className="poster-and-time">
+              <img src={window.userURL} className="profile-pic"/>
+              <div className="name-and-time">
+                <li className="author">{post.author_id}</li>
+                <li className="created_at">{
+                  Math.floor((Date.now() - 1 - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
+                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m ago" : 
+                        (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
+                          Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h ago" : 
+                            Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d ago")                  
+                  }
+                </li>
+              </div>
+            </div>
+            <li className="post-body-homepage">{post.body}</li>
+            <hr className="hline-posts"/>
+            <div className="like-comment-share">
+              <div className="media-links">
+                <img src={window.likeURL} className="like-comment-share-icons"/>
+                <h1 className="like-comment-share-text">Like</h1>
+              </div>
+              <div className="media-links">
+                <img src={window.commentsURL} className="like-comment-share-icons"/>
+                <h1 className="like-comment-share-text">Comment</h1>
+              </div>              
+            </div>
+            {/* <li className="created_at">{Date.now() - post.created_at}</li> */}
+            {/* <li>{this.users}</li> */}
+          </ul>
         ))}
       </ul>
     );
@@ -79,15 +108,15 @@ class Homepage extends React.Component {
               <hr className="hline-login"/>
               <div className="add-media-to-post">
                 <div className="media-links">
-                  <img src={window.video_colorURL} className="logo"/>
-                  <h1 className="media-text">Live Video</h1>
+                  <img src={window.video_colorURL} className="media-icons"/>
+                  <h1 className="media-text">Video</h1>
                 </div>
                 <div className="media-links">
-                  <img src={window.photo_colorURL} className="logo"/>
-                  <h1 className="media-text">Photo/Video</h1>
+                  <img src={window.photo_colorURL} className="media-icons"/>
+                  <h1 className="media-text">Photo</h1>
                 </div>
                 <div className="media-links">
-                  <img src={window.smiley_colorURL} className="logo"/>
+                  <img src={window.smiley_colorURL} className="media-icons"/>
                   <h1 className="media-text">Feeling</h1>
                 </div>
               </div>

@@ -8,7 +8,8 @@
    display: flex;
    justify-content: space-between;
    background-color: $inputBackground;
-   height: 110vh;} //should be 100vh
+   height: 100%;
+} 
 
 .left-nav{
    margin-top: 6%;
@@ -76,33 +77,90 @@
 .add-media-to-post{
    display: flex;
    justify-content: space-between;
-   margin: 0 5% 0 5%;
+   margin: 1% 7% 1% 7%;
 }
 
 .media-links{
    display: flex;   
 }
 
+.media-icons{
+   width: 50%;
+   height: 50%;
+}
+
 .media-text{
+   font-family: $fontPurple;
    font-size: 80%px;
    padding: 10px;
    box-sizing: border-box;
    border-radius: 40px;
    width: 86%;
-   margin-left: 2px;
+   margin: 2px;
 }
 
+
 .posts{
-   background-color: white;
+   padding: 10px;
+   background-color: white;   
    display: flex;
    flex-direction: column;
    width: 520px;
-   height: 130px;
-   margin-top: 10px;  
    box-sizing: border-box;
    box-shadow: 0 0 5px;
    position: center;
-   transform: translate(0%, 20%); 
+   transform: translate(0%, 10%); 
    @include phoneView(visible, 100%); 
    @include roundCorners();
+}
+
+.poster-and-time{
+   display: flex;
+   flex-direction: row;
+   margin: 5px;
+}
+
+.profile-pic{
+   width: 8%;
+   height: 8%;
+}
+
+.name-and-time{
+   font-family: $fontDelius;
+   margin-left: 10px;
+   display: flex;
+   flex-direction: column;
+}
+
+.post-body-homepage{
+   margin: 5px;
+   font-family: $fontKnewave;
+   font-size: 40px;
+}
+
+.hline-posts{
+   @include hline(95%);
+}
+
+.like-comment-share{
+   display: flex;
+   justify-content: space-evenly;
+   margin: 1% 7% 1% 7%;
+}
+
+.like-comment-share-icons{
+   left: 50%;
+   margin-top: 10%;
+   width: 30px;
+   height: 30px;
+}
+
+.like-comment-share-text{
+   font-family: $fontPurple;
+   font-size: 110%;
+   padding: 10px;
+   box-sizing: border-box;
+   border-radius: 40px;
+   width: 86%;
+   margin-top: 5px;
 }

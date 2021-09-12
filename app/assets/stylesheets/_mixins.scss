@@ -25,3 +25,9 @@
    border-radius: 10px;
 }
 
+@mixin hline($w: 100%, $h: 0.01px, $c: rgba(241, 240, 240, 0.692)){
+   height: $h;
+   width: $w;
+   color: $c;
+}
+
