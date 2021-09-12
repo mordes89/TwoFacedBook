@@ -3,13 +3,14 @@
 
 
 .header{
+   margin-top:0;
+   position: fixed;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   // position: fixed;
    width: 100%;
-   height: 50px;
-   background-color: rgb(245, 245, 252);
+   // height: 3%;
+   background-color: rgb(255, 255, 255);
    z-index: 1;
 }
 

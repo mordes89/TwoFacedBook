@@ -8,15 +8,16 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.renderPosts = this.renderPosts.bind(this)
+    this.posts = this.props.fetchPosts();
   }
+  
   renderPosts() { 
-    // debugger
     return(
       <ul>
-        {Object.values(this.props.posts).map((post, i) => (
-          <li key={`post-${i}`}>
-            <li>{post.body}</li>
-            <li>{post.author_id}</li>
+        {Object.values(this.props.posts).reverse().map((post, i) => (
+          <li key={`post-${i}`} className="posts">
+            <li className="author">{post.author_id}</li>
+            <li className="body">{post.body}</li>
           </li>
         ))}
       </ul>
@@ -64,14 +65,34 @@ class Homepage extends React.Component {
           </div>
         </div>
 
-        <div className="middle-nav-newsfeed">
-            
-            <div className="posting-query">
-              <img src={window.userURL} className="logo"/>
-              <input onClick={() => this.props.openModal('post')} className="create_post-input" placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}/>    
-            </div>
 
-            <h1 className="posts">{this.renderPosts()}</h1>
+
+
+
+
+        <div className="middle-nav-newsfeed">
+            <div className="posting-box">
+              <div className="posting-query">
+                <img src={window.userURL} className="logo"/>
+                <input onClick={() => this.props.openModal('post')} className="create_post-input" value={`What's on your mind ${this.props.currentUser.first_name}?`}/>    
+              </div>
+              <hr className="hline-login"/>
+              <div className="add-media-to-post">
+                <div className="media-links">
+                  <img src={window.video_colorURL} className="logo"/>
+                  <h1 className="media-text">Live Video</h1>
+                </div>
+                <div className="media-links">
+                  <img src={window.photo_colorURL} className="logo"/>
+                  <h1 className="media-text">Photo/Video</h1>
+                </div>
+                <div className="media-links">
+                  <img src={window.smiley_colorURL} className="logo"/>
+                  <h1 className="media-text">Feeling</h1>
+                </div>
+              </div>
+              <h1>{this.renderPosts()}</h1>
+            </div>
 
 
           </div>

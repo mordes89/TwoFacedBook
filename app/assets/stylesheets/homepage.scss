@@ -1,69 +1,108 @@
 @import "variables";
 @import "mixins";
 
+
+
 .homepage-body{
+   // margin-top: 3%;
    display: flex;
    justify-content: space-between;
-   background-color: rgb(236, 219, 219);
+   background-color: $inputBackground;
+   height: 110vh;} //should be 100vh
 
-}
-
-.left-nav, .right-nav{
-   position:relative;
+.left-nav{
+   margin-top: 6%;
+   position:fixed;
    // align-self: flex-start;
    // position: fixed;
    // overflow-x: hidden;
-   width: 30%;
-   // height: 100%;
+   width: 20%;
    display: flex;
    flex-direction: column;
-   // position: fixed;
-   // overflow: visible;
-   // @media (max-width: 1100px) {
-   //    visibility: hidden;
-   // }
    @include phoneView();
+}
 
+.right-nav{
+   margin-top: 6%;
+   right: 0;
+   position:fixed;
+   display: flex;
+   flex-direction: column;
+   width: 20%;
+   @include phoneView();
 }
 
 .middle-nav-newsfeed{
-   width: 40%;
+   width: 60%;
    padding: 0px 10px;
    margin-left: 160px;
-
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
-   // overflow-x: hidden;
 }
 
-.posting-query{
+.posting-box{   
    background-color: white;
    display: flex;
-   width: 420px;
-   height: 50px;
+   flex-direction: column;
+   width: 520px;
+   height: 130px;
    position: absolute;
    top: 7%;
    left: 50%;
-   border: 2px solid; 
-   // border-radius: 5px;
+   // border: 1px solid; 
    box-sizing: border-box;
-   // border-radius: 40%;
-   box-shadow: 0 0 10px;
+   box-shadow: 0 0 5px;
    transform: translate(-50%, 0%); 
-   @include phoneView(visible);
- 
+   @include phoneView(visible); 
+   @include roundCorners();
+}
+
+.posting-query{
+   display: flex;
+   margin-top: 1%;
 }
 
 .create_post-input{
    box-sizing: border-box;
+   padding: 10px;
+   box-sizing: border-box;
+   border-radius: 40px;
+   width: 86%;
+   margin-left: 5px;
+   background-color: $inputBackground;
 }
 
-// .right-nav{
-//    width: 160px;
-//    height: 100%;
-//    display: flex;
-//    // position: fixed;
-//    flex-direction: column;
-//    background-color: rgb(236, 219, 219);
-// }
+.add-media-to-post{
+   display: flex;
+   justify-content: space-between;
+   margin: 0 5% 0 5%;
+}
+
+.media-links{
+   display: flex;   
+}
+
+.media-text{
+   font-size: 80%px;
+   padding: 10px;
+   box-sizing: border-box;
+   border-radius: 40px;
+   width: 86%;
+   margin-left: 2px;
+}
+
+.posts{
+   background-color: white;
+   display: flex;
+   flex-direction: column;
+   width: 520px;
+   height: 130px;
+   margin-top: 10px;  
+   box-sizing: border-box;
+   box-shadow: 0 0 5px;
+   position: center;
+   transform: translate(0%, 20%); 
+   @include phoneView(visible, 100%); 
+   @include roundCorners();
+}
