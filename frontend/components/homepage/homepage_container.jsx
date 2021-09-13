@@ -7,11 +7,20 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchPosts } from '../../actions/post_actions';
 
 
-const mSTP = ({ session, entities: { users, posts} }) => {
+// const mSTP = ({ session, entities: { users, posts} }) => {
+//   return {
+//     currentUser: users[session.id],
+//     navLink: <Link to="/post"/>,
+//     posts,
+//   };
+// };
+
+const mSTP = (state) => {
   return {
-    currentUser: users[session.id],
+    currentUser: state.entities.users[state.session.id],
     navLink: <Link to="/post"/>,
-    posts,
+    posts: state.entities.posts,
+    users: state.users,
   };
 };
 

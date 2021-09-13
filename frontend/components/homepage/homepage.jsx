@@ -22,14 +22,14 @@ class Homepage extends React.Component {
               <img src={window.userURL} className="profile-pic"/>
               <div className="name-and-time">
                 <li className="author">{post.author_id}</li>
-                <li className="created_at">{
-                  Math.floor((Date.now() - 1 - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m ago" : 
-                        (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h ago" : 
-                            Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d ago")                  
-                  }
+                <li className="created_at">{                  
+                  Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
+                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m ago" : 
+                      (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
+                        Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h ago" : 
+                          Math.floor((Date.now() - 1 - Date.parse(post.created_at))/ 60000) < 1 ? 
+                            Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d ago" : "Now")                  
+                }
                 </li>
               </div>
             </div>
