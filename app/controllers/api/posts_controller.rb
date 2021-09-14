@@ -42,6 +42,6 @@ class Api::PostsController < ApplicationController
 
    private
    def post_params
-      params.require(:post).permit(:body, :author_id, :num_likes, :num_comments)
+      params.require(:post).permit(:body, :author_id, :num_likes, :num_comments, :photo)
    end
 end

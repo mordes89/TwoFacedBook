@@ -1,33 +1,71 @@
+@mixin roundCorners($r: 10px) {
+   box-sizing: border-box;
+   border-radius: $r;
+}
+
+@mixin icon($hw: 45px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 25px, $transitionTime: 0.4s){
+   height: $hw;
+   width: $hw;
+   margin-left: 10px;
+   padding: 7px;
+   cursor: pointer;
+   background-color: $backgroundColor;
+   border-radius: $borderRadius;
+   &:hover{
+      background-color: $hoverColor;
+      transition: $transitionTime;
+   }
+}
+
+@mixin hline($w: 100%, $h: 0.01px, $c: rgba(253, 247, 247, 0.692)){
+   height: $h;
+   width: $w;
+   color: $c;
+}
+
 @mixin flexCenter($direction) {
    display: flex;
    direction: $direction;   
 }
 
 
-@mixin hoverColor($color) {
+@mixin hoverColor($color: rgb(225, 223, 223)) {
    &:hover{
       background-color: $color;
       transition: 0.4s;
    }
 }
 
-
 @mixin phoneView($visibility: hidden, $width: 70%, $margin: 0){
-   @media (max-width: 900px) {
+   @media (max-width: 1200px) {
       visibility: $visibility;
       width: $width;
       margin: $margin;
    }
 }
 
-@mixin roundCorners {
+
+@mixin fullDesktopView($visibility: visible, $width: 650px, $margin: 0){
+   @media (min-width: 1100px) {
+      visibility: $visibility;
+      width: $width;
+      margin: $margin;
+   }
+}
+
+@mixin roundedInputField($w: 86%, $pad: 10px, $borderRadius: 40px, $marginL: 5px, $backgroundColor: $inputBackground){
    box-sizing: border-box;
-   border-radius: 10px;
-}
-
-@mixin hline($w: 100%, $h: 0.01px, $c: rgba(241, 240, 240, 0.692)){
-   height: $h;
+   padding: $pad;
+   border-radius: $borderRadius;
    width: $w;
-   color: $c;
+   margin-left: $marginL;
+   background-color: $backgroundColor;
+   @include hoverColor();
 }
 
+@mixin leftNavIconAndWorfing($w: 15%, $pad: 0, $borderRadius: 10px, $marginL: 0px, $backgroundColor: $inputBackground){
+   display: flex;
+   align-items: center;
+   @include roundedInputField($w, $pad, $borderRadius, $marginL, $backgroundColor);
+   margin-right: 5px;
+}

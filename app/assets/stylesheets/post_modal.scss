@@ -56,7 +56,7 @@
    font-size: 140%; 
    font-weight: bold;
    margin: 5px;   
-   // align-self: center;
+   align-self:center;
 }
 
 .user-row{
@@ -84,38 +84,81 @@
    margin: 10px;
    font-family: $fontKnewave;
    width: 400px;
-   height: 160px;
+   height: 110px;
    align-self: flex-start;
-   border: 1px solid #cdcdcd;
+   // border: 1px solid #cdcdcd;
 }
 
 .post-body .placeholder{
    align-self: flex-start;
 }
 
+.add-media-to-post-modal{
+   display: flex;
+   justify-content:space-between;
+   align-self:center;
+   border: 1px solid; 
+   width: 95%;   
+   padding: 10px;
+   @include roundCorners();
+}
 
+.Add-to-your-post{
+   margin-left: 10px;
+   margin: 0 10px 0 10px;
+   align-self:center;
+}
+
+.media-link-icons-group{
+   display: flex;
+   width: 20%;
+   height: 20%;
+   margin: 0 10px 0 10px;
+}
+
+.media-icons-modal-vid, .media-icons-modal-pic, .media-icons-modal-smiley{
+   padding-left: 5px;
+}
+
+// .Video-hidden-text, .picture-hidden-text, .feeling-hidden-text{
+//    visibility: hidden;
+//    position: relative;
+// } 
+
+// .media-icons-modal-vid:hover{
+//    visibility: hidden;
+
+//    .Video-hidden-text{
+//       visibility:visible;
+//    }
+// }
+.hidden-input-smiley{
+   display:none;
+}
 
 
 .enabled-post-button{
+   margin-top: 10px;
    background-color: $blueBox;
    padding: 10px;
    box-sizing: border-box;
    border-radius: 10px; 
-   border: 2px solid; 
+   border: 1px solid; 
    text-align: center;
    color: white;
    width: 95%;   
-   align-self: center;
+   // align-self: center;
    cursor: pointer;
    @include hoverColor(rgb(103, 103, 238));    
 }
 
 .disabled-post-button{
+   margin-top: 10px;
    background-color:rgb(239, 245, 239);
    padding: 10px;
    box-sizing: border-box;
    border-radius: 10px; 
-   border: 2px solid; 
+   // border: 2px solid; 
    text-align: center;
    color: rgb(2, 1, 1);
    width: 95%;   
@@ -123,3 +166,6 @@
    cursor: not-allowed;
 }
 
+* {
+   font-family: $fontPurple;
+}

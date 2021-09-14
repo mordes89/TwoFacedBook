@@ -5,15 +5,8 @@ import { logout } from '../../actions/session_actions';
 import Homepage from './homepage';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchPosts } from '../../actions/post_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
-
-// const mSTP = ({ session, entities: { users, posts} }) => {
-//   return {
-//     currentUser: users[session.id],
-//     navLink: <Link to="/post"/>,
-//     posts,
-//   };
-// };
 
 const mSTP = (state) => {
   return {
@@ -28,7 +21,8 @@ const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
   openModal: modal => dispatch(openModal(modal)),
   closeModal: modal => dispatch(closeModal(modal)),
-  fetchPosts: () => dispatch(fetchPosts()),  
+  fetchPosts: () => dispatch(fetchPosts()), 
+  fetchUsers: () => dispatch(fetchUsers()), 
 });
 
 export default connect(mSTP, mDTP)(Homepage);
