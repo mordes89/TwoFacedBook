@@ -63,9 +63,9 @@
    @include hoverColor();
 }
 
-@mixin leftNavIconAndWorfing($w: 15%, $pad: 0, $borderRadius: 10px, $marginL: 0px, $backgroundColor: $inputBackground){
+@mixin leftNavIconAndWording($margin: 5px, $w: 15%, $pad: 0, $borderRadius: 10px, $marginL: 0px, $backgroundColor: $inputBackground){
    display: flex;
    align-items: center;
    @include roundedInputField($w, $pad, $borderRadius, $marginL, $backgroundColor);
-   margin-right: 5px;
+   margin-right: $margin;
 }

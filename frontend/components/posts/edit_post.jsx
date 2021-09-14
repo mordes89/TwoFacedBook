@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PostModal extends React.Component {
+class EditPostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -109,4 +109,4 @@ class PostModal extends React.Component {
   }
 }
 
-export default PostModal;
+export default EditPostModal;

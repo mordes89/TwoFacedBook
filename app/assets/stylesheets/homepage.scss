@@ -30,8 +30,8 @@
 }
 
 .left-nav-icon-row{
-   @include leftNavIconAndWorfing();
-      text-size-adjust: 60px;
+   @include leftNavIconAndWording();
+   text-size-adjust: 60px;
 
 }
 
@@ -39,22 +39,60 @@
    @include icon(60px)
 }
 
+.leftnav-name{
+   font-family: $fontdefault;
+   font-weight: bold;
+   font-size: 20px;
+}
+
 .right-nav{
    background-color:$inputBackground;
-   // overflow-y: 100vh;
    margin-top: $homepageBodyMarginTop;
    right: 0;
    position:fixed;
    display: flex;
    flex-direction: column;
-   width: 20%;
+   width: 18%;
    height: 100%;
-
    @include phoneView();
    // @media (min-width: 1300px) {
    //    right: 22%;
    // }
 }
+
+.not-sponsored{
+   font-family: $fontdefault;
+   font-size: 18px;
+   margin: 15px;
+}
+
+.right-nav-icon-row{
+   display: flex;
+   align-items: center;
+   @include roundCorners();
+   @include hoverColor();
+   cursor: pointer;
+
+   .sponsored-logo-rightnav{
+      @include icon(140px, none, none)
+   }
+   
+   .sponsored-wording-rightnav{
+      display: flex;
+      flex-direction: column;
+   }
+   
+   .LinkedIn-rightnav{
+      font-weight: bold;
+      font-size: 20px;
+   }
+   
+   .name-rightnav{
+      font-size: 12px;
+   }
+}
+
+
 
 // .middle-nav-newsfeed{
 //    width: 100%;
@@ -166,6 +204,7 @@
 
 .name-and-time{
    font-family: $fontdefault;
+   font-weight: bold;
    margin-left: 10px;
    display: flex;
    flex-direction: column;
@@ -176,6 +215,7 @@
 }
 
 .post-body-homepage{
+   font-weight: bold;
    margin: 5px;
    font-family: $fontdefault;
    font-size: 20px;

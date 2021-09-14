@@ -12,11 +12,11 @@ class Api::PostsController < ApplicationController
    end
 
    def create
-      @post = Post.new(post_params)      
+      @post = Post.new(post_params) 
       if @post.save
          render :show
       else         
-         render json: @user.errors.full_messages, status: 422
+         render json: @post.errors.full_messages, status: 422
       end
    end
 
@@ -25,7 +25,7 @@ class Api::PostsController < ApplicationController
       if @post && @post.update(post_params)  #@post.user_id == current_user.id
          render :show
       else
-         render json: @user.errors.full_messages, status: 405         
+         render json: @post.errors.full_messages, status: 405         
       end
    end
    
@@ -35,7 +35,7 @@ class Api::PostsController < ApplicationController
          @post.destroy
          # render :show
       else
-         render json: @user.errors.full_messages, status: 405         
+         render json: @post.errors.full_messages, status: 405         
       end
    end
   

@@ -92,12 +92,27 @@ class Homepage extends React.Component {
           <div className="left-nav">
             <div className="left-nav-icon-row">
               <img src={window.userURL} className="user-logo-leftnav"/>
-              <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
+              <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
             </div>
           </div>
          
           <div className="right-nav">
-            <button onClick={() => this.props.openModal('post')} className="create_user-button">{`What's on your mind ${this.props.currentUser.first_name}?`}</button>    
+            <h1 className="not-sponsored">Not Sposored</h1>
+            <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
+              <img src={window.linkedinURL} className="sponsored-logo-rightnav"/>
+              <div className="sponsored-wording-rightnav">
+                <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                <h2 className="name-rightnav">Mike Schnall</h2>
+              </div>
+            </a>
+            <a href="https://github.com/mordes89" target="_blank" className="right-nav-icon-row">
+              <img src={window.ghURL} className="sponsored-logo-rightnav"/>
+              <div className="sponsored-wording-rightnav">
+                <h2 className="LinkedIn-rightnav">GitHub</h2>
+                <h2 className="name-rightnav">Mike Schnall</h2>
+              </div>
+            </a>
+            <hr className="hline-posts"/>
           </div>
         </div>
 

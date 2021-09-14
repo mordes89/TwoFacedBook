@@ -41,8 +41,8 @@ export const fetchPost = postId => dispatch => (
   )
 );
 
-export const createPost = post => dispatch => (
-  APIUtil.createPost(post)
+export const createPost = formData => dispatch => (
+  APIUtil.createPost(formData)
   .then(post => (dispatch(receivePost(post))),   
   // err => (dispatch(receiveErrors(err.responseJSON)))
   )

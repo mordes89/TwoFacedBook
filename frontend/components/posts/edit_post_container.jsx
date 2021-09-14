@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import { createPost } from '../../actions/post_actions';
-import PostModal from './post_form';
+import EditPostModal from './edit_post_form';
 
 const mSTP = state => {
   return {
@@ -18,4 +18,4 @@ const mDTP = dispatch => {
   };
 };
 
-export default connect(mSTP, mDTP)(PostModal);
+export default connect(mSTP, mDTP)(EditPostModal);
