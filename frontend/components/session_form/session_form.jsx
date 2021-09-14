@@ -69,7 +69,6 @@ class SessionForm extends React.Component {
                 placeholder="Password"
                 className="login-field"
               />
-              <br />
             <button type="submit" className="login-button">Log In</button>
             <hr className="hline-login"/>
         </form>

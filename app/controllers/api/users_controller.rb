@@ -1,5 +1,10 @@
 class Api::UsersController < ApplicationController
-   def create
+  def index
+    @users = User.all 
+    render :index
+  end
+
+  def create
      @user = User.new(user_params) 
      if @user.save
        login(@user)
@@ -11,7 +16,7 @@ class Api::UsersController < ApplicationController
  
    private 
    def user_params
-     params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday)
+     params.require(:user).permit(:email, :password, :first_name, :last_name, :work, :school, :relationship, :bio, :birthday)
    end
  end
  

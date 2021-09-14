@@ -1,3 +1,6 @@
+@import "variables";
+@import "mixins";
+
 .modal-background {
    position: fixed;
    top: 0;
@@ -6,7 +9,7 @@
    left: 0;
    background:rgb(243, 241, 241);
    z-index: 10;
-   opacity: 0.95;
+   opacity: 0.97;
  }
 
 .title-and-x{
@@ -22,8 +25,9 @@
 }
  
 .signup-form {
+   background-color: white;
    display: flex;
-   width: 360px;
+   width: 330px;
    height: 360px;
    position: absolute;
    top: 25%;
@@ -55,9 +59,7 @@
 }
 
 .hline-signup{
-   height: 0.01px;
-   width: 100%;
-   color: rgb(187, 183, 183);
+   @include hline();
 }
 
 .name{
@@ -105,11 +107,11 @@
    border: 0.1px solid grey;  
    background-color:rgb(233, 223, 223);
    border-radius: 3px; 
-   width: 99%;
+   width: 98%;
 }
 
 .signup-button{
-   background-color:rgb(21, 119, 21);
+   background-color:rgb(25, 187, 25);
    padding: 10px;
    box-sizing: border-box;
    border: 2px solid; 

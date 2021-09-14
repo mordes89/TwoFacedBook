@@ -1,20 +1,23 @@
+@import "variables";
+@import "mixins";
+
+
 .menu-background{
    position: fixed;
    top: 0;
    bottom: 0;
    right: 0;
    left: 0;
-   // background:rgb(243, 241, 241);
    z-index: 10;
-   // opacity: 0.95;
 }
 
-.menu-dropdown{  
+.menu-dropdown{ 
+   background-color: white; 
    display: flex;
    flex-direction: column;
    width: 250px;
    position: absolute;
-   top: 7%;
+   top: 5%;
    right: 2%;
    border-radius: 5px;
    box-shadow: 0 0 10px;
@@ -32,12 +35,15 @@
 
 .logout-row{
    display: flex;
-   padding: 6px;
+   // padding: 4px;
+   margin: 5px;
    justify-content: safe;
    // border: 0.1px solid grey; 
-   :hover{
-      background-color: grey; 
-   }
+   @include hoverColor(rgb(252, 230, 230));
+   @include roundCorners(5px);
+}
 
+.logout-memu-icon{
+   @include icon(30px);
 }
 

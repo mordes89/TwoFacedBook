@@ -13,10 +13,13 @@
  *= require_self
  */
 
+@import "variables";
+@import "mixins";
+
 @import "reset";
 @import "login_page";
 @import "signup_modal";
 @import "header";
 @import "menu_dropdown";
-
-
+@import "homepage";
+@import "post_modal";

@@ -31,7 +31,13 @@ Things you may want to cover:
 
   <!-- <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
 
+- The Github icon is from Github themselves!:
+https://github.com/logos
 
+
+- Linkedin icon is by artist: https://www.freepik.com
+at: 
+https://www.flaticon.com/free-icon/linkedin_1384072
 
 Market icon:
 <!-- <div>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
