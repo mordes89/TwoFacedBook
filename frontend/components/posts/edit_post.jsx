@@ -14,21 +14,17 @@ class EditPostModal extends React.Component {
   }
 
   update(field) {
-    console.log(this.state);
     return e => this.setState({ [field]: e.target.value });
   }
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[author_id]', this.state.author_id);
     if (this.state.photoFile) {  
       formData.append('post[photo]', this.state.photoFile);
-    }
-    // console.log(this.state);
-    // console.log(formData);     
+    }   
     this.props.processForm(formData);
   }  
 
@@ -45,7 +41,6 @@ class EditPostModal extends React.Component {
   }
 
   render() {
-    console.log(this.state);
 
     return (
       <div className="post-form">

@@ -14,12 +14,10 @@ class PostModal extends React.Component {
   }
 
   update(field) {
-    console.log(this.state);
     return e => this.setState({ [field]: e.target.value });
   }
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault();
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
@@ -27,8 +25,7 @@ class PostModal extends React.Component {
     if (this.state.photoFile) {  
       formData.append('post[photo]', this.state.photoFile);
     }
-    // console.log(this.state);
-    // console.log(formData);     
+   
     this.props.processForm(formData);
   }  
 
@@ -45,8 +42,6 @@ class PostModal extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <div className="post-form">
       <div className="title-and-x">
