@@ -175,6 +175,11 @@
    transform: translate(0%, 0.1%); 
 }
 
+.top-bar-of-post{
+   display: flex;
+   justify-content: space-between;
+}
+
 
 .posts{
    padding: 10px;
@@ -193,8 +198,7 @@
 
 .poster-and-time{
    display: flex;
-   flex-direction: row;
-   margin: 5px;
+   flex-direction: row;   
 }
 
 .profile-pic{
@@ -208,6 +212,13 @@
    margin-left: 10px;
    display: flex;
    flex-direction: column;
+}
+
+.post-menu-dots{
+   @include icon();
+   // align-self: flex-end;
+   justify-self: flex-end;
+   margin-right: 5px;
 }
 
 .hline-posts-top{

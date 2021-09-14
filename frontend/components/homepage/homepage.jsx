@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
+import PostMenuDropdown from './post_menu_dropdown_container';
 
 
 class Homepage extends React.Component {
@@ -25,18 +26,24 @@ class Homepage extends React.Component {
           <ul key={`post-${i}`} className="posts">
             <div className="poster-and-time">
               <img src={window.userURL} className="profile-pic"/>
-              <div className="name-and-time">
-                <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
-                <li className="created_at">{                  
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                        (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                              Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
-                }
-                </li>
+              <div className="top-bar-of-post">
+                <div className="name-and-time">
+                  <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
+                  <li className="created_at">{                  
+                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
+                        Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
+                          (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
+                            Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
+                                Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
+                  }
+                  </li>
+                </div>
               </div>
+                <div>
+                  {/* <img src={window.menuDotsURL} className="post-menu-dots"/> */}
+                  <PostMenuDropdown/>
+                </div>
             </div>
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>

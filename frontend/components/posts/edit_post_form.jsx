@@ -45,9 +45,9 @@ class EditPostModal extends React.Component {
     return (
       <div className="post-form">
       <div className="title-and-x">
-         <div className="hidden-x" onClick={this.props.closeModal}> </div>
+         <div className="hidden-x" onClick={this.props.closeModal}>X</div>
          <h1 className="create-post">Create Post</h1>
-         <button className="post-x" onClick={this.props.closeModal}>x</button>
+         <button className="post-x" onClick={this.props.closeModal}>X</button>
       </div>       
       <hr className="hline-post"/>        
       <form onSubmit={this.handleSubmit}>
