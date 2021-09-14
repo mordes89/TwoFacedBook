@@ -13,7 +13,7 @@ u1 = User.create!(
    email: 'demouser@user.com',   
    password: '123456',
    first_name: 'Demo',   
-   last_name: `N'stration`,   
+   last_name: 'Nstration',   
    work: 'Self employed',   
    school: 'Harvard',  
    relationship: 'Single',  
