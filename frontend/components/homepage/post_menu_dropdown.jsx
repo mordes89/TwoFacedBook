@@ -18,38 +18,43 @@ class PostMenuDropdown extends React.Component {
       console.log(this.props.post.id);
       let menu = this.state.show ? 
             <div 
-               className="menu-background" 
+               className="post-menu-background" 
                onClick={e => this.handleMenuClick(e)}
             >
                <ul 
                   onClick={e => e.stopPropagation()} 
-                  className="post-menu-dropdown"
+                  className="post-post-menu-dropdown"
                >
-                  <div className="logout-row">
-                  <img src={window.logoutURL} className="logout-memu-icon"/>  
+                  <div className="post-logout-row">
+                  <img src={window.logoutURL} className="post-logout-memu-icon"/>  
                      <button 
-                        className="menu-text"
+                        className="post-menu-text"
                         onClick={() => this.props.updatePost(this.props.post)
-                           .then(() => this.props.openModal('editPost'))}
+                           .then(() => this.props.openModal('editPost'), this.handleMenuClick())}
                      >Edit Post
                      </button>
                   </div>
-                  <hr className="hline-login"/>
-                  <div className="logout-row">
-                     <img src={window.logoutURL} className="logout-memu-icon"/>
+                  <hr className="post-hline-login"/>
+                  <div className="post-logout-row">
+                     <img src={window.logoutURL} className="post-logout-memu-icon"/>
                      <button 
-                        className="menu-text"
-                        onClick={() => this.props.deletePost(this.props.post.id)}
+                        className="post-menu-text"
+                        onClick={() => this.props.deletePost(this.props.post.id)
+                           .then(this.handleMenuClick())}
                      >Move To Trash
                      </button>
                   </div>
                </ul>    
             </div>   
          : null;
+
+         let menuIcon = (this.props.currentUser.id == this.props.post.author_id) ? 
+            <img src={window.menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
+            : null;
       return (
-         <div>            
-            <img src={window.menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/>
-            <>{menu}</>
+         <div className="2post-menu-icon-and-menu"> 
+            {menuIcon}
+            {menu}
          </div>
       ) 
    }
