@@ -42,7 +42,7 @@ class PostModal extends React.Component {
   }
 
   render() {
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
     return (
       <div className="post-form">
       <div className="title-and-x">
@@ -62,8 +62,7 @@ class PostModal extends React.Component {
                 placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
                 className="post-body"
                />         
-          {preview}
-
+          
          <div className="centered-post-form">
             <div className="add-media-to-post-modal">
               <h1 className="Add-to-your-post">Add to your post</h1>
@@ -98,6 +97,8 @@ class PostModal extends React.Component {
                disabled={this.state.body ? null : "disabled"}
             >Post
             </button>
+             {preview} 
+
          </div>
       </form>
    </div>

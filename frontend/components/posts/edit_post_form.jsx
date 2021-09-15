@@ -4,7 +4,7 @@ class EditPostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: '',//post.body,
+      body: this.props.body,
       author_id: this.props.currentUser.id,
       photoUrl: null,
       photoFile: null
@@ -58,7 +58,7 @@ class EditPostModal extends React.Component {
                <textarea
                 value={this.state.body}
                 onChange={this.update('body')}
-                placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
+                placeholder={this.state.body}
                 className="post-body"
                />         
 

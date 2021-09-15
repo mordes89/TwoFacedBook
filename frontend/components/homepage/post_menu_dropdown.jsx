@@ -18,15 +18,16 @@ class PostMenuDropdown extends React.Component {
       console.log(this.props.post.id);
       let menu = this.state.show ? 
             <div 
-               className="post-menu-background" 
-               onClick={e => this.handleMenuClick(e)}
+               className="post-menu-background"
+               onClick={e => e.stopPropagation()} 
+               // onClick={e => this.handleMenuClick(e)}
             >
                <ul 
                   onClick={e => e.stopPropagation()} 
                   className="post-post-menu-dropdown"
                >
                   <div className="post-logout-row">
-                  <img src={window.logoutURL} className="post-logout-memu-icon"/>  
+                  <img src={window.logoutURL} className="post-memu-icon"/>  
                      <button 
                         className="post-menu-text"
                         onClick={() => this.props.updatePost(this.props.post)
@@ -36,7 +37,7 @@ class PostMenuDropdown extends React.Component {
                   </div>
                   <hr className="post-hline-login"/>
                   <div className="post-logout-row">
-                     <img src={window.logoutURL} className="post-logout-memu-icon"/>
+                     <img src={window.logoutURL} className="post-memu-icon"/>
                      <button 
                         className="post-menu-text"
                         onClick={() => this.props.deletePost(this.props.post.id)
@@ -52,7 +53,7 @@ class PostMenuDropdown extends React.Component {
             <img src={window.menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
             : null;
       return (
-         <div className="2post-menu-icon-and-menu"> 
+         <div> 
             {menuIcon}
             {menu}
          </div>

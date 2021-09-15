@@ -2,6 +2,12 @@
 @import "mixins";
 
 
+.entire-post{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+}
+
 .menu-background{
    position: fixed;
    top: 0;
@@ -10,7 +16,7 @@
    left: 0;
    z-index: 10;
    .menu-dropdown{ 
-      background-color: blue; 
+      background-color: white; 
       display: flex;
       flex-direction: column;
       width: 250px;
@@ -25,18 +31,12 @@
    .menu-text{
       left: 14px;
       padding: 6px;
-      // border: 0.1px solid grey; 
-      // background-color:rgb(233, 223, 223);
-      // border-radius: 3px; 
-      // width: 95%;
    }
    
    .logout-row{
       display: flex;
-      // padding: 4px;
       margin: 5px;
       justify-content: safe;
-      // border: 0.1px solid grey; 
       @include hoverColor(rgb(252, 230, 230));
       @include roundCorners(5px);
    }
@@ -47,37 +47,81 @@
 }
 
 
-.menu-background{
-   // position: fixed;
-   // top: 0;
-   // bottom: 0;
-   // right: 0;
-   // left: 0;
-   z-index: 10;
-   .post-menu-dropdown{
-      position: right;
-      background-color: blue; 
-      // display: flex;
-      // flex-direction: column;
-      // width: 250px;
-      // position:relative;
-      // top: 5%;
-      // right: 2%;
-      border-radius: 5px;
-      box-shadow: 0 0 10px;
-      // align-content: space-around;
-      display: block;
-      // position: absolute;
-   }  
-}
+// .menu-background{
+//    // position: fixed;
+//    // top: 0;
+//    // bottom: 0;
+//    // right: 0;
+//    // left: 0;
+//    z-index: 10;
+//    .post-menu-dropdown{
+//       position: right;
+//       background-color: blue; 
+//       // display: flex;
+//       // flex-direction: column;
+//       // width: 250px;
+//       // position:relative;
+//       // top: 5%;
+//       // right: 2%;
+//       border-radius: 5px;
+//       box-shadow: 0 0 10px;
+//       // align-content: space-around;
+//       display: block;
+//       // position: absolute;
+//    }  
+// }
+
 
 .post-menu-icon-and-menu{
-   position: relative;
-   align-self: flex-end;
-   @include icon();
-   left: 50%;
-   .post-menu-icon{
-      @include icon();
+   position: absolute;
+   z-index: 10;
+   top: 3%;
+   right: 3%;
+   @include icon(35px, white);  
+   .post-menu-dropdown{ 
+      position: sticky;    
+      background-color:white;
+      display: flex;
+      flex-direction: column;
+      // width: 250px;
+      // top: 5%;
+      // right: 12%;
+      // border-radius: 5px;
+      box-shadow: 0 0 10px;
+      // align-content: space-around;
+      @include roundCorners(5px);
+
    }
+   .post-memu-icon{
+      @include icon(35px, white); 
+   }
+   .post-menu-text{
+      // position: absolute;
+
+      // left: 14px;
+      // padding: 6px;
+      // border: 0.1px solid grey; 
+      background-color:white;
+      // border-radius: 3px; 
+      // width: 95%;
+   }
+   
+   // .post-logout-row{
+   //    // position: absolute;
+
+   //    display: flex;
+   //    // padding: 4px;
+   //    margin: 5px;
+   //    // justify-content: safe;
+   //    // border: 0.1px solid grey; 
+   //    // @include hoverColor(rgb(252, 230, 230));
+   //    @include roundCorners(5px);
+   // }
+   
+   // .post-logout-memu-icon{
+   //    // position: absolute;
+
+   //    @include icon(30px);
+   // }
 }
 
