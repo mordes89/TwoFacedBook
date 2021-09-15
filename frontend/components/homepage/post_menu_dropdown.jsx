@@ -10,12 +10,10 @@ class PostMenuDropdown extends React.Component {
    }
 
    handleMenuClick(e) {
-      console.log(this.state)
       this.setState({show: !this.state.show})
    }
 
    render() {
-      console.log(this.props.post.id);
       let menu = this.state.show ? 
             <div 
                className="post-menu-background"
@@ -30,9 +28,8 @@ class PostMenuDropdown extends React.Component {
                   <img src={window.logoutURL} className="post-memu-icon"/>  
                      <button 
                         className="post-menu-text"
-                        onClick={() => this.props.updatePost(this.props.post)
-                           .then(() => this.props.openModal('editPost'), this.handleMenuClick())}
-                     >Edit Post
+                        onClick={() => this.props.openModal('editPost', this.props.post)}
+                     >Edit Post 
                      </button>
                   </div>
                   <hr className="post-hline-login"/>

@@ -5,12 +5,12 @@ import SignupFormContainer from '../session_form/signup_form_container';
 import PostFormContainer from '../posts/post_form_container';
 import EditPostFormContainer from '../posts/edit_post_form_container';
 
-function SignupModalf({modal, closeModal}) {
+function SignupModalf({modal, closeModal, prop}) {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.modal) {
     case 'signup':
       component = <SignupFormContainer />;
       break;
@@ -18,7 +18,7 @@ function SignupModalf({modal, closeModal}) {
       component = <PostFormContainer />;
       break;
     case 'editPost':
-      component = <EditPostFormContainer />;
+      component = <EditPostFormContainer post={prop}/>;
       break;
     default:
       return null;

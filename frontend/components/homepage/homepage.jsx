@@ -42,7 +42,7 @@ class Homepage extends React.Component {
               </div>
             </div>
                 <div className="post-menu-icon-and-menu">
-                  <PostMenuDropdown post={post} body={post.body}/>
+                  <PostMenuDropdown post={post}/>
                 </div>
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>

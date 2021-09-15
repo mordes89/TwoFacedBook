@@ -118,6 +118,7 @@
 
 .media-icons-modal-vid, .media-icons-modal-pic, .media-icons-modal-smiley{
    padding-left: 5px;
+   @include icon(30px)
 }
 
 // .Video-hidden-text, .picture-hidden-text, .feeling-hidden-text{
@@ -132,7 +133,7 @@
 //       visibility:visible;
 //    }
 // }
-.hidden-input-smiley{
+.hidden-input-pic{
    display:none;
 }
 
@@ -166,6 +167,12 @@
    cursor: not-allowed;
 }
 
-* {
-   font-family: $fontPurple;
+.pic-preview{
+   height: 150px;
+   width: 150px;
+   justify-content: center;
+   transform: translate(150%, 0%);
+
 }
+
+

@@ -5,9 +5,10 @@ import PostMenuDropdown from './post_menu_dropdown';
 import { openModal } from '../../actions/modal_actions';
 
 
-const mSTP = ({ session, entities: { users } }) => {
+const mSTP = ({ session, entities: { users }}, ownProps ) => {
   return {
-    currentUser: users[session.id]
+    currentUser: users[session.id],
+    post: ownProps.post
   };
 };
 
@@ -15,7 +16,7 @@ const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
   updatePost: post => dispatch(updatePost(post)),
   deletePost: postId => dispatch(deletePost(postId)),
-  openModal: modal => dispatch(openModal(modal)),
+  openModal: (modal, prop) => dispatch(openModal(modal, prop)),
 });
 
 export default connect(mSTP, mDTP)(PostMenuDropdown);
