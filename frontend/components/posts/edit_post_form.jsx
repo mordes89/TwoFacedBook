@@ -4,7 +4,7 @@ class EditPostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: '',
+      body: '',//post.body,
       author_id: this.props.currentUser.id,
       photoUrl: null,
       photoFile: null
@@ -46,7 +46,7 @@ class EditPostModal extends React.Component {
       <div className="post-form">
       <div className="title-and-x">
          <div className="hidden-x" onClick={this.props.closeModal}>X</div>
-         <h1 className="create-post">Create Post</h1>
+         <h1 className="create-post">Edit Post</h1>
          <button className="post-x" onClick={this.props.closeModal}>X</button>
       </div>       
       <hr className="hline-post"/>        

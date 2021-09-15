@@ -42,6 +42,7 @@ class PostModal extends React.Component {
   }
 
   render() {
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl}/> : null;
     return (
       <div className="post-form">
       <div className="title-and-x">
@@ -61,7 +62,7 @@ class PostModal extends React.Component {
                 placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
                 className="post-body"
                />         
-
+          {preview}
 
          <div className="centered-post-form">
             <div className="add-media-to-post-modal">

@@ -15,6 +15,7 @@ const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
   updatePost: post => dispatch(updatePost(post)),
   deletePost: postId => dispatch(deletePost(postId)),
+  openModal: modal => dispatch(openModal(modal)),
 });
 
 export default connect(mSTP, mDTP)(PostMenuDropdown);

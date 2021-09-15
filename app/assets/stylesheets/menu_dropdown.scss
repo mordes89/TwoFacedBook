@@ -9,41 +9,73 @@
    right: 0;
    left: 0;
    z-index: 10;
+   .menu-dropdown{ 
+      background-color: blue; 
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      position: absolute;
+      top: 5%;
+      right: 2%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px;
+      align-content: space-around;
+   }
+   
+   .menu-text{
+      left: 14px;
+      padding: 6px;
+      // border: 0.1px solid grey; 
+      // background-color:rgb(233, 223, 223);
+      // border-radius: 3px; 
+      // width: 95%;
+   }
+   
+   .logout-row{
+      display: flex;
+      // padding: 4px;
+      margin: 5px;
+      justify-content: safe;
+      // border: 0.1px solid grey; 
+      @include hoverColor(rgb(252, 230, 230));
+      @include roundCorners(5px);
+   }
+   
+   .logout-memu-icon{
+      @include icon(30px);
+   }
 }
 
-.menu-dropdown{ 
-   background-color: white; 
-   display: flex;
-   flex-direction: column;
-   width: 250px;
-   position: absolute;
-   top: 5%;
-   right: 2%;
-   border-radius: 5px;
-   box-shadow: 0 0 10px;
-   align-content: space-around;
+
+.menu-background{
+   // position: fixed;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   z-index: 10;
+   .post-menu-dropdown{
+      position: right;
+      background-color: blue; 
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      position:relative;
+      // top: 5%;
+      // right: 2%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px;
+      // align-content: space-around;
+      display: block;
+       position: absolute;
+   
+   }
+   
+   
 }
 
-.menu-text{
-   left: 14px;
-   padding: 6px;
-   // border: 0.1px solid grey; 
-   // background-color:rgb(233, 223, 223);
-   // border-radius: 3px; 
-   // width: 95%;
-}
-
-.logout-row{
-   display: flex;
-   // padding: 4px;
-   margin: 5px;
-   justify-content: safe;
-   // border: 0.1px solid grey; 
-   @include hoverColor(rgb(252, 230, 230));
-   @include roundCorners(5px);
-}
-
-.logout-memu-icon{
-   @include icon(30px);
+.post-menu-icon{
+   @include icon();
+   left: 30px;
 }
 
