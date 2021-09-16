@@ -1,4 +1,4 @@
-class Api::Controller < ApplicationController
+class Api::CommentsController < ApplicationController
    before_action :ensure_logged_in
 
    def index
