@@ -10,7 +10,7 @@ class Homepage extends React.Component {
     super(props);
     this.renderPosts = this.renderPosts.bind(this);
   }
-
+  
   componentDidMount() {
     this.props.fetchPosts();
     this.props.fetchUsers();
@@ -25,7 +25,7 @@ class Homepage extends React.Component {
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} className="posts">
             <div className="poster-and-time">
-              <img src={boyURL} className="profile-pic"/>
+              <img src={userURL} className="profile-pic"/>
               <div className="top-bar-of-post">
                 <div className="name-and-time">
                   <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
@@ -67,7 +67,6 @@ class Homepage extends React.Component {
   
   
   loggedIn () {
-    window.posts = this.props.posts
     return(
       <div>
         <header className="header">
@@ -169,7 +168,7 @@ class Homepage extends React.Component {
   render() {    
     return (
       <div>
-        {this.props.currentUser ? this.loggedIn() : null}        
+        {this.props.currentUser ? this.loggedIn() : null} 
       </div>
     )
   } 

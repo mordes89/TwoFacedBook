@@ -1,7 +1,5 @@
 class Api::PostsController < ApplicationController
-   before_action :ensure_logged_in
-
-   def index
+   def index      
       @posts = Post.all #params[:author_id] == {currentUser????} ? Post.where(author_id: params[:author_id]) : Post.all
       render :index
    end

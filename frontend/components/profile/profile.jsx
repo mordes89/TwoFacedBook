@@ -25,7 +25,7 @@
 //         {Object.values(this.props.posts).reverse().map((post, i) => (
 //           <ul key={`post-${i}`} className="posts">
 //             <div className="poster-and-time">
-//               <img src={boyURL} className="profile-pic"/>
+//               <img src={userURL} className="profile-pic"/>
 //               <div className="top-bar-of-post">
 //                 <div className="name-and-time">
 //                   <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>

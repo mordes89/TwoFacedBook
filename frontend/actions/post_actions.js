@@ -22,10 +22,10 @@ const removePost = postId => ({
   postId
 });
 
-// export const receiveErrors = errors => ({
-//   type: RECEIVE_POST_ERRORS,
-//   errors
-// });
+export const receiveErrors = errors => ({
+  type: RECEIVE_POST_ERRORS,
+  errors
+});
 
 export const fetchPosts = () => dispatch => (
   APIUtil.fetchPosts()
