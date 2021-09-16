@@ -46,23 +46,23 @@
    }
 }
 
-// .post-menu-background{
-//    position: static;
-//    background-color:blue;
-//    top: 0;
-//    bottom: 0;
-//    right: 0;
-//    left: 0;
-//    z-index: 9;
-// }
+.post-menu-background{
+   position: absolute;
+   // background-color:blue;
+   width: 100vw;
+   height: 1500vh;
+   z-index: 10;
+   transform: translate(-75%, -30%);   
+
+}
 
 .post-menu-icon-and-menu{
    position: absolute;
-   z-index: 10;
    top: 3%;
    right: 3%;
    @include icon(35px, white);  
    .post-menu-dropdown{ 
+      z-index: 11;
       position: absolute;    
       background-color:white;
       display: flex;
@@ -83,7 +83,7 @@
 
    }
    .post-memu-icon{
-      @include icon(38px, white);
+      @include icon(38px, none, $borderRadius: 0px);
       // @include hoverColor(); 
       @include hoverColor(); 
 

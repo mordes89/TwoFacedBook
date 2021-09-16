@@ -8,7 +8,7 @@ import PostMenuDropdown from './post_menu_dropdown_container';
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
-    this.renderPosts = this.renderPosts.bind(this)
+    this.renderPosts = this.renderPosts.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +43,7 @@ class Homepage extends React.Component {
             </div>
                 <div className="post-menu-icon-and-menu">
                   <PostMenuDropdown post={post}/>
-                </div>
+              </div>
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
@@ -103,7 +103,7 @@ class Homepage extends React.Component {
           </div>
          
           <div className="right-nav">
-            <h1 className="not-sponsored">Not Sposored</h1>
+            <h1 className="not-sponsored">Creator</h1>
             <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
               <img src={linkedinURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
@@ -142,11 +142,17 @@ class Homepage extends React.Component {
                   <img src={window.video_colorURL} className="media-icons"/>
                   <h1 className="media-text">Video</h1>
                 </div>
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.photo_colorURL} className="media-icons"/>
                   <h1 className="media-text">Photo</h1>
                 </div>
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.smiley_colorURL} className="media-icons"/>
                   <h1 className="media-text">Feeling</h1>
                 </div>

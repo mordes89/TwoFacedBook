@@ -27,8 +27,6 @@ class EditPostModal extends React.Component {
     if (this.state.photoFile) {  
       formData.append('post[photo]', this.state.photoFile);
     }
-    console.log(formData);
-    debugger   
     this.props.processForm(formData);
   }  
 
@@ -44,7 +42,6 @@ class EditPostModal extends React.Component {
   }
 
   render() {
-    console.log(this.state.body);
     return (
       <div className="post-form">
       <div className="title-and-x">

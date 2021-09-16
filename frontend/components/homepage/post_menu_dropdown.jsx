@@ -14,7 +14,7 @@ class PostMenuDropdown extends React.Component {
    }
 
    render() {
-      let menuBackground = this.state.show ? <div className="post-menu-background" onClick={e => this.handleMenuClick(e)}> </div> : null;
+      let menuBackground = this.state.show ? <div className="post-menu-background" onClick={e => this.handleMenuClick(e)}></div> : null;
       let menu = this.state.show ? 
             <div 
                // className="post-menu-background"
@@ -51,9 +51,9 @@ class PostMenuDropdown extends React.Component {
             : null;
       return (
          <div> 
+            {menuBackground}
             {menuIcon}
             {menu}
-            {menuBackground}
          </div>
       ) 
    }
