@@ -6,5 +6,10 @@ class Post < ApplicationRecord
       foreign_key: :author_id,
       class_name: :User
 
+   has_many :comments,
+      primary_key: :id,
+      foreign_key: :parent_post_id,
+      class_name: :Comment
+
    has_one_attached :photo
 end

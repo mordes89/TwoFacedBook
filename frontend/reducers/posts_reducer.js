@@ -8,7 +8,6 @@ const postReducer = (oldState = {}, action) => {
       case RECEIVE_POSTS: 
          return action.posts;
       case RECEIVE_POST:
-         // return Object.assign({}, oldState, { [action.post.id]: action.post });
          newState[action.post.id] = action.post;
          return newState;
       case REMOVE_POST:
