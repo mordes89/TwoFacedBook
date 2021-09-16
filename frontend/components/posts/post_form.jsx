@@ -11,6 +11,7 @@ class PostModal extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    
   }
 
   update(field) {
