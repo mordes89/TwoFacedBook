@@ -47,7 +47,7 @@ class Homepage extends React.Component {
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
-            <hr className="hline-posts"/>
+            {/* <hr className="hline-posts"/>
             <div className="like-comment-share">
               <div className="media-links">
                 <img src={likeURL} className="like-comment-share-icons"/>
@@ -57,8 +57,8 @@ class Homepage extends React.Component {
                 <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>
               </div>              
-            </div>
-            <hr className="hline-posts"/>
+            </div> */}
+            {/* <hr className="hline-posts"/> */}
           </ul>
         ))}
       </ul>

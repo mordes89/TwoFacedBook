@@ -28,7 +28,7 @@
    background-color: white;
    display: flex;
    width: 400px;
-   height: 400px;
+   height: 370px;
    position: absolute;
    top: 25%;
    left: 50%;
@@ -121,4 +121,5 @@
    width: 60%;   
    align-self: center;
    cursor: pointer;
+   @include hoverColor(rgb(63, 235, 63))
 }

@@ -189,6 +189,15 @@
    flex-direction: column;
 }
 
+.name-and-time{
+   font-size: 14px;
+}
+
+.created_at{
+   font-size: 12px;
+   color: grey;
+}
+
 // .post-menu-dots{
 //    @include icon();
 //    // align-self: flex-end;

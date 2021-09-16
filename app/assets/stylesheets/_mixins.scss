@@ -1,6 +1,7 @@
 @mixin roundCorners($r: 10px) {
    box-sizing: border-box;
    border-radius: $r;
+   cursor: pointer;
 }
 
 @mixin icon($hw: 45px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 25px, $transitionTime: 0.4s){

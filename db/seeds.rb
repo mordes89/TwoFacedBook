@@ -32,4 +32,5 @@ u2 = User.create!(
    bio: 'Also no so goo wit worgs',   
    birthday: '3/16/1988',  
 )
+
  
