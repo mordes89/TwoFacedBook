@@ -2,9 +2,10 @@ export const fetchPosts = () => $.ajax({
    url: '/api/posts',
 });
 
-export const fetchPost = (postId) => $.ajax({
-   url: `/api/posts/${postId}`,
-});
+export const fetchPost = (postId) => 
+   $.ajax({
+      url: `/api/posts/${postId}`,
+   });
 
 export const createPost = (formData) => {   
    return(
@@ -18,13 +19,18 @@ export const createPost = (formData) => {
    )
 };
 
-export const updatePost = (post) => $.ajax({
-   url: `/api/posts/${post.id}`,
-   method: 'PATCH',
-   data: {post}
-});
+export const updatePost = (formData) => {
+   return $.ajax({
+      url: `/api/posts/${formData.get('post[id]')}`,
+      method: 'PATCH',
+      data: formData,  
+      contentType: false,
+      processData: false 
+   });
+}
 
-export const deletePost = (postId) => $.ajax({
-   url: `/api/posts/${postId}`,
-   method: 'DELETE',
-});
+export const deletePost = (postId) => 
+   $.ajax({
+      url: `/api/posts/${postId}`,
+      method: 'DELETE',
+   });

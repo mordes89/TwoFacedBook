@@ -2,6 +2,12 @@
 @import "mixins";
 
 
+.entire-post{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+}
+
 .menu-background{
    position: fixed;
    top: 0;
@@ -9,41 +15,107 @@
    right: 0;
    left: 0;
    z-index: 10;
+   .menu-dropdown{ 
+      background-color: white; 
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      position: absolute;
+      top: 5%;
+      right: 2%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px;
+      align-content: space-around;
+   }
+   
+   .menu-text{
+      left: 14px;
+      padding: 6px;
+   }
+   
+   .logout-row{
+      display: flex;
+      margin: 5px;
+      justify-content: safe;
+      @include hoverColor(rgb(252, 230, 230));
+      @include roundCorners(5px);
+   }
+   
+   .logout-memu-icon{
+      @include icon(30px);
+   }
 }
 
-.menu-dropdown{ 
-   background-color: white; 
-   display: flex;
-   flex-direction: column;
-   width: 250px;
+.post-menu-background{
    position: absolute;
-   top: 5%;
-   right: 2%;
-   border-radius: 5px;
-   box-shadow: 0 0 10px;
-   align-content: space-around;
+   // background-color:blue;
+   width: 100vw;
+   height: 1500vh;
+   z-index: 10;
+   transform: translate(-75%, -30%);   
+
 }
 
-.menu-text{
-   left: 14px;
-   padding: 6px;
-   // border: 0.1px solid grey; 
-   // background-color:rgb(233, 223, 223);
-   // border-radius: 3px; 
-   // width: 95%;
-}
+.post-menu-icon-and-menu{
+   position: absolute;
+   top: 3%;
+   right: 3%;
+   @include icon(35px, white);  
+   .post-menu-dropdown{ 
+      z-index: 11;
+      position: absolute;    
+      background-color:white;
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      // top: 5%;
+      right: 12%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px;
+      // align-content: space-around;
+      
+   }
+   .post-logout-row{
+      display: flex;
+      @include roundCorners(5px);
+      // flex-direction: c;
+      @include hoverColor(); 
 
-.logout-row{
-   display: flex;
-   // padding: 4px;
-   margin: 5px;
-   justify-content: safe;
-   // border: 0.1px solid grey; 
-   @include hoverColor(rgb(252, 230, 230));
-   @include roundCorners(5px);
-}
+   }
+   .post-memu-icon{
+      @include icon(38px, none, $borderRadius: 0px);
+      // @include hoverColor(); 
+      @include hoverColor(); 
 
-.logout-memu-icon{
-   @include icon(30px);
+   }
+   .post-menu-text{
+      // position: absolute;
+      // @include hoverColor(); 
+
+      left: 14px;
+      padding: 6px;
+      // border: 0.1px solid grey; 
+      // background-color:white;
+      border-radius: 3px; 
+      width: 95%;
+   }
+   
+   .post-logout-row{
+      // position: absolute;
+
+      // display: flex;
+      padding: 4px;
+      // margin: 5px;
+      // justify-content: safe;
+      // border: 0.1px solid grey; 
+      @include hoverColor(rgb(252, 230, 230));
+      @include roundCorners(5px);
+   }
+   
+   .post-logout-memu-icon{
+      // position: absolute;
+
+      @include icon(30px);
+   }
 }
 

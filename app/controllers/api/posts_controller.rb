@@ -22,26 +22,26 @@ class Api::PostsController < ApplicationController
 
    def update
       @post = current_user.posts.find_by(id: params[:id])
-      if @post && @post.update(post_params)  #@post.user_id == current_user.id
+      if @post && @post.update(post_params)  
          render :show
       else
-         render json: @post.errors.full_messages, status: 405         
+         render json: @post.errors.full_messages, status: 403        
       end
    end
    
    def destroy
-      @post = current_user.posts.find_by(id: params[:id])
+      @post = current_user.posts.find(params[:id])
       if @post
          @post.destroy
-         # render :show
+         render :show
       else
-         render json: @post.errors.full_messages, status: 405         
+         render json: @post.errors.full_messages, status: 403      
       end
    end
   
 
    private
    def post_params
-      params.require(:post).permit(:body, :author_id, :num_likes, :num_comments, :photo)
+      params.require(:post).permit(:id, :body, :author_id, :num_likes, :num_comments, :photo)
    end
 end

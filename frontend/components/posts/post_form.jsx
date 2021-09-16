@@ -42,8 +42,9 @@ class PostModal extends React.Component {
   }
 
   render() {
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
     return (
-      <div className="post-form">
+      <div className={preview ? "post-form-with-pic" : "post-form"}>
       <div className="title-and-x">
          <div className="hidden-x" onClick={this.props.closeModal}> </div>
          <h1 className="create-post">Create Post</h1>
@@ -61,31 +62,30 @@ class PostModal extends React.Component {
                 placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
                 className="post-body"
                />         
-
-
-         <div className="centered-post-form">
+          {preview} 
+         <div className= "centered-post-form">
             <div className="add-media-to-post-modal">
               <h1 className="Add-to-your-post">Add to your post</h1>
               <div className="media-link-icons-group">
                 <div className="media-links">
-                  <img src={window.video_colorURL} className="media-icons-modal-vid"/>
+                  {/* <img src={window.video_colorURL} className="media-icons-modal-vid"/> */}
                   {/* <h1 className="Video-hidden-text">Video</h1>                   */}
                 </div>
                 <div className="media-links">
-                  <img src={window.photo_colorURL} className="media-icons-modal-pic"/>
+                  {/* <img src={window.smiley_colorURL} className="media-icons-modal-smiley"/> */}
                   {/* <h1 className="picture-hidden-text">Picture</h1>                   */}
                 </div>
                 <div className="media-links">
                   <label>
                     <img
-                      src={window.smiley_colorURL} 
+                      src={window.photo_colorURL} 
                       type="file"                      
-                      className="media-icons-modal-smiley"
+                      className="media-icons-modal-pic"
                     />
                     <input 
                       type="file" 
                       onChange={this.handleFile} 
-                      className="hidden-input-smiley"/>
+                      className="hidden-input-pic"/>
                   </label>
                   {/* <h1 className="feeling-hidden-text">Feeling/Activity</h1> */}
                 </div>
@@ -97,6 +97,8 @@ class PostModal extends React.Component {
                disabled={this.state.body ? null : "disabled"}
             >Post
             </button>
+             
+
          </div>
       </form>
    </div>

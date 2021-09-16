@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
+import PostMenuDropdown from './post_menu_dropdown_container';
 
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
-    this.renderPosts = this.renderPosts.bind(this)
+    this.renderPosts = this.renderPosts.bind(this);
   }
 
   componentDidMount() {
@@ -24,31 +25,36 @@ class Homepage extends React.Component {
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} className="posts">
             <div className="poster-and-time">
-              <img src={window.userURL} className="profile-pic"/>
-              <div className="name-and-time">
-                <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
-                <li className="created_at">{                  
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                        (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                              Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
-                }
-                </li>
+              <img src={boyURL} className="profile-pic"/>
+              <div className="top-bar-of-post">
+                <div className="name-and-time">
+                  <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
+                  <li className="created_at">{                  
+                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
+                        Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
+                          (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
+                            Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
+                                Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
+                  }
+                  </li>
+                </div>
               </div>
             </div>
+                <div className="post-menu-icon-and-menu">
+                  <PostMenuDropdown post={post}/>
+              </div>
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
             <hr className="hline-posts"/>
             <div className="like-comment-share">
               <div className="media-links">
-                <img src={window.likeURL} className="like-comment-share-icons"/>
+                <img src={likeURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Like</h1>
               </div>
               <div className="media-links">
-                <img src={window.commentsURL} className="like-comment-share-icons"/>
+                <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>
               </div>              
             </div>
@@ -71,9 +77,9 @@ class Homepage extends React.Component {
           </div>
           <div className="header2">
             <img src={window.homeURL} className="middle-header-icons"/>
-            <img src={window.videoURL} className="middle-header-icons"/>
+            {/* <img src={window.videoURL} className="middle-header-icons"/> */}
             {/* <img src={window.marketURL} className="middle-header-icons"/> */}
-            <img src={window.friendsURL} className="middle-header-icons"/>
+            {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
             {/* <img src={window.newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
@@ -97,16 +103,16 @@ class Homepage extends React.Component {
           </div>
          
           <div className="right-nav">
-            <h1 className="not-sponsored">Not Sposored</h1>
+            <h1 className="not-sponsored">Creator</h1>
             <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
-              <img src={window.linkedinURL} className="sponsored-logo-rightnav"/>
+              <img src={linkedinURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">LinkedIn</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
             <a href="https://github.com/mordes89" target="_blank" className="right-nav-icon-row">
-              <img src={window.ghURL} className="sponsored-logo-rightnav"/>
+              <img src={ghURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">GitHub</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
@@ -117,10 +123,6 @@ class Homepage extends React.Component {
         </div>
 
 
-
-
-
-
         <div className="middle-nav-newsfeed">
             <div className="posting-box">
               <div className="posting-query">
@@ -128,20 +130,29 @@ class Homepage extends React.Component {
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 
-                  placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}
+                  placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}                  
                 />    
               </div>
               <hr className="hline-posts"/>
               <div className="add-media-to-post">
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.video_colorURL} className="media-icons"/>
                   <h1 className="media-text">Video</h1>
                 </div>
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.photo_colorURL} className="media-icons"/>
                   <h1 className="media-text">Photo</h1>
                 </div>
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.smiley_colorURL} className="media-icons"/>
                   <h1 className="media-text">Feeling</h1>
                 </div>

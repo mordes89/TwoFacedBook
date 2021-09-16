@@ -15,13 +15,27 @@
 //    // display: flex;
 //    // justify-content: space-between;
 // }
+.post-form-with-pic {
+   background-color:white;
+   display: flex;
+   width: 420px;
+   height: 620px;
+   position: absolute;
+   top: 25%;
+   left: 50%;
+   border-radius: 5px;
+   box-shadow: 0 0 10px;
+   flex-direction: column;
+   align-content: space-around;
+   transform: translate(-50%, 0%);   
+}
 
  
 .post-form {
    background-color:white;
    display: flex;
    width: 420px;
-   height: 360px;
+   height: 370px;
    position: absolute;
    top: 25%;
    left: 50%;
@@ -41,7 +55,6 @@
    cursor: pointer;
    border-radius: 50%;
    @include hoverColor(rgb(209, 209, 209));
-   font-family: $fontKnewave;
 }
 
 .hidden-x{
@@ -82,7 +95,6 @@
 .post-body{
    align-self: flex-start;
    margin: 10px;
-   font-family: $fontKnewave;
    width: 400px;
    height: 110px;
    align-self: flex-start;
@@ -91,6 +103,11 @@
 
 .post-body .placeholder{
    align-self: flex-start;
+}
+.pic-preview{
+   height: 250px;
+   width: 250px;
+   transform: translate(35%, 0%);
 }
 
 .add-media-to-post-modal{
@@ -118,6 +135,7 @@
 
 .media-icons-modal-vid, .media-icons-modal-pic, .media-icons-modal-smiley{
    padding-left: 5px;
+   @include icon(30px)
 }
 
 // .Video-hidden-text, .picture-hidden-text, .feeling-hidden-text{
@@ -132,7 +150,8 @@
 //       visibility:visible;
 //    }
 // }
-.hidden-input-smiley{
+
+.hidden-input-pic{
    display:none;
 }
 
@@ -166,6 +185,6 @@
    cursor: not-allowed;
 }
 
-* {
-   font-family: $fontPurple;
-}
+
+
+

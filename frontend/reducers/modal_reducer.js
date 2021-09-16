@@ -7,8 +7,8 @@ import { RECEIVE_POST } from '../actions/post_actions';
 export default function modalReducer(oldState = null, action) {
   Object.freeze(oldState);
   switch (action.type) {
-    case OPEN_MODAL:
-      return action.modal;
+    case OPEN_MODAL:      
+      return { ...oldState,  modal:action.modal, prop:action.prop };
     case CLOSE_MODAL:
       case RECEIVE_POST:
       case RECEIVE_CURRENT_USER: 

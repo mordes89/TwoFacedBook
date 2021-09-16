@@ -4,8 +4,9 @@ class EditPostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: '',
+      body: this.props.post.body,
       author_id: this.props.currentUser.id,
+      id: this.props.post.id,
       photoUrl: null,
       photoFile: null
     };
@@ -22,14 +23,14 @@ class EditPostModal extends React.Component {
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[author_id]', this.state.author_id);
+    formData.append('post[id]', this.state.id);
     if (this.state.photoFile) {  
       formData.append('post[photo]', this.state.photoFile);
-    }   
+    }
     this.props.processForm(formData);
   }  
 
   handleFile(e){
-    // this.setState({photoUrl: e.currentTarget.files[0]}); 
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () => this.setState({ photoUrl: reader.result, photoFile: file });
@@ -41,13 +42,12 @@ class EditPostModal extends React.Component {
   }
 
   render() {
-
     return (
       <div className="post-form">
       <div className="title-and-x">
-         <div className="hidden-x" onClick={this.props.closeModal}> </div>
-         <h1 className="create-post">Create Post</h1>
-         <button className="post-x" onClick={this.props.closeModal}>x</button>
+         <div className="hidden-x" onClick={this.props.closeModal}>X</div>
+         <h1 className="create-post">Edit Post</h1>
+         <button className="post-x" onClick={this.props.closeModal}>X</button>
       </div>       
       <hr className="hline-post"/>        
       <form onSubmit={this.handleSubmit}>
@@ -58,7 +58,6 @@ class EditPostModal extends React.Component {
                <textarea
                 value={this.state.body}
                 onChange={this.update('body')}
-                placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
                 className="post-body"
                />         
 
@@ -68,24 +67,24 @@ class EditPostModal extends React.Component {
               <h1 className="Add-to-your-post">Add to your post</h1>
               <div className="media-link-icons-group">
                 <div className="media-links">
-                  <img src={window.video_colorURL} className="media-icons-modal-vid"/>
+                  {/* <img src={window.video_colorURL} className="media-icons-modal-vid"/> */}
                   {/* <h1 className="Video-hidden-text">Video</h1>                   */}
                 </div>
                 <div className="media-links">
-                  <img src={window.photo_colorURL} className="media-icons-modal-pic"/>
+                  {/* <img src={window.smiley_colorURL} className="media-icons-modal-smiley"/> */}
                   {/* <h1 className="picture-hidden-text">Picture</h1>                   */}
                 </div>
                 <div className="media-links">
                   <label>
                     <img
-                      src={window.smiley_colorURL} 
+                      src={window.photo_colorURL} 
                       type="file"                      
-                      className="media-icons-modal-smiley"
+                      className="media-icons-modal-pic"
                     />
                     <input 
                       type="file" 
                       onChange={this.handleFile} 
-                      className="hidden-input-smiley"/>
+                      className="hidden-input-pic"/>
                   </label>
                   {/* <h1 className="feeling-hidden-text">Feeling/Activity</h1> */}
                 </div>
@@ -95,7 +94,7 @@ class EditPostModal extends React.Component {
                type="submit" 
                className={this.state.body ? "enabled-post-button" : "disabled-post-button"}
                disabled={this.state.body ? null : "disabled"}
-            >Post
+            >Update
             </button>
          </div>
       </form>
