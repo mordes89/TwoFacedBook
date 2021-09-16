@@ -113,6 +113,8 @@
       // align-items: center;
       // left: 5px;
       margin: 0% 4% 0% 4%;
+      cursor: pointer;
+
    }
    
    .media-links{
@@ -178,8 +180,9 @@
 }
 
 .profile-pic{
-   width: 8%;
-   height: 8%;
+   width: 6%;
+   height: 6%;
+   @include roundCorners(50px); 
 }
 
 .name-and-time{

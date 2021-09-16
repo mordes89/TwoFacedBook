@@ -15,6 +15,20 @@
 //    // display: flex;
 //    // justify-content: space-between;
 // }
+.post-form-with-pic {
+   background-color:white;
+   display: flex;
+   width: 420px;
+   height: 620px;
+   position: absolute;
+   top: 25%;
+   left: 50%;
+   border-radius: 5px;
+   box-shadow: 0 0 10px;
+   flex-direction: column;
+   align-content: space-around;
+   transform: translate(-50%, 0%);   
+}
 
  
 .post-form {
@@ -168,10 +182,10 @@
 }
 
 .pic-preview{
-   height: 150px;
-   width: 150px;
-   justify-content: center;
-   transform: translate(150%, 0%);
+   height: 250px;
+   width: 250px;
+   // justify-content: center;
+   transform: translate(35%, 0%);
 
 }
 

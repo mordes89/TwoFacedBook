@@ -44,7 +44,7 @@ class PostModal extends React.Component {
   render() {
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
     return (
-      <div className="post-form">
+      <div className={preview ? "post-form-with-pic" : "post-form"}>
       <div className="title-and-x">
          <div className="hidden-x" onClick={this.props.closeModal}> </div>
          <h1 className="create-post">Create Post</h1>
@@ -63,7 +63,7 @@ class PostModal extends React.Component {
                 className="post-body"
                />         
           {preview} 
-         <div className="centered-post-form">
+         <div className= "centered-post-form">
             <div className="add-media-to-post-modal">
               <h1 className="Add-to-your-post">Add to your post</h1>
               <div className="media-link-icons-group">

@@ -25,7 +25,7 @@ class Homepage extends React.Component {
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} className="posts">
             <div className="poster-and-time">
-              <img src={window.userURL} className="profile-pic"/>
+              <img src={boyURL} className="profile-pic"/>
               <div className="top-bar-of-post">
                 <div className="name-and-time">
                   <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
@@ -123,10 +123,6 @@ class Homepage extends React.Component {
         </div>
 
 
-
-
-
-
         <div className="middle-nav-newsfeed">
             <div className="posting-box">
               <div className="posting-query">
@@ -134,12 +130,15 @@ class Homepage extends React.Component {
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 
-                  placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}
+                  placeholder={`What's on your mind ${this.props.currentUser.first_name}?`}                  
                 />    
               </div>
               <hr className="hline-posts"/>
               <div className="add-media-to-post">
-                <div className="media-links">
+                <div 
+                  className="media-links"
+                  onClick={() => this.props.openModal('post')}
+                >
                   <img src={window.video_colorURL} className="media-icons"/>
                   <h1 className="media-text">Video</h1>
                 </div>

@@ -18,20 +18,6 @@ class EditPostModal extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('post[body]', this.state.body);
-  //   formData.append('post[author_id]', this.state.author_id);
-  //   formData.append('post[id]', this.state.id);
-  //   if (this.state.photoFile) {  
-  //     formData.append('post[photo]', this.state.photoFile);
-  //   }   
-  //   console.log(formData);
-  //   debugger
-  //   this.props.processForm(formData);
-  // }  
-
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();

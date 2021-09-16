@@ -46,31 +46,15 @@
    }
 }
 
-
-// .menu-background{
-//    // position: fixed;
-//    // top: 0;
-//    // bottom: 0;
-//    // right: 0;
-//    // left: 0;
-//    z-index: 10;
-//    .post-menu-dropdown{
-//       position: right;
-//       background-color: blue; 
-//       // display: flex;
-//       // flex-direction: column;
-//       // width: 250px;
-//       // position:relative;
-//       // top: 5%;
-//       // right: 2%;
-//       border-radius: 5px;
-//       box-shadow: 0 0 10px;
-//       // align-content: space-around;
-//       display: block;
-//       // position: absolute;
-//    }  
+// .post-menu-background{
+//    position: static;
+//    background-color:blue;
+//    top: 0;
+//    bottom: 0;
+//    right: 0;
+//    left: 0;
+//    z-index: 9;
 // }
-
 
 .post-menu-icon-and-menu{
    position: absolute;
@@ -79,49 +63,59 @@
    right: 3%;
    @include icon(35px, white);  
    .post-menu-dropdown{ 
-      position: sticky;    
+      position: absolute;    
       background-color:white;
       display: flex;
       flex-direction: column;
-      // width: 250px;
+      width: 200px;
       // top: 5%;
-      // right: 12%;
-      // border-radius: 5px;
+      right: 12%;
+      border-radius: 5px;
       box-shadow: 0 0 10px;
       // align-content: space-around;
+      
+   }
+   .post-logout-row{
+      display: flex;
       @include roundCorners(5px);
+      // flex-direction: c;
+      @include hoverColor(); 
 
    }
    .post-memu-icon{
-      @include icon(35px, white); 
+      @include icon(38px, white);
+      // @include hoverColor(); 
+      @include hoverColor(); 
+
    }
    .post-menu-text{
       // position: absolute;
+      // @include hoverColor(); 
 
-      // left: 14px;
-      // padding: 6px;
+      left: 14px;
+      padding: 6px;
       // border: 0.1px solid grey; 
-      background-color:white;
-      // border-radius: 3px; 
-      // width: 95%;
+      // background-color:white;
+      border-radius: 3px; 
+      width: 95%;
    }
    
-   // .post-logout-row{
-   //    // position: absolute;
+   .post-logout-row{
+      // position: absolute;
 
-   //    display: flex;
-   //    // padding: 4px;
-   //    margin: 5px;
-   //    // justify-content: safe;
-   //    // border: 0.1px solid grey; 
-   //    // @include hoverColor(rgb(252, 230, 230));
-   //    @include roundCorners(5px);
-   // }
+      // display: flex;
+      padding: 4px;
+      // margin: 5px;
+      // justify-content: safe;
+      // border: 0.1px solid grey; 
+      @include hoverColor(rgb(252, 230, 230));
+      @include roundCorners(5px);
+   }
    
-   // .post-logout-memu-icon{
-   //    // position: absolute;
+   .post-logout-memu-icon{
+      // position: absolute;
 
-   //    @include icon(30px);
-   // }
+      @include icon(30px);
+   }
 }
 
