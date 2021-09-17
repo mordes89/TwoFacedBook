@@ -53,6 +53,7 @@ class CommentForm extends React.Component {
   }
 
   renderComments() { 
+    console.log(this.props.comments);
     if (false){
       return ("no good")
     }
