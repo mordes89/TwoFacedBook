@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
+import CommentForm from '../comments/comment_form_container';
 
 
 class Homepage extends React.Component {
@@ -47,18 +48,19 @@ class Homepage extends React.Component {
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
-            {/* <hr className="hline-posts"/>
+            <hr className="hline-posts"/>
             <div className="like-comment-share">
-              <div className="media-links">
+              {/* <div className="media-links">
                 <img src={likeURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Like</h1>
-              </div>
+              </div> */}
               <div className="media-links">
                 <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>
               </div>              
-            </div> */}
-            {/* <hr className="hline-posts"/> */}
+            </div>
+            <hr className="hline-posts"/>
+            <CommentForm parent_post_id={post.id}/>
           </ul>
         ))}
       </ul>
