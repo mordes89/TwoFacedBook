@@ -20,7 +20,7 @@ class Homepage extends React.Component {
   renderPosts() { 
     if (!this.props.posts){
       return null
-    }
+    }    
     return(
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (

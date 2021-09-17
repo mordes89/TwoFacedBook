@@ -1,6 +1,4 @@
 class Api::CommentsController < ApplicationController
-   before_action :ensure_logged_in
-
    def index
       @comments = Comment.all #params[:author_id] == {currentUser????} ? comment.where(author_id: params[:author_id]) : Post.all
       render :index
