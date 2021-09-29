@@ -1,16 +1,26 @@
 import React from 'react';
 
-class CommentModal extends React.Component {
+class CommentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       body: '',
       author_id: this.props.currentUser.id,
       photoUrl: null,
-      photoFile: null
+      photoFile: null,
+      parent_post_id: this.props.parent_post_id,
+      num_likes: 0,
+
+      comment_on: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.renderComments = this.renderComments.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchComments();
+    // this.props.fetchUsers();
   }
 
   update(field) {
@@ -18,14 +28,15 @@ class CommentModal extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.author_id);
+    formData.append('comment[parent_post_id]', this.state.parent_post_id);
+    formData.append('comment[num_likes]', this.state.num_likes);
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
-    }
-   
+    }   
     this.props.processForm(formData);
   }  
 
@@ -41,69 +52,86 @@ class CommentModal extends React.Component {
     }   
   }
 
-  render() {
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
-    return (
-      <div className={preview ? "comment-form-with-pic" : "comment-form"}>
-      <div className="title-and-x">
-         <div className="hidden-x" onClick={this.props.closeModal}> </div>
-         <h1 className="create-comment">Create Comment</h1>
-         <button className="comment-x" onClick={this.props.closeModal}>x</button>
-      </div>       
-      <hr className="hline-comment"/>        
-      <form onSubmit={this.handleSubmit}>
-            <div className="user-row">
-               <img src={window.userURL} className="logo"/>
-               <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
-            </div>
-               <textarea
-                value={this.state.body}
-                onChange={this.update('body')}
-                placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}
-                className="comment-body"
-               />         
-          {preview} 
-         <div className= "centered-comment-form">
-            <div className="add-media-to-comment-modal">
-              <h1 className="Add-to-your-comment">Add to your comment</h1>
-              <div className="media-link-icons-group">
-                <div className="media-links">
-                  {/* <img src={window.video_colorURL} className="media-icons-modal-vid"/> */}
-                  {/* <h1 className="Video-hidden-text">Video</h1>                   */}
-                </div>
-                <div className="media-links">
-                  {/* <img src={window.smiley_colorURL} className="media-icons-modal-smiley"/> */}
-                  {/* <h1 className="picture-hidden-text">Picture</h1>                   */}
-                </div>
-                <div className="media-links">
-                  <label>
-                    <img
-                      src={window.photo_colorURL} 
-                      type="file"                      
-                      className="media-icons-modal-pic"
-                    />
-                    <input 
-                      type="file" 
-                      onChange={this.handleFile} 
-                      className="hidden-input-pic"/>
-                  </label>
-                  {/* <h1 className="feeling-hidden-text">Feeling/Activity</h1> */}
-                </div>
-              </div>
-            </div>
-            <button 
-               type="submit" 
-               className={this.state.body ? "enabled-comment-button" : "disabled-comment-button"}
-               disabled={this.state.body ? null : "disabled"}
-            >Comment
-            </button>
-             
+  renderComments() { 
+    console.log(this.props.comments);
+    if (false){
+      return ("no good")
+    }
+    debugger
+    return( "ok"
+      // <ul className="entire-post">
+      //   {Object.values(this.props.comments).reverse().map((comment, i) => (
+      //     <ul key={`comment-${i}`} className="posts">
+      //       <div className="poster-and-time">
+      //         <img src={userURL} className="profile-pic"/>
+      //         <div className="top-bar-of-post">
+      //           <div className="name-and-time">
+      //             <li className="author">{`${comment.author.first_name} ${comment.author.last_name}`}</li>
+      //             <li className="created_at">{                  
+      //               Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
+      //                 Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
+      //                   Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
+      //                     (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
+      //                       Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
+      //                           Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
+      //             }
+      //             </li>
+      //           </div>
+      //         </div>
+      //       </div>
+      //           <div className="post-menu-icon-and-menu">
+      //             {/* <PostMenuDropdown comment={comment}/> */}
+      //         </div>
+      //       {/* <hr className="hline-posts-top"/> */}
+      //       <li className="post-body-homepage">{comment.body}</li>
+      //       <img src={comment.photoUrl} className="post-pic-homepage"/>
+      //       <hr className="hline-posts"/>
+      //       <div className="like-comment-share">
+      //         {/* <div className="media-links">
+      //           <img src={likeURL} className="like-comment-share-icons"/>
+      //           <h1 className="like-comment-share-text">Like</h1>
+      //         </div> */}
+      //         <div className="media-links">
+      //           <img src={commentsURL} className="like-comment-share-icons"/>
+      //           <h1 className="like-comment-share-text">Comment</h1>
+      //         </div>              
+      //       </div>
+      //       <hr className="hline-posts"/>
+      //       <CommentForm parent_comment_id={comment.id}/>
+      //     </ul>
+      //   ))}
+      // </ul>
+    );
+  }
 
-         </div>
-      </form>
-   </div>
+
+
+
+
+
+
+
+  
+  render() {
+  const comment = this.state.comment_on ? 
+        <form className="posting-query" onSubmit={() => this.handleSubmit()}>
+            <img src={window.userURL} className="post-user-pic"/>
+            <input 
+              onChange={this.update('body')}     
+              className="create_post-input" 
+              placeholder="Write a comment..."                  
+            />     
+            <button className="hidden-input-pic">submit</button>
+        </form> : null
+    // const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
+
+    return (
+      <div>
+        {comment}
+        {/* {this.renderComments()} */}
+      </div>
    );
   }
 }
 
-export default CommentModal;
+export default CommentForm;
