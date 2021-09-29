@@ -1,6 +1,6 @@
-<center>
-  <img align="center" width="180" height="180" src="app/assets/images/facebookround.png">
-</center>
+<p align="center">
+  <img width="280" height="280" src="app/assets/images/facebookround.png">
+</p>
 <br></br>
 
 # [TwoFacedBook](https://twofacedbook.herokuapp.com/#/login)
@@ -9,6 +9,11 @@
 ## TwoFacedBook is a clone of Facebook. The site currently gives the user the ability to log in as a demo-user or create a new account, write, edit, and delete posts on the wall. The ability to edit or delete posts is only available to the user who created said post. Users can add pictures to posts as well.   
 
 <br></br>
+<p align="center">
+  <img width="280" height="280" src="app/assets/images/tfb2.png">
+</p>
+<br></br>
+
 # Build
 ## Twofacedbook was built with  *ruby '2.7.3' and Rails* backend and *React/Redux* front-end.
 ## *AWS* implementation for image uploads
