@@ -19,7 +19,7 @@ class CommentForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchComments();
+    // this.props.fetchComments();
     // this.props.fetchUsers();
   }
 

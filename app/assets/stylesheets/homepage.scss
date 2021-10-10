@@ -243,3 +243,25 @@
    // width: 86%;
    // margin: 0.5px;
 }
+
+.pic-comment-dropdown{
+   display: flex;
+   margin-top: 5px;
+}
+
+.comment-name-and-body{
+   @include roundCorners();
+   @include hoverColor();
+   background-color: $inputBackground;
+   .comment-author{
+      padding: 5px;
+      font-weight: 540;
+
+   }
+
+   .comment-body-homepage{
+      font-weight: 1;
+      padding: 0 5px 4px 5px;
+   }
+}
+

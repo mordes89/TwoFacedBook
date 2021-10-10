@@ -103,11 +103,13 @@
 
 .post-body .placeholder{
    align-self: flex-start;
+   resize: none;
 }
 .pic-preview{
    height: 250px;
-   width: 250px;
-   transform: translate(35%, 0%);
+   width: 95%;
+   transform: translate(2.5%, 0%);
+   @include roundCorners();
 }
 
 .add-media-to-post-modal{
