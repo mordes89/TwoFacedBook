@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
@@ -11,11 +12,13 @@ class CommentForm extends React.Component {
       parent_post_id: this.props.parent_post_id,
       num_likes: 0,
 
-      comment_on: true
+      comment_on: true,
+      edit: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.renderComments = this.renderComments.bind(this);
+    this.updateToBlank = this.updateToBlank.bind(this);
   }
 
   componentDidMount() {
@@ -27,8 +30,12 @@ class CommentForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
+  updateToBlank() {
+    this.setState({ body: "" });
+  }
+
   handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.author_id);
@@ -37,7 +44,12 @@ class CommentForm extends React.Component {
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
     }   
+    // this.state.body = "";
+    this.updateToBlank(e);
     this.props.processForm(formData);
+    console.log(this.state.body);
+    // return (e) => this.setState({body: ""});
+    // this.update('body')
   }  
 
   handleFile(e){
@@ -112,19 +124,19 @@ class CommentForm extends React.Component {
 
 
   
-  render() {
+  render() {    
   const comment = this.state.comment_on ? 
-        <form className="posting-query" onSubmit={() => this.handleSubmit()}>
+        <form className="posting-query" onSubmit={(e) => this.handleSubmit(e)}>
             <img src={window.userURL} className="post-user-pic"/>
             <input 
               onChange={this.update('body')}     
               className="create_post-input" 
-              placeholder="Write a comment..."                  
+              placeholder="Write a comment..." 
             />     
             <button className="hidden-input-pic">submit</button>
         </form> : null
     // const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
-
+    
     return (
       <div>
         {comment}

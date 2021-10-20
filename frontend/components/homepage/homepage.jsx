@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
 import CommentForm from '../comments/comment_form_container';
+import CommentMenuDropdown from './comment_menu_dropdown_container';
+
 
 
 class Homepage extends React.Component {
@@ -78,6 +80,7 @@ class Homepage extends React.Component {
                       </div>
                     </div>
                   </div>
+                        <CommentMenuDropdown comment={comment}/>
                 </div>
                 <li className="created_at">{                  
                   Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
