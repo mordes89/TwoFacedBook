@@ -5,12 +5,13 @@ import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
+import EditComment from '../comments/edit_comment_form_container';
 
 
 
 class Homepage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props);    
     this.renderPosts = this.renderPosts.bind(this);
   }
   
@@ -73,14 +74,15 @@ class Homepage extends React.Component {
                   <img src={userURL} className="profile-pic"/>
                   <div className="top-bar-of-comment">
                     <div className="name-and-time">
-                      <div className="comment-name-and-body">
+                      {<EditComment comment={comment}/>}
+                      {/* <div className="comment-name-and-body">
                         <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
                         <li className="comment-body-homepage">{comment.body}</li>
-                        {/* <img src={comment.photoUrl} className="comment-pic-homepage"/> */}
-                      </div>
+                        <img src={comment.photoUrl} className="comment-pic-homepage"/>
+                      </div> */}
                     </div>
                   </div>
-                        <CommentMenuDropdown comment={comment}/>
+                      {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
                 </div>
                 <li className="created_at">{                  
                   Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
@@ -163,7 +165,7 @@ class Homepage extends React.Component {
         </div>
 
 
-        <div className="middle-nav-newsfeed">
+        <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
                 <img src={window.userURL} className="post-user-pic"/>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_034222) do
+ActiveRecord::Schema.define(version: 2021_10_21_141144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 2021_09_16_034222) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "add_edits", force: :cascade do |t|
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "body", null: false
     t.integer "author_id", null: false
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_034222) do
     t.integer "num_likes", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "edit", default: false
     t.index ["author_id"], name: "index_comments_on_author_id"
     t.index ["parent_post_id"], name: "index_comments_on_parent_post_id"
   end

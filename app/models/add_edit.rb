@@ -1,0 +1,2 @@
+class AddEdit < ApplicationRecord
+end

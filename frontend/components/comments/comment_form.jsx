@@ -17,7 +17,6 @@ class CommentForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-    this.renderComments = this.renderComments.bind(this);
     this.updateToBlank = this.updateToBlank.bind(this);
   }
 
@@ -31,7 +30,7 @@ class CommentForm extends React.Component {
   }
 
   updateToBlank() {
-    this.setState({ body: "" });
+    () => this.setState({ body: "" });
   }
 
   handleSubmit(e) {
@@ -41,13 +40,14 @@ class CommentForm extends React.Component {
     formData.append('comment[author_id]', this.state.author_id);
     formData.append('comment[parent_post_id]', this.state.parent_post_id);
     formData.append('comment[num_likes]', this.state.num_likes);
+    formData.append('comment[edit]', false);
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
     }   
-    // this.state.body = "";
-    this.updateToBlank(e);
+    this.setState(prevState => ({body: ""}));
+    // this.updateToBlank();
     this.props.processForm(formData);
-    console.log(this.state.body);
+    // console.log(this.state.body);
     // return (e) => this.setState({body: ""});
     // this.update('body')
   }  
@@ -63,66 +63,6 @@ class CommentForm extends React.Component {
       this.setState({ photoUrl: "", photoFile: null });
     }   
   }
-
-  renderComments() { 
-    console.log(this.props.comments);
-    if (false){
-      return ("no good")
-    }
-    debugger
-    return( "ok"
-      // <ul className="entire-post">
-      //   {Object.values(this.props.comments).reverse().map((comment, i) => (
-      //     <ul key={`comment-${i}`} className="posts">
-      //       <div className="poster-and-time">
-      //         <img src={userURL} className="profile-pic"/>
-      //         <div className="top-bar-of-post">
-      //           <div className="name-and-time">
-      //             <li className="author">{`${comment.author.first_name} ${comment.author.last_name}`}</li>
-      //             <li className="created_at">{                  
-      //               Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
-      //                 Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
-      //                   Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
-      //                     (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
-      //                       Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
-      //                           Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
-      //             }
-      //             </li>
-      //           </div>
-      //         </div>
-      //       </div>
-      //           <div className="post-menu-icon-and-menu">
-      //             {/* <PostMenuDropdown comment={comment}/> */}
-      //         </div>
-      //       {/* <hr className="hline-posts-top"/> */}
-      //       <li className="post-body-homepage">{comment.body}</li>
-      //       <img src={comment.photoUrl} className="post-pic-homepage"/>
-      //       <hr className="hline-posts"/>
-      //       <div className="like-comment-share">
-      //         {/* <div className="media-links">
-      //           <img src={likeURL} className="like-comment-share-icons"/>
-      //           <h1 className="like-comment-share-text">Like</h1>
-      //         </div> */}
-      //         <div className="media-links">
-      //           <img src={commentsURL} className="like-comment-share-icons"/>
-      //           <h1 className="like-comment-share-text">Comment</h1>
-      //         </div>              
-      //       </div>
-      //       <hr className="hline-posts"/>
-      //       <CommentForm parent_comment_id={comment.id}/>
-      //     </ul>
-      //   ))}
-      // </ul>
-    );
-  }
-
-
-
-
-
-
-
-
   
   render() {    
   const comment = this.state.comment_on ? 
@@ -140,7 +80,6 @@ class CommentForm extends React.Component {
     return (
       <div>
         {comment}
-        {/* {this.renderComments()} */}
       </div>
    );
   }
