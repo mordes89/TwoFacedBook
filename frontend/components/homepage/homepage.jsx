@@ -4,19 +4,33 @@ import { Link } from 'react-router-dom';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
 import CommentForm from '../comments/comment_form_container';
+import CommentMenuDropdown from './comment_menu_dropdown_container';
+import EditComment from '../comments/edit_comment_form_container';
+
 
 
 class Homepage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props);    
+    this.state = {
+      comment_on: false
+    }
     this.renderPosts = this.renderPosts.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
   }
   
   componentDidMount() {
-    this.props.fetchPosts();
     this.props.fetchUsers();
+    this.props.fetchPosts();
+    this.props.fetchComments();
   }
-  
+
+  toggleComment() {
+    let toggleCom = !this.state.comment_on;
+    this.setState({comment_on: toggleCom})
+  }
+
+   
   renderPosts() { 
     if (!this.props.posts){
       return null
@@ -50,17 +64,54 @@ class Homepage extends React.Component {
             <img src={post.photoUrl} className="post-pic-homepage"/>
             <hr className="hline-posts"/>
             <div className="like-comment-share">
-              {/* <div className="media-links">
-                <img src={likeURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Like</h1>
-              </div> */}
               <div className="media-links">
+                <img src={likeURL} className="like-comment-share-icons" onClick={post.num_likes += 1}/>
+                <h1 className="like-comment-share-text">Like</h1>
+              </div>
+              <div className="media-links" onClick={this.toggleComment}>
                 <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>
               </div>              
             </div>
             <hr className="hline-posts"/>
-            <CommentForm parent_post_id={post.id}/>
+            {this.state.comment_on ? <CommentForm parent_post_id={post.id} comment_on={this.state.comment_on}/> : null}
+
+
+            {Object.values(this.props.comments).reverse().map((comment, i) => (
+              comment.parent_post_id === post.id ? 
+              (<ul key={`comment-${i}`} className="comments">
+                <div className="pic-comment-dropdown">
+                  <img src={userURL} className="profile-pic"/>
+                  <div className="top-bar-of-comment">
+                    <div className="name-and-time">
+                      {<EditComment comment={comment}/>}
+                      {/* <div className="comment-name-and-body">
+                        <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
+                        <li className="comment-body-homepage">{comment.body}</li>
+                        <img src={comment.photoUrl} className="comment-pic-homepage"/>
+                      </div> */}
+                    </div>
+                  </div>
+                      {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
+                </div>
+                <li className="created-at-comment">{                  
+                  Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
+                    Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
+                      Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
+                        (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
+                          Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
+                              Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
+                }
+                </li>
+                  {/* <div className="comment-menu-icon-and-menu">
+                    <commentMenuDropdown comment={comment}/>
+                  </div> */}
+                {/* <hr className="hline-comments-top"/> */}
+                {/* {console.log(comment)} */}
+                
+              </ul>) : null
+            ))}
+          
           </ul>
         ))}
       </ul>
@@ -124,7 +175,7 @@ class Homepage extends React.Component {
         </div>
 
 
-        <div className="middle-nav-newsfeed">
+        <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
                 <img src={window.userURL} className="post-user-pic"/>

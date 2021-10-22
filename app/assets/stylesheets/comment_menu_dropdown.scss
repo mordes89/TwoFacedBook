@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+
+.comment-menu-icon, .comment-memu-icon{
+   margin-top: 15px;
+   @include hoverColor();
+   @include icon(25px)
+}
+
+.comment-menu-dropdown{
+   position: absolute;
+   background-color: white;
+   @include roundCorners();
+   width: 300px;
+   box-shadow: 0 0 2px;
+   z-index: 20;
+
+}
+
+.comment-menu-text{
+   @include hoverColor();
+   @include roundCorners(5px);
+   font-weight: bold;
+   padding: 5px;
+   margin: 5px;
+   font-size: 14px;
+   width: 95%;
+}

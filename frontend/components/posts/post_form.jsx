@@ -57,7 +57,7 @@ class PostModal extends React.Component {
                <img src={window.userURL} className="logo"/>
                <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
             </div>
-               <textarea
+               <textarea                
                 value={this.state.body}
                 onChange={this.update('body')}
                 placeholder={`What's on your mind, ${this.props.currentUser.first_name}?`}

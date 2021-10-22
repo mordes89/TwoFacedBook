@@ -146,6 +146,7 @@
    top: 20px;
    bottom: 20px;
    transform: translate(0%, 0.1%); 
+   cursor: default;
 }
 
 .top-bar-of-post{
@@ -169,6 +170,7 @@
    @include phoneView(visible, 100%); 
    @include fullDesktopView();
    @include roundCorners();
+   cursor: default;
 }
 
 .poster-and-time{
@@ -243,3 +245,39 @@
    // width: 86%;
    // margin: 0.5px;
 }
+
+.pic-comment-dropdown{
+   display: flex;
+   margin-top: 5px;
+}
+
+.comment-name-and-body{
+   @include roundCorners();
+   @include hoverColor();
+   background-color: $inputBackground;
+   .comment-author{
+      padding: 5px;
+      font-weight: bold;
+   }
+   .comment-body-homepage{
+      font-weight: 1;
+      padding: 0 5px 4px 5px;
+   }   
+}
+
+.edit-comment-input{
+   // position: absolute;
+   @include roundedInputField(87%);
+   background-color: $inputBackground;
+   @media (min-width: 1100px) {
+      @include roundedInputField(87%);      
+   }
+}
+
+.created-at-comment{
+   position: static;
+   font-size: 12px;
+   color: grey;
+   margin-left: 55px;
+}
+
