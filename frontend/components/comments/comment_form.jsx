@@ -15,6 +15,9 @@ class CommentForm extends React.Component {
       comment_on: true,
       edit: false
     };
+
+    this.nullValue = '';
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.updateToBlank = this.updateToBlank.bind(this);
@@ -30,7 +33,9 @@ class CommentForm extends React.Component {
   }
 
   updateToBlank() {
-    () => this.setState({ body: "" });
+    // () => this.setState({ body: "" });
+    let x = this.nullValue;
+    this.setState(({body: x}));
   }
 
   handleSubmit(e) {
@@ -44,12 +49,13 @@ class CommentForm extends React.Component {
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
     }   
-    this.setState(prevState => ({body: ""}));
-    // this.updateToBlank();
     this.props.processForm(formData);
-    // console.log(this.state.body);
     // return (e) => this.setState({body: ""});
     // this.update('body')
+    console.log(this.state.body);
+    // ()=>this.setState(prevState => ({body: ""}));
+    () => this.updateToBlank();
+    console.log(this.state.body);
   }  
 
   handleFile(e){
