@@ -255,13 +255,27 @@
    background-color: $inputBackground;
    .comment-author{
       padding: 5px;
-      font-weight: 540;
-
+      font-weight: bold;
    }
-
    .comment-body-homepage{
       font-weight: 1;
       padding: 0 5px 4px 5px;
+   }   
+}
+
+.edit-comment-input{
+   // position: absolute;
+   @include roundedInputField(87%);
+   background-color: $inputBackground;
+   @media (min-width: 1100px) {
+      @include roundedInputField(87%);      
    }
+}
+
+.created-at-comment{
+   position: static;
+   font-size: 12px;
+   color: grey;
+   margin-left: 55px;
 }
 

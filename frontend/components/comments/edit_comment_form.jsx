@@ -50,11 +50,10 @@ class EditComment extends React.Component {
    <form className="posting-query" onSubmit={(e) => this.handleSubmit(e)}>
       {/* <img src={window.userURL} className="post-user-pic"/> */}
       <input 
+         defaultValue={this.props.comment.body}
          onChange={this.update('body')}     
-         className="create_post-input" 
-         // placeholder="Write a comment..." 
-         placeholder={this.props.comment.body}
-      />     
+         className="edit-comment-input" 
+         />     
       <button className="hidden-input-pic">submit</button>
    </form>
    :

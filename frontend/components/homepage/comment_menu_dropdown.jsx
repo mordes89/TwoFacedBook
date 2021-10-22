@@ -9,12 +9,21 @@ class CommentMenuDropdown extends React.Component {
        show: false,
        edit: false
       };
+    this.handleFocus = this.handleFocus.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
    }
 
    handleMenuClick(e) {
       this.setState({show: !this.state.show})      
+   }
+   handleFocus(e) {
+      console.log("handleFocus");
+      // this.setState({show: false})      
+   }
+   handleBlur(e) {
+      console.log("handleBlur");
+      this.setState({show: false})      
    }
 
    toggleEdit(e){
@@ -33,7 +42,11 @@ class CommentMenuDropdown extends React.Component {
 
    render() {
       let menuIcon = (this.props.currentUser.id == this.props.comment.author_id) ? 
-            <img src={window.menuDotsURL} className="comment-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
+            <img src={window.menuDotsURL} 
+               className="comment-menu-icon" 
+               onClick={e => this.handleMenuClick(e)}
+               
+            /> 
             : null;
 
       // let menuBackground = this.state.show ? <div className="comment-menu-background" onClick={e => this.handleMenuClick(e)}></div> : null;
@@ -41,18 +54,20 @@ class CommentMenuDropdown extends React.Component {
             <div 
                // className="comment-menu-background"
                // onClick={e => this.handleMenuClick(e)}
+                  
             >      
                <ul 
                   onClick={e => e.stopPropagation()} 
                   className="comment-menu-dropdown"
+                  onFocus={(e) => this.handleFocus(e)} 
+                  onBlur={(e) => this.handleBlur(e)}
                >
                   <div className="logout-row">
                   {/* <img src={editURL} className="comment-memu-icon"/>   */}
                      <button 
                         className="comment-menu-text"
-                        onClick={(e) => this.toggleEdit(e)} 
-                        onBlur={this.handleMenuClick}                      
-                     >Edit Comment 
+                        onClick={(e) => this.toggleEdit(e)}                                             
+                     >Edit 
                      </button>
                   </div>
                   {/* <hr className="comment-hline-login"/> */}
@@ -62,7 +77,7 @@ class CommentMenuDropdown extends React.Component {
                         className="comment-menu-text"
                         onClick={() => this.props.deleteComment(this.props.comment.id)
                            .then(this.handleMenuClick())}
-                     >Move To Trash
+                     >Delete
                      </button>
                   </div>
                </ul>    
@@ -74,7 +89,7 @@ class CommentMenuDropdown extends React.Component {
          <div> 
             {/* {menuBackground} */}
             {menuIcon}
-            {menu}
+            <div>{menu}</div>
          </div>
       ) 
    }

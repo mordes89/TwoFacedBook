@@ -84,7 +84,7 @@ class Homepage extends React.Component {
                   </div>
                       {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
                 </div>
-                <li className="created_at">{                  
+                <li className="created-at-comment">{                  
                   Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
                     Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
                       Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
