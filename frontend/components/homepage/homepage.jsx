@@ -12,7 +12,11 @@ import EditComment from '../comments/edit_comment_form_container';
 class Homepage extends React.Component {
   constructor(props) {
     super(props);    
+    this.state = {
+      comment_on: false
+    }
     this.renderPosts = this.renderPosts.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
   }
   
   componentDidMount() {
@@ -20,7 +24,13 @@ class Homepage extends React.Component {
     this.props.fetchPosts();
     this.props.fetchComments();
   }
-  
+
+  toggleComment() {
+    let toggleCom = !this.state.comment_on;
+    this.setState({comment_on: toggleCom})
+  }
+
+   
   renderPosts() { 
     if (!this.props.posts){
       return null
@@ -52,19 +62,19 @@ class Homepage extends React.Component {
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
-            {/* <hr className="hline-posts"/>
+            <hr className="hline-posts"/>
             <div className="like-comment-share">
               <div className="media-links">
-                <img src={likeURL} className="like-comment-share-icons"/>
+                <img src={likeURL} className="like-comment-share-icons" onClick={post.num_likes += 1}/>
                 <h1 className="like-comment-share-text">Like</h1>
               </div>
-              <div className="media-links">
+              <div className="media-links" onClick={this.toggleComment}>
                 <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>
               </div>              
-            </div> */}
+            </div>
             <hr className="hline-posts"/>
-            <CommentForm parent_post_id={post.id}/>
+            {this.state.comment_on ? <CommentForm parent_post_id={post.id} comment_on={this.state.comment_on}/> : null}
 
 
             {Object.values(this.props.comments).reverse().map((comment, i) => (

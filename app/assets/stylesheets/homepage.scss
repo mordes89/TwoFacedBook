@@ -146,6 +146,7 @@
    top: 20px;
    bottom: 20px;
    transform: translate(0%, 0.1%); 
+   cursor: default;
 }
 
 .top-bar-of-post{
@@ -169,6 +170,7 @@
    @include phoneView(visible, 100%); 
    @include fullDesktopView();
    @include roundCorners();
+   cursor: default;
 }
 
 .poster-and-time{

@@ -12,7 +12,7 @@ class CommentForm extends React.Component {
       parent_post_id: this.props.parent_post_id,
       num_likes: 0,
 
-      comment_on: true,
+      comment_on: this.props.comment_on,
       edit: false
     };
 
@@ -55,7 +55,9 @@ class CommentForm extends React.Component {
     console.log(this.state.body);
     // ()=>this.setState(prevState => ({body: ""}));
     () => this.updateToBlank();
+    this.setState(({comment_on: false}))
     console.log(this.state.body);
+    console.log(this.props.comment_on);
   }  
 
   handleFile(e){

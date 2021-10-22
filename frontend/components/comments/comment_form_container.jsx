@@ -8,10 +8,11 @@ import { fetchComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     comments: state.entities.comments,
+    comment_on: ownProps.comment_on
   };
 };
 

@@ -2,9 +2,9 @@
 @import "mixins";
 
 .comment-menu-icon, .comment-memu-icon{
-   width: 14px;
-   margin: 5px;
-   margin-top: 20px;
+   margin-top: 15px;
+   @include hoverColor();
+   @include icon(25px)
 }
 
 .comment-menu-dropdown{
