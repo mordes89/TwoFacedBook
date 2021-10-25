@@ -14,7 +14,8 @@ class Homepage extends React.Component {
     super(props);    
     this.state = {
       comment_on: false,
-      likes: this.props.likes.length
+      likes: this.props.likes.length,
+      likeOrUnlikeState: false
     }
     this.renderPosts = this.renderPosts.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
@@ -30,6 +31,13 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.comment_on !== prevState.comment_on) {
+  //     this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
+  //     console.log(this.state.likeOrUnlikeState)
+  //   }
+  // }
+
   toggleComment() {
     let toggleCom = !this.state.comment_on;
     this.setState({comment_on: toggleCom})
@@ -41,8 +49,8 @@ class Homepage extends React.Component {
     formData.append('like[parent_post_id]', postId);
     formData.append('like[liker_id]', this.props.currentUser.id);    
     this.props.createLike(formData); 
-    // console.log(postId);
-    this.setState({likes: this.state.likes++})
+    this.setState({likes: ++this.state.likes})
+    this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
   }
 
   handleUnlike(likes, postId){ 
@@ -52,13 +60,14 @@ class Homepage extends React.Component {
     for (let i in likes) { 
       if (likes[i].liker_id === this.props.currentUser.id){
         this.props.deleteLike(likes[i].id);
-        this.setState({likes: this.state.likes--})
+        this.setState({likes: --this.state.likes})
+        this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
 
       }   
     }
   }
 
-  likeOrUnlike(likes, postId){
+  likeOrUnlike(likes){
     if (likes.length === 0){ 
       return false
     }
@@ -70,6 +79,7 @@ class Homepage extends React.Component {
         liked = true
       }   
     }
+    // this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
     return liked
   }
    
@@ -116,7 +126,7 @@ class Homepage extends React.Component {
               {/* {console.log(post.likes)} */}
               {/* {console.log(Object.values(this.props.likes))} */}
               {/* Object.values(post.likes).includes(this.props.currentUser.id)  */}
-              {this.likeOrUnlike(post.likes, post.id) ?  
+              {this.likeOrUnlike(post.likes) ?  
               <div 
                 className="media-links"
                 onClick={() => this.handleUnlike(post.likes, post.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
