@@ -48,7 +48,6 @@ class Homepage extends React.Component {
   }
 
   likeOrUnlike(likes, postId){
-    // this.props.likes.hasOwnProperty()
     if (likes.length === 0){ 
       return false
     }
