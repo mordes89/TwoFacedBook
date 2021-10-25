@@ -43,8 +43,15 @@ class Homepage extends React.Component {
     // console.log(postId);
   }
 
-  handleUnlike(likeId){
-    this.props.deleteLike(likeId); 
+  handleUnlike(likes, postId){ 
+    if (likes.length === 0){ 
+      return null
+    }
+    for (let i in likes) { 
+      if (likes[i].liker_id === this.props.currentUser.id){
+        this.props.deleteLike(likes[i].id);
+      }   
+    }
   }
 
   likeOrUnlike(likes, postId){
@@ -108,7 +115,7 @@ class Homepage extends React.Component {
               {this.likeOrUnlike(post.likes, post.id) ?  
               <div 
                 className="media-links"
-                onClick={() => this.handleUnlike(like.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
+                onClick={() => this.handleUnlike(post.likes, post.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
                 >
                 <img src={likeURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Unlike</h1>
