@@ -1,6 +1,6 @@
 @posts.each do |post|
     json.set! post.id do
-        json.extract! post, :id, :body, :author_id, :created_at, :photo
+        json.extract! post, :id, :likes, :body, :author_id, :num_likes, :created_at, :photo
         json.photoUrl url_for(post.photo) if post.photo.attached?
         json.author post.author, :first_name, :last_name        
     end

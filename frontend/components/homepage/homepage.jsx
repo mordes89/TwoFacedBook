@@ -17,12 +17,16 @@ class Homepage extends React.Component {
     }
     this.renderPosts = this.renderPosts.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleUnlike = this.handleUnlike.bind(this);
+    this.likeOrUnlike = this.likeOrUnlike.bind(this);
   }
   
   componentDidMount() {
     this.props.fetchUsers();
     this.props.fetchPosts();
     this.props.fetchComments();
+    this.props.fetchLikes();
   }
 
   toggleComment() {
@@ -30,6 +34,33 @@ class Homepage extends React.Component {
     this.setState({comment_on: toggleCom})
   }
 
+  handleLike(postId){
+    // e.preventDefault();
+    const formData = new FormData();
+    formData.append('like[parent_post_id]', postId);
+    formData.append('like[liker_id]', this.props.currentUser.id);    
+    this.props.createLike(formData); 
+    // console.log(postId);
+  }
+
+  handleUnlike(likeId){
+    this.props.deleteLike(likeId); 
+  }
+
+  likeOrUnlike(likes, postId){
+    if (likes.length === 0){ 
+      return false
+    }
+    let liked = false
+    for (let i in likes) {
+      // Object.values(el).includes(this.props.currentUser.id) ? liked = true : null  
+      // console.log(likes[i].liker_id) 
+      if (likes[i].liker_id === this.props.currentUser.id){
+        liked = true
+      }   
+    }
+    return liked
+  }
    
   renderPosts() { 
     if (!this.props.posts){
@@ -56,18 +87,42 @@ class Homepage extends React.Component {
                 </div>
               </div>
             </div>
-                <div className="post-menu-icon-and-menu">
-                  <PostMenuDropdown post={post}/>
+              <div className="post-menu-icon-and-menu">
+                <PostMenuDropdown post={post}/>
               </div>
             {/* <hr className="hline-posts-top"/> */}
             <li className="post-body-homepage">{post.body}</li>
             <img src={post.photoUrl} className="post-pic-homepage"/>
+            <div 
+              className="media-links"
+              // onClick={() => this.handleLike(post.id)}
+              >
+              <img src={likeURL} className="like-comment-share-icons"/>
+              <h1 className="like-comment-share-text">{post.likes.length}</h1>
+            </div>
             <hr className="hline-posts"/>
             <div className="like-comment-share">
-              <div className="media-links">
-                <img src={likeURL} className="like-comment-share-icons" onClick={post.num_likes += 1}/>
+              {/* {console.log(post.likes)} */}
+              {/* {console.log(Object.values(this.props.likes))} */}
+              {/* Object.values(post.likes).includes(this.props.currentUser.id)  */}
+              {this.likeOrUnlike(post.likes, post.id) ?  
+              <div 
+                className="media-links"
+                onClick={() => this.handleUnlike(like.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
+                >
+                <img src={likeURL} className="like-comment-share-icons"/>
+                <h1 className="like-comment-share-text">Unlike</h1>
+              </div> 
+              :
+              <div 
+                className="media-links"
+                onClick={() => this.handleLike(post.id)}
+                >
+                <img src={likeURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Like</h1>
-              </div>
+              </div>                         
+              }
+              
               <div className="media-links" onClick={this.toggleComment}>
                 <img src={commentsURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Comment</h1>

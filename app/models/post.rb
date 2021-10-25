@@ -11,5 +11,10 @@ class Post < ApplicationRecord
       foreign_key: :parent_post_id,
       class_name: :Comment
 
+   has_many :likes,
+      primary_key: :id,
+      foreign_key: :parent_post_id,
+      class_name: :Like
+
    has_one_attached :photo
 end
