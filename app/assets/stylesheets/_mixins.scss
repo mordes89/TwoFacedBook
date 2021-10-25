@@ -42,6 +42,7 @@
       visibility: $visibility;
       width: $width;
       margin: $margin;
+      margin-bottom: 20px;
    }
 }
 
@@ -51,6 +52,8 @@
       visibility: $visibility;
       width: $width;
       margin: $margin;
+      margin-bottom: 20px;
+
    }
 }
 
@@ -61,7 +64,6 @@
    width: $w;
    margin-left: $marginL;
    background-color: $backgroundColor;
-   @include hoverColor();
 }
 
 @mixin leftNavIconAndWording($margin: 5px, $w: 15%, $pad: 0, $borderRadius: 10px, $marginL: 0px, $backgroundColor: $inputBackground){

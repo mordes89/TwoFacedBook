@@ -13,7 +13,8 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);    
     this.state = {
-      comment_on: false
+      comment_on: false,
+      likes: this.props.likes.length
     }
     this.renderPosts = this.renderPosts.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
@@ -41,6 +42,7 @@ class Homepage extends React.Component {
     formData.append('like[liker_id]', this.props.currentUser.id);    
     this.props.createLike(formData); 
     // console.log(postId);
+    this.setState({likes: this.state.likes++})
   }
 
   handleUnlike(likes, postId){ 
@@ -50,6 +52,8 @@ class Homepage extends React.Component {
     for (let i in likes) { 
       if (likes[i].liker_id === this.props.currentUser.id){
         this.props.deleteLike(likes[i].id);
+        this.setState({likes: this.state.likes--})
+
       }   
     }
   }
@@ -76,7 +80,7 @@ class Homepage extends React.Component {
     return(
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (
-          <ul key={`post-${i}`} className="posts">
+          <ul key={`post-${i}`} id="posts">
             <div className="poster-and-time">
               <img src={userURL} className="profile-pic"/>
               <div className="top-bar-of-post">
