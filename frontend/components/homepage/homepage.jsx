@@ -55,7 +55,7 @@ class Homepage extends React.Component {
     let liked = false
     for (let i in likes) {
       // Object.values(el).includes(this.props.currentUser.id) ? liked = true : null  
-      console.log(likes[i].liker_id) 
+      // console.log(likes[i].liker_id) 
       if (likes[i].liker_id === this.props.currentUser.id){
         liked = true
       }   
