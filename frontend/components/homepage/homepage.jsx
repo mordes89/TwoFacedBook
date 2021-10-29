@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
+import postItem from '../posts/post_item.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
@@ -14,8 +15,11 @@ class Homepage extends React.Component {
     super(props);    
     this.state = {
       comment_on: false,
-      likes: this.props.likes.length,
-      likeOrUnlikeState: false
+      like_on: true,
+      PrevlikesAmt: this.props.likesAmtProp,
+      likesAmt: this.props.likesAmtProp,
+      likesInLocalState: this.props.likes,
+      likeOrUnlikeState: false,
     }
     this.renderPosts = this.renderPosts.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
@@ -31,12 +35,24 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.comment_on !== prevState.comment_on) {
-  //     this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
-  //     console.log(this.state.likeOrUnlikeState)
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps.likesAmtProp)
+    console.log("props",this.props.likesAmtProp)
+    console.log("prevState",prevState.likesAmt)
+    console.log("state",this.state.likesAmt)
+    // console.log(Object.values(this.props.likes).length)
+    // if (this.state.likeOrUnlikeState == true) {
+    //   // this.setState({likes: this.state.likesAmt})
+    //   this.setState({PrevlikesAmt: prevProps.likesAmtProp})     
+    //   this.props.fetchLikes();
+    //   this.likeOrUnlike(this.props.likes);
+    //   console.log("inside if statement")
+    // }
+    if (this.state.likesAmt != this.props.likesAmtProp) {
+      this.setState({likesAmt: this.props.likesAmtProp})
+      this.setState({likesInLocalState: this.props.likes})
+    }
+  }
 
   toggleComment() {
     let toggleCom = !this.state.comment_on;
@@ -48,38 +64,51 @@ class Homepage extends React.Component {
     const formData = new FormData();
     formData.append('like[parent_post_id]', postId);
     formData.append('like[liker_id]', this.props.currentUser.id);    
+    console.log(formData)
     this.props.createLike(formData); 
-    this.setState({likes: ++this.state.likes})
-    this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
+    // this.setState({likes: ++this.state.likes})
+    // this.setState({likeOrUnlikeState: true})
+    // this.setState({unlike: true})
   }
 
   handleUnlike(likes, postId){ 
-    if (likes.length === 0){ 
+    if (Object.values(this.state.likesInLocalState).length === 0){ 
       return null
     }
-    for (let i in likes) { 
-      if (likes[i].liker_id === this.props.currentUser.id){
-        this.props.deleteLike(likes[i].id);
-        this.setState({likes: --this.state.likes})
-        this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
+    for (let i in likesInLocalState) { 
+      if (likesInLocalState[i].liker_id === this.props.currentUser.id){
+        this.props.deleteLike(likesInLocalState[i].id)
+        // .then(setTimeout(() => 
+        //   this.setState({like_on: false})
+        //   , 1080))
+        // .then(setTimeout(() => 
+        //   this.setState({like_on: true})
+        //   , 1080))
 
-      }   
+        // let tempState = this.state;
+        // tempState.likes = this.state.likes - 1
+        // tempState.likeOrUnlikeState = true
+        // this.setState(tempState)
+
+        // this.setState({likes: --this.state.likes})
+        // this.setState({likeOrUnlikeState: true})
+
+        // this.setState({unlike: false})
+      }
     }
+
   }
 
   likeOrUnlike(likes){
-    if (likes.length === 0){ 
+    if (Object.values(this.props.likes).length === 0){ 
       return false
     }
     let liked = false
     for (let i in likes) {
-      // Object.values(el).includes(this.props.currentUser.id) ? liked = true : null  
-      // console.log(likes[i].liker_id) 
       if (likes[i].liker_id === this.props.currentUser.id){
         liked = true
       }   
     }
-    // this.setState({likeOrUnlikeState: !this.state.likeOrUnlikeState})
     return liked
   }
    
@@ -126,7 +155,8 @@ class Homepage extends React.Component {
               {/* {console.log(post.likes)} */}
               {/* {console.log(Object.values(this.props.likes))} */}
               {/* Object.values(post.likes).includes(this.props.currentUser.id)  */}
-              {this.likeOrUnlike(post.likes) ?  
+              {this.state.like_on ?
+              ((this.likeOrUnlike(post.likes)) ?  
               <div 
                 className="media-links"
                 onClick={() => this.handleUnlike(post.likes, post.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
@@ -141,7 +171,7 @@ class Homepage extends React.Component {
                 >
                 <img src={likeURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Like</h1>
-              </div>                         
+              </div>) : null                         
               }
               
               <div className="media-links" onClick={this.toggleComment}>
