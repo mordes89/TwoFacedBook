@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
@@ -21,11 +21,11 @@ class Homepage extends React.Component {
       likesInLocalState: this.props.likes,
       likeOrUnlikeState: false,
     }
-    this.renderPosts = this.renderPosts.bind(this);
-    this.toggleComment = this.toggleComment.bind(this);
-    this.handleLike = this.handleLike.bind(this);
-    this.handleUnlike = this.handleUnlike.bind(this);
-    this.likeOrUnlike = this.likeOrUnlike.bind(this);
+    // this.renderPosts = this.renderPosts.bind(this);
+    // this.toggleComment = this.toggleComment.bind(this);
+    // this.handleLike = this.handleLike.bind(this);
+    // this.handleUnlike = this.handleUnlike.bind(this);
+    // this.likeOrUnlike = this.likeOrUnlike.bind(this);
   }
   
   componentDidMount() {
@@ -35,66 +35,66 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("prevProps", prevProps.likesAmtProp)
-    console.log("props",this.props.likesAmtProp)
-    console.log("prevState",prevState.likesAmt)
-    console.log("state",this.state.likesAmt)
-    // console.log(Object.values(this.props.likes).length)
-    // if (this.state.likeOrUnlikeState == true) {
-    //   // this.setState({likes: this.state.likesAmt})
-    //   this.setState({PrevlikesAmt: prevProps.likesAmtProp})     
-    //   this.props.fetchLikes();
-    //   this.likeOrUnlike(this.props.likes);
-    //   console.log("inside if statement")
-    // }
-    if (this.state.likesAmt != this.props.likesAmtProp) {
-      this.setState({likesAmt: this.props.likesAmtProp})
-      this.setState({likesInLocalState: this.props.likes})
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("prevProps", prevProps.likesAmtProp)
+  //   console.log("props",this.props.likesAmtProp)
+  //   console.log("prevState",prevState.likesAmt)
+  //   console.log("state",this.state.likesAmt)
+  //   // console.log(Object.values(this.props.likes).length)
+  //   // if (this.state.likeOrUnlikeState == true) {
+  //   //   // this.setState({likes: this.state.likesAmt})
+  //   //   this.setState({PrevlikesAmt: prevProps.likesAmtProp})     
+  //   //   this.props.fetchLikes();
+  //   //   this.likeOrUnlike(this.props.likes);
+  //   //   console.log("inside if statement")
+  //   // }
+  //   if (this.state.likesAmt != this.props.likesAmtProp) {
+  //     this.setState({likesAmt: this.props.likesAmtProp})
+  //     this.setState({likesInLocalState: this.props.likes})
+  //   }
+  // }
 
-  toggleComment() {
-    let toggleCom = !this.state.comment_on;
-    this.setState({comment_on: toggleCom})
-  }
+  // toggleComment() {
+  //   let toggleCom = !this.state.comment_on;
+  //   this.setState({comment_on: toggleCom})
+  // }
 
-  handleLike(postId){
-    // e.preventDefault();
-    const formData = new FormData();
-    formData.append('like[parent_post_id]', postId);
-    formData.append('like[liker_id]', this.props.currentUser.id);    
-    console.log(formData)
-    this.props.createLike(formData); 
-    // this.setState({likes: ++this.state.likes})
-    // this.setState({likeOrUnlikeState: true})
-    // this.setState({unlike: true})
-  }
+  // handleLike(postId){
+  //   // e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('like[parent_post_id]', postId);
+  //   formData.append('like[liker_id]', this.props.currentUser.id);    
+  //   console.log(formData)
+  //   this.props.createLike(formData); 
+  //   // this.setState({likes: ++this.state.likes})
+  //   // this.setState({likeOrUnlikeState: true})
+  //   // this.setState({unlike: true})
+  // }
 
-  handleUnlike(likes, postId){ 
-    if (Object.values(this.state.likesInLocalState).length === 0){ 
-      return null
-    }
-    for (let i in likesInLocalState) { 
-      if (likesInLocalState[i].liker_id === this.props.currentUser.id){
-        this.props.deleteLike(likesInLocalState[i].id)
-      }
-    }
+  // handleUnlike(likes, postId){ 
+  //   if (Object.values(this.state.likesInLocalState).length === 0){ 
+  //     return null
+  //   }
+  //   for (let i in likesInLocalState) { 
+  //     if (likesInLocalState[i].liker_id === this.props.currentUser.id){
+  //       this.props.deleteLike(likesInLocalState[i].id)
+  //     }
+  //   }
 
-  }
+  // }
 
-  likeOrUnlike(likes){
-    if (Object.values(this.props.likes).length === 0){ 
-      return false
-    }
-    let liked = false
-    for (let i in likes) {
-      if (likes[i].liker_id === this.props.currentUser.id){
-        liked = true
-      }   
-    }
-    return liked
-  }
+  // likeOrUnlike(likes){
+  //   if (Object.values(this.props.likes).length === 0){ 
+  //     return false
+  //   }
+  //   let liked = false
+  //   for (let i in likes) {
+  //     if (likes[i].liker_id === this.props.currentUser.id){
+  //       liked = true
+  //     }   
+  //   }
+  //   return liked
+  // }
    
   renderPosts() { 
     if (!this.props.posts){
@@ -104,105 +104,12 @@ class Homepage extends React.Component {
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} id="posts">
-            {<PostItem post={post}/>}
-            <div className="poster-and-time">
-              <img src={userURL} className="profile-pic"/>              
-              <div className="top-bar-of-post">
-                <div className="name-and-time">
-                  <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
-                  <li className="created_at">{                  
-                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                      (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
-                    }
-                  </li>
-                </div>
-              </div>
-            </div>
-              <div className="post-menu-icon-and-menu">
-                <PostMenuDropdown post={post}/>
-              </div>
-            {/* <hr className="hline-posts-top"/> */}
-            <li className="post-body-homepage">{post.body}</li>
-            <img src={post.photoUrl} className="post-pic-homepage"/>
-            <div 
-              className="media-links"
-              // onClick={() => this.handleLike(post.id)}
-              >
-              <img src={likeURL} className="like-comment-share-icons"/>
-              {/* <h1 className="like-comment-share-text">{post.likes.length}</h1> */}
-            </div>
-            <hr className="hline-posts"/>
-            <div className="like-comment-share">
-              {/* {console.log(post.likes)} */}
-              {/* {console.log(Object.values(this.props.likes))} */}
-              {/* Object.values(post.likes).includes(this.props.currentUser.id)  */}
-              {this.state.like_on ?
-              ((this.likeOrUnlike(post.likes)) ?  
-              <div 
-                className="media-links"
-                onClick={() => this.handleUnlike(post.likes, post.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
-                >
-                <img src={likeURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Unlike</h1>
-              </div> 
-              :
-              <div 
-                className="media-links"
-                onClick={() => this.handleLike(post.id)}
-                >
-                <img src={likeURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Like</h1>
-              </div>) : null                         
-              }
-              
-              <div className="media-links" onClick={this.toggleComment}>
-                <img src={commentsURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Comment</h1>
-              </div>              
-            </div>
-            <hr className="hline-posts"/>
-            {this.state.comment_on ? <CommentForm parent_post_id={post.id} comment_on={this.state.comment_on}/> : null}
-
-
-            {Object.values(this.props.comments).reverse().map((comment, i) => (
-              comment.parent_post_id === post.id ? 
-              (<ul key={`comment-${i}`} className="comments">
-                <div className="pic-comment-dropdown">
-                  <img src={userURL} className="profile-pic"/>
-                  <div className="top-bar-of-comment">
-                    <div className="name-and-time">
-                      {<EditComment comment={comment}/>}
-                      {/* <div className="comment-name-and-body">
-                        <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
-                        <li className="comment-body-homepage">{comment.body}</li>
-                        <img src={comment.photoUrl} className="comment-pic-homepage"/>
-                      </div> */}
-                    </div>
-                  </div>
-                      {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
-                </div>
-                <li className="created-at-comment">{                  
-                  Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
-                        (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
-                              Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
-                }
-                </li>
-                  {/* <div className="comment-menu-icon-and-menu">
-                    <commentMenuDropdown comment={comment}/>
-                  </div> */}
-                {/* <hr className="hline-comments-top"/> */}
-                {/* {console.log(comment)} */}
-                
-              </ul>) : null
-            ))}
-          
+            {<PostItem 
+              post={post} 
+              comments={this.props.comments} 
+              currentUser={this.props.currentUser} 
+              createLike={this.props.createLike} 
+              deleteLike={this.props.deleteLike}/>}   
           </ul>
         ))}
       </ul>
