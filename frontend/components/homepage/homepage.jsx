@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
-import postItem from '../posts/post_item.jsx';
+import PostItem from '../posts/post_item.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
@@ -78,22 +78,6 @@ class Homepage extends React.Component {
     for (let i in likesInLocalState) { 
       if (likesInLocalState[i].liker_id === this.props.currentUser.id){
         this.props.deleteLike(likesInLocalState[i].id)
-        // .then(setTimeout(() => 
-        //   this.setState({like_on: false})
-        //   , 1080))
-        // .then(setTimeout(() => 
-        //   this.setState({like_on: true})
-        //   , 1080))
-
-        // let tempState = this.state;
-        // tempState.likes = this.state.likes - 1
-        // tempState.likeOrUnlikeState = true
-        // this.setState(tempState)
-
-        // this.setState({likes: --this.state.likes})
-        // this.setState({likeOrUnlikeState: true})
-
-        // this.setState({unlike: false})
       }
     }
 
@@ -120,19 +104,20 @@ class Homepage extends React.Component {
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} id="posts">
+            {<PostItem post={post}/>}
             <div className="poster-and-time">
-              <img src={userURL} className="profile-pic"/>
+              <img src={userURL} className="profile-pic"/>              
               <div className="top-bar-of-post">
                 <div className="name-and-time">
                   <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
                   <li className="created_at">{                  
                     Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
                       Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                        Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                          (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                            Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                                Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
-                  }
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
+                      (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
+                      Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
+                    }
                   </li>
                 </div>
               </div>
@@ -148,7 +133,7 @@ class Homepage extends React.Component {
               // onClick={() => this.handleLike(post.id)}
               >
               <img src={likeURL} className="like-comment-share-icons"/>
-              <h1 className="like-comment-share-text">{post.likes.length}</h1>
+              {/* <h1 className="like-comment-share-text">{post.likes.length}</h1> */}
             </div>
             <hr className="hline-posts"/>
             <div className="like-comment-share">

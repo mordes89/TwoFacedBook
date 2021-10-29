@@ -1,9 +1,11 @@
 import React from 'react';
 
-class postItem extends React.Component {
+class PostItem extends React.Component {
    constructor(props) {
      super(props);    
      this.state = {
+      post: this.props.post,
+      
       comment_on: false,
       like_on: true,
       PrevlikesAmt: this.props.likesAmtProp,
@@ -13,12 +15,12 @@ class postItem extends React.Component {
      }
    }
 
-   componentDidMount() {
-    this.props.fetchUsers();
-    this.props.fetchPosts();
-    this.props.fetchComments();
-    this.props.fetchLikes();
-  }
+  //  componentDidMount() {
+  //   this.props.fetchUsers();
+  //   this.props.fetchPosts();
+  //   this.props.fetchComments();
+  //   this.props.fetchLikes();
+  // }
 
 
 
@@ -28,10 +30,10 @@ class postItem extends React.Component {
    render() {    
       return (
         <div>
-           
+           {this.state.post.body}
         </div>
       )
     } 
 }
 
-export default postItem;
+export default PostItem;
