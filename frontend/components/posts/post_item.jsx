@@ -10,34 +10,37 @@ class PostItem extends React.Component {
     super(props);    
     this.state = {
     one: 0,
-    post: this.props.post,
+    post: this.props.posts[this.props.postId],
+    likes: this.props.post.likes,
     num_likes: this.props.num_likes,
     
-    comment_on: true,
+    comment_on: false,
     like_on: '',
     PrevlikesAmt: this.props.likesAmtProp,
     likesAmt: this.props.likesAmtProp,
     likesInLocalState: this.props.likes,
     likeOrUnlikeState: false,
-    }
+  }
 
   // this.renderPosts = this.renderPosts.bind(this);
-  this.toggleComment = this.toggleComment.bind(this);
-  this.handleLike = this.handleLike.bind(this);
-  this.handleUnlike = this.handleUnlike.bind(this);
-  this.likeOrUnlike = this.likeOrUnlike.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+    this.handleUnlike = this.handleUnlike.bind(this);
+    this.likeOrUnlike = this.likeOrUnlike.bind(this);
   }
 
   componentDidMount() {
     this.likeOrUnlike();
   }
 
-  componentDidUpdate(){
-    if (this.state.one != 0) {
-      this.props.fetchLikes();
-      this.setState({one: 0})   
-    }
-  }
+  // componentDidUpdate(prevProps, prevState){
+  //   if (this.state.one != 0) {
+  //     this.props.fetchLikes();
+  //     console.log("one: ", this.state.one); 
+  //     this.setState({one: this.state.one - 1}) 
+  //     console.log("one: ", this.state.one); 
+  //   }
+  // }
 
 
   toggleComment() {
@@ -47,7 +50,7 @@ class PostItem extends React.Component {
 
   handleLike(postId){
     // e.preventDefault();
-    this.props.fetchLikes();    
+    this.setState({one: 10}) 
     
     const formData = new FormData();
     formData.append('like[parent_post_id]', postId);
@@ -55,39 +58,19 @@ class PostItem extends React.Component {
     this.props.createLike(formData); 
     this.setState({like_on: false})
     this.setState({num_likes: this.props.num_likes})
-    this.props.fetchLikes();    
-    
-    this.props.fetchLikes();
-    console.log(this.props.post.likes);
-    console.log(this.props.post.likes.length);
-    console.log("handleLike");
-    this.setState({one: 1})   
+
+    this.props.fetchLikes();      
   }
 
-  handleUnlike(likes){ 
-    this.props.fetchLikes();
-
-    // if (Object.values(likes).length === 0){ 
-    //   return null
-    // }
-    for (let i in likes) { 
-      debugger
-      if (likes[i].liker_id === this.props.currentUser.id){
-        console.log("state.like_on: ", this.state.like_on);
+  handleUnlike(){    
+    for (let i in this.props.likes) { 
+        if (this.props.likes[i].parent_post_id == this.props.post.id && this.props.likes[i].liker_id === this.props.currentUser.id){
         this.setState({like_on: true})
-        console.log("state.like_on: ", this.state.like_on);
-        this.props.deleteLike(likes[i].id)
-        console.log("state.num_like: ", this.state.num_likes);
+        this.props.deleteLike(this.props.likes[i].id)
         this.setState({num_likes: this.props.num_likes})
-        console.log("state.num_like: ", this.state.num_likes);
       }
-    }
-    
+    } 
     this.props.fetchLikes();
-    console.log(this.props.post.likes);
-    console.log(this.props.post.likes.length);
-    console.log("handleUnlike");
-    this.setState({one: 1})
   }
 
   likeOrUnlike(){
@@ -103,111 +86,107 @@ class PostItem extends React.Component {
     }
   }
 
-
-
-
-
-   render() {    
-      return (
-        <div>
-          <div className="poster-and-time">
-              <img src={userURL} className="profile-pic"/>              
-              <div className="top-bar-of-post">
-                <div className="name-and-time">
-                  <li className="author">{`${this.state.post.author.first_name} ${this.state.post.author.last_name}`}</li>
-                  <li className="created_at">{                  
-                    Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000) < 1 ? "Now" :
-                      Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000)+"m" : 
-                      (Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 3600000) < 23 ? 
-                      Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 3600000)+"h" : 
-                      Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 86400000)+"d" )                  
-                    }
-                  </li>
-                </div>
+  render() {    
+    return (
+      <div>
+        <div className="poster-and-time">
+            <img src={userURL} className="profile-pic"/>              
+            <div className="top-bar-of-post">
+              <div className="name-and-time">
+                <li className="author">{`${this.state.post.author.first_name} ${this.state.post.author.last_name}`}</li>
+                <li className="created_at">{                  
+                  Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000) < 1 ? "Now" :
+                    Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000) < 60 ? 
+                    Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 60000)+"m" : 
+                    (Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 3600000) < 23 ? 
+                    Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 3600000)+"h" : 
+                    Math.floor((Date.now() - Date.parse(this.state.post.created_at))/ 86400000)+"d" )                  
+                  }
+                </li>
               </div>
             </div>
-              <div className="post-menu-icon-and-menu">
-                <PostMenuDropdown post={this.state.post}/>
-              </div>
-            <li className="post-body-homepage">{this.state.post.body}</li>
-            <img src={this.state.post.photoUrl} className="post-pic-homepage"/>
+          </div>
+            <div className="post-menu-icon-and-menu">
+              <PostMenuDropdown post={this.state.post}/>
+            </div>
+          <li className="post-body-homepage">{this.state.post.body}</li>
+          <img src={this.state.post.photoUrl} className="post-pic-homepage"/>
+          <div 
+            className="media-links"
+            // onClick={() => this.handleLike(this.state.post.id)}
+            >
+            <img src={likeURL} className="like-comment-share-icons"/>
+            <h1 className="like-comment-share-text">{this.state.num_likes}</h1>
+          </div>
+          <hr className="hline-posts"/>
+          <div className="like-comment-share">
+            {/* {console.log(this.state.post.likes)} */}
+            {/* {console.log(Object.values(this.props.likes))} */}
+            {/* Object.values(this.state.post.likes).includes(this.props.currentUser.id)  */}
+            {!this.state.like_on ?            
             <div 
               className="media-links"
-              // onClick={() => this.handleLike(this.state.post.id)}
+              onClick={() => this.handleUnlike()} //find the like.id where post.id == parent_post and liker_id == currentUser.id
               >
-              <img src={likeURL} className="like-comment-share-icons"/>
-              <h1 className="like-comment-share-text">{this.state.num_likes}</h1>
-            </div>
-            <hr className="hline-posts"/>
-            <div className="like-comment-share">
-              {/* {console.log(this.state.post.likes)} */}
-              {/* {console.log(Object.values(this.props.likes))} */}
-              {/* Object.values(this.state.post.likes).includes(this.props.currentUser.id)  */}
-              {!this.state.like_on ?            
-              <div 
-                className="media-links"
-                onClick={() => this.handleUnlike(this.state.post.likes)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
-                >
-                <img src={unlikePostURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Unlike</h1>
-              </div> 
-              :
-              <div 
-                className="media-links"
-                onClick={() => this.handleLike(this.state.post.id)}
-                >
-                <img src={likePostURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Like</h1>
-              </div>                         
-              }
-              
-              <div className="media-links" onClick={this.toggleComment}>
-                <img src={commentsURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Comment</h1>
-              </div>              
-            </div>
-            <hr className="hline-posts"/>
-            {this.state.comment_on ? <CommentForm parent_post_id={this.state.post.id} comment_on={this.state.comment_on}/> : null}
+              <img src={unlikePostURL} className="like-comment-share-icons"/>
+              <h1 className="like-comment-share-text">Unlike</h1>
+            </div> 
+            :
+            <div 
+              className="media-links"
+              onClick={() => this.handleLike(this.props.post.id)}
+              >
+              <img src={likePostURL} className="like-comment-share-icons"/>
+              <h1 className="like-comment-share-text">Like</h1>
+            </div>                         
+            }
+            
+            <div className="media-links" onClick={this.toggleComment}>
+              <img src={commentsURL} className="like-comment-share-icons"/>
+              <h1 className="like-comment-share-text">Comment</h1>
+            </div>              
+          </div>
+          <hr className="hline-posts"/>
+          {this.state.comment_on ? <CommentForm parent_post_id={this.state.post.id} comment_on={this.state.comment_on}/> : null}
 
 
-            {Object.values(this.props.comments).reverse().map((comment, i) => (
-              comment.parent_post_id === this.state.post.id ? 
-              (<ul key={`comment-${i}`} className="comments">
-                <div className="pic-comment-dropdown">
-                  <img src={userURL} className="profile-pic"/>
-                  <div className="top-bar-of-comment">
-                    <div className="name-and-time">
-                      {<EditComment comment={comment}/>}
-                      {/* <div className="comment-name-and-body">
-                        <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
-                        <li className="comment-body-homepage">{comment.body}</li>
-                        <img src={comment.photoUrl} className="comment-pic-homepage"/>
-                      </div> */}
-                    </div>
+          {Object.values(this.props.comments).reverse().map((comment, i) => (
+            comment.parent_post_id === this.state.post.id ? 
+            (<ul key={`comment-${i}`} className="comments">
+              <div className="pic-comment-dropdown">
+                <img src={userURL} className="profile-pic"/>
+                <div className="top-bar-of-comment">
+                  <div className="name-and-time">
+                    {<EditComment comment={comment}/>}
+                    {/* <div className="comment-name-and-body">
+                      <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
+                      <li className="comment-body-homepage">{comment.body}</li>
+                      <img src={comment.photoUrl} className="comment-pic-homepage"/>
+                    </div> */}
                   </div>
-                      {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
                 </div>
-                <li className="created-at-comment">{                  
-                  Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
-                        (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
-                              Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
-                }
-                </li>
-                  {/* <div className="comment-menu-icon-and-menu">
-                    <commentMenuDropdown comment={comment}/>
-                  </div> */}
-                {/* <hr className="hline-comments-top"/> */}
-                {/* {console.log(comment)} */}
-                
-              </ul>) : null
-            ))}
-        </div>
-      )
-    } 
+                    {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
+              </div>
+              <li className="created-at-comment">{                  
+                Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
+                  Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
+                    Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
+                      (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
+                        Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
+                            Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
+              }
+              </li>
+                {/* <div className="comment-menu-icon-and-menu">
+                  <commentMenuDropdown comment={comment}/>
+                </div> */}
+              {/* <hr className="hline-comments-top"/> */}
+              {/* {console.log(comment)} */}
+              
+            </ul>) : null
+          ))}
+      </div>
+    )
+  } 
 }
 
 export default PostItem;

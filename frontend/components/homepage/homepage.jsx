@@ -3,7 +3,7 @@ import React from 'react';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
-import PostItem from '../posts/post_item.jsx';
+import PostItem from '../posts/post_item_container.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
@@ -47,12 +47,13 @@ class Homepage extends React.Component {
           <ul key={`post-${i}`} id="posts">
             {<PostItem 
               post={post}
+              postId={post.id}
               num_likes={Object.values(post.likes).length}
-              comments={this.props.comments}
-              currentUser={this.props.currentUser} 
-              createLike={this.props.createLike} 
-              deleteLike={this.props.deleteLike}
-              fetchLikes={this.props.fetchLikes}
+              // comments={this.props.comments}
+              // currentUser={this.props.currentUser} 
+              // createLike={this.props.createLike} 
+              // deleteLike={this.props.deleteLike}
+              // fetchLikes={this.props.fetchLikes}
             />}   
           </ul>
         ))}

@@ -12,6 +12,7 @@ class Api::LikesController < ApplicationController
    def create
       @like = Like.new(like_params) 
       if @like.save
+         # Post.find_by(id: params[:parent_post_id]).likes.reload
          render :show
       else         
          render json: @like.errors.full_messages, status: 422
@@ -22,6 +23,7 @@ class Api::LikesController < ApplicationController
       @like = Like.find(params[:id])
       if @like
          @like.destroy
+         # Post.find_by(id: params[:parent_post_id]).likes.reload
          render :show
       else
          render json: @like.errors.full_messages, status: 403      
