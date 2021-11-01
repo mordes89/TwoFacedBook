@@ -57,17 +57,17 @@ class PostItem extends React.Component {
     formData.append('like[liker_id]', this.props.currentUser.id);    
     this.props.createLike(formData); 
     this.setState({like_on: false})
-    this.setState({num_likes: this.props.num_likes})
-
     this.props.fetchLikes();      
+    this.setState({num_likes: this.state.num_likes + 1})
+
   }
 
   handleUnlike(){    
     for (let i in this.props.likes) { 
-        if (this.props.likes[i].parent_post_id == this.props.post.id && this.props.likes[i].liker_id === this.props.currentUser.id){
+      if (this.props.likes[i].parent_post_id == this.props.post.id && this.props.likes[i].liker_id === this.props.currentUser.id){
         this.setState({like_on: true})
         this.props.deleteLike(this.props.likes[i].id)
-        this.setState({num_likes: this.props.num_likes})
+        this.setState({num_likes: this.state.num_likes - 1})
       }
     } 
     this.props.fetchLikes();
