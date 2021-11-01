@@ -67,6 +67,9 @@
    align-items: center;
    @include roundedInputField($w: 65%, $pad: 0, $borderRadius: 40px, $marginL: 0px, $backgroundColor: white);
    margin-right: 5px;
+   .right-nav-icon-name:hover{
+      background-color: white;
+   } 
 }
 
 

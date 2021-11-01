@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
+import PostItem from '../posts/post_item_container.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
@@ -13,13 +14,18 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);    
     this.state = {
-      comment_on: false
+      comment_on: false,
+      like_on: true,
+      PrevlikesAmt: this.props.likesAmtProp,
+      likesAmt: this.props.likesAmtProp,
+      likesInLocalState: this.props.likes,
+      likeOrUnlikeState: false,
     }
-    this.renderPosts = this.renderPosts.bind(this);
-    this.toggleComment = this.toggleComment.bind(this);
-    this.handleLike = this.handleLike.bind(this);
-    this.handleUnlike = this.handleUnlike.bind(this);
-    this.likeOrUnlike = this.likeOrUnlike.bind(this);
+    // this.renderPosts = this.renderPosts.bind(this);
+    // this.toggleComment = this.toggleComment.bind(this);
+    // this.handleLike = this.handleLike.bind(this);
+    // this.handleUnlike = this.handleUnlike.bind(this);
+    // this.likeOrUnlike = this.likeOrUnlike.bind(this);
   }
   
   componentDidMount() {
@@ -29,38 +35,7 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
-  toggleComment() {
-    let toggleCom = !this.state.comment_on;
-    this.setState({comment_on: toggleCom})
-  }
 
-  handleLike(postId){
-    // e.preventDefault();
-    const formData = new FormData();
-    formData.append('like[parent_post_id]', postId);
-    formData.append('like[liker_id]', this.props.currentUser.id);    
-    this.props.createLike(formData); 
-    // console.log(postId);
-  }
-
-  handleUnlike(likeId){
-    this.props.deleteLike(likeId); 
-  }
-
-  likeOrUnlike(likes, postId){
-    if (likes.length === 0){ 
-      return false
-    }
-    let liked = false
-    for (let i in likes) {
-      // Object.values(el).includes(this.props.currentUser.id) ? liked = true : null  
-      // console.log(likes[i].liker_id) 
-      if (likes[i].liker_id === this.props.currentUser.id){
-        liked = true
-      }   
-    }
-    return liked
-  }
    
   renderPosts() { 
     if (!this.props.posts){
@@ -69,104 +44,17 @@ class Homepage extends React.Component {
     return(
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (
-          <ul key={`post-${i}`} className="posts">
-            <div className="poster-and-time">
-              <img src={userURL} className="profile-pic"/>
-              <div className="top-bar-of-post">
-                <div className="name-and-time">
-                  <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
-                  <li className="created_at">{                  
-                    Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                      Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                        Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                          (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                            Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                                Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
-                  }
-                  </li>
-                </div>
-              </div>
-            </div>
-              <div className="post-menu-icon-and-menu">
-                <PostMenuDropdown post={post}/>
-              </div>
-            {/* <hr className="hline-posts-top"/> */}
-            <li className="post-body-homepage">{post.body}</li>
-            <img src={post.photoUrl} className="post-pic-homepage"/>
-            <div 
-              className="media-links"
-              // onClick={() => this.handleLike(post.id)}
-              >
-              <img src={likeURL} className="like-comment-share-icons"/>
-              <h1 className="like-comment-share-text">{post.likes.length}</h1>
-            </div>
-            <hr className="hline-posts"/>
-            <div className="like-comment-share">
-              {/* {console.log(post.likes)} */}
-              {/* {console.log(Object.values(this.props.likes))} */}
-              {/* Object.values(post.likes).includes(this.props.currentUser.id)  */}
-              {this.likeOrUnlike(post.likes, post.id) ?  
-              <div 
-                className="media-links"
-                onClick={() => this.handleUnlike(like.id)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
-                >
-                <img src={likeURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Unlike</h1>
-              </div> 
-              :
-              <div 
-                className="media-links"
-                onClick={() => this.handleLike(post.id)}
-                >
-                <img src={likeURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Like</h1>
-              </div>                         
-              }
-              
-              <div className="media-links" onClick={this.toggleComment}>
-                <img src={commentsURL} className="like-comment-share-icons"/>
-                <h1 className="like-comment-share-text">Comment</h1>
-              </div>              
-            </div>
-            <hr className="hline-posts"/>
-            {this.state.comment_on ? <CommentForm parent_post_id={post.id} comment_on={this.state.comment_on}/> : null}
-
-
-            {Object.values(this.props.comments).reverse().map((comment, i) => (
-              comment.parent_post_id === post.id ? 
-              (<ul key={`comment-${i}`} className="comments">
-                <div className="pic-comment-dropdown">
-                  <img src={userURL} className="profile-pic"/>
-                  <div className="top-bar-of-comment">
-                    <div className="name-and-time">
-                      {<EditComment comment={comment}/>}
-                      {/* <div className="comment-name-and-body">
-                        <li className="comment-author">{`${this.props.users[comment.author_id].first_name} ${this.props.users[comment.author_id].last_name}`}</li>
-                        <li className="comment-body-homepage">{comment.body}</li>
-                        <img src={comment.photoUrl} className="comment-pic-homepage"/>
-                      </div> */}
-                    </div>
-                  </div>
-                      {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
-                </div>
-                <li className="created-at-comment">{                  
-                  Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :
-                    Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 60 ? 
-                      Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000)+"m" : 
-                        (Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000) < 23 ? 
-                          Math.floor((Date.now() - Date.parse(comment.created_at))/ 3600000)+"h" : 
-                              Math.floor((Date.now() - Date.parse(comment.created_at))/ 86400000)+"d" )                  
-                }
-                </li>
-                  {/* <div className="comment-menu-icon-and-menu">
-                    <commentMenuDropdown comment={comment}/>
-                  </div> */}
-                {/* <hr className="hline-comments-top"/> */}
-                {/* {console.log(comment)} */}
-                
-              </ul>) : null
-            ))}
-          
+          <ul key={`post-${i}`} id="posts">
+            {<PostItem 
+              post={post}
+              postId={post.id}
+              num_likes={Object.values(post.likes).length}
+              // comments={this.props.comments}
+              // currentUser={this.props.currentUser} 
+              // createLike={this.props.createLike} 
+              // deleteLike={this.props.deleteLike}
+              // fetchLikes={this.props.fetchLikes}
+            />}   
           </ul>
         ))}
       </ul>
