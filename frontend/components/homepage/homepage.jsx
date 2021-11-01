@@ -35,66 +35,7 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log("prevProps", prevProps.likesAmtProp)
-  //   console.log("props",this.props.likesAmtProp)
-  //   console.log("prevState",prevState.likesAmt)
-  //   console.log("state",this.state.likesAmt)
-  //   // console.log(Object.values(this.props.likes).length)
-  //   // if (this.state.likeOrUnlikeState == true) {
-  //   //   // this.setState({likes: this.state.likesAmt})
-  //   //   this.setState({PrevlikesAmt: prevProps.likesAmtProp})     
-  //   //   this.props.fetchLikes();
-  //   //   this.likeOrUnlike(this.props.likes);
-  //   //   console.log("inside if statement")
-  //   // }
-  //   if (this.state.likesAmt != this.props.likesAmtProp) {
-  //     this.setState({likesAmt: this.props.likesAmtProp})
-  //     this.setState({likesInLocalState: this.props.likes})
-  //   }
-  // }
 
-  // toggleComment() {
-  //   let toggleCom = !this.state.comment_on;
-  //   this.setState({comment_on: toggleCom})
-  // }
-
-  // handleLike(postId){
-  //   // e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('like[parent_post_id]', postId);
-  //   formData.append('like[liker_id]', this.props.currentUser.id);    
-  //   console.log(formData)
-  //   this.props.createLike(formData); 
-  //   // this.setState({likes: ++this.state.likes})
-  //   // this.setState({likeOrUnlikeState: true})
-  //   // this.setState({unlike: true})
-  // }
-
-  // handleUnlike(likes, postId){ 
-  //   if (Object.values(this.state.likesInLocalState).length === 0){ 
-  //     return null
-  //   }
-  //   for (let i in likesInLocalState) { 
-  //     if (likesInLocalState[i].liker_id === this.props.currentUser.id){
-  //       this.props.deleteLike(likesInLocalState[i].id)
-  //     }
-  //   }
-
-  // }
-
-  // likeOrUnlike(likes){
-  //   if (Object.values(this.props.likes).length === 0){ 
-  //     return false
-  //   }
-  //   let liked = false
-  //   for (let i in likes) {
-  //     if (likes[i].liker_id === this.props.currentUser.id){
-  //       liked = true
-  //     }   
-  //   }
-  //   return liked
-  // }
    
   renderPosts() { 
     if (!this.props.posts){
@@ -105,11 +46,14 @@ class Homepage extends React.Component {
         {Object.values(this.props.posts).reverse().map((post, i) => (
           <ul key={`post-${i}`} id="posts">
             {<PostItem 
-              post={post} 
-              comments={this.props.comments} 
+              post={post}
+              num_likes={Object.values(post.likes).length}
+              comments={this.props.comments}
               currentUser={this.props.currentUser} 
               createLike={this.props.createLike} 
-              deleteLike={this.props.deleteLike}/>}   
+              deleteLike={this.props.deleteLike}
+              fetchLikes={this.props.fetchLikes}
+            />}   
           </ul>
         ))}
       </ul>

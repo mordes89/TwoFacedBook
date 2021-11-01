@@ -6,29 +6,37 @@ import PostMenuDropdown from '../homepage/post_menu_dropdown_container';
 
 
 class PostItem extends React.Component {
-   constructor(props) {
-     super(props);    
-     this.state = {
-      post: this.props.post,
-      num_likes: this.props.post.likes.length,
-      
-      comment_on: false,
-      like_on: '',
-      PrevlikesAmt: this.props.likesAmtProp,
-      likesAmt: this.props.likesAmtProp,
-      likesInLocalState: this.props.likes,
-      likeOrUnlikeState: false,
-     }
+  constructor(props) {
+    super(props);    
+    this.state = {
+    one: 0,
+    post: this.props.post,
+    num_likes: this.props.num_likes,
+    
+    comment_on: true,
+    like_on: '',
+    PrevlikesAmt: this.props.likesAmtProp,
+    likesAmt: this.props.likesAmtProp,
+    likesInLocalState: this.props.likes,
+    likeOrUnlikeState: false,
+    }
 
-    // this.renderPosts = this.renderPosts.bind(this);
-    this.toggleComment = this.toggleComment.bind(this);
-    this.handleLike = this.handleLike.bind(this);
-    this.handleUnlike = this.handleUnlike.bind(this);
-    this.likeOrUnlike = this.likeOrUnlike.bind(this);
-   }
+  // this.renderPosts = this.renderPosts.bind(this);
+  this.toggleComment = this.toggleComment.bind(this);
+  this.handleLike = this.handleLike.bind(this);
+  this.handleUnlike = this.handleUnlike.bind(this);
+  this.likeOrUnlike = this.likeOrUnlike.bind(this);
+  }
 
-   componentDidMount() {
+  componentDidMount() {
     this.likeOrUnlike();
+  }
+
+  componentDidUpdate(){
+    if (this.state.one != 0) {
+      this.props.fetchLikes();
+      this.setState({one: 0})   
+    }
   }
 
 
@@ -39,38 +47,59 @@ class PostItem extends React.Component {
 
   handleLike(postId){
     // e.preventDefault();
+    this.props.fetchLikes();    
+    
     const formData = new FormData();
     formData.append('like[parent_post_id]', postId);
     formData.append('like[liker_id]', this.props.currentUser.id);    
-    console.log(formData)
     this.props.createLike(formData); 
     this.setState({like_on: false})
-    this.setState({num_likes: this.state.num_likes + 1})
-    // this.setState({likeOrUnlikeState: true})
-    // this.setState({unlike: true})
+    this.setState({num_likes: this.props.num_likes})
+    this.props.fetchLikes();    
+    
+    this.props.fetchLikes();
+    console.log(this.props.post.likes);
+    console.log(this.props.post.likes.length);
+    console.log("handleLike");
+    this.setState({one: 1})   
   }
 
   handleUnlike(likes){ 
-    if (Object.values(likes).length === 0){ 
-      return null
-    }
+    this.props.fetchLikes();
+
+    // if (Object.values(likes).length === 0){ 
+    //   return null
+    // }
     for (let i in likes) { 
+      debugger
       if (likes[i].liker_id === this.props.currentUser.id){
-        this.props.deleteLike(likes[i].id)
+        console.log("state.like_on: ", this.state.like_on);
         this.setState({like_on: true})
-        this.setState({num_likes: this.state.num_likes - 1})
+        console.log("state.like_on: ", this.state.like_on);
+        this.props.deleteLike(likes[i].id)
+        console.log("state.num_like: ", this.state.num_likes);
+        this.setState({num_likes: this.props.num_likes})
+        console.log("state.num_like: ", this.state.num_likes);
       }
-    } 
+    }
+    
+    this.props.fetchLikes();
+    console.log(this.props.post.likes);
+    console.log(this.props.post.likes.length);
+    console.log("handleUnlike");
+    this.setState({one: 1})
   }
 
   likeOrUnlike(){
-    if (Object.values(this.state.post.likes).length === 0){ 
+    if (Object.values(this.props.post.likes).length === 0){ 
       this.setState({like_on: true})
-    }
-    for (let i in this.state.post.likes) {
-      if (this.state.post.likes[i].liker_id === this.props.currentUser.id){
-        this.setState({like_on: false})
-      }   
+    } else {
+      this.setState({like_on: true})
+      for (let i in this.state.post.likes) {
+        if (this.props.post.likes[i].liker_id === this.props.currentUser.id){
+          this.setState({like_on: false})
+        }         
+      }
     }
   }
 
@@ -120,7 +149,7 @@ class PostItem extends React.Component {
                 className="media-links"
                 onClick={() => this.handleUnlike(this.state.post.likes)} //find the like.id where post.id == parent_post and liker_id == currentUser.id
                 >
-                <img src={likeURL} className="like-comment-share-icons"/>
+                <img src={unlikePostURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Unlike</h1>
               </div> 
               :
@@ -128,7 +157,7 @@ class PostItem extends React.Component {
                 className="media-links"
                 onClick={() => this.handleLike(this.state.post.id)}
                 >
-                <img src={likeURL} className="like-comment-share-icons"/>
+                <img src={likePostURL} className="like-comment-share-icons"/>
                 <h1 className="like-comment-share-text">Like</h1>
               </div>                         
               }
