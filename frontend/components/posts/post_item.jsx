@@ -107,7 +107,10 @@ class PostItem extends React.Component {
             </div>
           </div>
             <div className="post-menu-icon-and-menu">
-              <PostMenuDropdown post={this.state.post}/>
+              <PostMenuDropdown 
+                post={this.state.post}
+                reloader={this.props.reloader}
+              />
             </div>
           <li className="post-body-homepage">{this.state.post.body}</li>
           <img src={this.state.post.photoUrl} className="post-pic-homepage"/>

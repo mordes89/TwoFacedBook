@@ -28,6 +28,7 @@ class PostModal extends React.Component {
     }
    
     this.props.processForm(formData);
+    
   }  
 
   handleFile(e){

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import { createPost } from '../../actions/post_actions';
 import PostModal from './post_form';
+import { fetchPosts } from '../../actions/post_actions';
+
 
 const mSTP = state => {
   return {
@@ -13,6 +15,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
   return {
+    fetchPosts: () => dispatch(fetchPosts()), 
     processForm: (formData) => dispatch(createPost(formData)),
     closeModal: () => dispatch(closeModal())
   };

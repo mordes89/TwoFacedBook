@@ -14,6 +14,9 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);    
     this.state = {
+      fetched: false,
+      posts: this.props.posts,
+      prevPsotsLength: 0,
       comment_on: false,
       like_on: true,
       PrevlikesAmt: this.props.likesAmtProp,
@@ -21,11 +24,8 @@ class Homepage extends React.Component {
       likesInLocalState: this.props.likes,
       likeOrUnlikeState: false,
     }
-    // this.renderPosts = this.renderPosts.bind(this);
-    // this.toggleComment = this.toggleComment.bind(this);
-    // this.handleLike = this.handleLike.bind(this);
-    // this.handleUnlike = this.handleUnlike.bind(this);
-    // this.likeOrUnlike = this.likeOrUnlike.bind(this);
+    this.renderPosts = this.renderPosts.bind(this); 
+    // this.autoReloader = this.autoReloader.bind(this); 
   }
   
   componentDidMount() {
@@ -33,14 +33,29 @@ class Homepage extends React.Component {
     this.props.fetchPosts();
     this.props.fetchComments();
     this.props.fetchLikes();
+    // this.autoReloader();
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.posts.length != this.props.posts.length) {      
+  //     // this.props.fetchPosts();
+  //     console.log("hit cdm");
+  //     // this.state.prevPsotsLength = Object.values(this.props.posts).length;
+  //   }
+  // }
+
+  // autoReloader() {
+  //   this.setState({posts: this.props.posts})
+  // }
 
 
    
-  renderPosts() { 
-    if (!this.props.posts){
-      return null
-    }    
+  renderPosts() {
+     
+    // if (!this.props.posts){
+    //   return null
+    // }    
+    
     return(
       <ul className="entire-post">
         {Object.values(this.props.posts).reverse().map((post, i) => (
@@ -48,12 +63,7 @@ class Homepage extends React.Component {
             {<PostItem 
               post={post}
               postId={post.id}
-              num_likes={Object.values(post.likes).length}
-              // comments={this.props.comments}
-              // currentUser={this.props.currentUser} 
-              // createLike={this.props.createLike} 
-              // deleteLike={this.props.deleteLike}
-              // fetchLikes={this.props.fetchLikes}
+              num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
             />}   
           </ul>
         ))}
@@ -161,7 +171,7 @@ class Homepage extends React.Component {
     )
   };
   
-  render() {    
+  render() {          
     return (
       <div>
         {this.props.currentUser ? this.loggedIn() : null} 
