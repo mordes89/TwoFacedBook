@@ -7,7 +7,6 @@ import EditComment from './edit_comment_form';
 const mSTP = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
-   //  comment: state.ui.modal.prop,  
     users: state.entities.users
   };
 };

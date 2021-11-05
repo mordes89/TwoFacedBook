@@ -10,6 +10,7 @@ import { fetchPosts } from '../../actions/post_actions';
 const mSTP = state => {
   return {
     currentUser: state.entities.users[state.session.id],
+    posts: state.entities.posts,
   };
 };
 

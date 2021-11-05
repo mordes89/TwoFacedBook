@@ -2,7 +2,7 @@ import { RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST, RECEIVE_POST_ERRORS } from '.
 
 
 const postReducer = (oldState = {}, action) => {
-   Object.freeze(oldState);
+   // Object.freeze(oldState);
    let newState = {...oldState};
    switch(action.type) {
       case RECEIVE_POSTS: 

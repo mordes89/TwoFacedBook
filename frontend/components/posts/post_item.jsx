@@ -11,6 +11,7 @@ class PostItem extends React.Component {
     this.state = {
     one: 0,
     post: this.props.posts[this.props.postId],
+    posts: this.props.posts,
     likes: this.props.post.likes,
     num_likes: this.props.num_likes,
     

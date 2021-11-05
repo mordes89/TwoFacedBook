@@ -18,7 +18,7 @@ const mSTP = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
     navLink: <Link to="/post"/>,
-    posts: state.entities.posts,
+    // posts: state.entities.posts,
     users: state.entities.users,
     comments: state.entities.comments,
     likes: state.entities.likes,
