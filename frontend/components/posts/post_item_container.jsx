@@ -21,7 +21,7 @@ const mSTP = (state) => {
     // posts: state.entities.posts,
     users: state.entities.users,
     comments: state.entities.comments,
-    likes: state.entities.likes,
+    // likes: state.entities.likes,
     likesAmtProp: Object.values(state.entities.likes).length,
   };
 };
