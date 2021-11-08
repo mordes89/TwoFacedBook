@@ -6,35 +6,36 @@ import PostMenuDropdown from '../homepage/post_menu_dropdown_container';
 
 
 class PostItem extends React.Component {
-  constructor(props) {
-    super(props);    
-    this.state = {
-      post: this.props.posts[this.props.postId],
-      posts: this.props.posts,
-      likes: this.props.likes,
-      num_likes: this.props.num_likes,
+  // constructor(props) {
+  //   super(props);    
+  //   this.state = {
+  //     // post: this.props.posts[this.props.postId],
+  //     // posts: this.props.posts,
+  //     // likes: this.props.likes,
+  //     // num_likes: this.props.num_likes,
       
-      comment_on: false,
-      like_on: ''
-  }
+  //     // comment_on: false,
+  //     // like_on: ''
+  // }
 
-  // this.renderPosts = this.renderPosts.bind(this);
-    this.toggleComment = this.toggleComment.bind(this);
-    this.handleLike = this.handleLike.bind(this);
-    this.handleUnlike = this.handleUnlike.bind(this);
-    this.likeOrUnlike = this.likeOrUnlike.bind(this);
-  }
+  // // this.renderPosts = this.renderPosts.bind(this);
+  //   this.toggleComment = this.toggleComment.bind(this);
+  //   this.handleLike = this.handleLike.bind(this);
+  //   this.handleUnlike = this.handleUnlike.bind(this);
+  //   this.likeOrUnlike = this.likeOrUnlike.bind(this);
+  // }
 
   componentDidMount() {
+    // this.likeOrUnlike();
     this.likeOrUnlike();
   }
 
 
 
-  toggleComment() {
-    let toggleCom = !this.state.comment_on;
-    this.setState({comment_on: toggleCom})
-  }
+  // toggleComment() {
+  //   let toggleCom = !this.state.comment_on;
+  //   this.setState({comment_on: toggleCom})
+  // }
 
   handleLike(postId){
     // e.preventDefault();
@@ -44,7 +45,6 @@ class PostItem extends React.Component {
     this.props.createLike(formData); 
     this.setState({like_on: false})
     // this.props.fetchLikes();      
-    // this.setState({num_likes: this.state.num_likes + 1})
   }
 
   handleUnlike(){
@@ -53,7 +53,6 @@ class PostItem extends React.Component {
       if (likes[i].parent_post_id === this.props.post.id && likes[i].liker_id === this.props.currentUser.id){
         this.setState({like_on: true})
         this.props.deleteLike(this.props.likes[i].id)
-        // this.setState({num_likes: this.state.num_likes - 1})
       }
     } 
     // this.props.fetchLikes();
@@ -111,9 +110,9 @@ class PostItem extends React.Component {
           </div>
           <hr className="hline-posts"/>
           <div className="like-comment-share">
-            {/* {console.log(this.state.post.likes)} */}
+            {/* {console.log(this.props.post.likes)} */}
             {/* {console.log(Object.values(this.props.likes))} */}
-            {/* Object.values(this.state.post.likes).includes(this.props.currentUser.id)  */}
+            {/* Object.values(this.props.post.likes).includes(this.props.currentUser.id)  */}
             {/* {!this.state.like_on ?             */}
             {this.props.likeOrUnlike ?            
             <div 
@@ -139,7 +138,9 @@ class PostItem extends React.Component {
             </div>              
           </div>
           <hr className="hline-posts"/>
-          {this.state.comment_on ? <CommentForm parent_post_id={this.props.post.id} comment_on={this.state.comment_on}/> : null}
+          {/* {this.state.comment_on ? <CommentForm parent_post_id={this.props.post.id} comment_on={this.state.comment_on}/> : null} */}
+          {/* {true ? <CommentForm parent_post_id={this.props.post.id} comment_on={this.state.comment_on}/> : null} */}
+          {true ? <CommentForm parent_post_id={this.props.post.id} /> : null}
 
 
           {Object.values(this.props.comments).reverse().map((comment, i) => (

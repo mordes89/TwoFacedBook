@@ -16,6 +16,8 @@ const RenderPost = (state) => {
       // const newPosts = e.target.value;
       setPosts(state.posts);
       setLikes(state.likes);
+      console.log("onChange");
+      debugger
    }
 
    let likeOrUnlike = (post) => {
@@ -33,9 +35,9 @@ const RenderPost = (state) => {
 
    return (
       <ul className="entire-post">  
-         {console.log("likes", likes)}          
+         {/* {console.log("likes", likes)}          
          {console.log("posts", state.posts)}          
-         {console.log("state", state)}          
+         {console.log("state", state)}           */}
             {(Object.values(state.posts).reverse().map((post, i) => (
                   <ul key={`post-${i}`} id="posts">
                      {<PostItem 
