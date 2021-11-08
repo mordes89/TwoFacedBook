@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import PostItem from './post_item';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchPosts, updatePost } from '../../actions/post_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { fetchComments } from '../../actions/comment_actions';
 import { 
@@ -21,7 +21,7 @@ const mSTP = (state) => {
     // posts: state.entities.posts,
     users: state.entities.users,
     comments: state.entities.comments,
-    // likes: state.entities.likes,
+    likes: state.entities.likes,
     likesAmtProp: Object.values(state.entities.likes).length,
   };
 };
@@ -31,6 +31,7 @@ const mDTP = dispatch => ({
   openModal: modal => dispatch(openModal(modal)),
   closeModal: modal => dispatch(closeModal(modal)),
   fetchUsers: () => dispatch(fetchUsers()), 
+  updatePost: (post) => dispatch(updatePost(post)), 
   fetchPosts: () => dispatch(fetchPosts()), 
   fetchComments: () => dispatch(fetchComments()),
   fetchLikes: () => dispatch(fetchLikes()),

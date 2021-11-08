@@ -12,7 +12,6 @@ class CommentForm extends React.Component {
       parent_post_id: this.props.parent_post_id,
       num_likes: 0,
 
-      comment_on: this.props.comment_on,
       edit: false
     };
 
@@ -20,7 +19,6 @@ class CommentForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-    this.updateToBlank = this.updateToBlank.bind(this);
   }
 
   componentDidMount() {
@@ -28,15 +26,9 @@ class CommentForm extends React.Component {
     // this.props.fetchUsers();
   }
 
-  update(field) {
+  update(field, value='') {
     return e => this.setState({ [field]: e.target.value });
-  }
-
-  updateToBlank() {
-    // () => this.setState({ body: "" });
-    let x = this.nullValue;
-    this.setState(({body: x}));
-  }
+  } 
 
   handleSubmit(e) {
     e.preventDefault();
@@ -49,15 +41,9 @@ class CommentForm extends React.Component {
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
     }   
-    this.props.processForm(formData);
-    // return (e) => this.setState({body: ""});
-    // this.update('body')
-    console.log(this.state.body);
-    // ()=>this.setState(prevState => ({body: ""}));
-    () => this.updateToBlank();
-    this.setState(({comment_on: false}))
-    console.log(this.state.body);
-    console.log(this.props.comment_on);
+    this.props.processForm(formData);    
+    console.log(this.state.body);   
+    this.props.toggleComment();
   }  
 
   handleFile(e){
@@ -73,7 +59,7 @@ class CommentForm extends React.Component {
   }
   
   render() {    
-  const comment = this.state.comment_on ? 
+  const comment = this.props.comment_on2 ? 
         <form className="posting-query" onSubmit={(e) => this.handleSubmit(e)}>
             <img src={window.userURL} className="post-user-pic"/>
             <input 

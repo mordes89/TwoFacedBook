@@ -10,28 +10,31 @@ import PostItem from '../posts/post_item_container.jsx';
 
 const RenderPost = (state) => {
    const [posts, setPosts] = useState(state.posts);
-   const [likes, setLikes] = useState(state.likes);
+   // const [likes, setLikes] = useState(state.likes);
 
    let onChange = e => {
       // const newPosts = e.target.value;
       setPosts(state.posts);
-      setLikes(state.likes);
+      // setLikes(state.likes);
       console.log("onChange");
       debugger
    }
 
    let likeOrUnlike = (post) => {
       if (Object.values(post.likes).length === 0){ 
+         console.log("render (post.likes).length === 0");
         return false
       } else {
         for (let i in post.likes) {
           if (post.likes[i].liker_id === state.currentUser.id){
+            console.log("render (post.likes).length === 1");
             return true
           }         
         }
+        console.log("render (post.likes).length === false");
         return false
       }
-    }
+   }
 
    return (
       <ul className="entire-post">  
@@ -41,9 +44,8 @@ const RenderPost = (state) => {
             {(Object.values(state.posts).reverse().map((post, i) => (
                   <ul key={`post-${i}`} id="posts">
                      {<PostItem 
-                        likeOrUnlike={likeOrUnlike(post)}                        
+                        likeOrUnlike={likeOrUnlike}                        
                         onChange={onChange}
-                        likes={likes}
                         fetched={0}
                         posts={posts}
                         post={post}
