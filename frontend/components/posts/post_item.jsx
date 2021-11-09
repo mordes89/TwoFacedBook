@@ -36,6 +36,10 @@ const PostItem = (props) => {
     console.log("toggleComment needs logic");
   }
 
+  let settingLikeOrUnlike = () => {
+    setlikeOrUnlike(!likeOrUnlike);
+  }
+
   let handleLike = (post) => {
     // e.preventDefault();
     const formData = new FormData();
@@ -44,7 +48,7 @@ const PostItem = (props) => {
     props.createLike(formData); 
    
     props.fetchPosts();
-    setlikeOrUnlike(!likeOrUnlike);
+    settingLikeOrUnlike();
   }
 
   let handleUnlike = () => {
@@ -55,7 +59,7 @@ const PostItem = (props) => {
       }
     } 
     props.fetchPosts();
-    setlikeOrUnlike(!likeOrUnlike);
+    settingLikeOrUnlike();
   }
 
   
@@ -81,6 +85,8 @@ const PostItem = (props) => {
           <div className="post-menu-icon-and-menu">
             <PostMenuDropdown 
               post={post}
+              onChange={props.onChange}
+
             />
           </div>
         <li className="post-body-homepage">{post.body}</li>

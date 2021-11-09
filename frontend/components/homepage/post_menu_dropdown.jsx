@@ -1,5 +1,4 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
 
 
 class PostMenuDropdown extends React.Component {
@@ -11,6 +10,7 @@ class PostMenuDropdown extends React.Component {
 
    handleMenuClick(e) {
       this.setState({show: !this.state.show})
+      this.props.onChange();
    }
 
    render() {
@@ -28,7 +28,7 @@ class PostMenuDropdown extends React.Component {
                   <img src={editURL} className="post-memu-icon"/>  
                      <button 
                         className="post-menu-text"
-                        onClick={() => this.props.openModal('editPost', this.props.post)}
+                        onClick={() => this.props.openModal('editPost', this.props.post).then(this.handleMenuClick())}
                      >Edit Post 
                      </button>
                   </div>

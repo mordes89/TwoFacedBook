@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 // import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 // import MenuDropdown from './menu_dropdown_container';
@@ -7,18 +7,29 @@ import PostItem from '../posts/post_item_container.jsx';
 // import CommentForm from '../comments/comment_form_container';
 // import CommentMenuDropdown from './comment_menu_dropdown_container';
 // import EditComment from '../comments/edit_comment_form_container';
+import { fetchPosts, updatePost, deletePost} from '../../actions/post_actions';
+
 
 const RenderPost = (state) => {
    const [posts, setPosts] = useState(state.posts);
    // const [likes, setLikes] = useState(state.likes);
 
-   let onChange = e => {
-      // const newPosts = e.target.value;
-      setPosts(state.posts);
-      // setLikes(state.likes);
+   let onChange = () => {
       console.log("onChange");
-      debugger
+
+      () => fetchPosts();
+      () => setPosts(state.posts);
    }
+
+   useEffect(
+      () => {
+         () => fetchPosts();
+         // () => setPosts(state.posts)
+         console.log("useEffect");
+         console.log("posts:", posts);
+         console.log("state:", state);
+      } 
+   )
 
    let likeOrUnlike = (post) => {
       if (Object.values(post.likes).length === 0){ 
@@ -44,10 +55,9 @@ const RenderPost = (state) => {
             {(Object.values(state.posts).reverse().map((post, i) => (
                   <ul key={`post-${i}`} id="posts">
                      {<PostItem 
-                        likeOrUnlike={likeOrUnlike}                        
                         onChange={onChange}
-                        fetched={0}
-                        posts={posts}
+                        likeOrUnlike={likeOrUnlike}                        
+                        posts={state.posts}
                         post={post}
                         postId={post.id}
                         num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
