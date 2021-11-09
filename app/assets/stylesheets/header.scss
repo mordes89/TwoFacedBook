@@ -70,6 +70,9 @@
    .right-nav-icon-name:hover{
       background-color: white;
    } 
+   @media (max-width: 1200px) {
+      display: none;
+   }
 }
 
 
