@@ -15,8 +15,7 @@ const RenderPost = (state) => {
    // const [likes, setLikes] = useState(state.likes);
 
    let onChange = () => {
-      console.log("");
-      () => fetchPosts();
+      fetchPosts();
       () => setPosts(state.posts);
    }
 

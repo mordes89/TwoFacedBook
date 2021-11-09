@@ -34,7 +34,6 @@ const PostItem = (props) => {
 
   let toggleComment = () => {
     setComment_on(!comment_on)
-    console.log("toggleComment needs logic");
   }
 
   let settingLikeOrUnlike = () => {

@@ -13,12 +13,18 @@ class PostMenuDropdown extends React.Component {
       this.props.onChange();
    }
 
+   handleMenuEditClick(e) {
+      this.setState({show: !this.state.show})
+      this.props.onChange();
+      this.props.openModal('editPost', this.props.post)
+   }
+   
+
    render() {
       let menuBackground = this.state.show ? <div className="post-menu-background" onClick={e => this.handleMenuClick(e)}></div> : null;
       let menu = this.state.show ? 
             <div 
                // className="post-menu-background"
-               // onClick={e => this.handleMenuClick(e)}
             >      
                <ul 
                   onClick={e => e.stopPropagation()} 
@@ -28,7 +34,7 @@ class PostMenuDropdown extends React.Component {
                   <img src={editURL} className="post-memu-icon"/>  
                      <button 
                         className="post-menu-text"
-                        onClick={() => this.props.openModal('editPost', this.props.post).then(this.handleMenuClick())}
+                        onClick={(e=>this.handleMenuEditClick(e))}
                      >Edit Post 
                      </button>
                   </div>
