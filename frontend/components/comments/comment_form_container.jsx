@@ -6,6 +6,8 @@ import { createComment } from '../../actions/comment_actions';
 import CommentModal from './comment_form';
 import { fetchComments } from '../../actions/comment_actions';
 import { fetchUsers } from '../../actions/user_actions';
+import { fetchPosts, updatePost } from '../../actions/post_actions';
+
 
 
 const mSTP = (state, ownProps) => {
@@ -22,6 +24,7 @@ const mDTP = dispatch => {
     closeModal: () => dispatch(closeModal()),
     fetchComments: () => dispatch(fetchComments()), 
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchPosts: () => dispatch(fetchPosts()), 
   };
 };
 
