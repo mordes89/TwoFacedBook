@@ -43,7 +43,6 @@ class CommentForm extends React.Component {
       formData.append('comment[photo]', this.state.photoFile);
     }   
     this.props.processForm(formData);    
-    console.log(this.state.body);   
     this.props.toggleComment();
   }  
 

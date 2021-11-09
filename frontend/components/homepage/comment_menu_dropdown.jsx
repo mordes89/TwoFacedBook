@@ -22,7 +22,7 @@ class CommentMenuDropdown extends React.Component {
       // this.setState({show: false})      
    }
    handleBlur() {
-      console.log("handleBlur");
+      // console.log("handleBlur");
       this.setState({show: false})      
    }
 
