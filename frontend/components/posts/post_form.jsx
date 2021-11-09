@@ -7,7 +7,8 @@ class PostModal extends React.Component {
       body: '',
       author_id: this.props.currentUser.id,
       photoUrl: null,
-      photoFile: null
+      photoFile: null,
+      posts: this.props.posts
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -25,8 +26,7 @@ class PostModal extends React.Component {
     formData.append('post[author_id]', this.state.author_id);
     if (this.state.photoFile) {  
       formData.append('post[photo]', this.state.photoFile);
-    }
-   
+    }   
     this.props.processForm(formData);
   }  
 

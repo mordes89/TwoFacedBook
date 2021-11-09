@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import PostItem from './post_item';
 import { openModal, closeModal } from '../../actions/modal_actions';
-import { fetchPosts } from '../../actions/post_actions';
+import { fetchPosts, updatePost } from '../../actions/post_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { fetchComments } from '../../actions/comment_actions';
 import { 
@@ -14,10 +14,11 @@ import {
 
 
 const mSTP = (state) => {
+   // console.log("mSTP Post_Item_Container");
   return {
     currentUser: state.entities.users[state.session.id],
     navLink: <Link to="/post"/>,
-    posts: state.entities.posts,
+    // posts: state.entities.posts,
     users: state.entities.users,
     comments: state.entities.comments,
     likes: state.entities.likes,
@@ -30,6 +31,7 @@ const mDTP = dispatch => ({
   openModal: modal => dispatch(openModal(modal)),
   closeModal: modal => dispatch(closeModal(modal)),
   fetchUsers: () => dispatch(fetchUsers()), 
+  updatePost: (post) => dispatch(updatePost(post)), 
   fetchPosts: () => dispatch(fetchPosts()), 
   fetchComments: () => dispatch(fetchComments()),
   fetchLikes: () => dispatch(fetchLikes()),

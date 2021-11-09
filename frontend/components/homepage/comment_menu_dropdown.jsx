@@ -68,7 +68,8 @@ class CommentMenuDropdown extends React.Component {
                   <div className="logout-row">
                      <button 
                         className="comment-menu-text"
-                        onClick={() => this.props.deleteComment(this.props.comment.id)
+                        onClick={
+                           () => this.props.deleteComment(this.props.comment.id)
                            .then(this.handleMenuClick())}
                      >Delete
                      </button>

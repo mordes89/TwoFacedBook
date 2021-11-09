@@ -4,6 +4,7 @@ import React from 'react';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
 import PostItem from '../posts/post_item_container.jsx';
+import RenderPost from '../posts/render_posts_container.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
@@ -14,6 +15,9 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);    
     this.state = {
+      fetched: false,
+      posts: this.props.posts,
+      prevPsotsLength: 0,
       comment_on: false,
       like_on: true,
       PrevlikesAmt: this.props.likesAmtProp,
@@ -21,11 +25,8 @@ class Homepage extends React.Component {
       likesInLocalState: this.props.likes,
       likeOrUnlikeState: false,
     }
-    // this.renderPosts = this.renderPosts.bind(this);
-    // this.toggleComment = this.toggleComment.bind(this);
-    // this.handleLike = this.handleLike.bind(this);
-    // this.handleUnlike = this.handleUnlike.bind(this);
-    // this.likeOrUnlike = this.likeOrUnlike.bind(this);
+    // this.renderPosts = this.renderPosts.bind(this); 
+    // this.autoReloader = this.autoReloader.bind(this); 
   }
   
   componentDidMount() {
@@ -35,31 +36,40 @@ class Homepage extends React.Component {
     this.props.fetchLikes();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   // debugger
+  //   if (this.state.fetched === false) { 
+  //     this.props.fetchPosts();
+  //     this.setState({fetched: true})
+  //     // debugger     
+  //     console.log("hit cdm");
+  //     // this.state.prevPsotsLength = Object.values(this.props.posts).length;
+  //   }
+  // }
 
-   
-  renderPosts() { 
-    if (!this.props.posts){
-      return null
-    }    
-    return(
-      <ul className="entire-post">
-        {Object.values(this.props.posts).reverse().map((post, i) => (
-          <ul key={`post-${i}`} id="posts">
-            {<PostItem 
-              post={post}
-              postId={post.id}
-              num_likes={Object.values(post.likes).length}
-              // comments={this.props.comments}
-              // currentUser={this.props.currentUser} 
-              // createLike={this.props.createLike} 
-              // deleteLike={this.props.deleteLike}
-              // fetchLikes={this.props.fetchLikes}
-            />}   
-          </ul>
-        ))}
-      </ul>
-    );
-  }
+
+
+//refactored to it's pwn render_posts file
+  // renderPosts() {    
+     
+  //   if (!this.props.posts){
+  //     return null
+  //   }    
+    
+  //   return(
+  //     <ul className="entire-post">
+  //       {Object.values(this.props.posts).reverse().map((post, i) => (
+  //         <ul key={`post-${i}`} id="posts">
+  //           {<PostItem 
+  //             post={post}
+  //             postId={post.id}
+  //             num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
+  //           />}   
+  //         </ul>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
   
   
   loggedIn () {
@@ -152,7 +162,8 @@ class Homepage extends React.Component {
                   <h1 className="media-text">Feeling</h1>
                 </div>
               </div>
-              <h1>{this.renderPosts()}</h1>
+              <RenderPost posts={this.props.posts} fetched={this.state.fetched}/>
+              {/* <h1>{this.renderPosts()}</h1> */}
             </div>
 
 
@@ -161,7 +172,7 @@ class Homepage extends React.Component {
     )
   };
   
-  render() {    
+  render() {          
     return (
       <div>
         {this.props.currentUser ? this.loggedIn() : null} 
