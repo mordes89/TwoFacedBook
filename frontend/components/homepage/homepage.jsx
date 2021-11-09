@@ -37,11 +37,9 @@ class Homepage extends React.Component {
   }
 
   // componentDidUpdate(prevProps, prevState) {
-  //   // debugger
   //   if (this.state.fetched === false) { 
   //     this.props.fetchPosts();
   //     this.setState({fetched: true})
-  //     // debugger     
   //     console.log("hit cdm");
   //     // this.state.prevPsotsLength = Object.values(this.props.posts).length;
   //   }
