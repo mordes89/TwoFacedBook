@@ -11,7 +11,7 @@ import { fetchPosts, updatePost, deletePost} from '../../actions/post_actions';
 
 
 const RenderPost = (state) => {
-   const [posts, setPosts] = useState(state.posts);
+   let [posts, setPosts] = useState(state.posts);
    // const [likes, setLikes] = useState(state.likes);
 
    let onChange = () => {
@@ -19,53 +19,61 @@ const RenderPost = (state) => {
 
       () => fetchPosts();
       () => setPosts(state.posts);
+      console.log("posts onChange:", posts);
+
    }
 
    useEffect(
       () => {
-         () => fetchPosts();
-         // () => setPosts(state.posts)
+         () => fetchPosts()
+         
          console.log("useEffect");
-         console.log("posts:", posts);
          console.log("state:", state);
-      } 
+         setPosts(state.posts)
+         console.log("posts:", posts);
+         return () => setPosts(state.posts)
+      }, [state.posts],
+         console.log("posts2:", posts),
+         console.log("useEffect2")
    )
 
    let likeOrUnlike = (post) => {
       if (Object.values(post.likes).length === 0){ 
-         console.log("render (post.likes).length === 0");
+         // console.log("render (post.likes).length === 0");
         return false
       } else {
         for (let i in post.likes) {
           if (post.likes[i].liker_id === state.currentUser.id){
-            console.log("render (post.likes).length === 1");
+            // console.log("render (post.likes).length === 1");
             return true
           }         
         }
-        console.log("render (post.likes).length === false");
+      //   console.log("render (post.likes).length === false");
         return false
       }
    }
+
+   let mapped = () => (Object.values(posts).reverse().map((post, i) => (
+      <ul key={`post-${i}`} id="posts">
+         {/* {post.body} */}
+         {<PostItem 
+            onChange={onChange}
+            likeOrUnlike={likeOrUnlike}                        
+            posts={state.posts}
+            post={post}
+            postId={post.id}
+            num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
+         />}           
+      </ul>
+   )))
 
    return (
       <ul className="entire-post">  
          {/* {console.log("likes", likes)}          
          {console.log("posts", state.posts)}          
          {console.log("state", state)}           */}
-            {(Object.values(state.posts).reverse().map((post, i) => (
-                  <ul key={`post-${i}`} id="posts">
-                     {<PostItem 
-                        onChange={onChange}
-                        likeOrUnlike={likeOrUnlike}                        
-                        posts={state.posts}
-                        post={post}
-                        postId={post.id}
-                        num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
-                     />
-                     }   
-                  </ul>
-               )))}
-         </ul>
+            {mapped()}
+      </ul>
    )
 } 
 
