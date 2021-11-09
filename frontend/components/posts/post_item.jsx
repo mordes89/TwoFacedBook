@@ -7,23 +7,24 @@ import PostMenuDropdown from '../homepage/post_menu_dropdown_container';
 
 // class PostItem extends React.Component {
 const PostItem = (props) => {
-  const [post, setPost] = useState(props.post);
+  // const [post2, setPost2] = useState(props.post);
 
-  let likeOrUnlike2 = (post) => {
-    if (Object.values(post.likes).length === 0){ 
-      console.log("(post.likes).length === 0");
-      return false
-    } else {
-      for (let i in props.likes) {
-        if (props.likes[i].liker_id === props.currentUser.id && props.likes[i].parent_post_id === post.id){
-          console.log("(post.likes).length === 1");
-          return true
-        }         
-      }
-      console.log("(post.likes).length === false");
-      return false
-    }
-  }
+  // let likeOrUnlike2 = (post) => {
+  //   if (Object.values(props.post.likes).length === 0){ 
+  //     console.log("(post.likes).length === 0");
+  //     return false
+  //   } else {
+  //     for (let i in props.likes) {
+  //     console.log("(post.likes).length === 0");
+  //       if (props.likes[i].liker_id === props.currentUser.id && props.likes[i].parent_post_id === props.post.id){
+  //         console.log("(post.likes).length === 1");
+  //         return true
+  //       }         
+  //     }
+  //     console.log("(post.likes).length === false");
+  //     return false
+  //   }
+  // }
   
   //defining likeOrUnlike:
   const [likeOrUnlike, setlikeOrUnlike] = useState(props.likeOrUnlike(props.post));
@@ -43,7 +44,7 @@ const PostItem = (props) => {
   let handleLike = (post) => {
     // e.preventDefault();
     const formData = new FormData();
-    formData.append('like[parent_post_id]', post.id);
+    formData.append('like[parent_post_id]', props.post.id);
     formData.append('like[liker_id]', props.currentUser.id);    
     props.createLike(formData); 
    
@@ -54,7 +55,7 @@ const PostItem = (props) => {
   let handleUnlike = () => {
     let likes = props.likes    
     for (let i in likes) { 
-      if (likes[i].parent_post_id === post.id && likes[i].liker_id === props.currentUser.id){
+      if (likes[i].parent_post_id === props.post.id && likes[i].liker_id === props.currentUser.id){
         props.deleteLike(props.likes[i].id)
       }
     } 
@@ -69,14 +70,14 @@ const PostItem = (props) => {
           <img src={userURL} className="profile-pic"/>              
           <div className="top-bar-of-post">
             <div className="name-and-time">
-              <li className="author">{`${post.author.first_name} ${post.author.last_name}`}</li>
+              <li className="author">{`${props.post.author.first_name} ${props.post.author.last_name}`}</li>
               <li className="created_at">{                  
-                Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 1 ? "Now" :
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 60000) < 60 ? 
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 60000)+"m" : 
-                  (Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000) < 23 ? 
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 3600000)+"h" : 
-                  Math.floor((Date.now() - Date.parse(post.created_at))/ 86400000)+"d" )                  
+                Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 1 ? "Now" :
+                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 60 ? 
+                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000)+"m" : 
+                  (Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000) < 23 ? 
+                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000)+"h" : 
+                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 86400000)+"d" )                  
                 }
               </li>
             </div>
@@ -84,16 +85,15 @@ const PostItem = (props) => {
         </div>
           <div className="post-menu-icon-and-menu">
             <PostMenuDropdown 
-              post={post}
+              post={props.post}
               onChange={props.onChange}
-
             />
           </div>
-        <li className="post-body-homepage">{post.body}</li>
-        <img src={post.photoUrl} className="post-pic-homepage"/>
+        <li className="post-body-homepage">{props.post.body}</li>
+        <img src={props.post.photoUrl} className="post-pic-homepage"/>
         <div 
           className="media-links"
-          onClick={() => handleLike(post)}
+          onClick={() => handleLike(props.post)}
           >
           <img src={likeURL} className="like-comment-share-icons"/>
           <h1 className="like-comment-share-text">{props.num_likes}</h1>
@@ -104,7 +104,7 @@ const PostItem = (props) => {
           {/* {console.log(Object.values(props.likes))} */}
           {/* Object.values(post.likes).includes(props.currentUser.id)  */}
           {/* {!this.state.like_on ?             */}
-          {likeOrUnlike ?            
+          {props.likeOrUnlike(props.post) ?            
           <div 
             className="media-links"
             onClick={() => handleUnlike()} //find the like.id where post.id == parent_post and liker_id == currentUser.id
@@ -115,7 +115,7 @@ const PostItem = (props) => {
           :
           <div 
             className="media-links"
-            onClick={() => handleLike(post)}
+            onClick={() => handleLike(props.post)}
             >
             <img src={likePostURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Like</h1>
@@ -132,12 +132,12 @@ const PostItem = (props) => {
 
         {/* Comments: */}
         {true ? <CommentForm 
-                    parent_post_id={post.id} 
+                    parent_post_id={props.post.id} 
                     comment_on2={comment_on}
                     toggleComment={toggleComment}
                 /> : null}
         {Object.values(props.comments).reverse().map((comment, i) => (
-          comment.parent_post_id === post.id ? 
+          comment.parent_post_id === props.post.id ? 
           (<ul key={`comment-${i}`} className="comments">
             <div className="pic-comment-dropdown">
               <img src={userURL} className="profile-pic"/>

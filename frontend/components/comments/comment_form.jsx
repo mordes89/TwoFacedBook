@@ -32,10 +32,11 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // this.props.fetchPosts();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.author_id);
-    formData.append('comment[parent_post_id]', this.state.parent_post_id);
+    formData.append('comment[parent_post_id]', this.props.parent_post_id);
     formData.append('comment[num_likes]', this.state.num_likes);
     formData.append('comment[edit]', false);
     if (this.state.photoFile) {  
