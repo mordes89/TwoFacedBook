@@ -18,7 +18,7 @@ class CommentMenuDropdown extends React.Component {
       this.setState({show: !this.state.show})      
    }
    handleFocus() {
-      console.log("handleFocus");
+      // console.log("handleFocus");
       // this.setState({show: false})      
    }
    handleBlur() {

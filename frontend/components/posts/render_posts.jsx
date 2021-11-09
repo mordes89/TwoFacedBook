@@ -15,26 +15,17 @@ const RenderPost = (state) => {
    // const [likes, setLikes] = useState(state.likes);
 
    let onChange = () => {
-      console.log("onChange");
-
+      console.log("");
       () => fetchPosts();
       () => setPosts(state.posts);
-      console.log("posts onChange:", posts);
-
    }
 
    useEffect(
       () => {
-         () => fetchPosts()
-         
-         console.log("useEffect");
-         console.log("state:", state);
+         () => fetchPosts()         
          setPosts(state.posts)
-         console.log("posts:", posts);
          return () => setPosts(state.posts)
-      }, [state.posts],
-         console.log("posts2:", posts),
-         console.log("useEffect2")
+      }, [state.posts]
    )
 
    let likeOrUnlike = (post) => {
