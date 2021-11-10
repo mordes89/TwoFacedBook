@@ -75,11 +75,11 @@ class Homepage extends React.Component {
       <div>
         <header className="header">
           <div className="header1">
-            <img src={window.facebookroundURL} className="logo"/>
+            <img src={window.facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
             {/* <img src={window.searchURL} className="logo"/> */}
           </div>
           <div className="header2">
-            <img src={window.homeURL} className="middle-header-icons"/>
+            <img src={window.homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
             {/* <img src={window.videoURL} className="middle-header-icons"/> */}
             {/* <img src={window.marketURL} className="middle-header-icons"/> */}
             {/* <img src={window.friendsURL} className="middle-header-icons"/> */}

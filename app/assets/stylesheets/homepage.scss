@@ -16,7 +16,8 @@
       text-size-adjust: 60px;   
    }   
    .user-logo-leftnav{
-      @include icon(60px)
+      @include icon($hw: 60px, $hoverColor: none);
+      cursor: default;
    }   
    .leftnav-name{
       font-weight: bold;
@@ -115,6 +116,12 @@
       cursor: pointer;
 
    }
+
+   .num_likes{
+      display: flex; 
+      width: 15%; 
+      @include roundCorners(); 
+   }
    
    .media-links{
       display: flex; 
@@ -160,7 +167,8 @@
 #posts{
    position: relative;
    padding: 10px;
-   border: 10px;   background-color: white;   
+   border: 10px;   
+   background-color: white;   
    display: flex;
    flex-direction: column;
    width: 62;

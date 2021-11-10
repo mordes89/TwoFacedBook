@@ -26,6 +26,7 @@
 @import "comment_menu_dropdown";
 
 body {
+   transition: 0.4s;
    font-family: $fontdefault;
    background-color:$inputBackground;
 }

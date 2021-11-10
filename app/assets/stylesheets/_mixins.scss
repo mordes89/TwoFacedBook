@@ -10,12 +10,12 @@
    margin-left: 10px;
    padding: 7px;
    cursor: pointer;
-   background-color: $backgroundColor;
+   // background-color: $backgroundColor;
    border-radius: $borderRadius;
-   &:hover{
-      background-color: $hoverColor;
-      transition: $transitionTime;
-   }
+   // &:hover{
+   //    background-color: $hoverColor;
+   //    transition: $transitionTime;
+   // }
 }
 
 @mixin hline($w: 100%, $h: 0.01px, $c: rgba(253, 247, 247, 0.692)){

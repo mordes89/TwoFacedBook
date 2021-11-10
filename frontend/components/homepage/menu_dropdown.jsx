@@ -23,18 +23,15 @@ class MenuDropdown extends React.Component {
                   onClick={e => e.stopPropagation()} 
                   className="menu-dropdown"
                >
-                  <div className="logout-row">
+                  <div className="logout-row" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}>
                      <img src={window.userURL} className="logo"/>
                      <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
                   </div>
                   <hr className="hline-login"/>
-                  <div className="logout-row">
+                  <div className="logout-row"                         
+                        onClick={this.props.logout}>
                      <img src={window.logoutURL} className="logout-memu-icon"/>
-                     <button 
-                        className="menu-text"
-                        onClick={this.props.logout}
-                     >Log Out
-                     </button>
+                     <button className="menu-text">Log Out</button>
                   </div>
                </ul>    
             </div>   

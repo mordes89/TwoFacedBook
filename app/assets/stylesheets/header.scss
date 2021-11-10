@@ -23,16 +23,19 @@
 // }
 
 .logo {
-   @include icon(55px, white);
+   @include icon(55px, transparent);
+   @include hoverColor();
 }
 
 .middle-header-icons{
    @include icon(50px, white, rgb(245, 243, 255));
    @include roundCorners();
+   @include hoverColor();
 }
 
 .right-header-icons {
    @include icon(45px);
+   @include hoverColor();
 }
 
 
@@ -58,7 +61,8 @@
 }
 
 .user-logo-header{
-   @include icon(40px);
+   @include icon(40px, $hoverColor: none);
+   cursor: default;
 }
 
 .right-nav-icon-name{

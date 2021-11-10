@@ -91,8 +91,8 @@ const PostItem = (props) => {
         <li className="post-body-homepage">{props.post.body}</li>
         <img src={props.post.photoUrl} className="post-pic-homepage"/>
         <div 
-          className="media-links"
-          onClick={() => handleLike(props.post)}
+          className="num_likes"
+          onClick={props.likeOrUnlike(props.post) ? () => handleUnlike() : () => handleLike(props.post)}
           >
           <img src={likeURL} className="like-comment-share-icons"/>
           <h1 className="like-comment-share-text">{props.num_likes}</h1>

@@ -31,6 +31,7 @@
    .menu-text{
       left: 14px;
       padding: 6px;
+      cursor: pointer;
    }
    
    .logout-row{
@@ -42,7 +43,7 @@
    }
    
    .logout-memu-icon{
-      @include icon(30px);
+      @include icon(30px, $backgroundColor: transparent, $hoverColor: transparent);
    }
 }
 
@@ -60,7 +61,8 @@
    position: absolute;
    top: 3%;
    right: 3%;
-   @include icon(35px, white);  
+   @include icon(35px, white);
+   @include hoverColor();
    .post-menu-dropdown{ 
       z-index: 11;
       position: absolute;    
