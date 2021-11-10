@@ -139,25 +139,25 @@ class Homepage extends React.Component {
               <hr className="hline-posts"/>
               <div className="add-media-to-post">
                 <div 
-                  className="media-links"
+                  className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.video_colorURL} className="media-icons"/>
-                  <h1 className="media-text">Video</h1>
+                  <img src={window.video_colorURL} className="media-icons-post"/>
+                  <h1 className="media-text-post">Video</h1>
                 </div>
                 <div 
-                  className="media-links"
+                  className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.photo_colorURL} className="media-icons"/>
-                  <h1 className="media-text">Photo</h1>
+                  <img src={window.photo_colorURL} className="media-icons-post"/>
+                  <h1 className="media-text-post">Photo</h1>
                 </div>
                 <div 
-                  className="media-links"
+                  className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.smiley_colorURL} className="media-icons"/>
-                  <h1 className="media-text">Feeling</h1>
+                  <img src={window.smiley_colorURL} className="media-icons-post"/>
+                  <h1 className="media-text-post">Feeling</h1>
                 </div>
               </div>
               <RenderPost posts={this.props.posts} fetched={this.state.fetched}/>

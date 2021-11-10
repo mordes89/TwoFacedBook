@@ -105,7 +105,7 @@ const PostItem = (props) => {
           {/* {!this.state.like_on ?             */}
           {props.likeOrUnlike(props.post) ?            
           <div 
-            className="media-links"
+            className="media-links-like-comment"
             onClick={() => handleUnlike()} //find the like.id where post.id == parent_post and liker_id == currentUser.id
             >
             <img src={unlikePostURL} className="like-comment-share-icons"/>
@@ -113,7 +113,7 @@ const PostItem = (props) => {
           </div> 
           :
           <div 
-            className="media-links"
+            className="media-links-like-comment"
             onClick={() => handleLike(props.post)}
             >
             <img src={likePostURL} className="like-comment-share-icons"/>
@@ -121,7 +121,7 @@ const PostItem = (props) => {
           </div>                         
           }
           
-          <div className="media-links" onClick={toggleComment}>
+          <div className="media-links-like-comment" onClick={toggleComment}>
             <img src={commentsURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Comment</h1>
           </div>              

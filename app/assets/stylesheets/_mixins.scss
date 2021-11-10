@@ -4,10 +4,10 @@
    cursor: pointer;
 }
 
-@mixin icon($hw: 45px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 25px, $transitionTime: 0.4s){
+@mixin icon($hw: 45px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 25px, $transitionTime: 0.4s, $margin-left: 10px){
    height: $hw;
    width: $hw;
-   margin-left: 10px;
+   margin-left: $margin-left;
    padding: 7px;
    cursor: pointer;
    // background-color: $backgroundColor;

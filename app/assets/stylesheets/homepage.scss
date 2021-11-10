@@ -108,7 +108,7 @@
    
    .add-media-to-post{
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       position: center;
       // align-items: center;
       // left: 5px;
@@ -117,33 +117,53 @@
 
    }
 
+   
+   .media-links-post{
+      display: flex; 
+      width: 33%; 
+      @include hoverColor(rgb(241, 234, 234));
+      @include roundCorners(); 
+      // margin: auto;
+      // text-align: center;
+      justify-content: center;
+      align-items: center;
+      .media-icons-post{
+         @include icon(40px, white, white); 
+         // margin-left: 10%;
+         // width: 50%; 
+         left: 50%;        
+      }
+      .media-text-post{
+         font-size: 80%px;
+         padding: 10px;
+         box-sizing: border-box;
+         border-radius: 40px;
+         width: 86%;
+         margin: 2px;
+      }
+   }
+   
+   
+
    .num_likes{
       display: flex; 
       width: 15%; 
       @include roundCorners(); 
    }
-   
-   .media-links{
-      display: flex; 
-      width: 33%; 
-      @include hoverColor(rgb(241, 234, 234));
-      @include roundCorners(); 
-   }
-   
-   .media-icons{
-      @include icon(40px, white, white);
-   }
-   
-   .media-text{
-      font-size: 80%px;
-      padding: 10px;
-      box-sizing: border-box;
-      border-radius: 40px;
-      width: 86%;
-      margin: 2px;
-   }
+
 }
 
+.media-links-like-comment{
+   display: flex; 
+   width: 40%; 
+   @include hoverColor(rgb(241, 234, 234));
+   @include roundCorners(); 
+   // margin: auto;
+   // text-align: center;
+   justify-content: center;
+   align-items: center;
+       
+}
 
 
 //posts:
@@ -234,7 +254,7 @@
 
 .like-comment-share{
    display: flex; 
-   justify-content: space-evenly;
+   justify-content: center;
    align-items: center;
    position: center;
    @include roundCorners(); 
@@ -243,18 +263,14 @@
 .like-comment-share-icons{
    @include hoverColor(rgb(241, 234, 234));
    align-self: center;
-   @include icon($hw: 30px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 100px, $transitionTime: 0.4s);
+   @include icon($hw: 30px, $backgroundColor: rgba(241, 240, 240, 0.692), $hoverColor: rgb(209, 209, 209), $borderRadius: 100px, $transitionTime: 0.4s, $margin-left: 0);
 }
 
 .like-comment-share-text{
    align-self: center;
    font-size: 40%px;
-   // padding: 3px;
-   // box-sizing: border-box;
-   // border-radius: 40px;
-   // width: 86%;
-   // margin: 0.5px;
-}
+   margin-right: 13px;
+}  
 
 .pic-comment-dropdown{
    display: flex;
