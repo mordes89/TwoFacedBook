@@ -141,8 +141,7 @@
          width: 86%;
          margin: 2px;
       }
-   }
-   
+   }  
    
 
    .num_likes{
@@ -152,19 +151,6 @@
    }
 
 }
-
-.media-links-like-comment{
-   display: flex; 
-   width: 40%; 
-   @include hoverColor(rgb(241, 234, 234));
-   @include roundCorners(); 
-   // margin: auto;
-   // text-align: center;
-   justify-content: center;
-   align-items: center;
-       
-}
-
 
 //posts:
 
@@ -250,6 +236,17 @@
 .hline-posts{
    @include hline(95%);
    color: rgb(196, 196, 196);
+}
+.media-links-like-comment{
+   display: flex; 
+   width: 40%; 
+   @include hoverColor(rgb(241, 234, 234));
+   @include roundCorners(); 
+   // margin: auto;
+   // text-align: center;
+   justify-content: center;
+   align-items: center;
+       
 }
 
 .like-comment-share{

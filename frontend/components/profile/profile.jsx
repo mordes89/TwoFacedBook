@@ -1,11 +1,11 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// // import Modal from './modal/modal';
-// import MenuDropdown from './menu_dropdown_container';
-// import PostMenuDropdown from './post_menu_dropdown_container';
+import React from 'react';
+import { Link } from 'react-router-dom';
+// import Modal from './modal/modal';
+import MenuDropdown from './menu_dropdown_container';
+import PostMenuDropdown from './post_menu_dropdown_container';
 
 
-// class Homepage extends React.Component {
+class Homepage extends React.Component {
 //   constructor(props) {
 //     super(props);
 //     this.renderPosts = this.renderPosts.bind(this)
@@ -160,13 +160,15 @@
 //     )
 //   };
   
-//   render() {    
-//     return (
-//       <div>
-//         {this.props.currentUser ? this.loggedIn() : null}        
-//       </div>
-//     )
-//   } 
-// };
+  render() {    
+    return (
+      <div>
+         Profile
+        {/* {this.props.currentUser ? this.loggedIn() : null}         */}
+      </div>
+    )
+  } 
 
-// export default Homepage;
+};
+
+export default Homepage;
