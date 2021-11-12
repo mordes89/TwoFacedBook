@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
@@ -8,6 +7,7 @@ import RenderPost from '../posts/render_posts_container.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
+import { Link } from 'react-router-dom';
 
 
 
@@ -86,10 +86,12 @@ class Homepage extends React.Component {
             {/* <img src={window.newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
-            <div className="right-nav-icon-name">
-              <img src={window.userURL} className="user-logo-header"/>
-              <h2 className="header-name">{this.props.currentUser.first_name}</h2>
-            </div>
+            <Link to="/signup">
+              <div className="right-nav-icon-name">
+                <img src={window.userURL} className="user-logo-header"/>
+                <h2 className="header-name">{this.props.currentUser.first_name}</h2>
+              </div>
+            </Link>
             {/* <img src={window.appsURL} className="logo"/>
             <img src={window.messagesURL} className="logo"/>
             <img src={window.bellURL} className="logo"/> */}

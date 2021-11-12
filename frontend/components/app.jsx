@@ -17,12 +17,12 @@ const App = () => (
   <div>    
     <header>
       <Modal />
-      <HomepageContainer/>
+      {/* <HomepageContainer/> */}
     </header>
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <ProtectedRoute exact path="/" component={HomepageContainer} />
+      <ProtectedRoute exact path="/home" component={HomepageContainer} />
       <ProtectedRoute exact path="/post" component={PostFormContainer} />
       <ProtectedRoute exact path="/edit_post" component={EditPostFormContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />

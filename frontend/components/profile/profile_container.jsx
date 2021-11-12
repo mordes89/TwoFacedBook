@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import Homepage from './homepage';
+import Profile from './profile';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchPosts } from '../../actions/post_actions';
 import { fetchUsers } from '../../actions/user_actions';
@@ -25,4 +25,4 @@ const mDTP = dispatch => ({
   fetchUsers: () => dispatch(fetchUsers()), 
 });
 
-export default connect(mSTP, mDTP)(Homepage);
+export default connect(mSTP, mDTP)(Profile);
