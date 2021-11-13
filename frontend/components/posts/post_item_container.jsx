@@ -14,7 +14,6 @@ import {
 
 
 const mSTP = (state) => {
-   // console.log("mSTP Post_Item_Container");
   return {
     currentUser: state.entities.users[state.session.id],
     navLink: <Link to="/post"/>,

@@ -1,5 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+
 
 
 class MenuDropdown extends React.Component {
@@ -23,10 +25,12 @@ class MenuDropdown extends React.Component {
                   onClick={e => e.stopPropagation()} 
                   className="menu-dropdown"
                >
-                  <div className="logout-row" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}>
-                     <img src={window.userURL} className="logo"/>
-                     <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
-                  </div>
+                  <Link to={`/user/${this.props.currentUser.id}`}>
+                     <div className="logout-row">
+                        <img src={window.userURL} className="logo"/>
+                        <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
+                     </div>
+                  </Link>
                   <hr className="hline-login"/>
                   <div className="logout-row"                         
                         onClick={this.props.logout}>

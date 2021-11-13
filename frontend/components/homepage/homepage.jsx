@@ -86,7 +86,7 @@ class Homepage extends React.Component {
             {/* <img src={window.newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
-            <Link to="/signup">
+            <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="right-nav-icon-name">
                 <img src={window.userURL} className="user-logo-header"/>
                 <h2 className="header-name">{this.props.currentUser.first_name}</h2>
@@ -101,10 +101,12 @@ class Homepage extends React.Component {
 
         <div className="homepage-body">
           <div className="left-nav">
-            <div className="left-nav-icon-row">
-              <img src={window.userURL} className="user-logo-leftnav"/>
-              <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
-            </div>
+          <Link to={`/user/${this.props.currentUser.id}`}>
+              <div className="left-nav-icon-row">
+                <img src={window.userURL} className="user-logo-leftnav"/>
+                <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
+              </div>
+            </Link>
           </div>
          
           <div className="right-nav">
