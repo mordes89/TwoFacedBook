@@ -143,11 +143,6 @@ const Profile = (props) => {
   // };
 
 
-  let coverPhoto = <img src={coverPhoto1} className="cover-photo"/>
-
-
-
-
 
 
 
@@ -190,14 +185,14 @@ const Profile = (props) => {
           <MenuDropdown className="show-menu-dropdown"/>
         </div>    
       </header>
+        <img src={coverPhoto1} className="cover-photo"/>
+        <div className="profile-photo-and-name">
+          <img src={profilePhoto1} className="profile-photo"/>
+          <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
+        </div>
 
-
-
-
-        {coverPhoto}
         {homeLink}
         {/* {users[id].first_name} */}
-        {userProfile.first_name}
         {mapped()}
     </div>
   )  
