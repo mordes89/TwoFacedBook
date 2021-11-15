@@ -188,6 +188,7 @@ const Profile = (props) => {
         <img src={coverPhoto1} className="cover-photo"/>
         <div className="profile-photo-and-name">
           <img src={profilePhoto1} className="profile-photo"/>
+          <img src={photo_color} className="edit-profile-photo"/>
           <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
         </div>
 
