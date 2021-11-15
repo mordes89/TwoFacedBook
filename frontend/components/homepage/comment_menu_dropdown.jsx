@@ -42,7 +42,7 @@ class CommentMenuDropdown extends React.Component {
 
    render() {
       let menuIcon = (this.props.currentUser.id == this.props.comment.author_id) ? 
-            <img src={window.menuDotsURL} 
+            <img src={menuDotsURL} 
                className="comment-menu-icon" 
                onClick={e => this.handleMenuClick(e)}                             
             /> 

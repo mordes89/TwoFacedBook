@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 // import MenuDropdown from './menu_dropdown_container';
 // import PostMenuDropdown from './post_menu_dropdown_container';
 import {useParams} from "react-router-dom";
+import { fetchUsers } from '../../actions/user_actions';
+import MenuDropdown from '../homepage/menu_dropdown_container';
+
 
 
 
@@ -92,36 +95,109 @@ import {useParams} from "react-router-dom";
 
 const Profile = (props) => {
   let [users, setUsers] = useState(props.users);
-  let [userProfile, setUserProfile] = useState(0);
-
   const {id} = useParams();
-  
-  useEffect(
-    () => {
-      props.fetchUsers() 
-      // setUsers(props.users)
-      // return () => setUsers(props.users)        
-      //  Object.values(users).map((user) => (
-      //     user.id === id ? (userProfile = user) : null))
-    }, [props.users],
-    // console.log("props.users:", props.users),
-    console.log("state.entities.users.last:", props.users.last),
-    console.log("state.entities.users:", props.users),
-    console.log("users:", users),
-    console.log("id:", id),
-    console.log("userProfile:", userProfile),
-    console.log("Object.values(users):", Object.values(users)),
-    console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
- )
+  let [userProfile, setUserProfile] = useState(props.users[id]);
 
- let mapped = () => (Object.values(users).map((user, i) => (
-  <ul key={`user-${i}`} id="posts">
-     {user.id}              
-  </ul>
-)))
+  let fetchUsers2 = () => fetchUsers(); 
+
+  // useEffect(
+  //   () => {
+  //     fetchUsers2()
+  //     console.log("fetchUsers")
+  //     console.log("usersFetched:", users)
+  //     // debugger
+  //     // setUsers(props.users)
+  //     // return () => setUsers(props.users)        
+  //     //  Object.values(users).map((user) => (
+  //     //     user.id === id ? (userProfile = user) : null))
+  //   }, [users],
+  //   // console.log("props.users:", props.users),
+  //   console.log("state.entities.users.last:", props.users.last),
+  //   console.log("state.entities.users:", props.users),
+  //   console.log("users:", users),
+  //   console.log("id:", id),
+  //   console.log("userProfile:", userProfile),
+  //   console.log("Object.values(users):", Object.values(users)),
+  //   console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
+  // )
+
+  if (window.performance) {
+    if (performance.navigation.type == 1) {
+      event.preventDefault();
+      props.history.push('/home')
+    }
+  }
+
+  // const initBeforeUnLoad = (showExitPrompt) => {
+  //   window.onbeforeunload = (event) => {
+  //     // Show prompt based on state
+  //     if (showExitPrompt) {
+  //       const e = event || window.event;
+  //       e.preventDefault();
+  //       if (e) {
+  //         e.returnValue = ''
+  //       }
+  //       return '';
+  //     }
+  //   };
+  // };
+
+
+  let coverPhoto = <img src={coverPhoto1} className="cover-photo"/>
+
+
+
+
+
+
+
+
+  let mapped = () => (Object.values(users).map((user, i) => (
+    id ?
+    <ul key={`user-${i}`} id="posts">
+      {user.id}             
+      {user.first_name}             
+      {user.last_name}             
+    </ul> : null
+  )))
+
+  let homeLink = <button><Link to="/home">Home</Link></button>
   
   return (
     <div>
+      <header className="header">
+        <div className="header1">
+          <img src={facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+          {/* <img src={window.searchURL} className="logo"/> */}
+        </div>
+        <div className="header2">
+          <img src={homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+          {/* <img src={window.videoURL} className="middle-header-icons"/> */}
+          {/* <img src={window.marketURL} className="middle-header-icons"/> */}
+          {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
+          {/* <img src={window.newsURL} className="middle-header-icons"/> */}
+        </div>
+        <div className="header3">
+          <Link to={`/user/${props.currentUser.id}`}>
+            <div className="right-nav-icon-name">
+              <img src={userURL} className="user-logo-header"/>
+              <h2 className="header-name">{props.currentUser.first_name}</h2>
+            </div>
+          </Link>
+          {/* <img src={window.appsURL} className="logo"/>
+          <img src={window.messagesURL} className="logo"/>
+          <img src={window.bellURL} className="logo"/> */}
+          <MenuDropdown className="show-menu-dropdown"/>
+        </div>    
+      </header>
+
+
+
+
+        {coverPhoto}
+        {homeLink}
+        {/* {users[id].first_name} */}
+        {userProfile.first_name}
         {mapped()}
     </div>
   )  

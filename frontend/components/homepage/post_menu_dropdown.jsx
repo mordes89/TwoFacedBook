@@ -53,7 +53,7 @@ class PostMenuDropdown extends React.Component {
          : null;
 
          let menuIcon = (this.props.currentUser.id == this.props.post.author_id) ? 
-            <img src={window.menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
+            <img src={menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
             : null;
       return (
          <div> 
