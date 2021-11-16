@@ -185,23 +185,35 @@ const Profile = (props) => {
           <MenuDropdown className="show-menu-dropdown"/>
         </div>    
       </header>
-        <div className="cover-photo-and-profile-photo">
-          <div className="cover-photo">
-            {/* <div className="edit-cover-photo"> */}
-              <img src={photo_color} className="edit-cover-photo"/>
-              {/* <p>Edit Cover Photo</p> */}
-            {/* </div> */}
-            <img src={coverPhoto1} className="cover-photo2"/>
-            <div className="profile-photo-and-name">
-              <img src={profilePhoto1} className="profile-photo"/>
-              <img src={photo_color} className="edit-profile-photo"/>                
-              <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
+
+      <div className="cover-photo-and-profile-photo">
+        <div className="cover-photos-and-name">
+          <div>
+            <img src={coverPhoto1} id="cover-photo-pic"/>
+            <div id="edit-cover-photo-container">
+              <img src={editPic} className="edit-cover-photo-pic"/>
+              <p className="edit-cover-photo-text">Edit Cover Photo</p>
             </div>
           </div>
+          <div className="profile-photo-and-name">
+            <img src={profilePhoto1} className="profile-photo"/>
+            <img src={photo_color} className="edit-profile-photo"/>                
+            <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
+          </div>
         </div>
-        {homeLink}
+      </div>
+
+      <div className="posts-and-bio">
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+      </div>
+        {/* {homeLink} */}
         {/* {users[id].first_name} */}
-        {mapped()}
+        {/* {mapped()} */}
     </div>
   )  
 };
