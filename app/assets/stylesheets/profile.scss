@@ -1,6 +1,10 @@
 @import "variables";
 @import "mixins";
 
+
+.cover-photo-and-profile-photo{
+   position: relative;
+}
 .cover-photo{
    display: flex;
    flex-direction: column;
@@ -9,6 +13,20 @@
    transform: translate(0%, 0%); 
    margin-left: 10%;     
    @include roundCorners();
+   object-fit: cover;
+   max-height: 400px;
+}
+
+.edit-cover-photo{
+   position: absolute;
+   width: 6%;
+   transform: translate(0%, 220%); 
+   margin-left: 85%;
+   margin-top: 32%;   
+   @include roundCorners(20px);
+   // object-fit: cover;
+   z-index: 1;
+
 }
 
 .profile-photo-and-name{
@@ -25,7 +43,7 @@
       height: 170px;
       border-radius: 85px;
       object-fit: cover;
-      border: 7px solid white;
+      border: 7px solid white;      
    }
    .edit-profile-photo{
       display: flex;
