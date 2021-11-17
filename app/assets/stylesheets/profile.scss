@@ -112,6 +112,97 @@
          margin: -70px 0 0 0px;
       }
    }
+
+   .myPosts-section{
+      position:absolute;
+      margin-top:450px;      
+   }
+
+   .posting-box-profile{   
+      position: relative;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 62%;
+      height: 125px;
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      // border: 1px solid; 
+      box-sizing: border-box;
+      box-shadow: 0 0 1px;
+      transform: translate(-50%, 0%); 
+      @include phoneView(visible);
+      @include fullDesktopView();
+      @include roundCorners();
+      .post-user-pic-profile{
+         @include icon(50px, white, white);
+      }
+      
+      .posting-query-profile{
+         display: flex;
+         margin-top: 1%;
+      }
+      
+      .create_post-input-profile{
+         // width: 99%;
+         @include roundedInputField();
+         @include hoverColor();
+      }
+   
+      .pic-preview-profile{
+         width: 10px;
+         height: 10px;
+      }
+      
+      .add-media-to-post-profile{
+         display: flex;
+         justify-content: space-between;
+         position: center;
+         // align-items: center;
+         // left: 5px;
+         margin: 0% 4% 0% 4%;
+         cursor: pointer;
+   
+      }
+   
+      
+      .media-links-post-profile{
+         display: flex; 
+         width: 33%; 
+         @include hoverColor(rgb(241, 234, 234));
+         @include roundCorners(); 
+         // margin: auto;
+         // text-align: center;
+         justify-content: center;
+         align-items: center;
+         .media-icons-post-profile{
+            @include icon(40px, white, white); 
+            // margin-left: 10%;
+            // width: 50%; 
+            left: 50%;        
+         }
+         .media-text-post-profile{
+            font-size: 80%px;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 40px;
+            width: 86%;
+            margin: 2px;
+         }
+      } 
+   }
+
+   .bio-container{
+      // position: relative;
+      margin-top: 200px;
+      // display: flex;
+      // flex-direction: column;
+      #bio-row{
+         display: flex;
+         flex-direction: row;
+         font-weight: bold;
+      }
+   }
+
 }
-
-

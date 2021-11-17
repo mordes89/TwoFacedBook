@@ -160,7 +160,7 @@ class Homepage extends React.Component {
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={smiley_colorURL} className="media-icons-post"/>
+                  <img src={window.smiley_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Feeling</h1>
                 </div>
               </div>

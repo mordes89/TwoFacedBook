@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 import { fetchUsers } from '../../actions/user_actions';
 import MenuDropdown from '../homepage/menu_dropdown_container';
+import RenderPost from '../posts/render_posts_container.jsx';
 
 
 
@@ -95,6 +96,7 @@ import MenuDropdown from '../homepage/menu_dropdown_container';
 
 const Profile = (props) => {
   let [users, setUsers] = useState(props.users);
+  let [posts, setPosts] = useState(props.posts);
   const {id} = useParams();
   let [userProfile, setUserProfile] = useState(props.users[id]);
 
@@ -158,6 +160,54 @@ const Profile = (props) => {
 
   let homeLink = <button><Link to="/home">Home</Link></button>
   
+  let myPosts = (<div className="middle-nav-newsfeed2-profile">
+  <div className="posting-box-profile">
+    <div className="posting-query-profile">
+      <img src={userURL} className="post-user-pic-profile"/>
+      <input 
+        onClick={() => props.openModal('post')} 
+        className="create_post-input-profile" 
+        placeholder={`What's on your mind ${props.currentUser.first_name}?`}                  
+      />    
+    </div>
+    <hr className="hline-posts-profile"/>
+    <div className="add-media-to-post-profile">
+      <div 
+        className="media-links-post-profile"
+        onClick={() => props.openModal('post')}
+      >
+        <img src={video_colorURL} className="media-icons-post-profile"/>
+        <h1 className="media-text-post-profile">Video</h1>
+      </div>
+      <div 
+        className="media-links-post-profile"
+        onClick={() => props.openModal('post')}
+      >
+        <img src={photo_colorURL} className="media-icons-post-profile"/>
+        <h1 className="media-text-post-profile">Photo</h1>
+      </div>
+      <div 
+        className="media-links-post-profile"
+        onClick={() => props.openModal('post')}
+      >
+        <img src={window.smiley_colorURL} className="media-icons-post"/>
+        <h1 className="media-text-post-profile">Feeling</h1>
+      </div>
+    </div>
+      <RenderPost posts={props.posts}/>
+      {/* <h1>{renderPosts()}</h1> */}
+    </div>
+  </div>)
+
+  let bio = (
+  <div>
+    Hi
+  </div>
+    ) 
+
+
+
+
   return (
     <div>
       <header className="header">
@@ -204,11 +254,38 @@ const Profile = (props) => {
       </div>
 
       <div className="posts-and-bio">
-        <div>
-
+        <div className="bio-container">
+          <div>
+            <p>Edit Bio</p>
+          </div>
+          <div id="bio-row">
+            <p>Current Work: </p>
+            <h1>{userProfile.first_name}</h1>
+          </div>
+          <div>
+            <p>School</p>
+            {userProfile.last_name}
+          </div>
+          <div>
+            <p>Address</p>
+          </div>
+          <div>
+            <p>From</p>
+          </div>
+          <div>
+            <p>Relationship Status</p>
+          </div>
+          <div>
+            <p>Joined TwoFacedBook</p>
+          </div>
         </div>
-        <div>
 
+        <div>
+          {bio}
+        </div>
+
+        <div className="myPosts-section">
+          {myPosts}
         </div>
       </div>
         {/* {homeLink} */}
