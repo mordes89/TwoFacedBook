@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import { fetchUsers } from '../../actions/user_actions';
 import MenuDropdown from '../homepage/menu_dropdown_container';
 import RenderPost from '../posts/render_posts_container.jsx';
+import BioItem from './bio_item_container'
 
 
 
@@ -190,7 +191,7 @@ const Profile = (props) => {
         className="media-links-post-profile"
         onClick={() => props.openModal('post')}
       >
-        <img src={window.smiley_colorURL} className="media-icons-post"/>
+        <img src={window.smiley_colorURL} className="media-icons-post-profile"/>
         <h1 className="media-text-post-profile">Feeling</h1>
       </div>
     </div>
@@ -198,12 +199,6 @@ const Profile = (props) => {
       {/* <h1>{renderPosts()}</h1> */}
     </div>
   </div>)
-
-  let bio = (
-  <div>
-    Hi
-  </div>
-    ) 
 
 
 
@@ -236,6 +231,8 @@ const Profile = (props) => {
         </div>    
       </header>
 
+
+
       <div className="cover-photo-and-profile-photo">
         <div className="cover-photos-and-name">
           <div>
@@ -252,45 +249,13 @@ const Profile = (props) => {
           </div>
         </div>
       </div>
+      
 
-      <div className="posts-and-bio">
-        <div className="bio-container">
-          <div>
-            <p>Edit Bio</p>
-          </div>
-          <div id="bio-row">
-            <p>Current Work: </p>
-            <h1>{userProfile.first_name}</h1>
-          </div>
-          <div>
-            <p>School {userProfile.last_name}</p>
-            
-          </div>
-          <div>
-            <p>Address</p>
-          </div>
-          <div>
-            <p>From</p>
-          </div>
-          <div>
-            <p>Relationship Status</p>
-          </div>
-          <div>
-            <p>Joined TwoFacedBook</p>
-          </div>
-        </div>
-
-        <div>
-          {bio}
-        </div>
-
-        <div className="myPosts-section">
-          {myPosts}
-        </div>
+      <div className="myPosts-section">
+        <BioItem userProfile={userProfile}/>    
+        {myPosts}
       </div>
-        {/* {homeLink} */}
-        {/* {users[id].first_name} */}
-        {/* {mapped()} */}
+      {/* {mapped()} */}
     </div>
   )  
 };
