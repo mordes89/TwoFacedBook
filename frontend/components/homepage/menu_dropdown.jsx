@@ -1,5 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+
 
 
 class MenuDropdown extends React.Component {
@@ -23,14 +25,16 @@ class MenuDropdown extends React.Component {
                   onClick={e => e.stopPropagation()} 
                   className="menu-dropdown"
                >
-                  <div className="logout-row" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}>
-                     <img src={window.userURL} className="logo"/>
-                     <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
-                  </div>
+                  <Link to={`/user/${this.props.currentUser.id}`}>
+                     <div className="logout-row">
+                        <img src={userURL} className="logo"/>
+                        <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
+                     </div>
+                  </Link>
                   <hr className="hline-login"/>
                   <div className="logout-row"                         
                         onClick={this.props.logout}>
-                     <img src={window.logoutURL} className="logout-memu-icon"/>
+                     <img src={logoutURL} className="logout-memu-icon"/>
                      <button className="menu-text">Log Out</button>
                   </div>
                </ul>    
@@ -38,7 +42,7 @@ class MenuDropdown extends React.Component {
          : null;
       return (
          <div>
-            <img src={window.downarrowURL} className="right-header-icons" onClick={e => this.handleMenuClick(e)}/>
+            <img src={downarrowURL} className="right-header-icons" onClick={e => this.handleMenuClick(e)}/>
             <>{menu}</>
          </div>
       ) 

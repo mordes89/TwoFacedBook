@@ -34,11 +34,9 @@ const RenderPost = (state) => {
       } else {
         for (let i in post.likes) {
           if (post.likes[i].liker_id === state.currentUser.id){
-            // console.log("render (post.likes).length === 1");
             return true
           }         
         }
-      //   console.log("render (post.likes).length === false");
         return false
       }
    }
@@ -58,11 +56,8 @@ const RenderPost = (state) => {
    )))
 
    return (
-      <ul className="entire-post">  
-         {/* {console.log("likes", likes)}          
-         {console.log("posts", state.posts)}          
-         {console.log("state", state)}           */}
-            {mapped()}
+      <ul className="entire-post"> 
+        {mapped()}
       </ul>
    )
 } 

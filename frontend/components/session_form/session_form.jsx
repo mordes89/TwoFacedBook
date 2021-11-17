@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
+
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -19,12 +21,13 @@ class SessionForm extends React.Component {
   handleSubmit(e) {    
     e.preventDefault();
     this.props.processForm(Object.assign({}, this.state))
-      .then( () => this.props.history.push('/signup'))
+      .then(() => this.props.history.push('/home'))
   }
 
   handleDemoLogin(e) {        
     e.preventDefault();
     this.props.login({email: 'demouser@user.com', password: '123456'})
+    .then(() => this.props.history.push('/home'));
   }
 
   handleNewUser(e) {    
@@ -69,7 +72,9 @@ class SessionForm extends React.Component {
                 placeholder="Password"
                 className="login-field"
               />
-            <button type="submit" className="login-button">Log In</button>
+              {/* <Link to="/"> */}
+                <button type="submit" className="login-button">Log In</button>
+              {/* </Link> */}
             <hr className="hline-login"/>
         </form>
             <h1 className="errors">{this.renderErrors()}</h1>

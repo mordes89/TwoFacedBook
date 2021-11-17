@@ -3,6 +3,8 @@ import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from '../homepage/comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
 import PostMenuDropdown from '../homepage/post_menu_dropdown_container';
+import { Link } from 'react-router-dom';
+
 
 
 // class PostItem extends React.Component {
@@ -41,7 +43,7 @@ const PostItem = (props) => {
   }
 
   let handleLike = (post) => {
-    // e.preventDefault();
+    event.preventDefault();
     const formData = new FormData();
     formData.append('like[parent_post_id]', props.post.id);
     formData.append('like[liker_id]', props.currentUser.id);    
@@ -68,18 +70,20 @@ const PostItem = (props) => {
       <div className="poster-and-time">
           <img src={userURL} className="profile-pic"/>              
           <div className="top-bar-of-post">
-            <div className="name-and-time">
-              <li className="author">{`${props.post.author.first_name} ${props.post.author.last_name}`}</li>
-              <li className="created_at">{                  
-                Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 1 ? "Now" :
-                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 60 ? 
-                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000)+"m" : 
-                  (Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000) < 23 ? 
-                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000)+"h" : 
-                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 86400000)+"d" )                  
-                }
-              </li>
-            </div>
+            <Link to={`/user/${props.post.author.id}`} >
+              <div className="name-and-time">
+                <li className="author">{`${props.post.author.first_name} ${props.post.author.last_name}`}</li>
+                <li className="created_at">{                  
+                  Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 1 ? "Now" :
+                    Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000) < 60 ? 
+                    Math.floor((Date.now() - Date.parse(props.post.created_at))/ 60000)+"m" : 
+                    (Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000) < 23 ? 
+                    Math.floor((Date.now() - Date.parse(props.post.created_at))/ 3600000)+"h" : 
+                    Math.floor((Date.now() - Date.parse(props.post.created_at))/ 86400000)+"d" )                  
+                  }
+                </li>
+              </div>
+            </Link>
           </div>
         </div>
           <div className="post-menu-icon-and-menu">

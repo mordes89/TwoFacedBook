@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
 import MenuDropdown from './menu_dropdown_container';
 import PostMenuDropdown from './post_menu_dropdown_container';
@@ -8,6 +7,7 @@ import RenderPost from '../posts/render_posts_container.jsx';
 import CommentForm from '../comments/comment_form_container';
 import CommentMenuDropdown from './comment_menu_dropdown_container';
 import EditComment from '../comments/edit_comment_form_container';
+import { Link } from 'react-router-dom';
 
 
 
@@ -75,21 +75,23 @@ class Homepage extends React.Component {
       <div>
         <header className="header">
           <div className="header1">
-            <img src={window.facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+            <img src={facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
             {/* <img src={window.searchURL} className="logo"/> */}
           </div>
           <div className="header2">
-            <img src={window.homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+            <img src={homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
             {/* <img src={window.videoURL} className="middle-header-icons"/> */}
             {/* <img src={window.marketURL} className="middle-header-icons"/> */}
             {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
             {/* <img src={window.newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
-            <div className="right-nav-icon-name">
-              <img src={window.userURL} className="user-logo-header"/>
-              <h2 className="header-name">{this.props.currentUser.first_name}</h2>
-            </div>
+            <Link to={`/user/${this.props.currentUser.id}`}>
+              <div className="right-nav-icon-name">
+                <img src={userURL} className="user-logo-header"/>
+                <h2 className="header-name">{this.props.currentUser.first_name}</h2>
+              </div>
+            </Link>
             {/* <img src={window.appsURL} className="logo"/>
             <img src={window.messagesURL} className="logo"/>
             <img src={window.bellURL} className="logo"/> */}
@@ -99,10 +101,12 @@ class Homepage extends React.Component {
 
         <div className="homepage-body">
           <div className="left-nav">
-            <div className="left-nav-icon-row">
-              <img src={window.userURL} className="user-logo-leftnav"/>
-              <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
-            </div>
+          <Link to={`/user/${this.props.currentUser.id}`}>
+              <div className="left-nav-icon-row">
+                <img src={userURL} className="user-logo-leftnav"/>
+                <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
+              </div>
+            </Link>
           </div>
          
           <div className="right-nav">
@@ -129,7 +133,7 @@ class Homepage extends React.Component {
         <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
-                <img src={window.userURL} className="post-user-pic"/>
+                <img src={userURL} className="post-user-pic"/>
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 
@@ -142,14 +146,14 @@ class Homepage extends React.Component {
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.video_colorURL} className="media-icons-post"/>
+                  <img src={video_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Video</h1>
                 </div>
                 <div 
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.photo_colorURL} className="media-icons-post"/>
+                  <img src={photo_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Photo</h1>
                 </div>
                 <div 
