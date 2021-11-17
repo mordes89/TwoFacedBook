@@ -51,6 +51,7 @@ class PostModal extends React.Component {
             <p>Edit Bio</p>
           </div>
           <div id="bio-row">
+            <img src={workURL} className="profile-icon"/>
             <p>{`Current Work: ${this.props.userProfile.first_name}`}</p>            
           </div>
           <div id="bio-row">
