@@ -263,8 +263,8 @@ const Profile = (props) => {
             <h1>{userProfile.first_name}</h1>
           </div>
           <div>
-            <p>School</p>
-            {userProfile.last_name}
+            <p>School {userProfile.last_name}</p>
+            
           </div>
           <div>
             <p>Address</p>
