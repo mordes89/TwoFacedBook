@@ -46,29 +46,49 @@ class PostModal extends React.Component {
     const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
     return (      
       <div className="posts-and-bio">
-        <div className="bio-container">
-          <div>
-            <p>Edit Bio</p>
-          </div>
+        <div className="bio-container">          
           <div id="bio-row">
             <img src={workURL} className="profile-icon"/>
-            <p>{`Current Work: ${this.props.userProfile.first_name}`}</p>            
+            <div id="bio-wording">
+               <p>{`Current Work: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.first_name}`}</p>            
+            </div>
           </div>
           <div id="bio-row">
-            <p>{`School: ${this.props.userProfile.last_name}`}</p>            
+            <img src={schoolURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`School: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.last_name}`}</p>            
+            </div>
           </div>
           <div id="bio-row">
-            <p>{`Address: ${this.props.userProfile.address || `Edit Address`}`}</p>            
+            <img src={houseURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`Address: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
+            </div>
           </div>
           <div id="bio-row">
-            <p>From</p>
+            <img src={locationURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`From: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Origin`}`}</p>            
+            </div>
           </div>
           <div id="bio-row">
-            <p>Relationship Status</p>
+            <img src={heartURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`Relationship Status: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Relationship Status`}`}</p>            
+            </div>
           </div>
           <div id="bio-row">
-            <p>Joined TwoFacedBook</p>
-          </div>
+            <img src={timerURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`Joined TwoFacedBook: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.created_at}`}</p>            
+            </div>
+          </div> 
         </div>
       </div>
    );

@@ -227,7 +227,17 @@
          .profile-icon{
             padding: 0 5px 0 0;
             width: 35px;
+            height: 30px;
             object-fit: cover;
+         }
+         #bio-wording{
+            display: flex;
+            margin-top: 5px;
+            margin-left: 10px;
+            #bio-entry-bold{
+               font-weight: bold;
+               margin-left: 5px;
+            }
          }
       }
    }
