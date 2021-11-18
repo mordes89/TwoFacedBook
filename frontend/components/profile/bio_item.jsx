@@ -4,6 +4,7 @@ class PostModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      edit: false,
       body: '',
       author_id: this.props.currentUser.id,
       photoUrl: null,
@@ -51,42 +52,42 @@ class PostModal extends React.Component {
             <img src={workURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`Current Work: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.first_name}`}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.work || `Edit Work`}`}</p>            
             </div>
           </div>
           <div id="bio-row">
             <img src={schoolURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`School: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.last_name}`}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.school || `Edit school`}`}</p>            
             </div>
           </div>          
           <div id="bio-row">
             <img src={locationURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`From: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Origin`}`}</p>            
+///////              <p id="bio-entry-bold">{` ${this.props.userProfile.born_in || `Edit Origin`}`}</p>            
             </div>
           </div>          
           <div id="bio-row">
             <img src={houseURL} className="profile-icon"/>
             <div id="bio-wording">
-               <p>{`Address: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
+               <p>{`Live in: `}</p>            
+////////             <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
             </div>
           </div>
           <div id="bio-row">
             <img src={heartURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`Relationship Status: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Relationship Status`}`}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.relationship || `Edit Relationship Status`}`}</p>            
             </div>
           </div>
           <div id="bio-row">
             <img src={birthdayURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`Birthday: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.dob}`}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.birthday}`}</p>            
             </div>
           </div>
           <div id="bio-row">
