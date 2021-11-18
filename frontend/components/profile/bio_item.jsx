@@ -60,19 +60,19 @@ class PostModal extends React.Component {
                <p>{`School: `}</p>            
                <p id="bio-entry-bold">{` ${this.props.userProfile.last_name}`}</p>            
             </div>
-          </div>
-          <div id="bio-row">
-            <img src={houseURL} className="profile-icon"/>
-            <div id="bio-wording">
-               <p>{`Address: `}</p>            
-               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
-            </div>
-          </div>
+          </div>          
           <div id="bio-row">
             <img src={locationURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`From: `}</p>            
                <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Origin`}`}</p>            
+            </div>
+          </div>          
+          <div id="bio-row">
+            <img src={houseURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`Address: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
             </div>
           </div>
           <div id="bio-row">
@@ -83,12 +83,19 @@ class PostModal extends React.Component {
             </div>
           </div>
           <div id="bio-row">
+            <img src={birthdayURL} className="profile-icon"/>
+            <div id="bio-wording">
+               <p>{`Birthday: `}</p>            
+               <p id="bio-entry-bold">{` ${this.props.userProfile.dob}`}</p>            
+            </div>
+          </div>
+          <div id="bio-row">
             <img src={timerURL} className="profile-icon"/>
             <div id="bio-wording">
                <p>{`Joined TwoFacedBook: `}</p>            
                <p id="bio-entry-bold">{` ${this.props.userProfile.created_at}`}</p>            
             </div>
-          </div> 
+          </div>  
         </div>
       </div>
    );
