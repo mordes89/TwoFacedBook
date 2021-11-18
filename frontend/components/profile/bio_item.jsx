@@ -43,7 +43,7 @@ class PostModal extends React.Component {
   }
 
   render() {
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
+   //  const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="pic-preview"/> : null;
     return (      
       <div className="posts-and-bio">
         <div className="bio-container">          

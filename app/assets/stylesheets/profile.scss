@@ -202,20 +202,26 @@
    } 
 }
 .posts-and-bio{
-   top: 520px;
+   top: 20px;
    padding: 10px;
    @include roundCorners();
-   position: fixed;
    width: 45%;
    background-color: white;
    box-shadow: 0 0 2px;
    left: 825px;
+   position: absolute;
+   // position: -webkit-sticky;
+   // position: sticky;
+   // top: 0; 
    @media (max-width: 1100px) {
       position: absolute;
       width: 90%;
       left: 5%;
       top: 0;
-      transform: translate(0%, -50%); 
+      transform: translate(0%, -50%);
+      // position: -webkit-sticky;
+      // position: sticky;
+      // top: 0; 
    }
    .bio-container{
       
