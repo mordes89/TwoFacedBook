@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_190356) do
+ActiveRecord::Schema.define(version: 2021_11_18_152454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,9 +89,17 @@ ActiveRecord::Schema.define(version: 2021_10_22_190356) do
     t.string "school"
     t.string "relationship"
     t.text "bio"
-    t.date "birthday"
+    t.string "originally_from"
+    t.string "address"
+    t.string "joinedTFB"
+    t.string "birthday"
+    t.index ["address"], name: "index_users_on_address"
+    t.index ["bio"], name: "index_users_on_bio"
+    t.index ["birthday"], name: "index_users_on_birthday"
     t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["joinedTFB"], name: "index_users_on_joinedTFB"
     t.index ["last_name"], name: "index_users_on_last_name"
+    t.index ["originally_from"], name: "index_users_on_originally_from"
     t.index ["relationship"], name: "index_users_on_relationship"
     t.index ["school"], name: "index_users_on_school"
     t.index ["session_token"], name: "index_users_on_session_token"

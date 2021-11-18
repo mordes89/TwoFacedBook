@@ -235,6 +235,7 @@
             width: 35px;
             height: 30px;
             object-fit: cover;
+            align-self: center;
          }
          #bio-wording{
             display: flex;
@@ -249,4 +250,11 @@
    }
 }
 
-
+// .first_name{
+//    margin: 4px;
+//    padding: 6px;
+//    width: 100%;
+//    border: 0.1px solid grey;
+//    background-color: #e9dfdf;
+//    border-radius: 3px;
+// }

@@ -5,7 +5,7 @@ import { logout } from '../../actions/session_actions';
 import BioItem from './bio_item';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchPosts, updatePost } from '../../actions/post_actions';
-import { fetchUsers } from '../../actions/user_actions';
+import { fetchUsers, updateUser } from '../../actions/user_actions';
 import { fetchComments } from '../../actions/comment_actions';
 import { 
   fetchLikes, createLike, deleteLike
@@ -30,6 +30,7 @@ const mDTP = dispatch => ({
   openModal: modal => dispatch(openModal(modal)),
   closeModal: modal => dispatch(closeModal(modal)),
   fetchUsers: () => dispatch(fetchUsers()), 
+  updateUser: (formData) => dispatch(updateUser(formData)), 
   updatePost: (post) => dispatch(updatePost(post)), 
   fetchPosts: () => dispatch(fetchPosts()), 
   fetchComments: () => dispatch(fetchComments()),
