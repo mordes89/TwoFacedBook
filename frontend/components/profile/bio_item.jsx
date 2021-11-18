@@ -6,6 +6,13 @@ class PostModal extends React.Component {
     super(props);
     this.state = {
       edit: false,
+      work: this.props.userProfile.work,
+      school: this.props.userProfile.school,
+      originally_from: this.props.userProfile.originally_from,
+      address: this.props.userProfile.address,
+      relationship: this.props.userProfile.relationship,
+      birthday: this.props.userProfile.birthday,
+      joinedTFB: this.props.userProfile.joinedTFB || this.props.userProfile.created_at,
       body: '',
       author_id: this.props.currentUser.id,
       photoUrl: null,
@@ -31,8 +38,13 @@ class PostModal extends React.Component {
    handleSubmit(e) {
       e.preventDefault();
       const formData = new FormData();
-      formData.append('user[body]', this.state.body);
-      formData.append('user[author_id]', this.state.author_id);
+      formData.append('user[work]', this.state.work);
+      formData.append('user[school]', this.state.school);
+      formData.append('user[originally_from]', this.state.originally_from);
+      formData.append('user[address]', this.state.address);
+      formData.append('user[relationship]', this.state.relationship);
+      formData.append('user[birthday]', this.state.birthday);
+      formData.append('user[joinedTFB]', this.state.joinedTFB);
       if (this.state.photoFile) {  
          formData.append('user[photo]', this.state.photoFile);
       }   
@@ -59,14 +71,12 @@ class PostModal extends React.Component {
                <img src={workURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`Current Work: `}</p>            
-                  {/* <p id="bio-entry-bold">{` ${this.props.userProfile.work || `Edit Work`}`}</p>             */}
                   <input 
                      type="text"
-                  //   value={` ${this.props.userProfile.work || `Edit Work`}`}
-                     value={this.props.userProfile.work}
-                     onChange={this.update('body')}
+                     value={this.state.work}
+                     onChange={this.update('work')}
                      placeholder="Current Work"
-                     className="first_name"
+                     className="profile-input-field"
                   />
                </div>
             </div>
@@ -74,50 +84,88 @@ class PostModal extends React.Component {
                <img src={schoolURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`School: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.school || `Edit school`}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.school}
+                     onChange={this.update('school')}
+                     placeholder="Edit School"
+                     className="profile-input-field"
+                  />
                </div>
-            </div>          
+            </div>
             <div id="bio-row">
                <img src={locationURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`From: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.originally_from || `Edit Origin`}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.originally_from}
+                     onChange={this.update('originally_from')}
+                     placeholder="Edit Originally-From"
+                     className="profile-input-field"
+                  />
                </div>
-            </div>          
+            </div>
             <div id="bio-row">
                <img src={houseURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`Live in: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.address || `Edit Address`}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.address}
+                     onChange={this.update('address')}
+                     placeholder="Edit Address"
+                     className="profile-input-field"
+                  />
                </div>
             </div>
             <div id="bio-row">
                <img src={heartURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`Relationship Status: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.relationship || `Edit Relationship Status`}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.relationship}
+                     onChange={this.update('relationship')}
+                     placeholder="Edit Relationship Status"
+                     className="profile-input-field"
+                  />
                </div>
             </div>
             <div id="bio-row">
                <img src={birthdayURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`Birthday: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.birthday}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.birthday}
+                     onChange={this.update('birthday')}
+                     placeholder="Edit Birthday"
+                     className="profile-input-field"
+                  />
                </div>
             </div>
             <div id="bio-row">
                <img src={timerURL} className="profile-icon"/>
                <div id="bio-wording">
                   <p>{`Joined TwoFacedBook: `}</p>            
-                  <p id="bio-entry-bold">{` ${this.props.userProfile.created_at}`}</p>            
+                  <input 
+                     type="text"
+                     value={this.state.joinedTFB}
+                     onChange={this.update('joinedTFB')}
+                     placeholder="Edit Birthday"
+                     className="profile-input-field"
+                  />
                </div>
-            </div>  
+            </div>               
          </div>
-         <button type="submit" className="edit-profile-button">Save</button>
-         <p onClick={(e) => this.handleeidt(e)}>Cancel</p>
+         <button onClick={(e) => this.handleeidt(e)} className="cancel-edit-profile-button">Cancel</button>
+         <button type="submit" className="save-edit-profile-button">Save</button>
       </div>
       </form>
       )
+
+
 
       let bio = (
       <div className="posts-and-bio">

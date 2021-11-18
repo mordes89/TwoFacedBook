@@ -242,11 +242,8 @@
    width: 40%; 
    @include hoverColor(rgb(241, 234, 234));
    @include roundCorners(); 
-   // margin: auto;
-   // text-align: center;
    justify-content: center;
-   align-items: center;
-       
+   align-items: center;       
 }
 
 .like-comment-share{
