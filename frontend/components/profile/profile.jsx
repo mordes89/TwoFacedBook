@@ -159,8 +159,21 @@ const Profile = (props) => {
     </ul> : null
   )))
 
-  let homeLink = <button><Link to="/home">Home</Link></button>
+  // let homeLink = <button><Link to="/home">Home</Link></button>
   
+  // let handleFile = () => {
+  //   // this.setState({photoUrl: e.currentTarget.files[0]}); 
+  //   const reader = new FileReader();
+  //   const file = e.currentTarget.files[0];
+  //   reader.onloadend = () => this.setState({ photoUrl: reader.result, photoFile: file });
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     this.setState({ photoUrl: "", photoFile: null });
+  //   }   
+  // }
+
+
   let myPosts = (<div className="middle-nav-newsfeed2-profile">
   <div className="posting-box-profile">
     <div className="posting-query-profile">
@@ -244,7 +257,22 @@ const Profile = (props) => {
           </div>
           <div className="profile-photo-and-name">
             <img src={profilePhoto1} className="profile-photo"/>
-            <img src={photo_color} className="edit-profile-photo"/>                
+
+
+            <img src={photo_color} className="edit-profile-photo"/> 
+            {/* <label>
+              <img
+                src={photo_color} 
+                type="file"                      
+                className="edit-profile-photo"
+              />
+              <input 
+                type="file" 
+                onChange={handleFile} 
+                className="hidden-input-pic"/>
+            </label>       */}
+
+
             <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
           </div>
         </div>
