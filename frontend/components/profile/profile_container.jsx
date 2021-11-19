@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { fetchPosts } from '../../actions/post_actions';
-import { fetchUsers } from '../../actions/user_actions';
+import { fetchUsers, updateUser } from '../../actions/user_actions';
 import Profile from './profile';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -24,6 +24,7 @@ const mDTP = dispatch => ({
   closeModal: modal => dispatch(closeModal(modal)),
   fetchPosts: () => dispatch(fetchPosts()), 
   fetchUsers: () => dispatch(fetchUsers()), 
+  updateUser: (formData) => dispatch(updateUser(formData)), 
 });
 
 export default connect(mSTP, mDTP)(Profile);

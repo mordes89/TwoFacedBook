@@ -27,7 +27,7 @@ class MenuDropdown extends React.Component {
                >
                   <Link to={`/user/${this.props.currentUser.id}`}>
                      <div className="logout-row">
-                        <img src={userURL} className="logo"/>
+                        <img src={this.props.currentUser.profile_photo || userURL} className="logo"/>
                         <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
                      </div>
                   </Link>

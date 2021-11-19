@@ -13,8 +13,8 @@ class User < ApplicationRecord
     foreign_key: :liker_id,
     class_name: :Like
 
-  has_one_attached :cover_photo
   has_one_attached :profile_photo
+  has_one_attached :cover_photo
 
 
   after_initialize :ensure_session_token

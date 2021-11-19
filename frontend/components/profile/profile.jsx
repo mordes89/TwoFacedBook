@@ -161,23 +161,47 @@ const Profile = (props) => {
 
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
-  // let handleFile = () => {
-  //   // this.setState({photoUrl: e.currentTarget.files[0]}); 
-  //   const reader = new FileReader();
-  //   const file = e.currentTarget.files[0];
-  //   reader.onloadend = () => this.setState({ photoUrl: reader.result, photoFile: file });
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //   } else {
-  //     this.setState({ photoUrl: "", photoFile: null });
-  //   }   
-  // }
+  // let [coverPhotoUrl, setCoverPhotoUrl] = useState(props.userProfile.cover_photo);
+  // let [coverPhotoFile, setCoverPhotoFile] = useState(props.userProfile.cover_photo);
+  let [profilphotoUrl, setProfilphotoUrl] = useState(users[id].profile_photo || null);
+  let [profilePhotoFile, setProfilePhotoFile] = useState(users[id].profile_photo || null);
+  let [showSaveProfilePhoto, setShowSaveProfilePhoto] = useState(false);
 
+  let handleFile = (e) => {
+    // this.setState({photoUrl: e.currentTarget.files[0]}); 
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () => {
+      setProfilePhotoFile(file),
+      setProfilphotoUrl(reader.result),
+      setShowSaveProfilePhoto(true)
+    }
+    // this.setState({ photoUrl: reader.result, photoFile: file });
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      setProfilphotoUrl('')
+      setProfilePhotoFile(null)
+    }   
+    // console.log("profilphotoUrl: ", profilphotoUrl)
+    console.log("profilePhotoFile: ", profilePhotoFile)
+  }
+
+  let handleProfilePhotoFileSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('user[id]', id);    
+    // if (profilePhotoFile) {  
+      formData.append('user[profile_photo]', profilePhotoFile);
+    // }   
+    props.updateUser(formData);
+    setShowSaveProfilePhoto(false);
+  } 
 
   let myPosts = (<div className="middle-nav-newsfeed2-profile">
   <div className="posting-box-profile">
     <div className="posting-query-profile">
-      <img src={userURL} className="post-user-pic-profile"/>
+      <img src={props.currentUser.profile_photo || userURL} className="post-user-pic-profile"/>
       <input 
         onClick={() => props.openModal('post')} 
         className="create_post-input-profile" 
@@ -233,7 +257,7 @@ const Profile = (props) => {
         <div className="header3">
           <Link to={`/user/${props.currentUser.id}`}>
             <div className="right-nav-icon-name">
-              <img src={userURL} className="user-logo-header"/>
+              <img src={props.currentUser.profile_photo || userURL} className="user-logo-header"/>
               <h2 className="header-name">{props.currentUser.first_name}</h2>
             </div>
           </Link>
@@ -256,11 +280,25 @@ const Profile = (props) => {
             </div>
           </div>
           <div className="profile-photo-and-name">
-            <img src={profilePhoto1} className="profile-photo"/>
+            <img src={!profilphotoUrl ? userURL : profilphotoUrl} className="profile-photo"/>
+            {/* {console.log("profilphotoUrl: ", profilphotoUrl)} */}
+            {console.log("profilePhotoFile: ", profilePhotoFile)}
 
-
-            <img src={photo_color} className="edit-profile-photo"/> 
-            {/* <label>
+            {/* <img src={photo_color} className="edit-profile-photo"/>  */}
+            {showSaveProfilePhoto ? 
+            <label>
+            <img
+              src={saveIconURL} 
+              type="file"                      
+              className="edit-profile-photo"
+            />
+            <input 
+              type="file" 
+              onClick={handleProfilePhotoFileSubmit} 
+              className="hidden-input-pic"/>
+            </label> 
+            :
+            <label>
               <img
                 src={photo_color} 
                 type="file"                      
@@ -270,7 +308,7 @@ const Profile = (props) => {
                 type="file" 
                 onChange={handleFile} 
                 className="hidden-input-pic"/>
-            </label>       */}
+            </label>}
 
 
             <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>

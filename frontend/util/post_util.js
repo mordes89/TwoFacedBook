@@ -8,7 +8,9 @@ export const fetchPost = (postId) =>
       url: `/api/posts/${postId}`,
    });
 
-export const createPost = (formData) => {   
+export const createPost = (formData) => { 
+   console.log("Post util formData: ", Array.from(formData)); 
+   debugger 
    return(
       $.ajax({
          url: '/api/posts',
@@ -21,6 +23,9 @@ export const createPost = (formData) => {
 };
 
 export const updatePost = (formData) => {
+   console.log("Post util formData: ", Array.from(formData));
+   debugger  
+
    return $.ajax({
       url: `/api/posts/${formData.get('post[id]')}`,
       method: 'PATCH',

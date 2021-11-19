@@ -68,7 +68,7 @@ const PostItem = (props) => {
   return (
     <div>
       <div className="poster-and-time">
-          <img src={userURL} className="profile-pic"/>              
+          <img src={props.users[props.post.author.id].profile_photo || userURL} className="profile-pic"/>              
           <div className="top-bar-of-post">
             <Link to={`/user/${props.post.author.id}`} >
               <div className="name-and-time">
@@ -143,7 +143,7 @@ const PostItem = (props) => {
           comment.parent_post_id === props.post.id ? 
           (<ul key={`comment-${i}`} className="comments">
             <div className="pic-comment-dropdown">
-              <img src={userURL} className="profile-pic"/>
+              <img src={props.users[comment.author_id].profile_photo || userURL} className="profile-pic"/>
               <div className="top-bar-of-comment">
                 <div className="name-and-time">
                   {<EditComment comment={comment}/>}

@@ -52,7 +52,7 @@ class EditPostModal extends React.Component {
       <hr className="hline-post"/>        
       <form onSubmit={this.handleSubmit}>
             <div className="user-row">
-               <img src={userURL} className="logo"/>
+               <img src={this.props.currentUser.profile_photo} className="logo"/>
                <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
             </div>
                <textarea
