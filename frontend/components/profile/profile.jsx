@@ -303,8 +303,8 @@ const Profile = (props) => {
       <div className="cover-photo-and-profile-photo">
         <div className="cover-photos-and-name">
           <div>
-            <img src={coverPhoto1} id="cover-photo-pic"/>
-            <div id="edit-cover-photo-container">
+            <img src={!coverPhotoUrl ? coverPhoto1 : coverPhotoUrl} id="cover-photo-pic"/>
+            
               {/* <img src={editPic} className="edit-cover-photo-pic"/>
               <p className="edit-cover-photo-text">Edit Cover Photo</p> */}
               {showSaveCoverPhoto ? 
@@ -312,7 +312,7 @@ const Profile = (props) => {
                   <img
                     src={saveIconURL} 
                     type="file"                      
-                    className="edit-profile-photo"
+                    className="save-cover-photo-pic"
                   />
                   <input 
                     type="file" 
@@ -320,33 +320,33 @@ const Profile = (props) => {
                     className="hidden-input-pic"/>
                 </label> 
                   :
-                <label>
-                    <div className="edit-cover-photo-pic-container">
-                      <img
-                        src={editPic} 
-                        type="file"                      
-                        className="edit-cover-photo-pic"
-                      />
-                      <p className="edit-cover-photo-text">Edit Cover Photo</p>
-                    </div>
-                  <input 
-                    type="file" 
-                    onChange={handleCoverPhotoFile} 
-                    className="hidden-input-pic"/>
-                </label>
+                <div id="edit-cover-photo-container">
+                  <label>
+                      <div className="edit-cover-photo-pic-container">
+                        <img
+                          src={editPic} 
+                          type="file"                      
+                          className="edit-cover-photo-pic"
+                        />
+                        <p className="edit-cover-photo-text">Edit Cover Photo</p>
+                      </div>
+                    <input 
+                      type="file" 
+                      onChange={handleCoverPhotoFile} 
+                      className="hidden-input-pic"/>
+                  </label>
+                </div>
               }
 
 
 
             </div>
-          </div>
+          
 
 
           <div className="profile-photo-and-name">
             <img src={!profilphotoUrl ? userURL : profilphotoUrl} className="profile-photo"/>
-            {console.log("profilePhotoFile: ", profilePhotoFile)}
 
-            {/* <img src={photo_color} className="edit-profile-photo"/>  */}
             {showSaveProfilePhoto ? 
             <label>
               <img
