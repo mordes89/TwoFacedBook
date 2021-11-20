@@ -161,14 +161,12 @@ const Profile = (props) => {
 
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
-  // let [coverPhotoUrl, setCoverPhotoUrl] = useState(props.userProfile.cover_photo);
-  // let [coverPhotoFile, setCoverPhotoFile] = useState(props.userProfile.cover_photo);
+  
   let [profilphotoUrl, setProfilphotoUrl] = useState(users[id].profile_photo || null);
   let [profilePhotoFile, setProfilePhotoFile] = useState(users[id].profile_photo || null);
   let [showSaveProfilePhoto, setShowSaveProfilePhoto] = useState(false);
 
-  let handleFile = (e) => {
-    // this.setState({photoUrl: e.currentTarget.files[0]}); 
+  let handleProfilePicFile = (e) => {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () => {
@@ -176,27 +174,59 @@ const Profile = (props) => {
       setProfilphotoUrl(reader.result),
       setShowSaveProfilePhoto(true)
     }
-    // this.setState({ photoUrl: reader.result, photoFile: file });
     if (file) {
       reader.readAsDataURL(file);
     } else {
       setProfilphotoUrl('')
       setProfilePhotoFile(null)
-    }   
-    // console.log("profilphotoUrl: ", profilphotoUrl)
-    console.log("profilePhotoFile: ", profilePhotoFile)
+    }
   }
 
   let handleProfilePhotoFileSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('user[id]', id);    
-    // if (profilePhotoFile) {  
-      formData.append('user[profile_photo]', profilePhotoFile);
-    // }   
+    formData.append('user[profile_photo]', profilePhotoFile);
     props.updateUser(formData);
     setShowSaveProfilePhoto(false);
+    props.history.push('/home')
   } 
+
+  let [coverPhotoUrl, setCoverPhotoUrl] = useState(users[id].cover_photo || null);
+  let [coverPhotoFile, setCoverPhotoFile] = useState(users[id].cover_photo || null);
+  let [showSaveCoverPhoto, setShowSaveCoverPhoto] = useState(false);
+
+  let handleCoverPhotoFile = (e) => {
+    // this.setState({photoUrl: e.currentTarget.files[0]}); 
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () => {
+      setCoverPhotoFile(file),
+      setCoverPhotoUrl(reader.result),
+      setShowSaveCoverPhoto(true)
+    }
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      setCoverPhotoUrl('')
+      setCoverPhotoFile(null)
+    }   
+    console.log("coverPhotoFile: ", coverPhotoFile)
+  }
+
+  let handleCoverPhotoSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('user[id]', id);    
+    formData.append('user[cover_photo]', coverPhotoFile);
+    props.updateUser(formData);
+    setShowSaveCoverPhoto(false);
+    // props.history.push('/home')
+  } 
+
+
+
+
 
   let myPosts = (<div className="middle-nav-newsfeed2-profile">
   <div className="posting-box-profile">
@@ -275,29 +305,61 @@ const Profile = (props) => {
           <div>
             <img src={coverPhoto1} id="cover-photo-pic"/>
             <div id="edit-cover-photo-container">
-              <img src={editPic} className="edit-cover-photo-pic"/>
-              <p className="edit-cover-photo-text">Edit Cover Photo</p>
+              {/* <img src={editPic} className="edit-cover-photo-pic"/>
+              <p className="edit-cover-photo-text">Edit Cover Photo</p> */}
+              {showSaveCoverPhoto ? 
+                <label>
+                  <img
+                    src={saveIconURL} 
+                    type="file"                      
+                    className="edit-profile-photo"
+                  />
+                  <input 
+                    type="file" 
+                    onClick={handleCoverPhotoSubmit} 
+                    className="hidden-input-pic"/>
+                </label> 
+                  :
+                <label>
+                    <div className="edit-cover-photo-pic-container">
+                      <img
+                        src={editPic} 
+                        type="file"                      
+                        className="edit-cover-photo-pic"
+                      />
+                      <p className="edit-cover-photo-text">Edit Cover Photo</p>
+                    </div>
+                  <input 
+                    type="file" 
+                    onChange={handleCoverPhotoFile} 
+                    className="hidden-input-pic"/>
+                </label>
+              }
+
+
+
             </div>
           </div>
+
+
           <div className="profile-photo-and-name">
             <img src={!profilphotoUrl ? userURL : profilphotoUrl} className="profile-photo"/>
-            {/* {console.log("profilphotoUrl: ", profilphotoUrl)} */}
             {console.log("profilePhotoFile: ", profilePhotoFile)}
 
             {/* <img src={photo_color} className="edit-profile-photo"/>  */}
             {showSaveProfilePhoto ? 
             <label>
-            <img
-              src={saveIconURL} 
-              type="file"                      
-              className="edit-profile-photo"
-            />
-            <input 
-              type="file" 
-              onClick={handleProfilePhotoFileSubmit} 
-              className="hidden-input-pic"/>
+              <img
+                src={saveIconURL} 
+                type="file"                      
+                className="edit-profile-photo"
+              />
+              <input 
+                type="file" 
+                onClick={handleProfilePhotoFileSubmit} 
+                className="hidden-input-pic"/>
             </label> 
-            :
+              :
             <label>
               <img
                 src={photo_color} 
@@ -306,7 +368,7 @@ const Profile = (props) => {
               />
               <input 
                 type="file" 
-                onChange={handleFile} 
+                onChange={handleProfilePicFile} 
                 className="hidden-input-pic"/>
             </label>}
 

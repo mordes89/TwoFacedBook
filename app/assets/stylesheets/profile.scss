@@ -51,16 +51,19 @@
       width: 55px;
       right: 30px;    
    }
-   .edit-cover-photo-pic{
-      // position: absolute;
-      object-fit: cover;
-      width: 30px;
-   }
-   .edit-cover-photo-text{
-      // margin-left: 5px;
-      padding: 6px 12px 6px 12px;
-      @media (max-width: 1100px) {
-         display: none;
+   .edit-cover-photo-pic-container{
+      display: flex;
+      .edit-cover-photo-pic{
+         // position: absolute;
+         object-fit: cover;
+         width: 30px;
+      }
+      .edit-cover-photo-text{
+         // margin-left: 5px;
+         padding: 6px 12px 6px 12px;
+         @media (max-width: 1100px) {
+            display: none;
+         }
       }
    }
 }
