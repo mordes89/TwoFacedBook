@@ -45,7 +45,7 @@ const RenderProfilePost = (state) => {
 
    let mapped = () => (Object.values(posts).reverse().map((post, i) => (
       <ul key={`post-${i}`} id={post.author_id == id ? "posts" : null}>
-         { post.author_id == id ?
+         {post.author_id == id ?
          <PostItem 
             onChange={onChange}
             likeOrUnlike={likeOrUnlike}                        
