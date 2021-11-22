@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 import { fetchUsers } from '../../actions/user_actions';
 import MenuDropdown from '../homepage/menu_dropdown_container';
-import RenderPost from '../posts/render_posts_container.jsx';
+import RenderProfilePost from '../posts/render_profile_posts_container';
 import BioItem from './bio_item_container'
 
 
@@ -262,7 +262,7 @@ const Profile = (props) => {
         <h1 className="media-text-post-profile">Feeling</h1>
       </div>
     </div>
-      <RenderPost posts={props.posts}/>
+      <RenderProfilePost posts={props.posts} profileId={id}/>
       {/* <h1>{renderPosts()}</h1> */}
     </div>
   </div>)
