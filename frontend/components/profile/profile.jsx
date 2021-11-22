@@ -150,14 +150,14 @@ const Profile = (props) => {
 
 
 
-  let mapped = () => (Object.values(users).map((user, i) => (
-    id ?
-    <ul key={`user-${i}`} id="posts">
-      {user.id}             
-      {user.first_name}             
-      {user.last_name}             
-    </ul> : null
-  )))
+  // let mapped = () => (Object.values(users).map((user, i) => (
+  //   id ?
+  //   <ul key={`user-${i}`} id="posts">
+  //     {user.id}             
+  //     {user.first_name}             
+  //     {user.last_name}             
+  //   </ul> : null
+  // )))
 
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
@@ -189,7 +189,7 @@ const Profile = (props) => {
     formData.append('user[profile_photo]', profilePhotoFile);
     props.updateUser(formData);
     setShowSaveProfilePhoto(false);
-    props.history.push('/home')
+    props.history.push('/home');
   } 
 
   let [coverPhotoUrl, setCoverPhotoUrl] = useState(users[id].cover_photo || null);
@@ -274,23 +274,25 @@ const Profile = (props) => {
     <div>
       <header className="header">
         <div className="header1">
-          <img src={facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+          <img src={facebookroundURL} className="logo" onClick={()=>props.history.push('/home')}/>
           {/* <img src={window.searchURL} className="logo"/> */}
         </div>
         <div className="header2">
-          <img src={homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+          <img src={homeURL} className="middle-header-icons" onClick={()=>props.history.push('/home')}/>
           {/* <img src={window.videoURL} className="middle-header-icons"/> */}
           {/* <img src={window.marketURL} className="middle-header-icons"/> */}
           {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
           {/* <img src={window.newsURL} className="middle-header-icons"/> */}
         </div>
         <div className="header3">
-          <Link to={`/user/${props.currentUser.id}`}>
+          {/* <Link to={`/user/${props.currentUser.id}`}> */}
+          <div onClick={()=>props.history.push(`/user/${props.currentUser.id}`)}>
             <div className="right-nav-icon-name">
               <img src={props.currentUser.profile_photo || userURL} className="user-logo-header"/>
               <h2 className="header-name">{props.currentUser.first_name}</h2>
             </div>
-          </Link>
+          </div>
+          {/* </Link> */}
           {/* <img src={window.appsURL} className="logo"/>
           <img src={window.messagesURL} className="logo"/>
           <img src={window.bellURL} className="logo"/> */}

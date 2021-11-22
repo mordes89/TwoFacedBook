@@ -16,8 +16,7 @@
       text-size-adjust: 60px;   
    }   
    .user-logo-leftnav{
-      @include icon($hw: 60px, $hoverColor: none);
-      cursor: default;
+      @include icon($hw: 60px, $hoverColor: none, $borderRadius: 60px);
    }   
    .leftnav-name{
       font-weight: bold;
@@ -195,8 +194,8 @@
 }
 
 .profile-pic{
-   width: 6%;
-   height: 6%;
+   width: 35px;
+   height: 35px;
    @include roundCorners(50px); 
 }
 

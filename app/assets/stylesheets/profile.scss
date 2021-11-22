@@ -3,11 +3,12 @@
 
 
 .cover-photo-and-profile-photo{
+   cursor: default;
    position: relative;
    max-height: 400px;
 }
 .cover-photos-and-name{
-   
+   cursor: default;
    #cover-photo-pic{
       display: flex;
       flex-direction: column;
@@ -19,6 +20,7 @@
       @include roundCorners();
       object-fit: cover;
       max-height: 400px;
+      cursor: default;
       @media (max-width: 1100px) {
          display: flex;
          flex-direction: column;
@@ -30,6 +32,7 @@
          object-fit: cover;
          max-height: 400px;
          min-height: 350px;
+         cursor: default;
       }
    }
 }
@@ -52,14 +55,13 @@
       right: 30px;    
    }
    .edit-cover-photo-pic-container{
+      cursor: pointer;
       display: flex;
       .edit-cover-photo-pic{
-         // position: absolute;
          object-fit: cover;
          width: 30px;
       }
       .edit-cover-photo-text{
-         // margin-left: 5px;
          padding: 6px 12px 6px 12px;
          @media (max-width: 1100px) {
             display: none;
@@ -70,6 +72,7 @@
 }
 
 .save-cover-photo-pic{
+   cursor: pointer;
    position: absolute;
       width: 200px;
       right: 20%;
@@ -111,6 +114,7 @@
       }     
    }
    .edit-profile-photo{
+      cursor: pointer;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -227,6 +231,7 @@
    } 
 }
 .posts-and-bio{
+   cursor: default;
    top: 20px;
    padding: 10px;
    @include roundCorners();
@@ -248,9 +253,12 @@
       // position: sticky;
       // top: 0; 
       min-width: 500px;
+      cursor: default;
+
    }
    .bio-container{
-      
+      cursor: default;
+
       #bio-row{         
          display: flex;
          // font-weight: bold;
@@ -288,6 +296,7 @@
       }
    }
    .edit-profile-button{
+      cursor: pointer;
       justify-content:cunter;
       font-size: 25px;
       padding: 6px;
@@ -298,6 +307,7 @@
       margin-left: 40%;
    }
    .cancel-edit-profile-button{
+      cursor: pointer;
       font-size: 25px;
       padding: 6px;
       border: 0.1px solid black;
@@ -307,6 +317,7 @@
       margin-left: 1%;
    }
    .save-edit-profile-button{
+      cursor: pointer;
       justify-content:cunter;
       font-size: 25px;
       padding: 6px;

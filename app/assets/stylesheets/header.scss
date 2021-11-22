@@ -23,7 +23,7 @@
 // }
 
 .logo {
-   @include icon(55px, transparent);
+   @include icon(55px, transparent, $borderRadius: 60px);
    @include hoverColor();
 }
 
@@ -61,8 +61,7 @@
 }
 
 .user-logo-header{
-   @include icon(40px, $hoverColor: none);
-   cursor: default;
+   @include icon(55px, $hoverColor: none,$borderRadius: 65px);
 }
 
 .right-nav-icon-name{
