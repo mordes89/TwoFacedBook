@@ -9,7 +9,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = state => {
   return {    
-    errors: state.errors.session,
+    errors: Object.values(state.errors.session),
     navLink: <Link to="/signup"/>,
   };
 };
