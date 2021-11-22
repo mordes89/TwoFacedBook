@@ -70,7 +70,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={workURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`Current Work: `}</p>            
+                  <p>{`Current Work `}</p>            
                   <input 
                      type="text"
                      value={this.state.work}
@@ -83,7 +83,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={schoolURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`School: `}</p>            
+                  <p>{`School `}</p>            
                   <input 
                      type="text"
                      value={this.state.school}
@@ -96,7 +96,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={locationURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`From: `}</p>            
+                  <p>{`From `}</p>            
                   <input 
                      type="text"
                      value={this.state.originally_from}
@@ -109,7 +109,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={houseURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`Live in: `}</p>            
+                  <p>{`Live in `}</p>            
                   <input 
                      type="text"
                      value={this.state.address}
@@ -122,7 +122,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={heartURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`Relationship Status: `}</p>            
+                  <p>{`Relationship Status `}</p>            
                   <input 
                      type="text"
                      value={this.state.relationship}
@@ -135,7 +135,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={birthdayURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`Birthday: `}</p>            
+                  <p>{`Birthday `}</p>            
                   <input 
                      type="text"
                      value={this.state.birthday}
@@ -148,7 +148,7 @@ class PostModal extends React.Component {
             <div id="bio-row">
                <img src={timerURL} className="profile-icon"/>
                <div id="bio-wording">
-                  <p>{`Joined TwoFacedBook: `}</p>            
+                  <p>{`Joined TwoFacedBook `}</p>            
                   <input 
                      type="text"
                      value={this.state.joinedTFB}
@@ -159,8 +159,8 @@ class PostModal extends React.Component {
                </div>
             </div>               
          </div>
-         <button onClick={() => this.handleeidt()} className="cancel-edit-profile-button">Cancel</button>
          <button type="submit" className="save-edit-profile-button">Save</button>
+         <button onClick={() => this.handleeidt()} className="cancel-edit-profile-button">Cancel</button>
       </div>
       </form>
       )
