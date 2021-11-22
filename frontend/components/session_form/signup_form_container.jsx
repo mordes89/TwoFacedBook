@@ -7,7 +7,7 @@ import SignupModal from './signup_form';
 
 const mSTP = state => {
   return {
-    errors: state.errors.session,
+    errors: Object.values(state.errors.session),
   };
 };
 
