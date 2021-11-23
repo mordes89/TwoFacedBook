@@ -230,6 +230,23 @@
       }
    } 
 }
+.post-user-pic{
+   @include icon(50px, white, white);
+}
+.posting-query{
+   display: flex;
+   margin-top: 1%;
+}
+.create_post-input{
+   // width: 99%;
+   @include roundedInputField();
+   @include hoverColor();
+}
+.num_likes{
+   display: flex; 
+   width: 15%; 
+   @include roundCorners(); 
+}
 .posts-and-bio{
    cursor: default;
    top: 20px;

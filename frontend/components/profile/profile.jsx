@@ -190,6 +190,7 @@ const Profile = (props) => {
     props.updateUser(formData);
     setShowSaveProfilePhoto(false);
     props.history.push('/home');
+    props.fetchUsers();
   } 
 
   let [coverPhotoUrl, setCoverPhotoUrl] = useState(users[id].cover_photo || null);

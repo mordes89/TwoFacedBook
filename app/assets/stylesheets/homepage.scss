@@ -17,6 +17,7 @@
    }   
    .user-logo-leftnav{
       @include icon($hw: 60px, $hoverColor: none, $borderRadius: 60px);
+      object-fit: cover;
    }   
    .leftnav-name{
       font-weight: bold;
@@ -196,7 +197,8 @@
 .profile-pic{
    width: 35px;
    height: 35px;
-   @include roundCorners(50px); 
+   @include roundCorners(50px);
+   object-fit: cover; 
 }
 
 .name-and-time{

@@ -62,6 +62,7 @@
 
 .user-logo-header{
    @include icon(55px, $hoverColor: none,$borderRadius: 65px);
+   object-fit: cover;
 }
 
 .right-nav-icon-name{
