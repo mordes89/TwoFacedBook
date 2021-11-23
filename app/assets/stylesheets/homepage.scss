@@ -18,6 +18,9 @@
    .user-logo-leftnav{
       @include icon($hw: 60px, $hoverColor: none, $borderRadius: 60px);
       object-fit: cover;
+      min-width: 60px;
+      min-height: 60px;
+
    }   
    .leftnav-name{
       font-weight: bold;
@@ -86,6 +89,7 @@
    @include phoneView(visible);
    @include fullDesktopView();
    @include roundCorners();
+   min-width: 500px;
    .post-user-pic{
       @include icon(50px, white, white);
    }

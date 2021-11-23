@@ -306,9 +306,9 @@ const Profile = (props) => {
       <div className="cover-photo-and-profile-photo">
         <div className="cover-photos-and-name">
           <div>
-            <img src={!coverPhotoUrl ? coverPhoto1 : coverPhotoUrl} id="cover-photo-pic"/>
+            <img src={!coverPhotoUrl ? coverPhoto1URL : coverPhotoUrl} id="cover-photo-pic"/>
             
-              {/* <img src={editPic} className="edit-cover-photo-pic"/>
+              {/* <img src={editPicURL} className="edit-cover-photo-pic"/>
               <p className="edit-cover-photo-text">Edit Cover Photo</p> */}
               {showSaveCoverPhoto ? 
                 <label>
@@ -327,7 +327,7 @@ const Profile = (props) => {
                   <label>
                       <div className="edit-cover-photo-pic-container">
                         <img
-                          src={editPic} 
+                          src={editPicURL} 
                           type="file"                      
                           className="edit-cover-photo-pic"
                         />
