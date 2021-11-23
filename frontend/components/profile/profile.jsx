@@ -22,7 +22,7 @@ const Profile = (props) => {
   useEffect(
     () => {
       fetchUsers2(); 
-      setProfilphotoUrl(users[id].profile_photo); 
+      setProfilphotoUrl(users[id].profile_photo || userURL); 
       setCoverPhotoUrl(users[id].cover_photo);
       setUserProfile(props.users[id])
     }, [id],
