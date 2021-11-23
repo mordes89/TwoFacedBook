@@ -17,5 +17,5 @@ class Api::SessionsController < ApplicationController
     else
       render json: ["How are you signing out if you were never signed in?"], status: 404
     end
-  end
+  end 
 end
