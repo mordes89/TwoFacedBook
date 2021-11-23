@@ -11,90 +11,6 @@ import BioItem from './bio_item_container'
 
 
 
-
-// class Profile extends React.Component {
-//   constructor(props) {
-//     super(props);    
-//     this.state = {    
-//     }
-//     // this.renderPosts = this.renderPosts.bind(this); 
-//     // this.autoReloader = this.autoReloader.bind(this); 
-//   }
-  
-//   componentDidMount() {
-//     this.props.fetchUsers();
-//     // this.props.fetchPosts();
-//     // this.props.fetchComments();
-//     // this.props.fetchLikes();
-//   }
-
-//   // componentDidUpdate(prevProps, prevState) {
-//   //   if (this.state.fetched === false) { 
-//   //     this.props.fetchPosts();
-//   //     this.setState({fetched: true})
-//   //     console.log("hit cdm");
-//   //     // this.state.prevPsotsLength = Object.values(this.props.posts).length;
-//   //   }
-//   // }
-
-
-
-// //refactored to it's pwn render_posts file
-//   // renderPosts() {    
-     
-//   //   if (!this.props.posts){
-//   //     return null
-//   //   }    
-    
-//   //   return(
-//   //     <ul className="entire-post">
-//   //       {Object.values(this.props.posts).reverse().map((post, i) => (
-//   //         <ul key={`post-${i}`} id="posts">
-//   //           {<PostItem 
-//   //             post={post}
-//   //             postId={post.id}
-//   //             num_likes={(typeof post.likes !== 'undefined') ? Object.keys(post.likes).length : 0}
-//   //           />}   
-//   //         </ul>
-//   //       ))}
-//   //     </ul>
-//   //   );
-//   // }
-  
-  
-//   loggedIn () {
-//     return(
-//       <div>
-//         {this.props.currentUser.id}
-//         Profile
-//       </div>
-//     )
-//   };
-  
-  
-//   render() {          
-//     return (
-//       <div>
-//         {this.props.currentUser ? this.loggedIn() : null} 
-//       </div>
-//     )
-//   } 
-// };
-
-
-// export default Profile;
-
-
-
-
-
-
-
-
-
-
-
-
 const Profile = (props) => {
   let [users, setUsers] = useState(props.users);
   let [posts, setPosts] = useState(props.posts);
@@ -103,34 +19,24 @@ const Profile = (props) => {
 
   let fetchUsers2 = () => fetchUsers(); 
 
-  // useEffect(
-  //   () => {
-  //     fetchUsers2()
-  //     console.log("fetchUsers")
-  //     console.log("usersFetched:", users)
-  //     // debugger
-  //     // setUsers(props.users)
-  //     // return () => setUsers(props.users)        
-  //     //  Object.values(users).map((user) => (
-  //     //     user.id === id ? (userProfile = user) : null))
-  //   }, [users],
-  //   // console.log("props.users:", props.users),
-  //   console.log("state.entities.users.last:", props.users.last),
-  //   console.log("state.entities.users:", props.users),
-  //   console.log("users:", users),
-  //   console.log("id:", id),
-  //   console.log("userProfile:", userProfile),
-  //   console.log("Object.values(users):", Object.values(users)),
-  //   console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
-  // )
+  useEffect(
+    () => {
+      fetchUsers2(); 
+      setProfilphotoUrl(users[id].profile_photo); 
+      setCoverPhotoUrl(users[id].cover_photo);
+      setUserProfile(props.users[id])
+    }, [id],
+    // console.log("props.users:", props.users),
+    // console.log("state.entities.users.last:", props.users.last),
+    // console.log("state.entities.users:", props.users),
+    // console.log("users:", users),
+    console.log("id:", id),
+    // console.log("userProfile:", userProfile),
+    // console.log("Object.values(users):", Object.values(users)),
+    // console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
+  )
 
-  if (window.performance) {
-    if (performance.navigation.type == 1) {
-      event.preventDefault();
-      props.history.push('/home')
-    }
-  }
-
+  
   // const initBeforeUnLoad = (showExitPrompt) => {
   //   window.onbeforeunload = (event) => {
   //     // Show prompt based on state
@@ -161,7 +67,13 @@ const Profile = (props) => {
 
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
-  
+  if (window.performance) {
+    if (performance.navigation.type == 1) {
+      event.preventDefault();
+      props.history.push('/home')
+    }
+  }
+
   let [profilphotoUrl, setProfilphotoUrl] = useState(users[id].profile_photo || null);
   let [profilePhotoFile, setProfilePhotoFile] = useState(users[id].profile_photo || null);
   let [showSaveProfilePhoto, setShowSaveProfilePhoto] = useState(false);

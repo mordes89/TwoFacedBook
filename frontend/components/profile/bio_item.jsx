@@ -23,6 +23,23 @@ class PostModal extends React.Component {
     
   }
 
+  componentDidMount(){
+   this.setState({
+      edit: false,
+      work: this.props.userProfile.work,
+      school: this.props.userProfile.school,
+      originally_from: this.props.userProfile.originally_from,
+      address: this.props.userProfile.address,
+      relationship: this.props.userProfile.relationship,
+      birthday: this.props.userProfile.birthday,
+      joinedTFB: this.props.userProfile.joinedTFB || this.props.userProfile.created_at,
+      author_id: this.props.currentUser.id,
+      photoUrl: null,
+      photoFile: null,
+      posts: this.props.posts
+   });
+  }
+
    handleeidt() {
       this.setState({ edit: !this.state.edit });
       console.log(this.state.edit);
