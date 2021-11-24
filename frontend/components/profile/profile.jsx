@@ -1,11 +1,9 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react';
 import { Link } from 'react-router-dom';
 // import Modal from './modal/modal';
-// import MenuDropdown from './menu_dropdown_container';
-// import PostMenuDropdown from './post_menu_dropdown_container';
 import {useParams} from "react-router-dom";
 import { fetchUsers } from '../../actions/user_actions';
-import MenuDropdown from '../homepage/menu_dropdown_container';
+import ProfileMenuDropdown from './profile_menu_dropdown_container';
 import RenderProfilePost from '../posts/render_profile_posts_container';
 import BioItem from './bio_item_container'
 
@@ -31,7 +29,7 @@ const Profile = (props) => {
     // console.log("state.entities.users.last:", props.users.last),
     // console.log("state.entities.users:", props.users),
     // console.log("users:", users),
-    console.log("id:", id),
+    console.log("id from profile:", id),
     // console.log("userProfile:", userProfile),
     // console.log("Object.values(users):", Object.values(users)),
     // console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
@@ -69,7 +67,7 @@ const Profile = (props) => {
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
   if (window.performance) {
-    if (performance.navigation.type == 1) {
+    if (performance.getEntriesByType("navigation")[0].type == "reload" || performance.getEntriesByType("navigation")[0].type == "back_forward") {
       event.preventDefault();
       props.history.push('/home')
     }
@@ -143,6 +141,8 @@ const Profile = (props) => {
 
 
   let myPosts = (<div className="middle-nav-newsfeed2-profile">
+    <BioItem userProfile={userProfile}/>    
+
   <div className="posting-box-profile">
     <div className="posting-query-profile">
       <img src={props.currentUser.profile_photo || userURL} className="post-user-pic-profile"/>
@@ -200,17 +200,17 @@ const Profile = (props) => {
         </div>
         <div className="header3">
           {/* <Link to={`/user/${props.currentUser.id}`}> */}
-          <div onClick={()=>props.history.push(`/user/${props.currentUser.id}`)}>
+          {/* <div onClick={()=>props.history.push(`/user/${props.currentUser.id}`)}>
             <div className="right-nav-icon-name">
               <img src={props.currentUser.profile_photo || userURL} className="user-logo-header"/>
               <h2 className="header-name">{props.currentUser.first_name}</h2>
             </div>
-          </div>
+          </div> */}
           {/* </Link> */}
           {/* <img src={window.appsURL} className="logo"/>
           <img src={window.messagesURL} className="logo"/>
           <img src={window.bellURL} className="logo"/> */}
-          <MenuDropdown className="show-menu-dropdown"/>
+          <ProfileMenuDropdown className="show-menu-dropdown"/>
         </div>    
       </header>
 
@@ -296,7 +296,6 @@ const Profile = (props) => {
       
 
       <div className="myPosts-section">
-        <BioItem userProfile={userProfile}/>    
         {myPosts}
       </div>
       {/* {mapped()} */}
