@@ -1,11 +1,16 @@
 import React from 'react';
+import { closeModal } from '../../actions/modal_actions';
+
 
 class SignupModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
+      birthday: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -21,7 +26,7 @@ class SignupModal extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
     .then(this.props.login({email: user.email, password: user.password})
-      .then(() => this.props.history.push('/home')))   
+      .then(() => this.props.history.push('/home'))) 
   }
 
   renderErrors() {       

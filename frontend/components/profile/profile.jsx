@@ -140,44 +140,44 @@ const Profile = (props) => {
 
 
 
-  let myPosts = (<div className="middle-nav-newsfeed2-profile">
+  let myPosts = 
+  (<div className="middle-nav-newsfeed2-profile">
     <BioItem userProfile={userProfile}/>    
 
-  <div className="posting-box-profile">
-    <div className="posting-query-profile">
-      <img src={props.currentUser.profile_photo || userURL} className="post-user-pic-profile"/>
-      <input 
-        onClick={() => props.openModal('post')} 
-        className="create_post-input-profile" 
-        placeholder={`What's on your mind ${props.currentUser.first_name}?`}                  
-      />    
-    </div>
-    <hr className="hline-posts-profile"/>
-    <div className="add-media-to-post-profile">
-      <div 
-        className="media-links-post-profile"
-        onClick={() => props.openModal('post')}
-      >
-        <img src={video_colorURL} className="media-icons-post-profile"/>
-        <h1 className="media-text-post-profile">Video</h1>
+    <div className="posting-box-profile">
+      <div className="posting-query-profile">
+        <img src={props.currentUser.profile_photo || userURL} className="post-user-pic-profile"/>
+        <input 
+          onClick={() => props.openModal('post')} 
+          className="create_post-input-profile" 
+          placeholder={`What's on your mind ${props.currentUser.first_name}?`}                  
+        />    
       </div>
-      <div 
-        className="media-links-post-profile"
-        onClick={() => props.openModal('post')}
-      >
-        <img src={photo_colorURL} className="media-icons-post-profile"/>
-        <h1 className="media-text-post-profile">Photo</h1>
+      <hr className="hline-posts-profile"/>
+      <div className="add-media-to-post-profile">
+        <div 
+          className="media-links-post-profile"
+          onClick={() => props.openModal('post')}
+        >
+          <img src={video_colorURL} className="media-icons-post-profile"/>
+          <h1 className="media-text-post-profile">Video</h1>
+        </div>
+        <div 
+          className="media-links-post-profile"
+          onClick={() => props.openModal('post')}
+        >
+          <img src={photo_colorURL} className="media-icons-post-profile"/>
+          <h1 className="media-text-post-profile">Photo</h1>
+        </div>
+        <div 
+          className="media-links-post-profile"
+          onClick={() => props.openModal('post')}
+        >
+          <img src={window.smiley_colorURL} className="media-icons-post-profile"/>
+          <h1 className="media-text-post-profile">Feeling</h1>
+        </div>
       </div>
-      <div 
-        className="media-links-post-profile"
-        onClick={() => props.openModal('post')}
-      >
-        <img src={window.smiley_colorURL} className="media-icons-post-profile"/>
-        <h1 className="media-text-post-profile">Feeling</h1>
-      </div>
-    </div>
       <RenderProfilePost posts={props.posts} profileId={id}/>
-      {/* <h1>{renderPosts()}</h1> */}
     </div>
   </div>)
 

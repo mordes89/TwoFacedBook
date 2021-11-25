@@ -89,7 +89,7 @@
    @include phoneView(visible);
    @include fullDesktopView();
    @include roundCorners();
-   min-width: 500px;
+   min-width: 400px;
    .post-user-pic{
       @include icon(50px, white, white);
    }
