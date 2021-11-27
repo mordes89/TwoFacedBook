@@ -67,8 +67,8 @@ const PostItem = (props) => {
   
   return (
     <div>
-      <div className="poster-and-time">
-          <img src={props.users[props.post.author.id].profile_photo || userURL} className="profile-pic"/>              
+      <div className="poster-and-time" id="id-poster-and-time">
+          <img src={props.users[props.post.author.id].profile_photo || window.userURL} className="profile-pic"/>              
           <div className="top-bar-of-post">
             <Link to={`/user/${props.post.author.id}`} >
               <div className="name-and-time">
@@ -98,7 +98,7 @@ const PostItem = (props) => {
           className="num_likes"
           onClick={props.likeOrUnlike(props.post) ? () => handleUnlike() : () => handleLike(props.post)}
           >
-          <img src={likeURL} className="like-comment-share-icons"/>
+          <img src={window.likeURL} className="like-comment-share-icons"/>
           <h1 className="like-comment-share-text">{props.num_likes}</h1>
         </div>
         <hr className="hline-posts"/>
@@ -112,7 +112,7 @@ const PostItem = (props) => {
             className="media-links-like-comment"
             onClick={() => handleUnlike()} //find the like.id where post.id == parent_post and liker_id == currentUser.id
             >
-            <img src={unlikePostURL} className="like-comment-share-icons"/>
+            <img src={window.unlikePostURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Unlike</h1>
           </div> 
           :
@@ -120,13 +120,13 @@ const PostItem = (props) => {
             className="media-links-like-comment"
             onClick={() => handleLike(props.post)}
             >
-            <img src={likePostURL} className="like-comment-share-icons"/>
+            <img src={window.likePostURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Like</h1>
           </div>                         
           }
           
           <div className="media-links-like-comment" onClick={toggleComment}>
-            <img src={commentsURL} className="like-comment-share-icons"/>
+            <img src={window.commentsURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Comment</h1>
           </div>              
         </div>
@@ -143,7 +143,7 @@ const PostItem = (props) => {
           comment.parent_post_id === props.post.id ? 
           (<ul key={`comment-${i}`} className="comments">
             <div className="pic-comment-dropdown">
-              <img src={props.users[comment.author_id].profile_photo || userURL} className="profile-pic"/>
+              <img src={props.users[comment.author_id].profile_photo || window.userURL} className="profile-pic"/>
               <div className="top-bar-of-comment">
                 <div className="name-and-time">
                   {<EditComment comment={comment}/>}

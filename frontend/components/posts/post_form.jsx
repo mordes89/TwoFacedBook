@@ -54,7 +54,7 @@ class PostModal extends React.Component {
       <hr className="hline-post"/>        
       <form onSubmit={this.handleSubmit}>
             <div className="user-row">
-               <img src={this.props.currentUser.profile_photo || userURL} className="logo"/>
+               <img src={this.props.currentUser.profile_photo || window.userURL} className="logo"/>
                <h2 className="header-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
             </div>
                <textarea                
@@ -79,7 +79,7 @@ class PostModal extends React.Component {
                 <div className="media-links">
                   <label>
                     <img
-                      src={photo_colorURL} 
+                      src={window.photo_colorURL} 
                       type="file"                      
                       className="media-icons-modal-pic"
                     />

@@ -77,7 +77,7 @@
 //     return (
 //       <div>
 //         <div className="poster-and-time">
-//             <img src={userURL} className="profile-pic"/>              
+//             <img src={window.userURL} className="profile-pic"/>              
 //             <div className="top-bar-of-post">
 //               <div className="name-and-time">
 //                 <li className="author">{`${this.props.post.author.first_name} ${this.props.post.author.last_name}`}</li>
@@ -104,7 +104,7 @@
 //           <div 
 //             className="media-links"
 //             >
-//             <img src={likeURL} className="like-comment-share-icons"/>
+//             <img src={window.likeURL} className="like-comment-share-icons"/>
 //             <h1 className="like-comment-share-text">{this.props.num_likes}</h1>
 //           </div>
 //           <hr className="hline-posts"/>
@@ -118,7 +118,7 @@
 //               className="media-links"
 //               onClick={() => this.handleUnlike()} //find the like.id where post.id == parent_post and liker_id == currentUser.id
 //               >
-//               <img src={unlikePostURL} className="like-comment-share-icons"/>
+//               <img src={window.unlikePostURL} className="like-comment-share-icons"/>
 //               <h1 className="like-comment-share-text">Unlike</h1>
 //             </div> 
 //             :
@@ -126,13 +126,13 @@
 //               className="media-links"
 //               onClick={() => this.handleLike(this.props.post.id)}
 //               >
-//               <img src={likePostURL} className="like-comment-share-icons"/>
+//               <img src={window.likePostURL} className="like-comment-share-icons"/>
 //               <h1 className="like-comment-share-text">Like</h1>
 //             </div>                         
 //             }
             
 //             <div className="media-links" onClick={this.toggleComment}>
-//               <img src={commentsURL} className="like-comment-share-icons"/>
+//               <img src={window.commentsURL} className="like-comment-share-icons"/>
 //               <h1 className="like-comment-share-text">Comment</h1>
 //             </div>              
 //           </div>
@@ -146,7 +146,7 @@
 //             comment.parent_post_id === this.props.post.id ? 
 //             (<ul key={`comment-${i}`} className="comments">
 //               <div className="pic-comment-dropdown">
-//                 <img src={userURL} className="profile-pic"/>
+//                 <img src={window.userURL} className="profile-pic"/>
 //                 <div className="top-bar-of-comment">
 //                   <div className="name-and-time">
 //                     {<EditComment comment={comment}/>}

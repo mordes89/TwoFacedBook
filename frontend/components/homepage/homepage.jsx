@@ -75,12 +75,12 @@ class Homepage extends React.Component {
       <div>
         <header className="header">
           <div className="header1">
-            <img src={facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+            <img src={window.facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
             {/* <img src={window.searchURL} className="logo"/> */}
           </div>
           <div className="header2">
-            <img src={homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
-            {/* <img src={window.videoURL} className="middle-header-icons"/> */}
+            <img src={window.homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
+            {/* <img src={window.window.videoURL} className="middle-header-icons"/> */}
             {/* <img src={window.marketURL} className="middle-header-icons"/> */}
             {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
             {/* <img src={window.newsURL} className="middle-header-icons"/> */}
@@ -88,7 +88,7 @@ class Homepage extends React.Component {
           <div className="header3">
             <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="right-nav-icon-name">
-                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-header"/>
+                <img src={this.props.currentUser.profile_photo || window.userURL} className="user-logo-header"/>
                 <h2 className="header-name">{this.props.currentUser.first_name}</h2>
               </div>
             </Link>
@@ -101,30 +101,59 @@ class Homepage extends React.Component {
 
         <div className="homepage-body">
           <div className="left-nav">
-          <Link to={`/user/${this.props.currentUser.id}`}>
+            <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="left-nav-icon-row">
-                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
+                <img src={this.props.currentUser.profile_photo || window.userURL} className="user-logo-leftnav"/>
                 <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
               </div>
             </Link>
+            <hr className="hline-lefnav"/>
+            
+
+            <h1 className="bottom-wording-other-proj">Mike's Other Projects:</h1>
+            <hr className="hline-bottom-lefnav"/>
+
+            <a href="https://chord-pro-generator.herokuapp.com/#/" target="_blank" className="left-nav-bottom-icon-row2">
+              <div className="left-nav-bottom-icon-row1">
+                <img src={window.CPGsmallLogoURL} className="sites-logo1"/>
+                {/* <h2 className="leftnav-name">Chord Pro Generator</h2> */}
+              </div>
+            </a>
+            <a href="https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/" target="_blank" className="left-nav-bottom-icon-row2">
+              <div className="left-nav-bottom-icon-row2">
+                <img src={window.EHPSLogoURL} className="sites-logo2"/>
+                {/* <h2 className="leftnav-name">Exploding Hot-Potato Soccer!</h2> */}
+              </div>
+            </a>
+
+            
           </div>
          
           <div className="right-nav">
             <h1 className="not-sponsored">Creator</h1>
-            <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
-              <img src={linkedinURL} className="sponsored-logo-rightnav"/>
+            <a href="https://mordes89.github.io/Portfolio/" target="_blank" className="right-nav-icon-row">
+              <img src={window.mikeSLogoURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
-                <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                <h2 className="LinkedIn-rightnav">Profile</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
             <a href="https://github.com/mordes89" target="_blank" className="right-nav-icon-row">
-              <img src={ghURL} className="sponsored-logo-rightnav"/>
+              <img src={window.ghURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">GitHub</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
+            <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
+              <img src={window.linkedinURL} className="sponsored-logo-rightnav"/>
+              <div className="sponsored-wording-rightnav">
+                <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                <h2 className="name-rightnav">Mike Schnall</h2>
+              </div>
+            </a>
+            
+            
             <hr className="hline-posts"/>
           </div>
         </div>
@@ -133,7 +162,7 @@ class Homepage extends React.Component {
         <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
-                <img src={this.props.currentUser.profile_photo || userURL} className="post-user-pic"/>
+                <img src={this.props.currentUser.profile_photo || window.userURL} className="post-user-pic"/>
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 
@@ -146,14 +175,14 @@ class Homepage extends React.Component {
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={video_colorURL} className="media-icons-post"/>
+                  <img src={window.video_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Video</h1>
                 </div>
                 <div 
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={photo_colorURL} className="media-icons-post"/>
+                  <img src={window.photo_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Photo</h1>
                 </div>
                 <div 

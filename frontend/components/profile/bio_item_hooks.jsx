@@ -123,7 +123,7 @@
 //          <div className="posts-and-bio">
 //          <div className="bio-container">          
 //             <div id="bio-row">
-//                <img src={workURL} className="profile-icon"/>
+//                <img src={window.workURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Current Work `}</p>            
 //                   <input 
@@ -136,7 +136,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={schoolURL} className="profile-icon"/>
+//                <img src={window.schoolURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`School `}</p>            
 //                   <input 
@@ -149,7 +149,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={locationURL} className="profile-icon"/>
+//                <img src={window.locationURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`From `}</p>            
 //                   <input 
@@ -162,7 +162,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={houseURL} className="profile-icon"/>
+//                <img src={window.houseURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Live in `}</p>            
 //                   <input 
@@ -175,7 +175,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={heartURL} className="profile-icon"/>
+//                <img src={window.heartURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Relationship Status `}</p>            
 //                   <input 
@@ -188,7 +188,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={birthdayURL} className="profile-icon"/>
+//                <img src={window.birthdayURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Birthday `}</p>            
 //                   <input 
@@ -201,7 +201,7 @@
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={timerURL} className="profile-icon"/>
+//                <img src={window.timerURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Joined TwoFacedBook `}</p>            
 //                   <input 
@@ -226,49 +226,49 @@
 //       <div className="posts-and-bio">
 //          <div className="bio-container">          
 //             <div id="bio-row">
-//                <img src={workURL} className="profile-icon"/>
+//                <img src={window.workURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Current Work: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.work || `Edit Work`}`}</p>            
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={schoolURL} className="profile-icon"/>
+//                <img src={window.schoolURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`School: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.school || `Edit school`}`}</p>            
 //                </div>
 //             </div>          
 //             <div id="bio-row">
-//                <img src={locationURL} className="profile-icon"/>
+//                <img src={window.locationURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`From: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.originally_from || `Edit Origin`}`}</p>            
 //                </div>
 //             </div>          
 //             <div id="bio-row">
-//                <img src={houseURL} className="profile-icon"/>
+//                <img src={window.houseURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Live in: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.address || `Edit Address`}`}</p>            
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={heartURL} className="profile-icon"/>
+//                <img src={window.heartURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Relationship Status: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.relationship || `Edit Relationship Status`}`}</p>            
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={birthdayURL} className="profile-icon"/>
+//                <img src={window.birthdayURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Birthday: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.birthday}`}</p>            
 //                </div>
 //             </div>
 //             <div id="bio-row">
-//                <img src={timerURL} className="profile-icon"/>
+//                <img src={window.timerURL} className="profile-icon"/>
 //                <div id="bio-wording">
 //                   <p>{`Joined TwoFacedBook: `}</p>            
 //                   <p id="bio-entry-bold">{` ${this.state.joinedTFB}`}</p>            

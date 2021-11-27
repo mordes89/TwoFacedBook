@@ -61,7 +61,7 @@ class CommentForm extends React.Component {
   render() {    
   const comment = this.props.comment_on2 ? 
         <form className="posting-query" onSubmit={(e) => this.handleSubmit(e)}>
-            <img src={this.props.currentUser.profile_photo || userURL} className="post-user-pic"/>
+            <img src={this.props.currentUser.profile_photo || window.userURL} className="post-user-pic"/>
             <input 
               onChange={this.update('body')}     
               className="create_post-input" 

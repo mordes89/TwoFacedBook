@@ -27,14 +27,14 @@ class MenuDropdown extends React.Component {
                >
                   <Link to={`/user/${this.props.currentUser.id}`}>
                      <div className="logout-row">
-                        <img src={this.props.currentUser.profile_photo || userURL} className="logo"/>
+                        <img src={this.props.currentUser.profile_photo || window.userURL} className="logo"/>
                         <h2 className="header-name">{`${this.props.currentUser.first_name} ${this.props.currentUser.last_name}`}</h2>
                      </div>
                   </Link>
                   <hr className="hline-login"/>
                   <div className="logout-row"                         
                         onClick={this.props.logout}>
-                     <img src={logoutURL} className="logout-memu-icon"/>
+                     <img src={window.logoutURL} className="logout-memu-icon"/>
                      <button className="menu-text">Log Out</button>
                   </div>
                </ul>    
@@ -42,7 +42,7 @@ class MenuDropdown extends React.Component {
          : null;
       return (
          <div>
-            <img src={downarrowURL} className="right-header-icons" onClick={e => this.handleMenuClick(e)}/>
+            <img src={window.downarrowURL} className="right-header-icons" onClick={e => this.handleMenuClick(e)}/>
             <>{menu}</>
          </div>
       ) 

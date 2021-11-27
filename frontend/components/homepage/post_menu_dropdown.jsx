@@ -31,7 +31,7 @@ class PostMenuDropdown extends React.Component {
                   className="post-menu-dropdown"
                >
                   <div className="post-logout-row">
-                  <img src={editURL} className="post-memu-icon"/>  
+                  <img src={window.editURL} className="post-memu-icon"/>  
                      <button 
                         className="post-menu-text"
                         onClick={(e=>this.handleMenuEditClick(e))}
@@ -40,7 +40,7 @@ class PostMenuDropdown extends React.Component {
                   </div>
                   <hr className="post-hline-login"/>
                   <div className="post-logout-row">
-                     <img src={deleteURL} className="post-memu-icon"/>
+                     <img src={window.deleteURL} className="post-memu-icon"/>
                      <button 
                         className="post-menu-text"
                         onClick={() => this.props.deletePost(this.props.post.id)
@@ -53,7 +53,7 @@ class PostMenuDropdown extends React.Component {
          : null;
 
          let menuIcon = (this.props.currentUser.id == this.props.post.author_id) ? 
-            <img src={menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
+            <img src={window.menuDotsURL} className="post-menu-icon" onClick={e => this.handleMenuClick(e)}/> 
             : null;
       return (
          <div> 
