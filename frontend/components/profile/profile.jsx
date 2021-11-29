@@ -188,11 +188,11 @@ const Profile = (props) => {
     <div>
       <header className="header">
         <div className="header1">
-          <img src={window.facebookroundURL} className="logo" onClick={()=>props.history.push('/home')}/>
+          <img src={window.facebookroundURL} className="logo" onClick={() => props.history.push('/home')}/>
           {/* <img src={window.searchURL} className="logo"/> */}
         </div>
         <div className="header2">
-          <img src={window.homeURL} className="middle-header-icons" onClick={()=>props.history.push('/home')}/>
+          <img src={window.homeURL} className="middle-header-icons" onClick={() => props.history.push('/home')}/>
           {/* <img src={window.window.videoURL} className="middle-header-icons"/> */}
           {/* <img src={window.marketURL} className="middle-header-icons"/> */}
           {/* <img src={window.friendsURL} className="middle-header-icons"/> */}

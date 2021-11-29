@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 
@@ -12,7 +13,12 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleNewUser = this.handleNewUser.bind(this);
+    this.pushHistory = this.pushHistory.bind(this);
   }
+  pushHistory() {
+    this.props.history.push('/home');
+  }
+
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
@@ -20,20 +26,22 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {    
     e.preventDefault();
+    this.props.fetchUsers();
     this.props.processForm(Object.assign({}, this.state))
-      .then(() => this.props.history.push('/home'))
+      .then(() => pushHistory())
   }
 
   handleDemoLogin(e) {        
     e.preventDefault();
     this.props.login({email: 'demouser@user.com', password: '123456'})
-    .then(() => this.props.history.push('/home'));
+      .then(() => this.props.history.push('/home'));
   }
 
   handleNewUser(e) {    
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);  
+    this.props.processForm(user)
+      .then(this.props.closeModal);  
   }
 
   renderErrors() {       

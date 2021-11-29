@@ -1,5 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { withRouter } from 'react-router';
+
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
@@ -32,4 +34,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default withRouter(App);

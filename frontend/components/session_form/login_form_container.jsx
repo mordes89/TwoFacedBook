@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { fetchUsers } from '../../actions/user_actions';
+
 
 
 
@@ -19,7 +21,9 @@ const mDTP = dispatch => {
     login: (user) => dispatch(login(user)),
     processForm: (user) => dispatch(login(user)),
     openModal: modal => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    fetchUsers: () => dispatch(fetchUsers()) 
+
   };
 };
 
