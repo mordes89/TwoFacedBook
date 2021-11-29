@@ -108,7 +108,28 @@ class Homepage extends React.Component {
               </div>
             </Link>
             <hr className="hline-lefnav"/>
-            
+            <div className="technologies-used-container">
+              <h1 className="technologies-used-title">Technologies Used</h1>
+              <ul className="technologies-used-ul">
+                <div className="technologies-used-row">
+                  <img src={window.rubyonrailsURL} className="technologies-used-pic"/>
+                  <li className="technologies-used-li">Ruby on Rails</li>
+                </div>
+                <div className="technologies-used-row">
+                  <img src={window.reactURL} className="technologies-used-pic"/>
+                  <li className="technologies-used-li">React (+Hooks)</li>
+                </div>
+                <div className="technologies-used-row">
+                  <img src={window.reduxURL} className="technologies-used-pic"/>
+                  <li className="technologies-used-li">Redux</li>
+                </div>
+                <div className="technologies-used-row">
+                  <img src={window.sassURL} className="technologies-used-pic"/>
+                  <li className="technologies-used-li">CSS/SASS (+Mixins)</li>
+                </div>
+
+              </ul>
+            </div>
 
             <h1 className="bottom-wording-other-proj">Mike's Other Projects:</h1>
             <hr className="hline-bottom-lefnav"/>
@@ -149,6 +170,13 @@ class Homepage extends React.Component {
               <img src={window.linkedinURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                <h2 className="name-rightnav">Mike Schnall</h2>
+              </div>
+            </a>
+            <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
+              <img src={window.angelistURL} className="sponsored-logo-rightnav"/>
+              <div className="sponsored-wording-rightnav">
+                <h2 className="LinkedIn-rightnav">Angel List</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>

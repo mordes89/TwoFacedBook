@@ -36,6 +36,32 @@
       color: rgb(196, 196, 196);
       margin-left: 10px;
    }
+   .technologies-used-container{
+      margin-left: 10px;
+      .technologies-used-title{
+         color: grey;
+         font-weight: bold;
+         margin-bottom: 10px;
+         font-size: 20px;
+      }
+      .technologies-used-row{
+         display: flex;
+         .technologies-used-pic{
+            @include icon($hw: 30px, $hoverColor: none, $borderRadius: 30px);
+            // object-fit: cover;
+            // min-width: 60px;
+            // min-height: 60px;
+         }
+         .technologies-used-li{
+            margin: 8px;
+            font-weight: bold;
+         }
+      }
+   }
+
+
+
+
    .bottom-wording-other-proj{
       position: absolute;
       font-size: 18px;
@@ -121,7 +147,7 @@
    
    }
    .sponsored-logo-rightnav{
-      @include icon(140px, none, none)
+      @include icon(100px, none, none)
    }
    
    .sponsored-wording-rightnav{
