@@ -14,7 +14,15 @@ class SignupModal extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.loginNewUser = this.loginNewUser.bind(this);
 
+  }
+
+  loginNewUser(e) {        
+    e.preventDefault();
+    this.props.fetchUsers();
+    this.props.login({email: this.state.email, password: this.state.password})
+      // .then(this.props.history.push('/home'));
   }
 
   update(field) {
@@ -25,8 +33,8 @@ class SignupModal extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
-    .then(this.props.login({email: user.email, password: user.password})
-      .then(() => this.props.history.push('/home'))) 
+    .then(() => this.loginNewUser(e))
+    
   }
 
   renderErrors() {       
@@ -51,7 +59,7 @@ class SignupModal extends React.Component {
         <h3 className="quick-and-easy">It's quick and easy.</h3>
         
         <hr className="hline-signup"/>        
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <h1 className="errors">{this.renderErrors()}</h1>
             <div className="centered-signup-form">
               <div className="name">
@@ -93,7 +101,7 @@ class SignupModal extends React.Component {
                   className="date"
                 />
                 <br />
-              <button type="submit" className="signup-button">Sign Up</button>
+              <button type="submit" className="signup-button" onClick={this.handleSubmit}>Sign Up</button>
             </div>
         </form>
       </div>

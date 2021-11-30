@@ -12,10 +12,11 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    this.handleNewUser = this.handleNewUser.bind(this);
+    // this.handleNewUser = this.handleNewUser.bind(this);
     this.pushHistory = this.pushHistory.bind(this);
   }
   pushHistory() {
+    this.props.fetchUsers();
     this.props.history.push('/home');
   }
 
@@ -28,7 +29,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     this.props.fetchUsers();
     this.props.processForm(Object.assign({}, this.state))
-      .then(() => pushHistory())
+      .then(() => this.pushHistory())
   }
 
   handleDemoLogin(e) {        
@@ -37,12 +38,12 @@ class SessionForm extends React.Component {
       .then(() => this.props.history.push('/home'));
   }
 
-  handleNewUser(e) {    
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user)
-      .then(this.props.closeModal);  
-  }
+  // handleNewUser(e) {    
+  //   e.preventDefault();
+  //   const user = Object.assign({}, this.state);
+  //   this.props.processForm(user)
+  //     // .then(() => this.loginNewUser(user., pw))//this.props.closeModal);  
+  // }
 
   renderErrors() {       
     return(

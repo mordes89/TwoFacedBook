@@ -29,7 +29,7 @@ const Profile = (props) => {
     // console.log("state.entities.users.last:", props.users.last),
     // console.log("state.entities.users:", props.users),
     // console.log("users:", users),
-    console.log("id from profile:", id),
+    // console.log("id from profile:", id),
     // console.log("userProfile:", userProfile),
     // console.log("Object.values(users):", Object.values(users)),
     // console.log("Object.values(users)[0].id:", Object.values(users)[0].id)
@@ -123,7 +123,7 @@ const Profile = (props) => {
       setCoverPhotoUrl('')
       setCoverPhotoFile(null)
     }   
-    console.log("coverPhotoFile: ", coverPhotoFile)
+    // console.log("coverPhotoFile: ", coverPhotoFile)
   }
 
   let handleCoverPhotoSubmit = (e) => {

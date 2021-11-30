@@ -24,8 +24,7 @@ export const createUser = (formData) => {
 };
 
 export const updateUser = (formData) => {
-   console.log("user util formData: ", Array.from(formData));
-   debugger
+   // console.log("user util formData: ", Array.from(formData));
    return $.ajax({
       url: `/api/users/${formData.get('user[id]')}`,
       method: 'PATCH',

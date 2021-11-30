@@ -9,8 +9,7 @@ export const fetchPost = (postId) =>
    });
 
 export const createPost = (formData) => { 
-   console.log("Post util formData: ", Array.from(formData)); 
-   debugger 
+   // console.log("Post util formData: ", Array.from(formData)); 
    return(
       $.ajax({
          url: '/api/posts',
@@ -23,8 +22,8 @@ export const createPost = (formData) => {
 };
 
 export const updatePost = (formData) => {
-   console.log("Post util formData: ", Array.from(formData));
-   debugger  
+   // console.log("Post util formData: ", Array.from(formData));
+     
 
    return $.ajax({
       url: `/api/posts/${formData.get('post[id]')}`,
