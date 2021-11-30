@@ -237,7 +237,7 @@ class PostModal extends React.Component {
                </div>
             </div>  
          </div>
-         <button className="edit-profile-button" onClick={(e) => this.handleeidt(e)}>Edit Profile</button>
+         <button className={this.props.currentUser.id === this.props.userProfile.id ? "edit-profile-button" : "hidden-input-pic"} onClick={(e) => this.handleeidt(e)}>Edit Profile</button>
       </div>
       )
 

@@ -143,40 +143,40 @@ const Profile = (props) => {
   let myPosts = 
   (<div className="middle-nav-newsfeed2-profile">
     <BioItem userProfile={userProfile}/>    
-
-    <div className="posting-box-profile">
-      <div className="posting-query-profile">
-        <img src={props.currentUser ? (props.currentUser.profile_photo || userURL) : userURL} className="post-user-pic-profile"/>
-        <input 
-          onClick={() => props.openModal('post')} 
-          className="create_post-input-profile" 
-          placeholder={`What's on your mind ${props.currentUser ? props.currentUser.first_name : "First Name"}?`}                  
-        />    
-      </div>
-      <hr className="hline-posts-profile"/>
-      <div className="add-media-to-post-profile">
-        <div 
-          className="media-links-post-profile"
-          onClick={() => props.openModal('post')}
-        >
-          <img src={video_colorURL} className="media-icons-post-profile"/>
-          <h1 className="media-text-post-profile">Video</h1>
+    {props.currentUser.id === userProfile.id ? <div></div> : null}
+      <div className="posting-box-profile">
+        <div className="posting-query-profile">
+          <img src={props.currentUser ? (props.currentUser.profile_photo || userURL) : userURL} className="post-user-pic-profile"/>
+          <input 
+            onClick={() => props.openModal('post')} 
+            className="create_post-input-profile" 
+            placeholder={`What's on your mind ${props.currentUser ? props.currentUser.first_name : "First Name"}?`}                  
+          />    
         </div>
-        <div 
-          className="media-links-post-profile"
-          onClick={() => props.openModal('post')}
-        >
-          <img src={photo_colorURL} className="media-icons-post-profile"/>
-          <h1 className="media-text-post-profile">Photo</h1>
+        <hr className="hline-posts-profile"/>
+        <div className="add-media-to-post-profile">
+          <div 
+            className="media-links-post-profile"
+            onClick={() => props.openModal('post')}
+          >
+            <img src={video_colorURL} className="media-icons-post-profile"/>
+            <h1 className="media-text-post-profile">Video</h1>
+          </div>
+          <div 
+            className="media-links-post-profile"
+            onClick={() => props.openModal('post')}
+          >
+            <img src={photo_colorURL} className="media-icons-post-profile"/>
+            <h1 className="media-text-post-profile">Photo</h1>
+          </div>
+          <div 
+            className="media-links-post-profile"
+            onClick={() => props.openModal('post')}
+          >
+            <img src={smiley_colorURL} className="media-icons-post-profile"/>
+            <h1 className="media-text-post-profile">Feeling</h1>
+          </div>
         </div>
-        <div 
-          className="media-links-post-profile"
-          onClick={() => props.openModal('post')}
-        >
-          <img src={smiley_colorURL} className="media-icons-post-profile"/>
-          <h1 className="media-text-post-profile">Feeling</h1>
-        </div>
-      </div>
       <RenderProfilePost posts={props.posts} profileId={id}/>
     </div>
   </div>)
@@ -199,17 +199,7 @@ const Profile = (props) => {
           {/* <img src={newsURL} className="middle-header-icons"/> */}
         </div>
         <div className="header3">
-          {/* <Link to={`/user/${props.currentUser.id}`}> */}
-          {/* <div onClick={()=>props.history.push(`/user/${props.currentUser.id}`)}>
-            <div className="right-nav-icon-name">
-              <img src={props.currentUser.profile_photo || userURL} className="user-logo-header"/>
-              <h2 className="header-name">{props.currentUser.first_name}</h2>
-            </div>
-          </div> */}
-          {/* </Link> */}
-          {/* <img src={appsURL} className="logo"/>
-          <img src={messagesURL} className="logo"/>
-          <img src={bellURL} className="logo"/> */}
+          
           <ProfileMenuDropdown className="show-menu-dropdown"/>
         </div>    
       </header>
@@ -236,9 +226,9 @@ const Profile = (props) => {
                     className="hidden-input-pic"/>
                 </label> 
                   :
-                <div id="edit-cover-photo-container">
+                <div id={props.currentUser.id === userProfile.id ? "edit-cover-photo-container" : "hidden-input-pic"}>
                   <label>
-                      <div className="edit-cover-photo-pic-container">
+                      <div className={props.currentUser.id === userProfile.id ? "edit-cover-photo-pic-container" : "hidden-input-pic"}>
                         <img
                           src={editPicURL} 
                           type="file"                      
@@ -280,16 +270,16 @@ const Profile = (props) => {
               <img
                 src={photo_color2URL} 
                 type="file"                      
-                className="edit-profile-photo"
+                className={props.currentUser.id === userProfile.id ? "edit-profile-photo" : "hidden-input-pic"}
               />
               <input 
                 type="file" 
                 onChange={handleProfilePicFile} 
-                className="hidden-input-pic"/>
+                className={"hidden-input-pic"}/>
             </label>}
 
 
-            <div className="profile-name">{userProfile.first_name} {userProfile.last_name}</div>
+            <div className={props.currentUser.id === userProfile.id ? "profile-name" : "others-profile-name"}>{userProfile.first_name} {userProfile.last_name}</div>
           </div>
         </div>
       </div>
