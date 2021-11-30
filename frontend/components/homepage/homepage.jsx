@@ -115,19 +115,27 @@ class Homepage extends React.Component {
               <h1 className="technologies-used-title">Technologies Used</h1>
               <ul className="technologies-used-ul">
                 <div className="technologies-used-row">
-                  <img src={rubyonrailsURL} className="technologies-used-pic"/>
+                  <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
+                    <img src={rubyonrailsURL} className="technologies-used-pic"/>
+                  </a>
                   <li className="technologies-used-li">Ruby on Rails</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={reactURL} className="technologies-used-pic"/>
+                  <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
+                    <img src={reactURL} className="technologies-used-pic"/>
+                  </a>
                   <li className="technologies-used-li">React (+Hooks)</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={reduxURL} className="technologies-used-pic"/>
+                  <a href="https://redux.js.org/introduction/getting-started" target="_blank">
+                    <img src={reduxURL} className="technologies-used-pic"/>
+                  </a>
                   <li className="technologies-used-li">Redux</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={sassURL} className="technologies-used-pic"/>
+                  <a href="https://sass-lang.com/guide" target="_blank">
+                    <img src={sassURL} className="technologies-used-pic"/>
+                  </a>
                   <li className="technologies-used-li">CSS/SASS (+Mixins)</li>
                 </div>
 

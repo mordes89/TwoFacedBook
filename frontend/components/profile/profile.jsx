@@ -21,7 +21,7 @@ const Profile = (props) => {
     () => {
       fetchUsers2(); 
       setUsers(props.users);
-      setProfilphotoUrl(users[id].profile_photo || window.userURL); 
+      setProfilphotoUrl(users[id].profile_photo || userURL); 
       setCoverPhotoUrl(users[id].cover_photo);
       setUserProfile(props.users[id])
     }, [id],
@@ -37,10 +37,10 @@ const Profile = (props) => {
 
   
   // const initBeforeUnLoad = (showExitPrompt) => {
-  //   window.onbeforeunload = (event) => {
+  //   onbeforeunload = (event) => {
   //     // Show prompt based on state
   //     if (showExitPrompt) {
-  //       const e = event || window.event;
+  //       const e = event || event;
   //       e.preventDefault();
   //       if (e) {
   //         e.returnValue = ''
@@ -66,7 +66,7 @@ const Profile = (props) => {
 
   // let homeLink = <button><Link to="/home">Home</Link></button>
   
-  if (window.performance) {
+  if (performance) {
     if (performance.getEntriesByType("navigation")[0].type == "reload" || performance.getEntriesByType("navigation")[0].type == "back_forward") {
       event.preventDefault();
       props.history.push('/home')
@@ -146,11 +146,11 @@ const Profile = (props) => {
 
     <div className="posting-box-profile">
       <div className="posting-query-profile">
-        <img src={props.currentUser.profile_photo || window.userURL} className="post-user-pic-profile"/>
+        <img src={props.currentUser ? (props.currentUser.profile_photo || userURL) : userURL} className="post-user-pic-profile"/>
         <input 
           onClick={() => props.openModal('post')} 
           className="create_post-input-profile" 
-          placeholder={`What's on your mind ${props.currentUser.first_name}?`}                  
+          placeholder={`What's on your mind ${props.currentUser ? props.currentUser.first_name : "First Name"}?`}                  
         />    
       </div>
       <hr className="hline-posts-profile"/>
@@ -159,21 +159,21 @@ const Profile = (props) => {
           className="media-links-post-profile"
           onClick={() => props.openModal('post')}
         >
-          <img src={window.video_colorURL} className="media-icons-post-profile"/>
+          <img src={video_colorURL} className="media-icons-post-profile"/>
           <h1 className="media-text-post-profile">Video</h1>
         </div>
         <div 
           className="media-links-post-profile"
           onClick={() => props.openModal('post')}
         >
-          <img src={window.photo_colorURL} className="media-icons-post-profile"/>
+          <img src={photo_colorURL} className="media-icons-post-profile"/>
           <h1 className="media-text-post-profile">Photo</h1>
         </div>
         <div 
           className="media-links-post-profile"
           onClick={() => props.openModal('post')}
         >
-          <img src={window.smiley_colorURL} className="media-icons-post-profile"/>
+          <img src={smiley_colorURL} className="media-icons-post-profile"/>
           <h1 className="media-text-post-profile">Feeling</h1>
         </div>
       </div>
@@ -188,28 +188,28 @@ const Profile = (props) => {
     <div>
       <header className="header">
         <div className="header1">
-          <img src={window.facebookroundURL} className="logo" onClick={() => props.history.push('/home')}/>
-          {/* <img src={window.searchURL} className="logo"/> */}
+          <img src={facebookroundURL} className="logo" onClick={() => props.history.push('/home')}/>
+          {/* <img src={searchURL} className="logo"/> */}
         </div>
         <div className="header2">
-          <img src={window.homeURL} className="middle-header-icons" onClick={() => props.history.push('/home')}/>
-          {/* <img src={window.window.videoURL} className="middle-header-icons"/> */}
-          {/* <img src={window.marketURL} className="middle-header-icons"/> */}
-          {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
-          {/* <img src={window.newsURL} className="middle-header-icons"/> */}
+          <img src={homeURL} className="middle-header-icons" onClick={() => props.history.push('/home')}/>
+          {/* <img src={videoURL} className="middle-header-icons"/> */}
+          {/* <img src={marketURL} className="middle-header-icons"/> */}
+          {/* <img src={friendsURL} className="middle-header-icons"/> */}
+          {/* <img src={newsURL} className="middle-header-icons"/> */}
         </div>
         <div className="header3">
           {/* <Link to={`/user/${props.currentUser.id}`}> */}
           {/* <div onClick={()=>props.history.push(`/user/${props.currentUser.id}`)}>
             <div className="right-nav-icon-name">
-              <img src={props.currentUser.profile_photo || window.userURL} className="user-logo-header"/>
+              <img src={props.currentUser.profile_photo || userURL} className="user-logo-header"/>
               <h2 className="header-name">{props.currentUser.first_name}</h2>
             </div>
           </div> */}
           {/* </Link> */}
-          {/* <img src={window.appsURL} className="logo"/>
-          <img src={window.messagesURL} className="logo"/>
-          <img src={window.bellURL} className="logo"/> */}
+          {/* <img src={appsURL} className="logo"/>
+          <img src={messagesURL} className="logo"/>
+          <img src={bellURL} className="logo"/> */}
           <ProfileMenuDropdown className="show-menu-dropdown"/>
         </div>    
       </header>
@@ -219,14 +219,14 @@ const Profile = (props) => {
       <div className="cover-photo-and-profile-photo">
         <div className="cover-photos-and-name">
           <div>
-            <img src={!coverPhotoUrl ? window.coverPhoto1URL : coverPhotoUrl} id="cover-photo-pic"/>
+            <img src={!coverPhotoUrl ? coverPhoto1URL : coverPhotoUrl} id="cover-photo-pic"/>
             
-              {/* <img src={window.editPicURL} className="edit-cover-photo-pic"/>
+              {/* <img src={editPicURL} className="edit-cover-photo-pic"/>
               <p className="edit-cover-photo-text">Edit Cover Photo</p> */}
               {showSaveCoverPhoto ? 
                 <label>
                   <img
-                    src={window.saveIconURL} 
+                    src={saveIconURL} 
                     type="file"                      
                     className="save-cover-photo-pic"
                   />
@@ -240,7 +240,7 @@ const Profile = (props) => {
                   <label>
                       <div className="edit-cover-photo-pic-container">
                         <img
-                          src={window.editPicURL} 
+                          src={editPicURL} 
                           type="file"                      
                           className="edit-cover-photo-pic"
                         />
@@ -261,12 +261,12 @@ const Profile = (props) => {
 
 
           <div className="profile-photo-and-name">
-            <img src={!profilphotoUrl ? window.userURL : profilphotoUrl} className="profile-photo"/>
+            <img src={!profilphotoUrl ? userURL : profilphotoUrl} className="profile-photo"/>
 
             {showSaveProfilePhoto ? 
             <label>
               <img
-                src={window.saveIconURL} 
+                src={saveIconURL} 
                 type="file"                      
                 className="edit-profile-photo"
               />
@@ -278,7 +278,7 @@ const Profile = (props) => {
               :
             <label>
               <img
-                src={window.photo_color2URL} 
+                src={photo_color2URL} 
                 type="file"                      
                 className="edit-profile-photo"
               />
