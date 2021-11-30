@@ -3,11 +3,65 @@
   <head>
     <title>Twofacedbook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:title" content="Twofacedbook" />
+    <meta property='og:image' width=250 height=250 content="<%= image_url('facebookround.png') %>"/>
+    <meta property="og:description"
+      content="TwoFacedBook is a clone of Facebook using PostgreSQL, Ruby on Rails, React, and Redux."
+    />
+    <meta property="og:url"
+      content="https://twofacedbook.herokuapp.com/"
+    />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application' %>  
+
+    <script type="text/javascript"> window.facebookroundURL = "<%= image_url('facebookround.png') %>"</script>
+    <script type="text/javascript"> window.searchURL = "<%= image_url('search.png') %>"</script>
+    <script type="text/javascript"> window.home2URL = "<%= image_url('home.png') %>"</script>
+    <script type="text/javascript"> window.homeURL = "<%= image_url('home2.png') %>"</script>
+    <script type="text/javascript"> window.videoURL = "<%= image_url('video.png') %>"</script>
+    <script type="text/javascript"> window.marketURL = "<%= image_url('market.png') %>"</script>
+    <script type="text/javascript"> window.friendsURL = "<%= image_url('friends.png') %>"</script>
+    <script type="text/javascript"> window.newsURL = "<%= image_url('news.png') %>"</script>
+    <script type="text/javascript"> window.appsURL = "<%= image_url('apps.png') %>"</script>
+    <script type="text/javascript"> window.messagesURL = "<%= image_url('messages.png') %>"</script>
+    <script type="text/javascript"> window.bellURL = "<%= image_url('bell.png') %>"</script>
+    <script type="text/javascript"> window.downarrowURL = "<%= image_url('downArrow.png') %>"</script>
+    <script type="text/javascript"> window.logoutURL = "<%= image_url('logout.png') %>"</script>
+    <script type="text/javascript"> window.video_colorURL = "<%= image_url('videoColor.png') %>"</script>
+    <script type="text/javascript"> window.photo_colorURL = "<%= image_url('photoColor2.png') %>"</script>
+    <script type="text/javascript"> window.photo_color2URL = "<%= image_url('photoColor.png') %>"</script>
+    <script type="text/javascript"> window.smiley_colorURL = "<%= image_url('smileyColor.png') %>"</script>
+    <script type="text/javascript"> window.likeURL = "<%= image_url('like.png') %>"</script>
+    <script type="text/javascript"> window.likePostURL = "<%= image_url('likePost.png') %>"</script>
+    <script type="text/javascript"> window.unlikePostURL = "<%= image_url('unlikePost.png') %>"</script>
+    <script type="text/javascript"> window.commentsURL = "<%= image_url('comments.png') %>"</script>
+    <script type="text/javascript"> window.linkedinURL = "<%= image_url('linkedin.png') %>"</script>
+    <script type="text/javascript"> window.ghURL = "<%= image_url('gh.png') %>"</script>
+    <script type="text/javascript"> window.menuDotsURL = "<%= image_url('menuDots.png') %>"</script>
+    <script type="text/javascript"> window.editURL = "<%= image_url('edit.png') %>"</script>
+    <script type="text/javascript"> window.deleteURL = "<%= image_url('delete.png') %>"</script>
+    <script type="text/javascript"> window.userURL = "<%= image_url('userColor.png') %>"</script>
+    <script type="text/javascript"> window.coverPhoto1URL = "<%= image_url('coverPhoto1.jpg') %>"</script>
+    <script type="text/javascript"> window.editPicURL = "<%= image_url('editPic.png') %>"</script>
+    <script type="text/javascript"> window.timerURL = "<%= image_url('timer.png') %>"</script>
+    <script type="text/javascript"> window.heartURL = "<%= image_url('heart.png') %>"</script>
+    <script type="text/javascript"> window.locationURL = "<%= image_url('location.png') %>"</script>
+    <script type="text/javascript"> window.houseURL = "<%= image_url('house.png') %>"</script>
+    <script type="text/javascript"> window.schoolURL = "<%= image_url('school.png') %>"</script>
+    <script type="text/javascript"> window.workURL = "<%= image_url('work.png') %>"</script>
+    <script type="text/javascript"> window.birthdayURL = "<%= image_url('birthday.png') %>"</script>
+    <script type="text/javascript"> window.saveIconURL = "<%= image_url('saveIcon.png') %>"</script>
+    <script type="text/javascript"> window.mikeSLogoURL = "<%= image_url('MikeSlogos.jpg') %>"</script>
+    <script type="text/javascript"> window.EHPSLogoURL = "<%= image_url('EHPSLogo.png') %>"</script>
+    <script type="text/javascript"> window.CPGsmallLogoURL = "<%= image_url('CPGsmallLogo.png') %>"</script>
+    <script type="text/javascript"> window.rubyonrailsURL = "<%= image_url('rubyonrails.png') %>"</script>
+    <script type="text/javascript"> window.reactURL = "<%= image_url('react.png') %>"</script>
+    <script type="text/javascript"> window.reduxURL = "<%= image_url('redux.png') %>"</script>
+    <script type="text/javascript"> window.sassURL = "<%= image_url('sass.png') %>"</script>
+    <script type="text/javascript"> window.angelistURL = "<%= image_url('angelist.png') %>"</script>
     <% if current_user %>
       <script>
         window.currentUser = { 
@@ -16,74 +70,18 @@
           };
       </script>
     <% end %>
-      <script type="text/javascript"> window.facebookroundURL = "<%= image_url('facebookround.png') %>"</script>
-      <script type="text/javascript"> window.searchURL = "<%= image_url('search.png') %>"</script>
-      <script type="text/javascript"> window.home2URL = "<%= image_url('home.png') %>"</script>
-      <script type="text/javascript"> window.homeURL = "<%= image_url('home2.png') %>"</script>
-      <script type="text/javascript"> window.videoURL = "<%= image_url('video.png') %>"</script>
-      <script type="text/javascript"> window.marketURL = "<%= image_url('market.png') %>"</script>
-      <script type="text/javascript"> window.friendsURL = "<%= image_url('friends.png') %>"</script>
-      <script type="text/javascript"> window.newsURL = "<%= image_url('news.png') %>"</script>
-      <script type="text/javascript"> window.appsURL = "<%= image_url('apps.png') %>"</script>
-      <script type="text/javascript"> window.messagesURL = "<%= image_url('messages.png') %>"</script>
-      <script type="text/javascript"> window.bellURL = "<%= image_url('bell.png') %>"</script>
-      <script type="text/javascript"> window.downarrowURL = "<%= image_url('downArrow.png') %>"</script>
-      <script type="text/javascript"> window.logoutURL = "<%= image_url('logout.png') %>"</script>
-      <script type="text/javascript"> window.video_colorURL = "<%= image_url('videoColor.png') %>"</script>
-      <script type="text/javascript"> window.photo_colorURL = "<%= image_url('photoColor2.png') %>"</script>
-      <script type="text/javascript"> window.photo_color2URL = "<%= image_url('photoColor.png') %>"</script>
-      <script type="text/javascript"> window.smiley_colorURL = "<%= image_url('smileyColor.png') %>"</script>
-      <script type="text/javascript"> window.likeURL = "<%= image_url('like.png') %>"</script>
-      <script type="text/javascript"> window.likePostURL = "<%= image_url('likePost.png') %>"</script>
-      <script type="text/javascript"> window.unlikePostURL = "<%= image_url('unlikePost.png') %>"</script>
-      <script type="text/javascript"> window.commentsURL = "<%= image_url('comments.png') %>"</script>
-      <script type="text/javascript"> window.linkedinURL = "<%= image_url('linkedin.png') %>"</script>
-      <script type="text/javascript"> window.ghURL = "<%= image_url('gh.png') %>"</script>
-      <script type="text/javascript"> window.menuDotsURL = "<%= image_url('menuDots.png') %>"</script>
-      <script type="text/javascript"> window.editURL = "<%= image_url('edit.png') %>"</script>
-      <script type="text/javascript"> window.deleteURL = "<%= image_url('delete.png') %>"</script>
-      <script type="text/javascript"> window.userURL = "<%= image_url('userColor.png') %>"</script>
-      <script type="text/javascript"> window.coverPhoto1URL = "<%= image_url('coverPhoto1.jpg') %>"</script>
-      <script type="text/javascript"> window.editPicURL = "<%= image_url('editPic.png') %>"</script>
-      <script type="text/javascript"> window.timerURL = "<%= image_url('timer.png') %>"</script>
-      <script type="text/javascript"> window.heartURL = "<%= image_url('heart.png') %>"</script>
-      <script type="text/javascript"> window.locationURL = "<%= image_url('location.png') %>"</script>
-      <script type="text/javascript"> window.houseURL = "<%= image_url('house.png') %>"</script>
-      <script type="text/javascript"> window.schoolURL = "<%= image_url('school.png') %>"</script>
-      <script type="text/javascript"> window.workURL = "<%= image_url('work.png') %>"</script>
-      <script type="text/javascript"> window.birthdayURL = "<%= image_url('birthday.png') %>"</script>
-      <script type="text/javascript"> window.saveIconURL = "<%= image_url('saveIcon.png') %>"</script>
-      <script type="text/javascript"> window.mikeSLogoURL = "<%= image_url('MikeSlogos.jpg') %>"</script>
-      <script type="text/javascript"> window.EHPSLogoURL = "<%= image_url('EHPSLogo.png') %>"</script>
-      <script type="text/javascript"> window.CPGsmallLogoURL = "<%= image_url('CPGsmallLogo.png') %>"</script>
-      <script type="text/javascript"> window.rubyonrailsURL = "<%= image_url('rubyonrails.png') %>"</script>
-      <script type="text/javascript"> window.reactURL = "<%= image_url('react.png') %>"</script>
-      <script type="text/javascript"> window.reduxURL = "<%= image_url('redux.png') %>"</script>
-      <script type="text/javascript"> window.sassURL = "<%= image_url('sass.png') %>"</script>
-      <script type="text/javascript"> window.angelistURL = "<%= image_url('angelist.png') %>"</script>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:ital,wght@1,300&family=Roboto:wght@300&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
-      </style>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Poppins:ital,wght@1,300&family=Roboto:wght@300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Purple+Purse&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+    </style>      
       
-      <meta property="og:title" content="Twofacedbook" />
-      <meta property='og:image' width=250 height=250 content="<%= image_url('facebookround.png') %>"/>
-      <meta property="og:description"
-        content="TwoFacedBook is a clone of Facebook using PostgreSQL, Ruby on Rails, React, and Redux."
-      />
-      <meta property="og:url"
-        content="https://twofacedbook.herokuapp.com/"
-      />
-
-
-
   </head>
 
   <body>

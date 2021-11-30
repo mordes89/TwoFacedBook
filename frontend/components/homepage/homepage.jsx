@@ -24,16 +24,19 @@ class Homepage extends React.Component {
       likesAmt: this.props.likesAmtProp,
       likesInLocalState: this.props.likes,
       likeOrUnlikeState: false,
+
+      window: Window
     }
     // this.renderPosts = this.renderPosts.bind(this); 
     // this.autoReloader = this.autoReloader.bind(this); 
   }
-  
+ 
+ 
   componentDidMount() {
-    this.props.fetchUsers();
     this.props.fetchPosts();
     this.props.fetchComments();
     this.props.fetchLikes();
+    this.props.fetchUsers();
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -75,26 +78,26 @@ class Homepage extends React.Component {
       <div>
         <header className="header">
           <div className="header1">
-            <img src={window.facebookroundURL} className="logo" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
-            {/* <img src={window.searchURL} className="logo"/> */}
+            <img src={facebookroundURL} className="logo" onClick={()=>scrollTo({top: 0, behavior: 'smooth'})}/>
+            {/* <img src={searchURL} className="logo"/> */}
           </div>
           <div className="header2">
-            <img src={window.homeURL} className="middle-header-icons" onClick={()=>window.scrollTo({top: 0, behavior: 'smooth'})}/>
-            {/* <img src={window.window.videoURL} className="middle-header-icons"/> */}
-            {/* <img src={window.marketURL} className="middle-header-icons"/> */}
-            {/* <img src={window.friendsURL} className="middle-header-icons"/> */}
-            {/* <img src={window.newsURL} className="middle-header-icons"/> */}
+            <img src={homeURL} className="middle-header-icons" onClick={()=>scrollTo({top: 0, behavior: 'smooth'})}/>
+            {/* <img src={videoURL} className="middle-header-icons"/> */}
+            {/* <img src={marketURL} className="middle-header-icons"/> */}
+            {/* <img src={friendsURL} className="middle-header-icons"/> */}
+            {/* <img src={newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
             <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="right-nav-icon-name">
-                <img src={this.props.currentUser.profile_photo || window.userURL} className="user-logo-header"/>
+                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-header"/>
                 <h2 className="header-name">{this.props.currentUser.first_name}</h2>
               </div>
             </Link>
-            {/* <img src={window.appsURL} className="logo"/>
-            <img src={window.messagesURL} className="logo"/>
-            <img src={window.bellURL} className="logo"/> */}
+            {/* <img src={appsURL} className="logo"/>
+            <img src={messagesURL} className="logo"/>
+            <img src={bellURL} className="logo"/> */}
             <MenuDropdown className="show-menu-dropdown"/>
           </div>    
         </header>
@@ -103,7 +106,7 @@ class Homepage extends React.Component {
           <div className="left-nav">
             <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="left-nav-icon-row">
-                <img src={this.props.currentUser.profile_photo || window.userURL} className="user-logo-leftnav"/>
+                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
                 <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
               </div>
             </Link>
@@ -112,19 +115,19 @@ class Homepage extends React.Component {
               <h1 className="technologies-used-title">Technologies Used</h1>
               <ul className="technologies-used-ul">
                 <div className="technologies-used-row">
-                  <img src={window.rubyonrailsURL} className="technologies-used-pic"/>
+                  <img src={rubyonrailsURL} className="technologies-used-pic"/>
                   <li className="technologies-used-li">Ruby on Rails</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={window.reactURL} className="technologies-used-pic"/>
+                  <img src={reactURL} className="technologies-used-pic"/>
                   <li className="technologies-used-li">React (+Hooks)</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={window.reduxURL} className="technologies-used-pic"/>
+                  <img src={reduxURL} className="technologies-used-pic"/>
                   <li className="technologies-used-li">Redux</li>
                 </div>
                 <div className="technologies-used-row">
-                  <img src={window.sassURL} className="technologies-used-pic"/>
+                  <img src={sassURL} className="technologies-used-pic"/>
                   <li className="technologies-used-li">CSS/SASS (+Mixins)</li>
                 </div>
 
@@ -136,13 +139,13 @@ class Homepage extends React.Component {
 
             <a href="https://chord-pro-generator.herokuapp.com/#/" target="_blank" className="left-nav-bottom-icon-row2">
               <div className="left-nav-bottom-icon-row1">
-                <img src={window.CPGsmallLogoURL} className="sites-logo1"/>
+                <img src={CPGsmallLogoURL} className="sites-logo1"/>
                 {/* <h2 className="leftnav-name">Chord Pro Generator</h2> */}
               </div>
             </a>
             <a href="https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/" target="_blank" className="left-nav-bottom-icon-row2">
               <div className="left-nav-bottom-icon-row2">
-                <img src={window.EHPSLogoURL} className="sites-logo2"/>
+                <img src={EHPSLogoURL} className="sites-logo2"/>
                 {/* <h2 className="leftnav-name">Exploding Hot-Potato Soccer!</h2> */}
               </div>
             </a>
@@ -153,28 +156,28 @@ class Homepage extends React.Component {
           <div className="right-nav">
             <h1 className="not-sponsored">Creator</h1>
             <a href="https://mordes89.github.io/Portfolio/" target="_blank" className="right-nav-icon-row">
-              <img src={window.mikeSLogoURL} className="sponsored-logo-rightnav"/>
+              <img src={mikeSLogoURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
-                <h2 className="LinkedIn-rightnav">Profile</h2>
+                <h2 className="LinkedIn-rightnav">Profile Site</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
             <a href="https://github.com/mordes89" target="_blank" className="right-nav-icon-row">
-              <img src={window.ghURL} className="sponsored-logo-rightnav"/>
+              <img src={ghURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">GitHub</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
             <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
-              <img src={window.linkedinURL} className="sponsored-logo-rightnav"/>
+              <img src={linkedinURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">LinkedIn</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
               </div>
             </a>
             <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
-              <img src={window.angelistURL} className="sponsored-logo-rightnav"/>
+              <img src={angelistURL} className="sponsored-logo-rightnav"/>
               <div className="sponsored-wording-rightnav">
                 <h2 className="LinkedIn-rightnav">Angel List</h2>
                 <h2 className="name-rightnav">Mike Schnall</h2>
@@ -190,7 +193,7 @@ class Homepage extends React.Component {
         <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
-                <img src={this.props.currentUser.profile_photo || window.userURL} className="post-user-pic"/>
+                <img src={this.props.currentUser.profile_photo || userURL} className="post-user-pic"/>
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 
@@ -203,21 +206,21 @@ class Homepage extends React.Component {
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.video_colorURL} className="media-icons-post"/>
+                  <img src={video_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Video</h1>
                 </div>
                 <div 
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.photo_colorURL} className="media-icons-post"/>
+                  <img src={photo_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Photo</h1>
                 </div>
                 <div 
                   className="media-links-post"
                   onClick={() => this.props.openModal('post')}
                 >
-                  <img src={window.smiley_colorURL} className="media-icons-post"/>
+                  <img src={smiley_colorURL} className="media-icons-post"/>
                   <h1 className="media-text-post">Feeling</h1>
                 </div>
               </div>

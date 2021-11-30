@@ -58,7 +58,7 @@ class EditComment extends React.Component {
    </form>
    :
    <div className="comment-name-and-body">
-      <li className="comment-author">{`${this.props.users[this.props.comment.author_id].first_name} ${this.props.users[this.props.comment.author_id].last_name}`}</li>
+      <li className="comment-author">{`${this.props.users[this.props.comment.author_id] ? this.props.users[this.props.comment.author_id].first_name : "First Name"} ${this.props.users[this.props.comment.author_id] ? this.props.users[this.props.comment.author_id].last_name : "Last Name"}`}</li>
       <li className="comment-body-homepage">{this.props.comment.body}</li>
       {/* <img src={comment.photoUrl} className="comment-pic-homepage"/> */}
    </div>
