@@ -42,7 +42,7 @@ class PostModal extends React.Component {
 
    handleeidt() {
       this.setState({ edit: !this.state.edit });
-      console.log(this.state.edit);
+      // console.log(this.state.edit);
    }
 
 

@@ -37,7 +37,7 @@ class CommentMenuDropdown extends React.Component {
       }
       this.props.updateComment(formData);
       this.setState({show: !this.state.show})
-      console.log(this.props.comment);
+      // console.log(this.props.comment);
    }
 
    render() {
