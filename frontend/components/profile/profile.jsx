@@ -180,6 +180,7 @@ const Profile = (props) => {
       <RenderProfilePost posts={props.posts} profileId={id}/>
     </div>
   </div>)
+  
 
 
 
