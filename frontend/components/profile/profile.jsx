@@ -139,7 +139,6 @@ const Profile = (props) => {
 
 
 
-
   let myPosts = 
   (<div className="middle-nav-newsfeed2-profile">
     <BioItem userProfile={userProfile}/>    
@@ -180,7 +179,7 @@ const Profile = (props) => {
       <RenderProfilePost posts={props.posts} profileId={id}/>
     </div>
   </div>)
-  
+
 
 
 
