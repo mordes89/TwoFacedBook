@@ -310,6 +310,13 @@
    width: 15%; 
    @include roundCorners(); 
 }
+
+// .img-class{
+//    background-image: url(../../app/assets/images/gh.png);
+//    background-size: cover;
+//    width:100px;
+//    height:100px;
+// }
 .posts-and-bio{
    padding: 10px;
    @include roundCorners();

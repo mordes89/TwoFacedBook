@@ -10,6 +10,9 @@ module.exports = {
     devtool: 'inline-source-map',
     resolve: {
         extensions: [".js", ".jsx", "*"],
+        alias: {
+            Images: path.resolve(__dirname, 'app', 'assets', 'images')
+        }
     },
     module: {
         rules: [
