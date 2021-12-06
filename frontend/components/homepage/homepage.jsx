@@ -104,12 +104,12 @@ class Homepage extends React.Component {
 
         <div className="homepage-body">
           <div className="left-nav">
-            <Link to={`/user/${this.props.currentUser.id}`}>
-              <div className="left-nav-icon-row">
-                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
-                <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
-              </div>
-            </Link>
+            <div className="left-nav-icon-row">
+              <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
+              <Link to={`/user/${this.props.currentUser.id}`}>
+                  <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
+              </Link>
+            </div>
             <hr className="hline-lefnav"/>
             <div className="technologies-used-container">
               <h1 className="technologies-used-title">Technologies Used</h1>
