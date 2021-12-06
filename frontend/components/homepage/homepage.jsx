@@ -89,12 +89,12 @@ class Homepage extends React.Component {
             {/* <img src={newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
-            <Link to={`/user/${this.props.currentUser.id}`}>
               <div className="right-nav-icon-name">
                 <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-header"/>
-                <h2 className="header-name">{this.props.currentUser.first_name}</h2>
+                <Link to={`/user/${this.props.currentUser.id}`}>
+                    <h2 className="header-name">{this.props.currentUser.first_name}</h2>
+                </Link>
               </div>
-            </Link>
             {/* <img src={appsURL} className="logo"/>
             <img src={messagesURL} className="logo"/>
             <img src={bellURL} className="logo"/> */}
