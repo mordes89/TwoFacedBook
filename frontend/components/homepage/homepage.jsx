@@ -172,29 +172,35 @@ class Homepage extends React.Component {
                 </div>
               </a>
             </span>
-            <a href="https://github.com/mordes89" target="_blank" className="right-nav-icon-row">
+            <span className="right-nav-icon-row">
               <img src={ghURL} className="sponsored-logo-rightnav"/>
-              {/* <div className="img-class">khdfifjfkbdfj</div> */}
-              <div className="sponsored-wording-rightnav">
-                <h2 className="LinkedIn-rightnav">GitHub</h2>
-                <h2 className="name-rightnav">Mike Schnall</h2>
-              </div>
-            </a>
-            <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
+              <a href="https://github.com/mordes89" target="_blank">
+                {/* <div className="img-class">khdfifjfkbdfj</div> */}
+                <div className="sponsored-wording-rightnav">
+                  <h2 className="LinkedIn-rightnav">GitHub</h2>
+                  <h2 className="name-rightnav">Mike Schnall</h2>
+                </div>
+              </a>
+            </span>
+            <span className="right-nav-icon-row">
               <img src={linkedinURL} className="sponsored-logo-rightnav"/>
-              <div className="sponsored-wording-rightnav">
-                <h2 className="LinkedIn-rightnav">LinkedIn</h2>
-                <h2 className="name-rightnav">Mike Schnall</h2>
-              </div>
-            </a>
-            <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
+              <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
+                <div className="sponsored-wording-rightnav">
+                  <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                  <h2 className="name-rightnav">Mike Schnall</h2>
+                </div>
+              </a>
+            </span>
+            <span className="right-nav-icon-row">
               <img src={angelistURL} className="sponsored-logo-rightnav"/>
-              <div className="sponsored-wording-rightnav">
-                <h2 className="LinkedIn-rightnav">Angel List</h2>
-                <h2 className="name-rightnav">Mike Schnall</h2>
-              </div>
-            </a>
-            
+              <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
+                <div className="sponsored-wording-rightnav">
+                  <h2 className="LinkedIn-rightnav">Angel List</h2>
+                  <h2 className="name-rightnav">Mike Schnall</h2>
+                </div>
+              </a>
+            </span>
+
             
             <hr className="hline-posts"/>
           </div>
