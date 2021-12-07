@@ -13,8 +13,11 @@
    @include phoneView();
    .left-nav-icon-row{
       @include leftNavIconAndWording();
+      @include hoverColor();
+      width: 200px;
       text-size-adjust: 60px;
       margin-top:10px;   
+      margin-left:10px;   
    }   
    .user-logo-leftnav{
       @include icon($hw: 60px, $hoverColor: none, $borderRadius: 60px);
@@ -26,7 +29,7 @@
    .leftnav-name{
       font-weight: bold;
       font-size: 20px;
-      margin-left: 10px;
+      margin-left: 15px;
    }
    
    .hline-lefnav{
