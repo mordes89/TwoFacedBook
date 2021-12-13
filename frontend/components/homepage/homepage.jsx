@@ -118,20 +118,22 @@ class Homepage extends React.Component {
                   <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
                     <img src={rubyonrailsURL} className="technologies-used-pic"/>
                   </a>
-                  <li className="technologies-used-li">Ruby on Rails</li>
-                </div>
-                <div className="technologies-used-row">
-                  <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
-                    <img src={reactURL} className="technologies-used-pic"/>
+                  <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
+                    <li className="technologies-used-li">Ruby on Rails</li>
                   </a>
-                  <li className="technologies-used-li">React (+Hooks)</li>
                 </div>
-                <div className="technologies-used-row">
-                  <a href="https://redux.js.org/introduction/getting-started" target="_blank">
-                    <img src={reduxURL} className="technologies-used-pic"/>
-                  </a>
-                  <li className="technologies-used-li">Redux</li>
-                </div>
+                <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
+                  <div className="technologies-used-row">
+                      <img src={reactURL} className="technologies-used-pic"/>
+                      <li className="technologies-used-li">React (+Hooks)</li>
+                  </div>
+                </a>
+                <a href="https://redux.js.org/introduction/getting-started" target="_blank">
+                  <div className="technologies-used-row">
+                      <img src={reduxURL} className="technologies-used-pic"/>
+                      <li className="technologies-used-li">Redux</li>
+                  </div>
+                </a>
                 <div className="technologies-used-row">
                   <a href="https://sass-lang.com/guide" target="_blank">
                     <img src={sassURL} className="technologies-used-pic"/>
@@ -165,7 +167,7 @@ class Homepage extends React.Component {
             <h1 className="not-sponsored">Creator</h1>
             <span className="right-nav-icon-row">
               <img src={mikeSLogoURL} className="sponsored-logo-rightnav" alt="portfolio site" to="https://mordes89.github.io/Portfolio/"/>
-              <a href="https://mordes89.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">
+              <a href="https://mordes89.github.io/Portfolio/" target="_blank">
                 <div className="sponsored-wording-rightnav">
                   <h2 className="LinkedIn-rightnav">Profile Site</h2>
                   <h2 className="name-rightnav">Mike Schnall</h2> 
