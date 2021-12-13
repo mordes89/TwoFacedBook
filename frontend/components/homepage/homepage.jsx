@@ -134,12 +134,12 @@ class Homepage extends React.Component {
                       <li className="technologies-used-li">Redux</li>
                   </div>
                 </a>
-                <div className="technologies-used-row">
-                  <a href="https://sass-lang.com/guide" target="_blank">
-                    <img src={sassURL} className="technologies-used-pic"/>
-                  </a>
-                  <li className="technologies-used-li">CSS/SASS (+Mixins)</li>
-                </div>
+                <a href="https://sass-lang.com/guide" target="_blank">
+                  <div className="technologies-used-row">
+                      <img src={sassURL} className="technologies-used-pic"/>
+                      <li className="technologies-used-li">CSS/SASS (+Mixins)</li>
+                  </div>
+                </a>
 
               </ul>
             </div>
