@@ -114,14 +114,12 @@ class Homepage extends React.Component {
             <div className="technologies-used-container">
               <h1 className="technologies-used-title">Technologies Used</h1>
               <ul className="technologies-used-ul">
-                <div className="technologies-used-row">
-                  <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
-                    <img src={rubyonrailsURL} className="technologies-used-pic"/>
-                  </a>
-                  <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
-                    <li className="technologies-used-li">Ruby on Rails</li>
-                  </a>
-                </div>
+                <a href="https://www.ruby-lang.org/en/documentation/" target="_blank">
+                  <div className="technologies-used-row">
+                      <img src={rubyonrailsURL} className="technologies-used-pic"/>
+                      <li className="technologies-used-li">Ruby on Rails</li>
+                  </div>
+                </a>
                 <a href="https://reactjs.org/docs/getting-started.html" target="_blank">
                   <div className="technologies-used-row">
                       <img src={reactURL} className="technologies-used-pic"/>
@@ -177,7 +175,6 @@ class Homepage extends React.Component {
             <span className="right-nav-icon-row">
               <img src={ghURL} className="sponsored-logo-rightnav"/>
               <a href="https://github.com/mordes89" target="_blank">
-                {/* <div className="img-class">khdfifjfkbdfj</div> */}
                 <div className="sponsored-wording-rightnav">
                   <h2 className="LinkedIn-rightnav">GitHub</h2>
                   <h2 className="name-rightnav">Mike Schnall</h2>
