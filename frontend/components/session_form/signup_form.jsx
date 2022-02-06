@@ -50,9 +50,9 @@ class SignupModal extends React.Component {
   renderErrors() {       
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
+        {this.props.errors.map((error, i) => (          
           <li key={`error-${i}`}>
-            {error}
+            {error === `Password is too short (minimum is 6 characters)` ? error : null}
           </li>
         ))}
       </ul>
@@ -79,7 +79,7 @@ class SignupModal extends React.Component {
                     onChange={this.update('first_name')}
                     placeholder="First Name"
                     className="first_name"
-                    id={this.state.firstNameErr ? "red-border-error" : null}
+                    id={this.props.errors.includes(`First name can't be blank`) ? "red-border-error" : null}
                   />
                   <input 
                     type="text"
@@ -87,25 +87,25 @@ class SignupModal extends React.Component {
                     onChange={this.update('last_name')}
                     placeholder="Last Name"
                     className="last_name"
-                    id={this.state.lastNameErr ? "red-border-error" : null}
+                    id={this.props.errors.includes(`Last name can't be blank`) ? "red-border-error" : null}
                   />
               </div>
                 <input 
-                  type="text"
+                  type="email"
                   value={this.state.email}
                   onChange={this.update('email')}
                   placeholder="Email"
                   className="login-email"
-                  id={this.state.emailErr ? "red-border-error" : null}
-                />
+                  id={this.props.errors.includes(`Email can't be blank`) || this.props.errors.includes(`Email is invalid`) ? "red-border-error" : null}
+                  />
                 <input 
                   type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   placeholder="New Password"
                   className="login-password"
-                  id={this.state.passwordErr ? "red-border-error" : null}
-                />
+                  id={this.props.errors.includes(`Password is too short (minimum is 6 characters)`) ? "red-border-error" : null}
+                  />
                 <p className="bday">Birthday</p>
                 <input 
                   type="date"
