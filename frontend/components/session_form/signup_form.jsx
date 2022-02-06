@@ -10,7 +10,11 @@ class SignupModal extends React.Component {
       last_name: '',
       email: '',
       password: '',
-      birthday: ''
+      birthday: '',
+      firstNameErr: true,
+      lastNameErr: true,
+      emailErr: true,
+      passwordErr: true,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -36,6 +40,12 @@ class SignupModal extends React.Component {
     .then(() => this.loginNewUser(e))
     
   }
+
+// First name can't be blank
+// Last name can't be blank
+// Email can't be blank
+// Email is invalid
+// Password is too short (minimum is 6 characters)
 
   renderErrors() {       
     return(
@@ -69,6 +79,7 @@ class SignupModal extends React.Component {
                     onChange={this.update('first_name')}
                     placeholder="First Name"
                     className="first_name"
+                    id={this.state.firstNameErr ? "red-border-error" : null}
                   />
                   <input 
                     type="text"
@@ -76,6 +87,7 @@ class SignupModal extends React.Component {
                     onChange={this.update('last_name')}
                     placeholder="Last Name"
                     className="last_name"
+                    id={this.state.lastNameErr ? "red-border-error" : null}
                   />
               </div>
                 <input 
@@ -84,6 +96,7 @@ class SignupModal extends React.Component {
                   onChange={this.update('email')}
                   placeholder="Email"
                   className="login-email"
+                  id={this.state.emailErr ? "red-border-error" : null}
                 />
                 <input 
                   type="password"
@@ -91,6 +104,7 @@ class SignupModal extends React.Component {
                   onChange={this.update('password')}
                   placeholder="New Password"
                   className="login-password"
+                  id={this.state.passwordErr ? "red-border-error" : null}
                 />
                 <p className="bday">Birthday</p>
                 <input 

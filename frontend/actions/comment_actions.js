@@ -4,7 +4,7 @@ import { closeModal } from "./modal_actions"
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
+export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_';
 
 
 const receiveComments = comments => ({
@@ -57,7 +57,7 @@ export const updateComment = comment => dispatch => (
 
 export const deleteComment = commentId => dispatch => (
   APIUtil.deleteComment(commentId)
-  .then(() => (dispatch(removeComment(commentId))), 
+  .then(() => (dispatch((commentId))), 
   // err => (dispatch(receiveErrors(err.responseJSON)))
   )
 );
