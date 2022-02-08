@@ -52,7 +52,9 @@ class SignupModal extends React.Component {
       <ul>
         {this.props.errors.map((error, i) => (          
           <li key={`error-${i}`}>
-            {error === `Password is too short (minimum is 6 characters)` ? error : null}
+            {error === `Password is too short (minimum is 6 characters)` ||
+                error === `Email has already been taken` 
+                  ? error : null}
           </li>
         ))}
       </ul>

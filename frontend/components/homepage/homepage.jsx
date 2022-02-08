@@ -24,6 +24,7 @@ class Homepage extends React.Component {
       likesAmt: this.props.likesAmtProp,
       likesInLocalState: this.props.likes,
       likeOrUnlikeState: false,
+      currentUser: this.props.currentUser,      
 
       window: Window
     }
@@ -89,12 +90,12 @@ class Homepage extends React.Component {
             {/* <img src={newsURL} className="middle-header-icons"/> */}
           </div>
           <div className="header3">
-              <div className="right-nav-icon-name">
-                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-header"/>
-                <Link to={`/user/${this.props.currentUser.id}`}>
-                    <h2 className="header-name">{this.props.currentUser.first_name}</h2>
-                </Link>
-              </div>
+              <Link to={`/user/${this.props.currentUser.id}`}>
+                <div className="right-nav-icon-name">
+                  <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-header"/>
+                  <h2 className="header-name">{this.props.currentUser.first_name}</h2>
+                </div>
+              </Link>
             {/* <img src={appsURL} className="logo"/>
             <img src={messagesURL} className="logo"/>
             <img src={bellURL} className="logo"/> */}
@@ -104,12 +105,12 @@ class Homepage extends React.Component {
 
         <div className="homepage-body">
           <div className="left-nav">
-            <div className="left-nav-icon-row">
-              <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
-              <Link to={`/user/${this.props.currentUser.id}`}>
-                  <h2 className="leftnav-name">{this.props.currentUser.first_name + " " + this.props.currentUser.last_name}</h2>
-              </Link>
-            </div>
+            <Link to={`/user/${this.props.currentUser.id}`}>
+              <div className="left-nav-icon-row">
+                <img src={this.props.currentUser.profile_photo || userURL} className="user-logo-leftnav"/>
+                <h2 className="leftnav-name">{this.state.currentUser.first_name + " " + this.state.currentUser.last_name}</h2>
+              </div>
+            </Link>
             <hr className="hline-lefnav"/>
             <div className="technologies-used-container">
               <h1 className="technologies-used-title">Technologies Used</h1>
@@ -209,7 +210,9 @@ class Homepage extends React.Component {
         <div className="middle-nav-newsfeed2">
             <div className="posting-box">
               <div className="posting-query">
-                <img src={this.props.currentUser.profile_photo || userURL} className="post-user-pic"/>
+                <Link to={`/user/${this.props.currentUser.id}`}>
+                  <img src={this.props.currentUser.profile_photo || userURL} className="post-user-pic"/>
+                </Link>
                 <input 
                   onClick={() => this.props.openModal('post')} 
                   className="create_post-input" 

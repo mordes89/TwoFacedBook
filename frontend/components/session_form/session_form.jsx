@@ -50,7 +50,7 @@ class SessionForm extends React.Component {
       <ul>
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
-            {error === `The email or password you entered are not connected to an account.` ? error : null}
+            {(error === `The email or password you entered are not connected to an account.`)? error : null}
           </li>
         ))}
       </ul>
