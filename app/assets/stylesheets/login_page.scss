@@ -132,8 +132,33 @@
 }
 
 
-.footer{
-   bottom:10px;
+.footer-container{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: white;
+   color: rgb(0, 0, 0);
+   text-align: center;
+   height: 15%;
+   
+}
+.social-media-footer{
+   display: flex;
+   width: 60%;
+   margin-left: 20%;
+   font-size: 10px;
+   color: grey;
+   p {
+      margin-left: 15px;
+      margin-top: 10px;
+   }
+}
+
+.hline-footer{
+   width: 58%;
+   margin-left: 21%;
+   margin-bottom: 0;
 }
 
 

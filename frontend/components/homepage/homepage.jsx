@@ -168,7 +168,7 @@ class Homepage extends React.Component {
               <img src={mikeSLogoURL} className="sponsored-logo-rightnav" alt="portfolio site" to="https://mordes89.github.io/Portfolio/"/>
               <a href="https://mordes89.github.io/Portfolio/" target="_blank">
                 <div className="sponsored-wording-rightnav">
-                  <h2 className="LinkedIn-rightnav">Profile Site</h2>
+                  <h2 className="LinkedIn-rightnav">Portfolio Site</h2>
                   <h2 className="name-rightnav">Mike Schnall</h2> 
                 </div>
               </a>

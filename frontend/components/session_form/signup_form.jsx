@@ -41,11 +41,6 @@ class SignupModal extends React.Component {
     
   }
 
-// First name can't be blank
-// Last name can't be blank
-// Email can't be blank
-// Email is invalid
-// Password is too short (minimum is 6 characters)
 
   renderErrors() {       
     return(

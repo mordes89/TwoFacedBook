@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
-
+import Footer from './footer';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -96,6 +96,7 @@ class SessionForm extends React.Component {
               className="create_user-button">Create New Account
             </button>    
         </div>
+        <Footer/>
 
       </div>
       
