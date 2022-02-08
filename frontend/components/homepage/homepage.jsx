@@ -164,42 +164,42 @@ class Homepage extends React.Component {
          
           <div className="right-nav">
             <h1 className="not-sponsored">Creator</h1>
-            <span className="right-nav-icon-row">
-              <img src={mikeSLogoURL} className="sponsored-logo-rightnav" alt="portfolio site" to="https://mordes89.github.io/Portfolio/"/>
-              <a href="https://mordes89.github.io/Portfolio/" target="_blank">
-                <div className="sponsored-wording-rightnav">
-                  <h2 className="LinkedIn-rightnav">Portfolio Site</h2>
-                  <h2 className="name-rightnav">Mike Schnall</h2> 
-                </div>
-              </a>
-            </span>
-            <span className="right-nav-icon-row">
-              <img src={ghURL} className="sponsored-logo-rightnav"/>
-              <a href="https://github.com/mordes89" target="_blank">
-                <div className="sponsored-wording-rightnav">
-                  <h2 className="LinkedIn-rightnav">GitHub</h2>
-                  <h2 className="name-rightnav">Mike Schnall</h2>
-                </div>
-              </a>
-            </span>
-            <span className="right-nav-icon-row">
-              <img src={linkedinURL} className="sponsored-logo-rightnav"/>
-              <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
-                <div className="sponsored-wording-rightnav">
-                  <h2 className="LinkedIn-rightnav">LinkedIn</h2>
-                  <h2 className="name-rightnav">Mike Schnall</h2>
-                </div>
-              </a>
-            </span>
-            <span className="right-nav-icon-row">
-              <img src={angelistURL} className="sponsored-logo-rightnav"/>
-              <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
-                <div className="sponsored-wording-rightnav">
-                  <h2 className="LinkedIn-rightnav">Angel List</h2>
-                  <h2 className="name-rightnav">Mike Schnall</h2>
-                </div>
-              </a>
-            </span>
+            <a href="https://mordes89.github.io/Portfolio/" target="_blank">
+              <span className="right-nav-icon-row">
+                <img src={mikeSLogoURL} className="sponsored-logo-rightnav" alt="portfolio site" to="https://mordes89.github.io/Portfolio/"/>
+                  <div className="sponsored-wording-rightnav">
+                    <h2 className="LinkedIn-rightnav">Portfolio Site</h2>
+                    <h2 className="name-rightnav">Mike Schnall</h2> 
+                  </div>
+              </span>
+            </a>
+            <a href="https://github.com/mordes89" target="_blank">
+              <span className="right-nav-icon-row">
+                <img src={ghURL} className="sponsored-logo-rightnav"/>
+                  <div className="sponsored-wording-rightnav">
+                    <h2 className="LinkedIn-rightnav">GitHub</h2>
+                    <h2 className="name-rightnav">Mike Schnall</h2>
+                  </div>
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/in/mike-mordechai-schnall/" target="_blank" className="right-nav-icon-row">
+              <span className="right-nav-icon-row">
+                <img src={linkedinURL} className="sponsored-logo-rightnav"/>
+                  <div className="sponsored-wording-rightnav">
+                    <h2 className="LinkedIn-rightnav">LinkedIn</h2>
+                    <h2 className="name-rightnav">Mike Schnall</h2>
+                  </div>
+              </span>
+            </a>
+            <a href="https://angel.co/u/mike-schnall/" target="_blank" className="right-nav-icon-row">
+              <span className="right-nav-icon-row">
+                <img src={angelistURL} className="sponsored-logo-rightnav"/>
+                  <div className="sponsored-wording-rightnav">
+                    <h2 className="LinkedIn-rightnav">Angel List</h2>
+                    <h2 className="name-rightnav">Mike Schnall</h2>
+                  </div>
+              </span>
+            </a>
 
             
             <hr className="hline-posts"/>
