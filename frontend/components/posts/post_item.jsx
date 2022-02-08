@@ -31,7 +31,8 @@ const PostItem = (props) => {
   //defining likeOrUnlike:
   const [likeOrUnlike, setlikeOrUnlike] = useState(props.likeOrUnlike(props.post));
   const [comment_on, setComment_on] = useState(false);
-
+  const [comment_can_be_on, setComment_can_be_on] = useState(true);
+  
   
 
   let toggleComment = () => {
@@ -125,7 +126,7 @@ const PostItem = (props) => {
           </div>                         
           }
           
-          <div className="media-links-like-comment" onClick={toggleComment}>
+          <div className="media-links-like-comment" onClick={comment_can_be_on ? toggleComment : null}>
             <img src={window.commentsURL} className="like-comment-share-icons"/>
             <h1 className="like-comment-share-text">Comment</h1>
           </div>              
@@ -146,11 +147,11 @@ const PostItem = (props) => {
               <img src={props.users[comment.author_id] ? props.users[comment.author_id].profile_photo || userURL : userURL} className="profile-pic"/>
               <div className="top-bar-of-comment">
                 <div className="name-and-time">
-                  {<EditComment comment={comment}/>}
+                  {<EditComment comment={comment} setComment_can_be_on={setComment_can_be_on}/>}
                   
                 </div>
               </div>
-                  {comment.edit ? null : <CommentMenuDropdown comment={comment}/>}                        
+                  {comment.edit ? null : <CommentMenuDropdown comment={comment} setComment_can_be_on={setComment_can_be_on}/>}                        
             </div>
             <li className="created-at-comment">{                  
               Math.floor((Date.now() - Date.parse(comment.created_at))/ 60000) < 1 ? "Now" :

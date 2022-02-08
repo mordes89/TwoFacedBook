@@ -27,6 +27,7 @@ class CommentMenuDropdown extends React.Component {
    }
 
    toggleEdit(e){
+      this.props.setComment_can_be_on(false)
       const formData = new FormData();
       formData.append('comment[body]', this.props.comment.body);
       formData.append('comment[author_id]', this.props.comment.author_id);

@@ -10,7 +10,7 @@ class EditComment extends React.Component {
       photoUrl: null,
       photoFile: null,
 
-      edit: false
+      edit: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -22,6 +22,7 @@ class EditComment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.setComment_can_be_on(true)
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.author_id);
