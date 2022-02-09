@@ -7,7 +7,7 @@ class CommentMenuDropdown extends React.Component {
     super(props);
     this.state = { 
        show: false,
-       edit: false
+       edit: false,
       };
     this.handleFocus = this.handleFocus.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -28,6 +28,7 @@ class CommentMenuDropdown extends React.Component {
 
    toggleEdit(e){
       this.props.setComment_can_be_on(false)
+
       const formData = new FormData();
       formData.append('comment[body]', this.props.comment.body);
       formData.append('comment[author_id]', this.props.comment.author_id);
@@ -42,14 +43,14 @@ class CommentMenuDropdown extends React.Component {
    }
 
    render() {
+      let menuBackground = this.state.show ? <div className="menu-background" onClick={e => this.handleMenuClick(e)}></div> : null;
       let menuIcon = (this.props.currentUser.id == this.props.comment.author_id) ? 
-            <img src={window.menuDotsURL} 
+            (<div><img src={window.menuDotsURL} 
                className="comment-menu-icon" 
                onClick={e => this.handleMenuClick(e)}                             
-            /> 
+            />{menuBackground}</div>) 
             : null;
 
-      let menuBackground = this.state.show ? <div className="menu-background" onClick={e => this.handleMenuClick(e)}></div> : null;
       let menu = this.state.show ? 
             <div 
                className="comment-menu-background"
@@ -82,7 +83,7 @@ class CommentMenuDropdown extends React.Component {
          
       return (
          <div> 
-            {menuBackground}
+            {/* {menuBackground} */}
             {menuIcon}
             <div
                // onFocus={(e) => this.handleFocus(e)} 
