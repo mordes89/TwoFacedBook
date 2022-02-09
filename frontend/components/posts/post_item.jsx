@@ -69,6 +69,7 @@ const PostItem = (props) => {
   return (
     <div>
       <div className="poster-and-time" id="id-poster-and-time">
+        
           <Link to={`/user/${props.post.author.id}`}>
             <img src={props.users[props.post.author.id] ? (props.users[props.post.author.id].profile_photo || userURL) : userURL} className="profile-pic"/>              
           </Link>
