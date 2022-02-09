@@ -26,7 +26,7 @@ class EditComment extends React.Component {
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.author_id);
-    formData.append('comment[id]', this.state.id);
+    formData.append('comment[id]', this.props.comment.id);
     formData.append('comment[edit]', false);
     if (this.state.photoFile) {  
       formData.append('comment[photo]', this.state.photoFile);
