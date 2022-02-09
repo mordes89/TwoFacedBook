@@ -69,7 +69,9 @@ const PostItem = (props) => {
   return (
     <div>
       <div className="poster-and-time" id="id-poster-and-time">
-          <img src={props.users[props.post.author.id] ? (props.users[props.post.author.id].profile_photo || userURL) : userURL} className="profile-pic"/>              
+          <Link to={`/user/${props.post.author.id}`}>
+            <img src={props.users[props.post.author.id] ? (props.users[props.post.author.id].profile_photo || userURL) : userURL} className="profile-pic"/>              
+          </Link>
           <div className="top-bar-of-post">
             <Link to={`/user/${props.post.author.id}`} >
               <div className="name-and-time">
@@ -87,12 +89,13 @@ const PostItem = (props) => {
             </Link>
           </div>
         </div>
+          {props.post.author.id === props.currentUser.id ?
           <div className="post-menu-icon-and-menu">
             <PostMenuDropdown 
               post={props.post}
               onChange={props.onChange}
             />
-          </div>
+          </div> : null }
         <li className="post-body-homepage">{props.post.body}</li>
         <img src={props.post.photoUrl} className="post-pic-homepage"/>
         <div 
@@ -144,7 +147,9 @@ const PostItem = (props) => {
           comment.parent_post_id === props.post.id ? 
           (<ul key={`comment-${i}`} className="comments">
             <div className="pic-comment-dropdown">
-              <img src={props.users[comment.author_id] ? props.users[comment.author_id].profile_photo || userURL : userURL} className="profile-pic"/>
+              <Link to={`/user/${comment.author_id}`}>
+                <img src={props.users[comment.author_id] ? props.users[comment.author_id].profile_photo || userURL : userURL} className="profile-pic"/>
+              </Link>
               <div className="top-bar-of-comment">
                 <div className="name-and-time">
                   {<EditComment comment={comment} setComment_can_be_on={setComment_can_be_on}/>}
